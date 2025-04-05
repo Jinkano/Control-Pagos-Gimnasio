@@ -89,9 +89,11 @@ Partial Class FrmPresentacion
         '
         'PictureBox1
         '
+        Me.PictureBox1.Image = Global.ControlPagosGimnasio.My.Resources.Resources.box_entrena
         Me.PictureBox1.Location = New System.Drawing.Point(76, 82)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(238, 263)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 6
         Me.PictureBox1.TabStop = False
         '

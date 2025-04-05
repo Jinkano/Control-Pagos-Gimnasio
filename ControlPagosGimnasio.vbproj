@@ -254,5 +254,20 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\salir22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\boxeador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\clear22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cajaregis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\box entrena.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

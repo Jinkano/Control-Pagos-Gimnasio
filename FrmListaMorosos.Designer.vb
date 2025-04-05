@@ -74,11 +74,12 @@ Partial Class FrmListaMorosos
         Me.BtnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.BottomRight
         Me.BtnCerrar.Location = New System.Drawing.Point(1033, 720)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Size = New System.Drawing.Size(100, 30)
-        Me.BtnCerrar.TabIndex = 80
+        Me.BtnCerrar.TabIndex = 3
         Me.BtnCerrar.Text = "  &Cerrar"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCerrar.UseVisualStyleBackColor = False
@@ -123,7 +124,7 @@ Partial Class FrmListaMorosos
         Me.DgvMorosos.RowTemplate.Height = 27
         Me.DgvMorosos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DgvMorosos.Size = New System.Drawing.Size(1115, 578)
-        Me.DgvMorosos.TabIndex = 78
+        Me.DgvMorosos.TabIndex = 2
         '
         'colNom
         '
@@ -277,7 +278,7 @@ Partial Class FrmListaMorosos
         Me.gbEncabezado.Location = New System.Drawing.Point(24, 2)
         Me.gbEncabezado.Name = "gbEncabezado"
         Me.gbEncabezado.Size = New System.Drawing.Size(960, 104)
-        Me.gbEncabezado.TabIndex = 82
+        Me.gbEncabezado.TabIndex = 0
         Me.gbEncabezado.TabStop = False
         '
         'CmbBuscar
@@ -300,7 +301,7 @@ Partial Class FrmListaMorosos
         Me.LblBuscar.Location = New System.Drawing.Point(96, 64)
         Me.LblBuscar.Name = "LblBuscar"
         Me.LblBuscar.Size = New System.Drawing.Size(86, 24)
-        Me.LblBuscar.TabIndex = 70
+        Me.LblBuscar.TabIndex = 4
         Me.LblBuscar.Text = "Buscar por"
         Me.LblBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -311,15 +312,17 @@ Partial Class FrmListaMorosos
         Me.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnLimpiar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.clear22
         Me.BtnLimpiar.Location = New System.Drawing.Point(912, 56)
         Me.BtnLimpiar.Name = "BtnLimpiar"
         Me.BtnLimpiar.Size = New System.Drawing.Size(34, 30)
-        Me.BtnLimpiar.TabIndex = 4
+        Me.BtnLimpiar.TabIndex = 2
         Me.BtnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnLimpiar.UseVisualStyleBackColor = False
         '
         'PbLogo
         '
+        Me.PbLogo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cajaregis
         Me.PbLogo.Location = New System.Drawing.Point(16, 24)
         Me.PbLogo.Margin = New System.Windows.Forms.Padding(6)
         Me.PbLogo.Name = "PbLogo"
@@ -337,7 +340,7 @@ Partial Class FrmListaMorosos
         Me.LblInformacion.Margin = New System.Windows.Forms.Padding(6)
         Me.LblInformacion.Name = "LblInformacion"
         Me.LblInformacion.Size = New System.Drawing.Size(835, 18)
-        Me.LblInformacion.TabIndex = 67
+        Me.LblInformacion.TabIndex = 3
         Me.LblInformacion.Text = "La siguiente lista muestra los pagos pendientes. Selecciona un cliente de la list" &
     "a para poder realizar el pago de la mensualidad."
         '
@@ -361,7 +364,7 @@ Partial Class FrmListaMorosos
         Me.BtnPagar.Location = New System.Drawing.Point(1032, 18)
         Me.BtnPagar.Name = "BtnPagar"
         Me.BtnPagar.Size = New System.Drawing.Size(100, 74)
-        Me.BtnPagar.TabIndex = 79
+        Me.BtnPagar.TabIndex = 1
         Me.BtnPagar.Text = "&Pagar"
         Me.BtnPagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnPagar.UseVisualStyleBackColor = True
@@ -371,11 +374,11 @@ Partial Class FrmListaMorosos
         Me.StsBarra.AutoSize = False
         Me.StsBarra.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StsBarra.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SlblTitulo, Me.SlblMensaje, Me.SlblButton})
-        Me.StsBarra.Location = New System.Drawing.Point(0, 718)
+        Me.StsBarra.Location = New System.Drawing.Point(0, 712)
         Me.StsBarra.Name = "StsBarra"
         Me.StsBarra.Size = New System.Drawing.Size(1159, 46)
         Me.StsBarra.SizingGrip = False
-        Me.StsBarra.TabIndex = 81
+        Me.StsBarra.TabIndex = 4
         Me.StsBarra.Text = "stsBarra"
         '
         'SlblTitulo
@@ -423,7 +426,7 @@ Partial Class FrmListaMorosos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1159, 764)
+        Me.ClientSize = New System.Drawing.Size(1159, 758)
         Me.Controls.Add(Me.BtnCerrar)
         Me.Controls.Add(Me.DgvMorosos)
         Me.Controls.Add(Me.gbEncabezado)

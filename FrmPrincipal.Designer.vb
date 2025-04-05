@@ -54,6 +54,7 @@ Partial Class FrmPrincipal
         Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnSalir.Location = New System.Drawing.Point(0, 461)
         Me.BtnSalir.Name = "BtnSalir"

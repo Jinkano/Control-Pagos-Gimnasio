@@ -26,10 +26,6 @@ Partial Class FrmClientesPagos
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientesPagos))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -38,8 +34,21 @@ Partial Class FrmClientesPagos
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientesPagos))
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.DgvListaPagos = New System.Windows.Forms.DataGridView()
+        Me.idPagos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFdiPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPrcPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colDescuento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNdias = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFdpPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFrmPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnNuevoPago = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
@@ -86,15 +95,6 @@ Partial Class FrmClientesPagos
         Me.LblLetrero = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.idPagos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colFdiPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPrcPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colDescuento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colNdias = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colFdpPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colFrmPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvListaPagos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlBotonera.SuspendLayout()
         Me.StsBarra.SuspendLayout()
@@ -113,11 +113,12 @@ Partial Class FrmClientesPagos
         Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCerrar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.BottomRight
         Me.BtnCerrar.Location = New System.Drawing.Point(1080, 796)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Size = New System.Drawing.Size(160, 32)
-        Me.BtnCerrar.TabIndex = 77
+        Me.BtnCerrar.TabIndex = 4
         Me.BtnCerrar.Text = "  &Cerrar ventana"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCerrar.UseVisualStyleBackColor = False
@@ -165,6 +166,113 @@ Partial Class FrmClientesPagos
         Me.DgvListaPagos.Size = New System.Drawing.Size(986, 276)
         Me.DgvListaPagos.TabIndex = 69
         '
+        'idPagos
+        '
+        Me.idPagos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.idPagos.HeaderText = "idPagos"
+        Me.idPagos.Name = "idPagos"
+        Me.idPagos.ReadOnly = True
+        Me.idPagos.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.idPagos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.idPagos.Visible = False
+        Me.idPagos.Width = 65
+        '
+        'colFdiPgs
+        '
+        Me.colFdiPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colFdiPgs.DefaultCellStyle = DataGridViewCellStyle3
+        Me.colFdiPgs.HeaderText = "FECHA DE INICIO"
+        Me.colFdiPgs.Name = "colFdiPgs"
+        Me.colFdiPgs.ReadOnly = True
+        Me.colFdiPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colFdiPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colFdiPgs.Width = 170
+        '
+        'colPrcPgs
+        '
+        Me.colPrcPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colPrcPgs.DefaultCellStyle = DataGridViewCellStyle4
+        Me.colPrcPgs.HeaderText = "PRECIO"
+        Me.colPrcPgs.Name = "colPrcPgs"
+        Me.colPrcPgs.ReadOnly = True
+        Me.colPrcPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colPrcPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colPrcPgs.Width = 90
+        '
+        'colDescuento
+        '
+        Me.colDescuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colDescuento.DefaultCellStyle = DataGridViewCellStyle5
+        Me.colDescuento.HeaderText = "DESCT"
+        Me.colDescuento.Name = "colDescuento"
+        Me.colDescuento.ReadOnly = True
+        Me.colDescuento.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colDescuento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colDescuento.Width = 90
+        '
+        'colTotal
+        '
+        Me.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colTotal.DefaultCellStyle = DataGridViewCellStyle6
+        Me.colTotal.HeaderText = "TOTAL"
+        Me.colTotal.Name = "colTotal"
+        Me.colTotal.ReadOnly = True
+        Me.colTotal.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colTotal.Width = 90
+        '
+        'colNdias
+        '
+        Me.colNdias.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colNdias.DefaultCellStyle = DataGridViewCellStyle7
+        Me.colNdias.HeaderText = "Nº DE DIAS"
+        Me.colNdias.Name = "colNdias"
+        Me.colNdias.ReadOnly = True
+        Me.colNdias.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colNdias.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colNdias.Width = 90
+        '
+        'colApagar
+        '
+        Me.colApagar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colApagar.DefaultCellStyle = DataGridViewCellStyle8
+        Me.colApagar.HeaderText = "A PAGAR"
+        Me.colApagar.Name = "colApagar"
+        Me.colApagar.ReadOnly = True
+        Me.colApagar.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colApagar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colApagar.Width = 90
+        '
+        'colFdpPgs
+        '
+        Me.colFdpPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colFdpPgs.DefaultCellStyle = DataGridViewCellStyle9
+        Me.colFdpPgs.HeaderText = "FECHA DE PAGO"
+        Me.colFdpPgs.Name = "colFdpPgs"
+        Me.colFdpPgs.ReadOnly = True
+        Me.colFdpPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colFdpPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colFdpPgs.Width = 170
+        '
+        'colFrmPgs
+        '
+        Me.colFrmPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colFrmPgs.DefaultCellStyle = DataGridViewCellStyle10
+        Me.colFrmPgs.HeaderText = "FORMA DE PAGO"
+        Me.colFrmPgs.Name = "colFrmPgs"
+        Me.colFrmPgs.ReadOnly = True
+        Me.colFrmPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colFrmPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colFrmPgs.Width = 140
+        '
         'PnlBotonera
         '
         Me.PnlBotonera.BackColor = System.Drawing.Color.Silver
@@ -183,7 +291,7 @@ Partial Class FrmClientesPagos
         Me.PnlBotonera.Location = New System.Drawing.Point(1078, 0)
         Me.PnlBotonera.Name = "PnlBotonera"
         Me.PnlBotonera.Size = New System.Drawing.Size(180, 789)
-        Me.PnlBotonera.TabIndex = 70
+        Me.PnlBotonera.TabIndex = 0
         '
         'BtnNuevoPago
         '
@@ -294,7 +402,7 @@ Partial Class FrmClientesPagos
         Me.StsBarra.Location = New System.Drawing.Point(0, 789)
         Me.StsBarra.Name = "StsBarra"
         Me.StsBarra.Size = New System.Drawing.Size(1258, 46)
-        Me.StsBarra.TabIndex = 75
+        Me.StsBarra.TabIndex = 5
         Me.StsBarra.Text = "stsBarra"
         '
         'SlblTitulo
@@ -334,7 +442,7 @@ Partial Class FrmClientesPagos
         Me.GbListaClientes.Location = New System.Drawing.Point(600, 84)
         Me.GbListaClientes.Name = "GbListaClientes"
         Me.GbListaClientes.Size = New System.Drawing.Size(450, 344)
-        Me.GbListaClientes.TabIndex = 72
+        Me.GbListaClientes.TabIndex = 2
         Me.GbListaClientes.TabStop = False
         Me.GbListaClientes.Text = "Lista de clientes"
         '
@@ -502,7 +610,7 @@ Partial Class FrmClientesPagos
         Me.GbDatosClientes.Location = New System.Drawing.Point(32, 84)
         Me.GbDatosClientes.Name = "GbDatosClientes"
         Me.GbDatosClientes.Size = New System.Drawing.Size(550, 344)
-        Me.GbDatosClientes.TabIndex = 71
+        Me.GbDatosClientes.TabIndex = 1
         Me.GbDatosClientes.TabStop = False
         Me.GbDatosClientes.Text = "Datos del cliente :"
         '
@@ -728,116 +836,9 @@ Partial Class FrmClientesPagos
         Me.GroupBox1.Location = New System.Drawing.Point(32, 444)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1018, 324)
-        Me.GroupBox1.TabIndex = 76
+        Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Historial de pagos :"
-        '
-        'idPagos
-        '
-        Me.idPagos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.idPagos.HeaderText = "idPagos"
-        Me.idPagos.Name = "idPagos"
-        Me.idPagos.ReadOnly = True
-        Me.idPagos.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.idPagos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.idPagos.Visible = False
-        Me.idPagos.Width = 65
-        '
-        'colFdiPgs
-        '
-        Me.colFdiPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colFdiPgs.DefaultCellStyle = DataGridViewCellStyle3
-        Me.colFdiPgs.HeaderText = "FECHA DE INICIO"
-        Me.colFdiPgs.Name = "colFdiPgs"
-        Me.colFdiPgs.ReadOnly = True
-        Me.colFdiPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colFdiPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colFdiPgs.Width = 170
-        '
-        'colPrcPgs
-        '
-        Me.colPrcPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colPrcPgs.DefaultCellStyle = DataGridViewCellStyle4
-        Me.colPrcPgs.HeaderText = "PRECIO"
-        Me.colPrcPgs.Name = "colPrcPgs"
-        Me.colPrcPgs.ReadOnly = True
-        Me.colPrcPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colPrcPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colPrcPgs.Width = 90
-        '
-        'colDescuento
-        '
-        Me.colDescuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colDescuento.DefaultCellStyle = DataGridViewCellStyle5
-        Me.colDescuento.HeaderText = "DESCT"
-        Me.colDescuento.Name = "colDescuento"
-        Me.colDescuento.ReadOnly = True
-        Me.colDescuento.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colDescuento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colDescuento.Width = 90
-        '
-        'colTotal
-        '
-        Me.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colTotal.DefaultCellStyle = DataGridViewCellStyle6
-        Me.colTotal.HeaderText = "TOTAL"
-        Me.colTotal.Name = "colTotal"
-        Me.colTotal.ReadOnly = True
-        Me.colTotal.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colTotal.Width = 90
-        '
-        'colNdias
-        '
-        Me.colNdias.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colNdias.DefaultCellStyle = DataGridViewCellStyle7
-        Me.colNdias.HeaderText = "Nº DE DIAS"
-        Me.colNdias.Name = "colNdias"
-        Me.colNdias.ReadOnly = True
-        Me.colNdias.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colNdias.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colNdias.Width = 90
-        '
-        'colApagar
-        '
-        Me.colApagar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colApagar.DefaultCellStyle = DataGridViewCellStyle8
-        Me.colApagar.HeaderText = "A PAGAR"
-        Me.colApagar.Name = "colApagar"
-        Me.colApagar.ReadOnly = True
-        Me.colApagar.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colApagar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colApagar.Width = 90
-        '
-        'colFdpPgs
-        '
-        Me.colFdpPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colFdpPgs.DefaultCellStyle = DataGridViewCellStyle9
-        Me.colFdpPgs.HeaderText = "FECHA DE PAGO"
-        Me.colFdpPgs.Name = "colFdpPgs"
-        Me.colFdpPgs.ReadOnly = True
-        Me.colFdpPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colFdpPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colFdpPgs.Width = 170
-        '
-        'colFrmPgs
-        '
-        Me.colFrmPgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.colFrmPgs.DefaultCellStyle = DataGridViewCellStyle10
-        Me.colFrmPgs.HeaderText = "FORMA DE PAGO"
-        Me.colFrmPgs.Name = "colFrmPgs"
-        Me.colFrmPgs.ReadOnly = True
-        Me.colFrmPgs.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colFrmPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colFrmPgs.Width = 140
         '
         'FrmClientesPagos
         '

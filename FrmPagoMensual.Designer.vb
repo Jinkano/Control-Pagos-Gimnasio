@@ -72,7 +72,7 @@ Partial Class FrmPagoMensual
         Me.GroupBox.Location = New System.Drawing.Point(49, 73)
         Me.GroupBox.Name = "GroupBox"
         Me.GroupBox.Size = New System.Drawing.Size(488, 392)
-        Me.GroupBox.TabIndex = 26
+        Me.GroupBox.TabIndex = 0
         Me.GroupBox.TabStop = False
         '
         'DtpFdi
@@ -91,7 +91,7 @@ Partial Class FrmPagoMensual
         Me.LblFechaDi.Location = New System.Drawing.Point(8, 24)
         Me.LblFechaDi.Name = "LblFechaDi"
         Me.LblFechaDi.Size = New System.Drawing.Size(112, 22)
-        Me.LblFechaDi.TabIndex = 13
+        Me.LblFechaDi.TabIndex = 7
         Me.LblFechaDi.Text = "Fecha de inicio"
         Me.LblFechaDi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -103,7 +103,7 @@ Partial Class FrmPagoMensual
         Me.TxtApagar.Location = New System.Drawing.Point(136, 264)
         Me.TxtApagar.Name = "TxtApagar"
         Me.TxtApagar.Size = New System.Drawing.Size(200, 22)
-        Me.TxtApagar.TabIndex = 12
+        Me.TxtApagar.TabIndex = 17
         Me.TxtApagar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TxtDias
@@ -115,7 +115,7 @@ Partial Class FrmPagoMensual
         Me.TxtDias.Location = New System.Drawing.Point(136, 224)
         Me.TxtDias.Name = "TxtDias"
         Me.TxtDias.Size = New System.Drawing.Size(200, 22)
-        Me.TxtDias.TabIndex = 11
+        Me.TxtDias.TabIndex = 15
         Me.TxtDias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TxtPrcDia
@@ -126,7 +126,7 @@ Partial Class FrmPagoMensual
         Me.TxtPrcDia.Location = New System.Drawing.Point(136, 184)
         Me.TxtPrcDia.Name = "TxtPrcDia"
         Me.TxtPrcDia.Size = New System.Drawing.Size(200, 22)
-        Me.TxtPrcDia.TabIndex = 10
+        Me.TxtPrcDia.TabIndex = 13
         Me.TxtPrcDia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TxtTotal
@@ -137,7 +137,7 @@ Partial Class FrmPagoMensual
         Me.TxtTotal.Location = New System.Drawing.Point(136, 144)
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.Size = New System.Drawing.Size(200, 22)
-        Me.TxtTotal.TabIndex = 9
+        Me.TxtTotal.TabIndex = 11
         Me.TxtTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BtnCancelar
@@ -151,7 +151,7 @@ Partial Class FrmPagoMensual
         Me.BtnCancelar.Location = New System.Drawing.Point(360, 312)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(100, 50)
-        Me.BtnCancelar.TabIndex = 8
+        Me.BtnCancelar.TabIndex = 6
         Me.BtnCancelar.Text = "C&ancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnCancelar.UseVisualStyleBackColor = False
@@ -213,7 +213,7 @@ Partial Class FrmPagoMensual
         Me.LblFechaDp.Location = New System.Drawing.Point(8, 344)
         Me.LblFechaDp.Name = "LblFechaDp"
         Me.LblFechaDp.Size = New System.Drawing.Size(112, 22)
-        Me.LblFechaDp.TabIndex = 21
+        Me.LblFechaDp.TabIndex = 19
         Me.LblFechaDp.Text = "Fecha de pago"
         Me.LblFechaDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -223,7 +223,7 @@ Partial Class FrmPagoMensual
         Me.LblFormaDp.Location = New System.Drawing.Point(8, 304)
         Me.LblFormaDp.Name = "LblFormaDp"
         Me.LblFormaDp.Size = New System.Drawing.Size(112, 22)
-        Me.LblFormaDp.TabIndex = 20
+        Me.LblFormaDp.TabIndex = 18
         Me.LblFormaDp.Text = "Forma de pago"
         Me.LblFormaDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -233,7 +233,7 @@ Partial Class FrmPagoMensual
         Me.LblApagar.Location = New System.Drawing.Point(8, 264)
         Me.LblApagar.Name = "LblApagar"
         Me.LblApagar.Size = New System.Drawing.Size(112, 22)
-        Me.LblApagar.TabIndex = 19
+        Me.LblApagar.TabIndex = 16
         Me.LblApagar.Text = "A Pagar"
         Me.LblApagar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -243,7 +243,7 @@ Partial Class FrmPagoMensual
         Me.LblDias.Location = New System.Drawing.Point(8, 224)
         Me.LblDias.Name = "LblDias"
         Me.LblDias.Size = New System.Drawing.Size(112, 22)
-        Me.LblDias.TabIndex = 18
+        Me.LblDias.TabIndex = 14
         Me.LblDias.Text = "Días"
         Me.LblDias.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -253,7 +253,7 @@ Partial Class FrmPagoMensual
         Me.LblPrcDia.Location = New System.Drawing.Point(8, 184)
         Me.LblPrcDia.Name = "LblPrcDia"
         Me.LblPrcDia.Size = New System.Drawing.Size(112, 22)
-        Me.LblPrcDia.TabIndex = 17
+        Me.LblPrcDia.TabIndex = 12
         Me.LblPrcDia.Text = "Precio día"
         Me.LblPrcDia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -263,7 +263,7 @@ Partial Class FrmPagoMensual
         Me.LblTotal.Location = New System.Drawing.Point(8, 144)
         Me.LblTotal.Name = "LblTotal"
         Me.LblTotal.Size = New System.Drawing.Size(112, 22)
-        Me.LblTotal.TabIndex = 16
+        Me.LblTotal.TabIndex = 10
         Me.LblTotal.Text = "Total"
         Me.LblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -273,7 +273,7 @@ Partial Class FrmPagoMensual
         Me.LblDscto.Location = New System.Drawing.Point(8, 104)
         Me.LblDscto.Name = "LblDscto"
         Me.LblDscto.Size = New System.Drawing.Size(112, 22)
-        Me.LblDscto.TabIndex = 15
+        Me.LblDscto.TabIndex = 9
         Me.LblDscto.Text = "Descuento"
         Me.LblDscto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -283,7 +283,7 @@ Partial Class FrmPagoMensual
         Me.LblPrecio.Location = New System.Drawing.Point(8, 64)
         Me.LblPrecio.Name = "LblPrecio"
         Me.LblPrecio.Size = New System.Drawing.Size(112, 22)
-        Me.LblPrecio.TabIndex = 14
+        Me.LblPrecio.TabIndex = 8
         Me.LblPrecio.Text = "Precio"
         Me.LblPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -293,7 +293,7 @@ Partial Class FrmPagoMensual
         Me.LblCliente.Location = New System.Drawing.Point(1, 33)
         Me.LblCliente.Name = "LblCliente"
         Me.LblCliente.Size = New System.Drawing.Size(592, 18)
-        Me.LblCliente.TabIndex = 27
+        Me.LblCliente.TabIndex = 1
         Me.LblCliente.Text = "NOMBRE COMPLETO DEL CLIENTE Y SU EDAD"
         Me.LblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '

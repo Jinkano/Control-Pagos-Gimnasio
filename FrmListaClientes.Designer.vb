@@ -28,9 +28,7 @@ Partial Class FrmListaClientes
         Me.BtnPago = New System.Windows.Forms.Button()
         Me.BtnHistorial = New System.Windows.Forms.Button()
         Me.GbEncabezado = New System.Windows.Forms.GroupBox()
-        Me.BtnLimpiar = New System.Windows.Forms.Button()
         Me.CmbBuscar = New System.Windows.Forms.ComboBox()
-        Me.PbLogo = New System.Windows.Forms.PictureBox()
         Me.LblInformacion = New System.Windows.Forms.Label()
         Me.TxtBuscarCliente = New System.Windows.Forms.TextBox()
         Me.LblBuscar = New System.Windows.Forms.Label()
@@ -54,10 +52,12 @@ Partial Class FrmListaClientes
         Me.StsBarra = New System.Windows.Forms.StatusStrip()
         Me.SlblTitulo = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SlblMensaje = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.BtnLimpiar = New System.Windows.Forms.Button()
+        Me.PbLogo = New System.Windows.Forms.PictureBox()
         Me.GbEncabezado.SuspendLayout()
-        CType(Me.PbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgvListaClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StsBarra.SuspendLayout()
+        CType(Me.PbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnPago
@@ -72,7 +72,7 @@ Partial Class FrmListaClientes
         Me.BtnPago.Location = New System.Drawing.Point(776, 658)
         Me.BtnPago.Name = "BtnPago"
         Me.BtnPago.Size = New System.Drawing.Size(190, 32)
-        Me.BtnPago.TabIndex = 87
+        Me.BtnPago.TabIndex = 6
         Me.BtnPago.Text = "&Pago mensual"
         Me.BtnPago.UseVisualStyleBackColor = True
         '
@@ -88,7 +88,7 @@ Partial Class FrmListaClientes
         Me.BtnHistorial.Location = New System.Drawing.Point(568, 658)
         Me.BtnHistorial.Name = "BtnHistorial"
         Me.BtnHistorial.Size = New System.Drawing.Size(190, 32)
-        Me.BtnHistorial.TabIndex = 82
+        Me.BtnHistorial.TabIndex = 5
         Me.BtnHistorial.Text = "&Historial de pagos"
         Me.BtnHistorial.UseVisualStyleBackColor = True
         '
@@ -103,22 +103,8 @@ Partial Class FrmListaClientes
         Me.GbEncabezado.Location = New System.Drawing.Point(32, 2)
         Me.GbEncabezado.Name = "GbEncabezado"
         Me.GbEncabezado.Size = New System.Drawing.Size(968, 104)
-        Me.GbEncabezado.TabIndex = 86
+        Me.GbEncabezado.TabIndex = 0
         Me.GbEncabezado.TabStop = False
-        '
-        'BtnLimpiar
-        '
-        Me.BtnLimpiar.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnLimpiar.Location = New System.Drawing.Point(920, 68)
-        Me.BtnLimpiar.Name = "BtnLimpiar"
-        Me.BtnLimpiar.Size = New System.Drawing.Size(34, 30)
-        Me.BtnLimpiar.TabIndex = 8
-        Me.BtnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnLimpiar.UseVisualStyleBackColor = False
         '
         'CmbBuscar
         '
@@ -132,15 +118,6 @@ Partial Class FrmListaClientes
         Me.CmbBuscar.Size = New System.Drawing.Size(130, 24)
         Me.CmbBuscar.TabIndex = 0
         '
-        'PbLogo
-        '
-        Me.PbLogo.Location = New System.Drawing.Point(24, 16)
-        Me.PbLogo.Margin = New System.Windows.Forms.Padding(6)
-        Me.PbLogo.Name = "PbLogo"
-        Me.PbLogo.Size = New System.Drawing.Size(60, 46)
-        Me.PbLogo.TabIndex = 68
-        Me.PbLogo.TabStop = False
-        '
         'LblInformacion
         '
         Me.LblInformacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -149,7 +126,7 @@ Partial Class FrmListaClientes
         Me.LblInformacion.Margin = New System.Windows.Forms.Padding(6)
         Me.LblInformacion.Name = "LblInformacion"
         Me.LblInformacion.Size = New System.Drawing.Size(864, 40)
-        Me.LblInformacion.TabIndex = 67
+        Me.LblInformacion.TabIndex = 3
         Me.LblInformacion.Text = "La siguiente lista muestra los clientes registrados en la base de datos. Seleccio" &
     "na un cliente de la lista para editar sus datos, eliminar de la lista o cambiar " &
     "su estado." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -175,7 +152,7 @@ Partial Class FrmListaClientes
         Me.LblBuscar.Location = New System.Drawing.Point(16, 72)
         Me.LblBuscar.Name = "LblBuscar"
         Me.LblBuscar.Size = New System.Drawing.Size(86, 24)
-        Me.LblBuscar.TabIndex = 66
+        Me.LblBuscar.TabIndex = 4
         Me.LblBuscar.Text = "Buscar por"
         Me.LblBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -186,7 +163,7 @@ Partial Class FrmListaClientes
         Me.BtnEditar.Location = New System.Drawing.Point(1128, 34)
         Me.BtnEditar.Name = "BtnEditar"
         Me.BtnEditar.Size = New System.Drawing.Size(100, 74)
-        Me.BtnEditar.TabIndex = 78
+        Me.BtnEditar.TabIndex = 1
         Me.BtnEditar.Text = "&Editar"
         Me.BtnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnEditar.UseVisualStyleBackColor = True
@@ -200,11 +177,12 @@ Partial Class FrmListaClientes
         Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCerrar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.BottomRight
         Me.BtnCerrar.Location = New System.Drawing.Point(1224, 658)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Size = New System.Drawing.Size(170, 32)
-        Me.BtnCerrar.TabIndex = 83
+        Me.BtnCerrar.TabIndex = 8
         Me.BtnCerrar.Text = "  &Cerrar ventana"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCerrar.UseVisualStyleBackColor = False
@@ -216,7 +194,7 @@ Partial Class FrmListaClientes
         Me.BtnEliminar.Location = New System.Drawing.Point(1248, 34)
         Me.BtnEliminar.Name = "BtnEliminar"
         Me.BtnEliminar.Size = New System.Drawing.Size(148, 74)
-        Me.BtnEliminar.TabIndex = 79
+        Me.BtnEliminar.TabIndex = 2
         Me.BtnEliminar.Text = "Eli&minar / Cambiar"
         Me.BtnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnEliminar.UseVisualStyleBackColor = True
@@ -228,7 +206,7 @@ Partial Class FrmListaClientes
         Me.BtnNuevo.Location = New System.Drawing.Point(1016, 34)
         Me.BtnNuevo.Name = "BtnNuevo"
         Me.BtnNuevo.Size = New System.Drawing.Size(100, 74)
-        Me.BtnNuevo.TabIndex = 77
+        Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Tag = ""
         Me.BtnNuevo.Text = "&Nuevo"
         Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -241,7 +219,7 @@ Partial Class FrmListaClientes
         Me.RbNoActivo.Location = New System.Drawing.Point(232, 658)
         Me.RbNoActivo.Name = "RbNoActivo"
         Me.RbNoActivo.Size = New System.Drawing.Size(190, 32)
-        Me.RbNoActivo.TabIndex = 81
+        Me.RbNoActivo.TabIndex = 4
         Me.RbNoActivo.Text = "Clientes inactivos"
         Me.RbNoActivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.RbNoActivo.UseVisualStyleBackColor = True
@@ -254,7 +232,7 @@ Partial Class FrmListaClientes
         Me.RbActivo.Location = New System.Drawing.Point(24, 658)
         Me.RbActivo.Name = "RbActivo"
         Me.RbActivo.Size = New System.Drawing.Size(190, 32)
-        Me.RbActivo.TabIndex = 80
+        Me.RbActivo.TabIndex = 3
         Me.RbActivo.TabStop = True
         Me.RbActivo.Text = "Clientes en actividad"
         Me.RbActivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -294,7 +272,7 @@ Partial Class FrmListaClientes
         Me.DgvListaClientes.RowTemplate.Height = 27
         Me.DgvListaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DgvListaClientes.Size = New System.Drawing.Size(1376, 518)
-        Me.DgvListaClientes.TabIndex = 84
+        Me.DgvListaClientes.TabIndex = 7
         '
         'colNom
         '
@@ -393,7 +371,7 @@ Partial Class FrmListaClientes
         Me.StsBarra.Name = "StsBarra"
         Me.StsBarra.Size = New System.Drawing.Size(1424, 46)
         Me.StsBarra.SizingGrip = False
-        Me.StsBarra.TabIndex = 85
+        Me.StsBarra.TabIndex = 9
         Me.StsBarra.Text = "stsBarra"
         '
         'SlblTitulo
@@ -424,6 +402,31 @@ Partial Class FrmListaClientes
         Me.SlblMensaje.Text = " No hay cliente(s) registrado(s) en la Base de Datos"
         Me.SlblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'BtnLimpiar
+        '
+        Me.BtnLimpiar.BackColor = System.Drawing.SystemColors.Control
+        Me.BtnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnLimpiar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.clear22
+        Me.BtnLimpiar.Location = New System.Drawing.Point(920, 68)
+        Me.BtnLimpiar.Name = "BtnLimpiar"
+        Me.BtnLimpiar.Size = New System.Drawing.Size(34, 30)
+        Me.BtnLimpiar.TabIndex = 2
+        Me.BtnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnLimpiar.UseVisualStyleBackColor = False
+        '
+        'PbLogo
+        '
+        Me.PbLogo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.boxeador
+        Me.PbLogo.Location = New System.Drawing.Point(24, 16)
+        Me.PbLogo.Margin = New System.Windows.Forms.Padding(6)
+        Me.PbLogo.Name = "PbLogo"
+        Me.PbLogo.Size = New System.Drawing.Size(60, 46)
+        Me.PbLogo.TabIndex = 68
+        Me.PbLogo.TabStop = False
+        '
         'FrmListaClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -447,10 +450,10 @@ Partial Class FrmListaClientes
         Me.Text = "Lista clientes"
         Me.GbEncabezado.ResumeLayout(False)
         Me.GbEncabezado.PerformLayout()
-        CType(Me.PbLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgvListaClientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StsBarra.ResumeLayout(False)
         Me.StsBarra.PerformLayout()
+        CType(Me.PbLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

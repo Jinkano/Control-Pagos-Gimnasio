@@ -69,7 +69,7 @@ Partial Class FrmHistorialPagos
         Me.GroupBox.Location = New System.Drawing.Point(16, 14)
         Me.GroupBox.Name = "GroupBox"
         Me.GroupBox.Size = New System.Drawing.Size(986, 104)
-        Me.GroupBox.TabIndex = 30
+        Me.GroupBox.TabIndex = 0
         Me.GroupBox.TabStop = False
         '
         'TxtCliente
@@ -91,7 +91,7 @@ Partial Class FrmHistorialPagos
         Me.TxtEdad.Location = New System.Drawing.Point(744, 64)
         Me.TxtEdad.Name = "TxtEdad"
         Me.TxtEdad.Size = New System.Drawing.Size(96, 22)
-        Me.TxtEdad.TabIndex = 4
+        Me.TxtEdad.TabIndex = 6
         Me.TxtEdad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblInscripcion
@@ -101,7 +101,7 @@ Partial Class FrmHistorialPagos
         Me.LblInscripcion.Location = New System.Drawing.Point(128, 64)
         Me.LblInscripcion.Name = "LblInscripcion"
         Me.LblInscripcion.Size = New System.Drawing.Size(151, 16)
-        Me.LblInscripcion.TabIndex = 13
+        Me.LblInscripcion.TabIndex = 1
         Me.LblInscripcion.Text = "Fecha de inscripción"
         Me.LblInscripcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -114,7 +114,7 @@ Partial Class FrmHistorialPagos
         Me.TxtEstado.Location = New System.Drawing.Point(552, 64)
         Me.TxtEstado.Name = "TxtEstado"
         Me.TxtEstado.Size = New System.Drawing.Size(112, 22)
-        Me.TxtEstado.TabIndex = 16
+        Me.TxtEstado.TabIndex = 4
         Me.TxtEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TxtInscripcion
@@ -126,7 +126,7 @@ Partial Class FrmHistorialPagos
         Me.TxtInscripcion.Location = New System.Drawing.Point(288, 64)
         Me.TxtInscripcion.Name = "TxtInscripcion"
         Me.TxtInscripcion.Size = New System.Drawing.Size(176, 22)
-        Me.TxtInscripcion.TabIndex = 14
+        Me.TxtInscripcion.TabIndex = 2
         Me.TxtInscripcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblEstado
@@ -136,7 +136,7 @@ Partial Class FrmHistorialPagos
         Me.LblEstado.Location = New System.Drawing.Point(488, 64)
         Me.LblEstado.Name = "LblEstado"
         Me.LblEstado.Size = New System.Drawing.Size(56, 16)
-        Me.LblEstado.TabIndex = 15
+        Me.LblEstado.TabIndex = 3
         Me.LblEstado.Text = "Estado"
         '
         'LblEdad
@@ -146,7 +146,7 @@ Partial Class FrmHistorialPagos
         Me.LblEdad.Location = New System.Drawing.Point(688, 64)
         Me.LblEdad.Name = "LblEdad"
         Me.LblEdad.Size = New System.Drawing.Size(44, 16)
-        Me.LblEdad.TabIndex = 3
+        Me.LblEdad.TabIndex = 5
         Me.LblEdad.Text = "Edad"
         '
         'BtnHistorial
@@ -161,7 +161,7 @@ Partial Class FrmHistorialPagos
         Me.BtnHistorial.Location = New System.Drawing.Point(16, 510)
         Me.BtnHistorial.Name = "BtnHistorial"
         Me.BtnHistorial.Size = New System.Drawing.Size(180, 32)
-        Me.BtnHistorial.TabIndex = 29
+        Me.BtnHistorial.TabIndex = 2
         Me.BtnHistorial.Text = "&Pagar mensualidad"
         Me.BtnHistorial.UseVisualStyleBackColor = True
         '
@@ -175,12 +175,13 @@ Partial Class FrmHistorialPagos
         Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCerrar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.BottomRight
         Me.BtnCerrar.Location = New System.Drawing.Point(822, 510)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Padding = New System.Windows.Forms.Padding(6, 0, 8, 0)
         Me.BtnCerrar.Size = New System.Drawing.Size(180, 32)
-        Me.BtnCerrar.TabIndex = 28
+        Me.BtnCerrar.TabIndex = 3
         Me.BtnCerrar.Text = "  &Cerrar ventama"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCerrar.UseVisualStyleBackColor = False
@@ -226,7 +227,7 @@ Partial Class FrmHistorialPagos
         Me.DgvHistorialPagos.RowTemplate.Height = 27
         Me.DgvHistorialPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DgvHistorialPagos.Size = New System.Drawing.Size(986, 360)
-        Me.DgvHistorialPagos.TabIndex = 27
+        Me.DgvHistorialPagos.TabIndex = 1
         '
         'colFdiPgs
         '

@@ -57,7 +57,7 @@ Partial Class FrmNuevoEditarCliente
         Me.GbOtros.Location = New System.Drawing.Point(20, 496)
         Me.GbOtros.Name = "GbOtros"
         Me.GbOtros.Size = New System.Drawing.Size(480, 72)
-        Me.GbOtros.TabIndex = 18
+        Me.GbOtros.TabIndex = 2
         Me.GbOtros.TabStop = False
         Me.GbOtros.Text = "Otros datos :"
         '
@@ -69,7 +69,7 @@ Partial Class FrmNuevoEditarCliente
         Me.DtpFdi.MinDate = New Date(1950, 1, 1, 0, 0, 0, 0)
         Me.DtpFdi.Name = "DtpFdi"
         Me.DtpFdi.Size = New System.Drawing.Size(296, 22)
-        Me.DtpFdi.TabIndex = 6
+        Me.DtpFdi.TabIndex = 0
         '
         'LblFdi
         '
@@ -78,7 +78,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblFdi.Location = New System.Drawing.Point(24, 32)
         Me.LblFdi.Name = "LblFdi"
         Me.LblFdi.Size = New System.Drawing.Size(131, 16)
-        Me.LblFdi.TabIndex = 48
+        Me.LblFdi.TabIndex = 1
         Me.LblFdi.Text = "Fecha de Inscripción"
         '
         'GbContacto
@@ -93,7 +93,7 @@ Partial Class FrmNuevoEditarCliente
         Me.GbContacto.Location = New System.Drawing.Point(20, 240)
         Me.GbContacto.Name = "GbContacto"
         Me.GbContacto.Size = New System.Drawing.Size(480, 240)
-        Me.GbContacto.TabIndex = 17
+        Me.GbContacto.TabIndex = 1
         Me.GbContacto.TabStop = False
         Me.GbContacto.Text = "Contacto :"
         '
@@ -109,7 +109,7 @@ Partial Class FrmNuevoEditarCliente
         Me.TxtDireccion.Name = "TxtDireccion"
         Me.TxtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.TxtDireccion.Size = New System.Drawing.Size(432, 60)
-        Me.TxtDireccion.TabIndex = 5
+        Me.TxtDireccion.TabIndex = 2
         '
         'TxtEmail
         '
@@ -121,7 +121,7 @@ Partial Class FrmNuevoEditarCliente
         Me.TxtEmail.MaxLength = 50
         Me.TxtEmail.Name = "TxtEmail"
         Me.TxtEmail.Size = New System.Drawing.Size(432, 22)
-        Me.TxtEmail.TabIndex = 4
+        Me.TxtEmail.TabIndex = 1
         Me.TxtEmail.WordWrap = False
         '
         'TxtTelefono
@@ -133,7 +133,7 @@ Partial Class FrmNuevoEditarCliente
         Me.TxtTelefono.MaxLength = 15
         Me.TxtTelefono.Name = "TxtTelefono"
         Me.TxtTelefono.Size = New System.Drawing.Size(432, 22)
-        Me.TxtTelefono.TabIndex = 3
+        Me.TxtTelefono.TabIndex = 0
         Me.TxtTelefono.WordWrap = False
         '
         'LblDir
@@ -143,7 +143,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblDir.Location = New System.Drawing.Point(24, 144)
         Me.LblDir.Name = "LblDir"
         Me.LblDir.Size = New System.Drawing.Size(64, 16)
-        Me.LblDir.TabIndex = 49
+        Me.LblDir.TabIndex = 5
         Me.LblDir.Text = "Dirección"
         '
         'LblEml
@@ -153,7 +153,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblEml.Location = New System.Drawing.Point(24, 88)
         Me.LblEml.Name = "LblEml"
         Me.LblEml.Size = New System.Drawing.Size(45, 16)
-        Me.LblEml.TabIndex = 48
+        Me.LblEml.TabIndex = 4
         Me.LblEml.Text = "E-Mail"
         '
         'LblTlf
@@ -163,7 +163,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblTlf.Location = New System.Drawing.Point(24, 32)
         Me.LblTlf.Name = "LblTlf"
         Me.LblTlf.Size = New System.Drawing.Size(61, 16)
-        Me.LblTlf.TabIndex = 47
+        Me.LblTlf.TabIndex = 3
         Me.LblTlf.Text = "Teléfono"
         '
         'BtnCancelar
@@ -177,7 +177,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnCancelar.Location = New System.Drawing.Point(524, 512)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(100, 50)
-        Me.BtnCancelar.TabIndex = 21
+        Me.BtnCancelar.TabIndex = 5
         Me.BtnCancelar.Text = "&Cancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnCancelar.UseVisualStyleBackColor = False
@@ -188,7 +188,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnActualizar.Location = New System.Drawing.Point(516, 96)
         Me.BtnActualizar.Name = "BtnActualizar"
         Me.BtnActualizar.Size = New System.Drawing.Size(100, 50)
-        Me.BtnActualizar.TabIndex = 20
+        Me.BtnActualizar.TabIndex = 4
         Me.BtnActualizar.Text = "&Actualizar"
         Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnActualizar.UseVisualStyleBackColor = True
@@ -199,7 +199,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnGuardar.Location = New System.Drawing.Point(516, 32)
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Size = New System.Drawing.Size(100, 50)
-        Me.BtnGuardar.TabIndex = 19
+        Me.BtnGuardar.TabIndex = 3
         Me.BtnGuardar.Text = "&Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnGuardar.UseVisualStyleBackColor = True
@@ -218,7 +218,7 @@ Partial Class FrmNuevoEditarCliente
         Me.GbDatos.Location = New System.Drawing.Point(20, 24)
         Me.GbDatos.Name = "GbDatos"
         Me.GbDatos.Size = New System.Drawing.Size(480, 200)
-        Me.GbDatos.TabIndex = 16
+        Me.GbDatos.TabIndex = 0
         Me.GbDatos.TabStop = False
         Me.GbDatos.Text = "Datos del cliente :"
         '
@@ -229,7 +229,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblEdad.Location = New System.Drawing.Point(344, 144)
         Me.LblEdad.Name = "LblEdad"
         Me.LblEdad.Size = New System.Drawing.Size(40, 16)
-        Me.LblEdad.TabIndex = 47
+        Me.LblEdad.TabIndex = 7
         Me.LblEdad.Text = "Edad"
         '
         'TxtApellido
@@ -278,7 +278,7 @@ Partial Class FrmNuevoEditarCliente
         Me.TxtEdad.Location = New System.Drawing.Point(344, 160)
         Me.TxtEdad.Name = "TxtEdad"
         Me.TxtEdad.Size = New System.Drawing.Size(112, 22)
-        Me.TxtEdad.TabIndex = 46
+        Me.TxtEdad.TabIndex = 3
         Me.TxtEdad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'LblFdn
@@ -288,7 +288,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblFdn.Location = New System.Drawing.Point(24, 144)
         Me.LblFdn.Name = "LblFdn"
         Me.LblFdn.Size = New System.Drawing.Size(135, 16)
-        Me.LblFdn.TabIndex = 40
+        Me.LblFdn.TabIndex = 6
         Me.LblFdn.Text = "Fecha de Nacimiento"
         '
         'LblApe
@@ -298,7 +298,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblApe.Location = New System.Drawing.Point(24, 88)
         Me.LblApe.Name = "LblApe"
         Me.LblApe.Size = New System.Drawing.Size(57, 16)
-        Me.LblApe.TabIndex = 39
+        Me.LblApe.TabIndex = 5
         Me.LblApe.Text = "Apellido"
         '
         'LblNom
@@ -308,7 +308,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblNom.Location = New System.Drawing.Point(24, 32)
         Me.LblNom.Name = "LblNom"
         Me.LblNom.Size = New System.Drawing.Size(56, 16)
-        Me.LblNom.TabIndex = 38
+        Me.LblNom.TabIndex = 4
         Me.LblNom.Text = "Nombre"
         '
         'FrmNuevoEditarCliente

@@ -136,6 +136,7 @@ Partial Class FrmTablaDescuento
         Me.BtnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCerrar.Location = New System.Drawing.Point(488, 16)
         Me.BtnCerrar.Name = "BtnCerrar"
@@ -345,6 +346,7 @@ Partial Class FrmTablaDescuento
         Me.id_tarifa.ReadOnly = True
         Me.id_tarifa.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.id_tarifa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.id_tarifa.Visible = False
         Me.id_tarifa.Width = 20
         '
         'colPrecio
