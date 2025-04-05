@@ -183,9 +183,7 @@
     <Compile Include="FrmTablaDescuento.Designer.vb">
       <DependentUpon>FrmTablaDescuento.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmTablaDescuento.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FrmTablaDescuento.vb" />
     <Compile Include="Funciones.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -268,6 +266,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\box entrena.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\saco entrena.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\nuevo 24x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\guardar 31x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\guardar 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\actualizar 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\editar 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cancel 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\eliminar 28x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

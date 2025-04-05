@@ -92,9 +92,11 @@ Partial Class Form1
         '
         'PictureBox1
         '
+        Me.PictureBox1.Image = Global.ControlPagosGimnasio.My.Resources.Resources.saco_entrena
         Me.PictureBox1.Location = New System.Drawing.Point(43, 42)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(211, 206)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 7
         Me.PictureBox1.TabStop = False
         '
