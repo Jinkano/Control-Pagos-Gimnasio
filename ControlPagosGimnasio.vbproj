@@ -183,7 +183,9 @@
     <Compile Include="FrmTablaDescuento.Designer.vb">
       <DependentUpon>FrmTablaDescuento.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmTablaDescuento.vb" />
+    <Compile Include="FrmTablaDescuento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Funciones.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
