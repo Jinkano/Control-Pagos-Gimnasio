@@ -182,14 +182,11 @@ Module Funciones
     End Sub
 
     Public Sub SoloNumeros(ByVal Numero As String, e As KeyPressEventArgs)
-        '
-        'If Numero = "Nº de Registros" Then e.Handled = True : Exit Sub
-        'If Numero = "Buscar Cliente" Then e.Handled = True : Exit Sub
+
+        If (e.KeyChar = ".") Then e.Handled = False : Exit Sub
         If Char.IsControl(e.KeyChar) Then e.Handled = False : Exit Sub
-        If (e.KeyChar = "."c) Then e.Handled = True
-        'If Char.IsSeparator(e.KeyChar) Then e.Handled = False : Exit Sub
         If Not Char.IsNumber(e.KeyChar) Then e.Handled = True : Exit Sub
-        '
+        'If Char.IsSeparator(e.KeyChar) Then e.Handled = False : Exit Sub
     End Sub
 
     Public Function FechaLarga(ByVal fecha As Date) As String
