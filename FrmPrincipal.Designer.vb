@@ -23,6 +23,7 @@ Partial Class FrmPrincipal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
+        Me.BtnClientesPagos = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.Panel = New System.Windows.Forms.Panel()
         Me.BtnTablaDsctos = New System.Windows.Forms.Button()
@@ -34,6 +35,7 @@ Partial Class FrmPrincipal
         'PnlBotonera
         '
         Me.PnlBotonera.AutoSize = True
+        Me.PnlBotonera.Controls.Add(Me.BtnClientesPagos)
         Me.PnlBotonera.Controls.Add(Me.BtnSalir)
         Me.PnlBotonera.Controls.Add(Me.Panel)
         Me.PnlBotonera.Controls.Add(Me.BtnTablaDsctos)
@@ -42,8 +44,20 @@ Partial Class FrmPrincipal
         Me.PnlBotonera.Dock = System.Windows.Forms.DockStyle.Left
         Me.PnlBotonera.Location = New System.Drawing.Point(0, 0)
         Me.PnlBotonera.Name = "PnlBotonera"
-        Me.PnlBotonera.Size = New System.Drawing.Size(187, 561)
-        Me.PnlBotonera.TabIndex = 2
+        Me.PnlBotonera.Size = New System.Drawing.Size(188, 561)
+        Me.PnlBotonera.TabIndex = 0
+        '
+        'BtnClientesPagos
+        '
+        Me.BtnClientesPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnClientesPagos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnClientesPagos.Location = New System.Drawing.Point(0, 101)
+        Me.BtnClientesPagos.Name = "BtnClientesPagos"
+        Me.BtnClientesPagos.Size = New System.Drawing.Size(184, 74)
+        Me.BtnClientesPagos.TabIndex = 4
+        Me.BtnClientesPagos.Text = "C&LIENTES completo"
+        Me.BtnClientesPagos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnClientesPagos.UseVisualStyleBackColor = True
         '
         'BtnSalir
         '
@@ -58,7 +72,7 @@ Partial Class FrmPrincipal
         Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnSalir.Location = New System.Drawing.Point(0, 461)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(187, 74)
+        Me.BtnSalir.Size = New System.Drawing.Size(188, 74)
         Me.BtnSalir.TabIndex = 3
         Me.BtnSalir.Text = "CERRAR &APP"
         Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -69,14 +83,14 @@ Partial Class FrmPrincipal
         Me.Panel.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel.Location = New System.Drawing.Point(0, 535)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(187, 26)
+        Me.Panel.Size = New System.Drawing.Size(188, 26)
         Me.Panel.TabIndex = 1
         '
         'BtnTablaDsctos
         '
         Me.BtnTablaDsctos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnTablaDsctos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnTablaDsctos.Location = New System.Drawing.Point(0, 320)
+        Me.BtnTablaDsctos.Location = New System.Drawing.Point(0, 365)
         Me.BtnTablaDsctos.Name = "BtnTablaDsctos"
         Me.BtnTablaDsctos.Size = New System.Drawing.Size(184, 74)
         Me.BtnTablaDsctos.TabIndex = 2
@@ -88,7 +102,7 @@ Partial Class FrmPrincipal
         '
         Me.BtnListaMorosos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnListaMorosos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnListaMorosos.Location = New System.Drawing.Point(0, 168)
+        Me.BtnListaMorosos.Location = New System.Drawing.Point(0, 192)
         Me.BtnListaMorosos.Name = "BtnListaMorosos"
         Me.BtnListaMorosos.Size = New System.Drawing.Size(184, 74)
         Me.BtnListaMorosos.TabIndex = 1
@@ -100,11 +114,11 @@ Partial Class FrmPrincipal
         '
         Me.BtnListaClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnListaClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnListaClientes.Location = New System.Drawing.Point(0, 80)
+        Me.BtnListaClientes.Location = New System.Drawing.Point(1, 12)
         Me.BtnListaClientes.Name = "BtnListaClientes"
         Me.BtnListaClientes.Size = New System.Drawing.Size(184, 74)
         Me.BtnListaClientes.TabIndex = 0
-        Me.BtnListaClientes.Text = "LISTA DE &CLIENTES"
+        Me.BtnListaClientes.Text = "&CLIENTES individual"
         Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnListaClientes.UseVisualStyleBackColor = True
         '
@@ -132,4 +146,5 @@ Partial Class FrmPrincipal
     Friend WithEvents BtnTablaDsctos As Button
     Friend WithEvents BtnListaMorosos As Button
     Friend WithEvents BtnListaClientes As Button
+    Friend WithEvents BtnClientesPagos As Button
 End Class

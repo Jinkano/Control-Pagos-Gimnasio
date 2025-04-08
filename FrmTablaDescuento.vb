@@ -77,6 +77,14 @@ Public Class FrmTablaDescuento
                 LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
             End If
         End If
+
+        'COMPROBAR SI HAY REGISTROS EN LA TABLA TARIFAS
+        If DgvTarifas.RowCount = 0 Then
+            'DESHABILITAR BOTONES
+            FrmPrincipal.BtnListaClientes.Enabled = False
+            FrmPrincipal.BtnClientesPagos.Enabled = False
+            FrmPrincipal.BtnListaMorosos.Enabled = False
+        End If
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
@@ -99,6 +107,11 @@ Public Class FrmTablaDescuento
         BtnGuarActuCancElim() 'LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
 
         MsgBox("Se ha REGISTRADO la nueva tarifa.", vbInformation, "Guardar Tarifa") 'MENSAJE DE INFORMACIÓN
+
+        'HABILITAR BOTONES
+        FrmPrincipal.BtnListaClientes.Enabled = True
+        FrmPrincipal.BtnClientesPagos.Enabled = True
+        FrmPrincipal.BtnListaMorosos.Enabled = True
     End Sub
 
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
