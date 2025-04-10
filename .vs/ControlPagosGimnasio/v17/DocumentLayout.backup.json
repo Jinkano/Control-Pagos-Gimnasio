@@ -1,12 +1,53 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmListaClientes.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb",
+              "RelativeDocumentMoniker": "FrmListaClientes.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb",
+              "RelativeToolTip": "FrmListaClientes.vb",
+              "ViewState": "AgIAAFIBAAAAAAAAAAAAAGMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-04-09T20:18:37.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmListaClientes.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb",
+              "RelativeDocumentMoniker": "FrmListaClientes.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb [Dise\u00F1o]",
+              "RelativeToolTip": "FrmListaClientes.vb [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-04-08T23:19:38.775Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

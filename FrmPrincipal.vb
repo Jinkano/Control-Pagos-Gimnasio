@@ -97,11 +97,11 @@ Public Class FrmPrincipal
                     'BORRAMOS LOS DATATABLE dtPago Y dtInsertPago
                     dtPago = Nothing
                     dtInsertPago = Nothing
-
-                    'EJECUTA EL FORMULARIO LISTA MOROSOS
-                    FrmListaMorosos.MdiParent = Me
-                    FrmListaMorosos.Show()
                 End If
+
+                'EJECUTA EL FORMULARIO LISTA MOROSOS
+                FrmListaMorosos.MdiParent = Me
+                FrmListaMorosos.Show()
             Else
                 'CERRAR EL DATAREADER
                 drDataReader.Close()

@@ -28,13 +28,13 @@ Partial Class FrmTablaDescuento
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
-        Me.BtnActualizar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.BtnModificar = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
+        Me.BtnActualizar = New System.Windows.Forms.Button()
         Me.GbDscto = New System.Windows.Forms.GroupBox()
         Me.TxtDscnto = New System.Windows.Forms.TextBox()
         Me.GbIntervaloEdad = New System.Windows.Forms.GroupBox()
@@ -75,20 +75,6 @@ Partial Class FrmTablaDescuento
         Me.PnlBotonera.Name = "PnlBotonera"
         Me.PnlBotonera.Size = New System.Drawing.Size(701, 76)
         Me.PnlBotonera.TabIndex = 0
-        '
-        'BtnActualizar
-        '
-        Me.BtnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnActualizar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.actualizar_28x32
-        Me.BtnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnActualizar.Location = New System.Drawing.Point(18, 10)
-        Me.BtnActualizar.Name = "BtnActualizar"
-        Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BtnActualizar.Size = New System.Drawing.Size(140, 48)
-        Me.BtnActualizar.TabIndex = 5
-        Me.BtnActualizar.Text = "&Actualizar"
-        Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtnActualizar.UseVisualStyleBackColor = True
         '
         'BtnEliminar
         '
@@ -179,6 +165,20 @@ Partial Class FrmTablaDescuento
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCancelar.UseVisualStyleBackColor = True
         '
+        'BtnActualizar
+        '
+        Me.BtnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnActualizar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.actualizar_28x32
+        Me.BtnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnActualizar.Location = New System.Drawing.Point(18, 10)
+        Me.BtnActualizar.Name = "BtnActualizar"
+        Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.BtnActualizar.Size = New System.Drawing.Size(140, 48)
+        Me.BtnActualizar.TabIndex = 5
+        Me.BtnActualizar.Text = "&Actualizar"
+        Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnActualizar.UseVisualStyleBackColor = True
+        '
         'GbDscto
         '
         Me.GbDscto.Controls.Add(Me.TxtDscnto)
@@ -228,7 +228,7 @@ Partial Class FrmTablaDescuento
         Me.NudEdadMax.ForeColor = System.Drawing.Color.MediumBlue
         Me.NudEdadMax.Location = New System.Drawing.Point(245, 31)
         Me.NudEdadMax.Margin = New System.Windows.Forms.Padding(10)
-        Me.NudEdadMax.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
+        Me.NudEdadMax.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NudEdadMax.Name = "NudEdadMax"
         Me.NudEdadMax.Size = New System.Drawing.Size(86, 26)
         Me.NudEdadMax.TabIndex = 1
@@ -240,7 +240,7 @@ Partial Class FrmTablaDescuento
         Me.NudEdadMin.ForeColor = System.Drawing.Color.MediumBlue
         Me.NudEdadMin.Location = New System.Drawing.Point(71, 31)
         Me.NudEdadMin.Margin = New System.Windows.Forms.Padding(10)
-        Me.NudEdadMin.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.NudEdadMin.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NudEdadMin.Name = "NudEdadMin"
         Me.NudEdadMin.Size = New System.Drawing.Size(86, 26)
         Me.NudEdadMin.TabIndex = 0

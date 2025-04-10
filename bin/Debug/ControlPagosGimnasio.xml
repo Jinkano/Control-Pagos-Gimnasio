@@ -42,6 +42,16 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.cambiar_28x32">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.cambiarstd_28x32">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.cancel_28x32">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -72,7 +82,17 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.historial_28x32">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.nuevo_24x32">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.nuevo_pago_28x32">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

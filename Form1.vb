@@ -16,6 +16,6 @@
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
 
         End 'FINALIZAR LA APLICACIÓN
-
     End Sub
+
 End Class

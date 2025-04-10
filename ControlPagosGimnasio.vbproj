@@ -293,5 +293,17 @@
   <ItemGroup>
     <None Include="img\eliminar 28x32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cambiar 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cambiarstd 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\historial 28x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\nuevo_pago 28x32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

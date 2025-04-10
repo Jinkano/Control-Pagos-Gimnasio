@@ -94,8 +94,9 @@ Public Class FrmTablaDescuento
         If TxtPrecio.Text = "0 €" Or precio > 100 Then MsgBox("Corrige el PRECIO.", vbCritical, "Precios y Descuentos") : TxtPrecio.Focus() : Exit Sub
         If TxtDscnto.Text = "" Then MsgBox("Ingresa el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
         If dscnto > precio / 2 Then MsgBox("Corrige el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
-        If NudEdadMin.Value < 6 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
-        If NudEdadMax.Value < 7 Then MsgBox("Corrige la edad MÁXIMA.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
+        If NudEdadMin.Value = 0 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
+        If NudEdadMax.Value = 0 Then MsgBox("Corrige la edad MÁXIMA.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
+        If NudEdadMin.Value >= NudEdadMax.Value Then MsgBox("Verifica el INTERVALO de edades.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
 
         'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION
         sqlConsulta = "INSERT INTO tarifas (precio, e_min, e_max, dscto) VALUES
@@ -121,8 +122,9 @@ Public Class FrmTablaDescuento
         If TxtPrecio.Text = "0 €" Or precio > 100 Then MsgBox("Corrige el PRECIO.", vbCritical, "Precios y Descuentos") : TxtPrecio.Focus() : Exit Sub
         If TxtDscnto.Text = "" Then MsgBox("Ingresa el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
         If dscnto > precio / 2 Then MsgBox("Corrige el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
-        If NudEdadMin.Value < 6 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
-        If NudEdadMax.Value < 7 Then MsgBox("Corrige la edad MÁXIMA.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
+        If NudEdadMin.Value = 0 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
+        If NudEdadMax.Value = 0 Then MsgBox("Corrige la edad MÁXIMA.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
+        If NudEdadMin.Value >= NudEdadMax.Value Then MsgBox("Verifica el INTERVALO de edades.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
 
         'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION
         sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "', e_min='" & NudEdadMin.Value & "',
