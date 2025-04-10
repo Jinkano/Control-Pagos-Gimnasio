@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmhistorialpagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmhistorialpagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmhistorialpagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmhistorialpagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\frmlistaclientes.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
@@ -18,24 +22,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmListaClientes.vb",
-              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb",
-              "RelativeDocumentMoniker": "FrmListaClientes.vb",
-              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb",
-              "RelativeToolTip": "FrmListaClientes.vb",
-              "ViewState": "AgIAAEkBAAAAAAAAAAAswGMBAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "FrmHistorialPagos.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmHistorialPagos.vb",
+              "RelativeDocumentMoniker": "FrmHistorialPagos.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmHistorialPagos.vb",
+              "RelativeToolTip": "FrmHistorialPagos.vb",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-09T20:18:37.628Z",
+              "WhenOpened": "2025-04-10T20:37:26.276Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "FrmHistorialPagos.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmHistorialPagos.vb",
+              "RelativeDocumentMoniker": "FrmHistorialPagos.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmHistorialPagos.vb [Dise\u00F1o]",
+              "RelativeToolTip": "FrmHistorialPagos.vb [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-04-10T20:13:48.444Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FrmListaClientes.vb [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmListaClientes.vb",
               "RelativeDocumentMoniker": "FrmListaClientes.vb",
