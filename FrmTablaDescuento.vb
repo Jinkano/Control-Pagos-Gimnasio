@@ -51,15 +51,16 @@ Public Class FrmTablaDescuento
             DgvTarifas.Focus()
         Else
             'MENSAJE DE INFORMACIÓN
-            intMsgBox = MsgBox("Está seguro de ELIMINAR el siguiente registro:" & Chr(13) & Chr(13) &
-                                "Código de registro - " & idTarifa & Chr(13) &
-                                "------------------------------- " & Chr(13) &
-                                "Precio         --->  " & TxtPrecio.Text & Chr(13) &
-                                "Descuento --->  " & TxtDscnto.Text & Chr(13) &
-                                "EDAD" & Chr(13) &
-                                "   Mínima   --->  " & NudEdadMin.Value & Chr(13) &
-                                "   Máxima   --->  " & NudEdadMax.Value & Chr(13) &
-                                "", vbInformation + vbYesNo, "Eliminar un registro")
+            intMsgBox = MsgBox("REGISTRO SELECCIONADO :" & Chr(13) & Chr(13) &
+                               "Código de registro - " & idTarifa & Chr(13) &
+                               "------------------------------- " & Chr(13) &
+                               "Precio         --->  " & TxtPrecio.Text & Chr(13) &
+                               "Descuento --->  " & TxtDscnto.Text & Chr(13) &
+                               "EDAD" & Chr(13) &
+                               "   Mínima   --->  " & NudEdadMin.Value & Chr(13) &
+                               "   Máxima   --->  " & NudEdadMax.Value & Chr(13) & Chr(13) &
+                               "¿Está seguro de ELIMINAR el registro?" _
+                               , vbQuestion + vbYesNo + vbDefaultButton2, "Eliminar un registro")
             'COMPROBAMOS LA RESPUESTA DEL MENSAJE
             If intMsgBox = vbYes Then
                 'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION

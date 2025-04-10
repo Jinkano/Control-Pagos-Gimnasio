@@ -22,10 +22,11 @@ Partial Class FrmListaClientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GbEncabezado = New System.Windows.Forms.GroupBox()
+        Me.BtnLimpiar = New System.Windows.Forms.Button()
         Me.CmbBuscar = New System.Windows.Forms.ComboBox()
         Me.TxtBuscarCliente = New System.Windows.Forms.TextBox()
         Me.LblBuscar = New System.Windows.Forms.Label()
@@ -54,7 +55,6 @@ Partial Class FrmListaClientes
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnCambiarEstado = New System.Windows.Forms.Button()
-        Me.BtnLimpiar = New System.Windows.Forms.Button()
         Me.PbLogo = New System.Windows.Forms.PictureBox()
         Me.GbEncabezado.SuspendLayout()
         CType(Me.DgvListaClientes, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,6 +74,21 @@ Partial Class FrmListaClientes
         Me.GbEncabezado.Size = New System.Drawing.Size(900, 51)
         Me.GbEncabezado.TabIndex = 1
         Me.GbEncabezado.TabStop = False
+        '
+        'BtnLimpiar
+        '
+        Me.BtnLimpiar.BackColor = System.Drawing.SystemColors.Control
+        Me.BtnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnLimpiar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.clear22
+        Me.BtnLimpiar.Location = New System.Drawing.Point(860, 12)
+        Me.BtnLimpiar.Name = "BtnLimpiar"
+        Me.BtnLimpiar.Size = New System.Drawing.Size(34, 30)
+        Me.BtnLimpiar.TabIndex = 2
+        Me.BtnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnLimpiar.UseVisualStyleBackColor = False
         '
         'CmbBuscar
         '
@@ -116,7 +131,7 @@ Partial Class FrmListaClientes
         '
         Me.LblInformacion.AutoSize = True
         Me.LblInformacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblInformacion.ForeColor = System.Drawing.SystemColors.MenuHighlight
+        Me.LblInformacion.ForeColor = System.Drawing.SystemColors.Highlight
         Me.LblInformacion.Location = New System.Drawing.Point(109, 94)
         Me.LblInformacion.Margin = New System.Windows.Forms.Padding(6)
         Me.LblInformacion.Name = "LblInformacion"
@@ -157,16 +172,16 @@ Partial Class FrmListaClientes
         Me.DgvListaClientes.AllowUserToDeleteRows = False
         Me.DgvListaClientes.AllowUserToResizeColumns = False
         Me.DgvListaClientes.AllowUserToResizeRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        Me.DgvListaClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvListaClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.DgvListaClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvListaClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DgvListaClientes.ColumnHeadersHeight = 35
         Me.DgvListaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvListaClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colNom, Me.colApe, Me.colEdad, Me.colFdNacimiento, Me.colTelefono, Me.colEmail, Me.colDireccion, Me.colFdInscripcion, Me.id, Me.std})
@@ -176,10 +191,10 @@ Partial Class FrmListaClientes
         Me.DgvListaClientes.ReadOnly = True
         Me.DgvListaClientes.RowHeadersWidth = 35
         Me.DgvListaClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvListaClientes.RowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvListaClientes.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DgvListaClientes.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         Me.DgvListaClientes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvListaClientes.RowTemplate.Height = 27
@@ -445,21 +460,6 @@ Partial Class FrmListaClientes
         Me.BtnCambiarEstado.Text = "&Cambiar estado"
         Me.BtnCambiarEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCambiarEstado.UseVisualStyleBackColor = True
-        '
-        'BtnLimpiar
-        '
-        Me.BtnLimpiar.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.BtnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnLimpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnLimpiar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.clear22
-        Me.BtnLimpiar.Location = New System.Drawing.Point(860, 12)
-        Me.BtnLimpiar.Name = "BtnLimpiar"
-        Me.BtnLimpiar.Size = New System.Drawing.Size(34, 30)
-        Me.BtnLimpiar.TabIndex = 2
-        Me.BtnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnLimpiar.UseVisualStyleBackColor = False
         '
         'PbLogo
         '

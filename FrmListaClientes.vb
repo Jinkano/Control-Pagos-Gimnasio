@@ -56,157 +56,135 @@ Public Class FrmListaClientes
     End Sub
 
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-        '    '
-        '    If DgvListaClientes.RowCount = 0 Then MsgBox("No se puede ELIMINAR los datos del cliente." & Chr(13) & "Agrega un NUEVO registro, para buscar, editar o eliminar." _
-        '                                                 , vbInformation, "Eliminar registro del cliente") : BtnNuevo.Focus() : Exit Sub
-        '    '
-        '    'CAMBIAMOS LOS TEXTOS DE LA BARRA DE ESTADO
-        '    SlblTitulo.Text = "Eliminar Cliente"
-        '    SlblMensaje.Text = " ¿Desea eliminar al cliente seleccionado?."
-        '    '
-        '    Try
-        '        '
-        '        cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-        '        cnxnMySql.Open()
-        '        '
-        '        Dim strIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
-        '        If strIdCli.Length = 1 Then strIdCli = "CLI-00" & strIdCli
-        '        If strIdCli.Length = 2 Then strIdCli = "CLI-0" & strIdCli
-        '        If strIdCli.Length = 3 Then strIdCli = "CLI-" & strIdCli
-        '        'MENSAJE DE CONFIRMACIÓN PARA ELIMINAR O PASAR A INACTIVIDAD UN CLIENTE
-        '        intMsgBox = MsgBox("¿Desea eliminar al cliente?" & Chr(13) & Chr(13) _
-        '                    & "NOMBRE  :  " & DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString & Chr(13) _
-        '                    & "CODIGO  :  " & strIdCli & "", vbQuestion + vbYesNoCancel, "Eliminar Cliente")
-        '        '
-        '        If intMsgBox = vbYes Then
-        '            '
-        '            sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
-        '            '
-        '        ElseIf intMsgBox = vbNo Then
-        '            '
-        '            If RbActivo.Checked = True Then
-        '                '
-        '                sqlConsulta = "UPDATE clientes SET std_cli = 'NO' WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
-        '            Else
-        '                '
-        '                sqlConsulta = "UPDATE clientes SET std_cli = 'SI' WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
-        '            End If
-        '        End If
-        '        '
-        '        cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-        '        drDataReader = cmdCommand.ExecuteReader
-        '        '
-        '        drDataReader.Close()
-        '        cnxnMySql.Close()
-        '        '
-        '    Catch ex As Exception
-        '        '
-        '        MsgBox(ex.ToString)
-        '        '
-        '    End Try
-        '    '
-        '    If intMsgBox = vbYes Or intMsgBox = vbNo Then
-        '        '
-        '        If TxtBuscarCliente.Text <> "" Then
-        '            '
-        '            TxtBuscarCliente.Clear()
-        '        Else
-        '            DgvListaClientes.Rows.Remove(DgvListaClientes.CurrentRow)
-        '            SlblTitulo.Text = "Nº de Registros"
-        '            SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
-        '            '
-        '        End If
-        '        '
-        '    Else
-        '        If TxtBuscarCliente.Text = "" Then
-        '            SlblTitulo.Text = "Nº de Registros"
-        '            SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
-        '            '
-        '        Else
-        '            SlblTitulo.Text = "Buscar Cliente"
-        '            SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
-        '            '
-        '        End If
-        '    End If
-        '    '
-        '    TxtBuscarCliente.Focus()
+
+        'COMPROBAR SI HAY REGISTROS EN EL DgvListaClientes
+        If DgvListaClientes.RowCount = 0 Then MsgBox("No se puede ELIMINAR los datos del cliente." & Chr(13) & Chr(13) &
+                                                     "Agrega un NUEVO registro, para buscar, editar, eliminar o cambiar de estado." _
+                                                     , vbInformation, "Eliminar registro del cliente") : BtnNuevo.Focus() : Exit Sub
+
+        'CAMBIAMOS LOS TEXTOS DE LA BARRA DE ESTADO
+        SlblTitulo.Text = "Eliminar Cliente"
+        SlblMensaje.Text = " ¿Desea eliminar al cliente seleccionado?."
+
+        Try
+            'CONECTAR Y ABRIR LA BBDD
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+
+            'FORMATO AL CODIGO DEL CLIENTE
+            Dim strIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
+            If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
+            If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
+            If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+
+            'MENSAJE DE CONFIRMACIÓN PARA ELIMINAR UN CLIENTE
+            If MsgBox("CLIENTE SELECCIONADO :" & Chr(13) & Chr(13) &
+                      "     NOMBRE  :  " & DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString & Chr(13) &
+                      "     CODIGO  :  " & strIdCli & Chr(13) & Chr(13) &
+                      "Si elimina el registro, tambien se borraran todos los" & Chr(13) &
+                      "pagos relacionados al cliente." & Chr(13) & Chr(13) &
+                      "                                                       ¿Estás seguro?" _
+                      , vbQuestion + vbYesNo + vbDefaultButton2, "Eliminar Cliente") = vbYes Then
+
+                'HACEMOS Y EJECUTAMOS LA CONSULTA A LA BBDD
+                sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+                drDataReader.Close()
+
+                'COMPROBACION PARA CAMBIAR TEXTO DE LA BARRA DE ESTADO
+                If TxtBuscarCliente.Text <> "" Then
+                    TxtBuscarCliente.Clear()
+                Else
+                    DgvListaClientes.Rows.Remove(DgvListaClientes.CurrentRow)
+                    SlblTitulo.Text = "Nº de Registros"
+                    SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
+                End If
+            Else
+                'COMPROBACION PARA CAMBIAR TEXTO DE LA BARRA DE ESTADO
+                If TxtBuscarCliente.Text = "" Then
+                    SlblTitulo.Text = "Nº de Registros"
+                    SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
+                Else
+                    SlblTitulo.Text = "Buscar Cliente"
+                    SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
+                End If
+            End If
+
+            cnxnMySql.Close() 'CERRAMOS LA BBDD
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        TxtBuscarCliente.Focus() 'ENVIAMOS EL ENFOQUE AL TEXTBOX
     End Sub
 
     Private Sub BtnCambiarEstado_Click(sender As Object, e As EventArgs) Handles BtnCambiarEstado.Click
-        '    '
-        '    If DgvListaClientes.RowCount = 0 Then MsgBox("No se puede ELIMINAR los datos del cliente." & Chr(13) & "Agrega un NUEVO registro, para buscar, editar o eliminar." _
-        '                                                 , vbInformation, "Eliminar registro del cliente") : BtnNuevo.Focus() : Exit Sub
-        '    '
-        '    'CAMBIAMOS LOS TEXTOS DE LA BARRA DE ESTADO
-        '    SlblTitulo.Text = "Eliminar Cliente"
-        '    SlblMensaje.Text = " ¿Desea eliminar al cliente seleccionado?."
-        '    '
-        '    Try
-        '        '
-        '        cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-        '        cnxnMySql.Open()
-        '        '
-        '        Dim strIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
-        '        If strIdCli.Length = 1 Then strIdCli = "CLI-00" & strIdCli
-        '        If strIdCli.Length = 2 Then strIdCli = "CLI-0" & strIdCli
-        '        If strIdCli.Length = 3 Then strIdCli = "CLI-" & strIdCli
-        '        'MENSAJE DE CONFIRMACIÓN PARA ELIMINAR O PASAR A INACTIVIDAD UN CLIENTE
-        '        intMsgBox = MsgBox("¿Desea eliminar al cliente?" & Chr(13) & Chr(13) _
-        '                    & "NOMBRE  :  " & DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString & Chr(13) _
-        '                    & "CODIGO  :  " & strIdCli & "", vbQuestion + vbYesNoCancel, "Eliminar Cliente")
-        '        '
-        '        If intMsgBox = vbYes Then
-        '            '
-        '            sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
-        '            '
-        '        ElseIf intMsgBox = vbNo Then
-        '            '
-        '            If RbActivo.Checked = True Then
-        '                '
-        '                sqlConsulta = "UPDATE clientes SET std_cli = 'NO' WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
-        '            Else
-        '                '
-        '                sqlConsulta = "UPDATE clientes SET std_cli = 'SI' WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
-        '            End If
-        '        End If
-        '        '
-        '        cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-        '        drDataReader = cmdCommand.ExecuteReader
-        '        '
-        '        drDataReader.Close()
-        '        cnxnMySql.Close()
-        '        '
-        '    Catch ex As Exception
-        '        '
-        '        MsgBox(ex.ToString)
-        '        '
-        '    End Try
-        '    '
-        '    If intMsgBox = vbYes Or intMsgBox = vbNo Then
-        '        '
-        '        If TxtBuscarCliente.Text <> "" Then
-        '            '
-        '            TxtBuscarCliente.Clear()
-        '        Else
-        '            DgvListaClientes.Rows.Remove(DgvListaClientes.CurrentRow)
-        '            SlblTitulo.Text = "Nº de Registros"
-        '            SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
-        '            '
-        '        End If
-        '        '
-        '    Else
-        '        If TxtBuscarCliente.Text = "" Then
-        '            SlblTitulo.Text = "Nº de Registros"
-        '            SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
-        '            '
-        '        Else
-        '            SlblTitulo.Text = "Buscar Cliente"
-        '            SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
-        '            '
-        '        End If
-        '    End If
-        '    '
-        '    TxtBuscarCliente.Focus()
+
+        'COMPROBAR SI HAY REGISTROS EN EL DgvListaClientes
+        If DgvListaClientes.RowCount = 0 Then MsgBox("No se puede CAMBIAR el estado del cliente." & Chr(13) & Chr(13) &
+                                                     "Agrega un NUEVO registro, para buscar, editar, eliminar o cambiar de estado." _
+                                                     , vbInformation, "Cambiar estado") : BtnNuevo.Focus() : Exit Sub
+
+        'CAMBIAMOS LOS TEXTOS DE LA BARRA DE ESTADO
+        SlblTitulo.Text = "Cambiar estado"
+        SlblMensaje.Text = " ¿Desea cambiar el estado del cliente seleccionado?."
+
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+
+            'FORMATO AL CODIGO DEL CLIENTE
+            Dim strIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
+            If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
+            If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
+            If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+
+            'MENSAJE DE CONFIRMACIÓN PARA CAMBIAR DE ESTADO UN CLIENTE
+            If MsgBox("CLIENTE SELECCIONADO :" & Chr(13) & Chr(13) &
+                      "     NOMBRE  :  " & DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString & Chr(13) &
+                      "     CODIGO  :  " & strIdCli & Chr(13) & Chr(13) &
+                      "Vas a cambiar el estado del cliente." & Chr(13) &
+                      "Si pasa a INACTIVIDAD no se podra realizar nuevos pagos." & Chr(13) & Chr(13) &
+                      "                                                       ¿Estás seguro?" _
+                      , vbQuestion + vbYesNo + vbDefaultButton2, "Cambiar estado") = vbYes Then
+
+                'HACEMOS Y EJECUTAMOS LA CONSULTA A LA BBDD
+                If RbActivo.Checked = True Then
+                    sqlConsulta = "UPDATE clientes SET std_cli = 'NO' WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
+                Else
+                    sqlConsulta = "UPDATE clientes SET std_cli = 'SI' WHERE id_cli = '" & DgvListaClientes.CurrentRow.Cells(8).Value.ToString & "'"
+                End If
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+
+                'COMPROBACION PARA CAMBIAR TEXTO DE LA BARRA DE ESTADO
+                If TxtBuscarCliente.Text <> "" Then
+                    TxtBuscarCliente.Clear()
+                Else
+                    DgvListaClientes.Rows.Remove(DgvListaClientes.CurrentRow)
+                    SlblTitulo.Text = "Nº de Registros"
+                    SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
+                End If
+            Else
+                'COMPROBACION PARA CAMBIAR TEXTO DE LA BARRA DE ESTADO
+                If TxtBuscarCliente.Text = "" Then
+                    SlblTitulo.Text = "Nº de Registros"
+                    SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
+                Else
+                    SlblTitulo.Text = "Buscar Cliente"
+                    SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
+                End If
+            End If
+
+            cnxnMySql.Close() 'CERRAMOS LA BBDD
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        TxtBuscarCliente.Focus() 'ENVIAMOS EL ENFOQUE AL TEXTBOX
     End Sub
 
     Private Sub BtnHistorialPagos_Click(sender As Object, e As EventArgs) Handles BtnHistorialPagos.Click
@@ -355,19 +333,25 @@ Public Class FrmListaClientes
     End Sub
 
     Private Sub BtnLimpiar_Click(sender As Object, e As EventArgs) Handles BtnLimpiar.Click
-        '
+        'LIMPIAR TEXTBOX Y ENVIAR ENFOQUE
         TxtBuscarCliente.Clear()
         TxtBuscarCliente.Focus()
     End Sub
 
     Private Sub RbActivo_Click(sender As Object, e As EventArgs) Handles RbActivo.Click
-        '
+        'ENVIAR TEXTO PARA SIMULAR BUSQUEDA, LIMPIAR TEXTO Y ENVIAR ENFOQUE
         TxtBuscarCliente.Text = "a" : TxtBuscarCliente.Clear() : TxtBuscarCliente.Focus()
+
+        'ACIVAR BUTTON BtnNuevoPago
+        BtnNuevoPago.Enabled = True
     End Sub
 
     Private Sub RbNoActivo_Click(sender As Object, e As EventArgs) Handles RbNoActivo.Click
-        '
+        'ENVIAR TEXTO PARA SIMULAR BUSQUEDA, LIMPIAR TEXTO Y ENVIAR ENFOQUE
         TxtBuscarCliente.Text = "a" : TxtBuscarCliente.Clear() : TxtBuscarCliente.Focus()
+
+        'DESACIVAR BUTTON BtnNuevoPago
+        BtnNuevoPago.Enabled = False
     End Sub
 
 End Class
