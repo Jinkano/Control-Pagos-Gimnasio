@@ -33,7 +33,7 @@ Public Class FrmPagoMensual
             drDataReader = cmdCommand.ExecuteReader
 
             'MENSAJE DE CONFIRMACIÓN
-            MsgBox("PAGO OK")
+            MsgBox("PAGO realizado con exito", vbInformation, "Pagos")
 
             drDataReader.Close() 'CERRAMOS EL DATAREADER
 

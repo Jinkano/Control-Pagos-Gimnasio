@@ -69,9 +69,9 @@ Partial Class FrmPagoMensual
         Me.GroupBox.Controls.Add(Me.LblTotal)
         Me.GroupBox.Controls.Add(Me.LblDscto)
         Me.GroupBox.Controls.Add(Me.LblPrecio)
-        Me.GroupBox.Location = New System.Drawing.Point(49, 73)
+        Me.GroupBox.Location = New System.Drawing.Point(30, 64)
         Me.GroupBox.Name = "GroupBox"
-        Me.GroupBox.Size = New System.Drawing.Size(488, 392)
+        Me.GroupBox.Size = New System.Drawing.Size(490, 392)
         Me.GroupBox.TabIndex = 0
         Me.GroupBox.TabStop = False
         '
@@ -148,9 +148,13 @@ Partial Class FrmPagoMensual
         Me.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancelar.Location = New System.Drawing.Point(360, 312)
+        Me.BtnCancelar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCancelar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cancel_pago_34x28
+        Me.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnCancelar.Location = New System.Drawing.Point(360, 144)
         Me.BtnCancelar.Name = "BtnCancelar"
-        Me.BtnCancelar.Size = New System.Drawing.Size(100, 50)
+        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 5)
+        Me.BtnCancelar.Size = New System.Drawing.Size(100, 75)
         Me.BtnCancelar.TabIndex = 6
         Me.BtnCancelar.Text = "C&ancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -158,10 +162,18 @@ Partial Class FrmPagoMensual
         '
         'BtnPagar
         '
+        Me.BtnPagar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnPagar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lavender
+        Me.BtnPagar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue
+        Me.BtnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnPagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnPagar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnPagar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.pagar_mes_28x32
+        Me.BtnPagar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnPagar.Location = New System.Drawing.Point(360, 24)
         Me.BtnPagar.Name = "BtnPagar"
-        Me.BtnPagar.Size = New System.Drawing.Size(100, 50)
+        Me.BtnPagar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 5)
+        Me.BtnPagar.Size = New System.Drawing.Size(100, 75)
         Me.BtnPagar.TabIndex = 6
         Me.BtnPagar.Text = "&Pagar"
         Me.BtnPagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -290,9 +302,9 @@ Partial Class FrmPagoMensual
         'LblCliente
         '
         Me.LblCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCliente.Location = New System.Drawing.Point(1, 33)
+        Me.LblCliente.Location = New System.Drawing.Point(1, 27)
         Me.LblCliente.Name = "LblCliente"
-        Me.LblCliente.Size = New System.Drawing.Size(592, 18)
+        Me.LblCliente.Size = New System.Drawing.Size(552, 18)
         Me.LblCliente.TabIndex = 1
         Me.LblCliente.Text = "NOMBRE COMPLETO DEL CLIENTE Y SU EDAD"
         Me.LblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -301,7 +313,7 @@ Partial Class FrmPagoMensual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(594, 499)
+        Me.ClientSize = New System.Drawing.Size(554, 481)
         Me.Controls.Add(Me.GroupBox)
         Me.Controls.Add(Me.LblCliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle

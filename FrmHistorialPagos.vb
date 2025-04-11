@@ -33,7 +33,9 @@ Public Class FrmHistorialPagos
             FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
             FrmPagoMensual.ShowDialog()
         Else
-            MsgBox("YA ESTA, SELECT OTRO")
+            MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
+                   "ESTADO  : PAGADO" & Chr(13&) & Chr(13&) &
+                   "Selecciona otro registro para realizar el pago.", vbInformation, "Pago mensual")
         End If
     End Sub
 
@@ -75,7 +77,5 @@ Public Class FrmHistorialPagos
         'CERRAR FORM FrmHistorialPagos
         Close()
     End Sub
-
-    ''---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<----------''
 
 End Class
