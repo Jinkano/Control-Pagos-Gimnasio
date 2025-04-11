@@ -172,6 +172,56 @@ Module Funciones
         '
     End Sub
 
+    Sub DgvLlenarPagos(ByVal sqlConsulta As String, ByVal DgvListaPagos As DataGridView)
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader
+            DgvListaPagos.Rows.Clear()
+
+            If drDataReader.HasRows Then
+                While drDataReader.Read()
+                    Dim nRow = DgvListaPagos.Rows.Add()
+                    Dim fecha As DateTime = drDataReader.GetDateTime(1).ToShortDateString
+                    Dim dia = fecha.Day
+                    Dim mes = fecha.Month
+                    Dim ano = fecha.Year
+                    Dim precio = drDataReader.GetDecimal(4).ToString
+                    Dim dscto = drDataReader.GetDecimal(5).ToString
+                    Dim total = precio - dscto
+                    Dim nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
+                    Dim prcDia = total / nDias
+                    nDias = nDias - dia + 1
+
+                    DgvListaPagos.Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0).ToString 'ID PAGO
+                    DgvListaPagos.Rows(nRow).Cells(1).Value = dia & " de " & arrayMeses(mes - 1) & " de " & ano 'FECHA DE INICIO
+                    DgvListaPagos.Rows(nRow).Cells(2).Value = FormatCurrency(precio) 'PRECIO
+                    DgvListaPagos.Rows(nRow).Cells(3).Value = FormatCurrency(dscto) 'DESCUENTO
+                    DgvListaPagos.Rows(nRow).Cells(4).Value = FormatCurrency(total) 'TOTAL
+                    DgvListaPagos.Rows(nRow).Cells(5).Value = nDias 'NUMERO DE DIAS
+                    DgvListaPagos.Rows(nRow).Cells(6).Value = FormatCurrency(prcDia * nDias) 'A PAGAR
+                    If drDataReader.GetDateTime(2).ToShortDateString = "01/01/0101" Then
+                        DgvListaPagos.Rows(nRow).Cells(7).Value = "--/--/----" 'FECHA DE PAGO
+                        DgvListaPagos.Rows(nRow).Cells(8).Value = "DEBE" 'FORMA DE PAGO
+                        'DgvListaPagos.Rows(nRow).DefaultCellStyle.BackColor = Color.LightSalmon
+                        DgvListaPagos.Rows(nRow).DefaultCellStyle.ForeColor = Color.Red
+                        DgvListaPagos.Rows(nRow).DefaultCellStyle.Font = New Drawing.Font("Arial", 10, FontStyle.Bold)
+                        '
+                    Else
+                        DgvListaPagos.Rows(nRow).Cells(7).Value = FechaLarga(drDataReader.GetDateTime(2).ToShortDateString) 'FECHA DE PAGO
+                        DgvListaPagos.Rows(nRow).Cells(8).Value = drDataReader.GetString(3).ToString 'FORMA DE PAGO
+                    End If
+                End While
+            End If
+
+            drDataReader.Close()
+            cnxnMySql.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
     Public Sub SoloLetras(ByVal Texto As String, e As KeyPressEventArgs)
         '
         If Texto = "Nº de Registros" Then e.Handled = True : Exit Sub

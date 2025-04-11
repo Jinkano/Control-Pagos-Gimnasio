@@ -97,6 +97,11 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.pagar_mes_28x32">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.saco_entrena">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

@@ -207,46 +207,46 @@ Public Class FrmListaClientes
     End Sub
 
     Private Sub BtnNuevoPago_Click(sender As Object, e As EventArgs) Handles BtnNuevoPago.Click
+        'COMPROBAR SI HAY REGISTROS EN LA GRILLA
         If DgvListaClientes.RowCount = 0 Then Exit Sub
-        '
+
+        'VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
         Dim precio, descto As Decimal
-        '
+
         Try
+            'CONECTAR Y ABRIR BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-            '
+
             Dim iEdad = DgvListaClientes.CurrentRow.Cells(2).Value.ToString.Substring(0, 2)
             sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & iEdad & "' AND e_max >= '" & iEdad & "'"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
-            precio = Replace(drDataReader.GetDecimal(0).ToString, ",", ".")
-            descto = Replace(drDataReader.GetDecimal(3).ToString, ",", ".")
-            drDataReader.Close()
-            '
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
-            '
+            precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
+            descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
+
             drDataReader.Close()
             cnxnMySql.Close()
-            '
+
         Catch ex As Exception
-            '
             MsgBox(ex.ToString)
-            '
         End Try
-        '
+
+        'ALMACENAR EN LAS VARIBLES LOS DATOS DE LOS CLIENTES
         Dim nombre = DgvListaClientes.CurrentRow.Cells(0).Value.ToString
         Dim apellido = DgvListaClientes.CurrentRow.Cells(1).Value.ToString
         Dim edad = DgvListaClientes.CurrentRow.Cells(2).Value.ToString
+
+        'PASAR LOS DATOS PARA EL NUEVO PAGO
         FrmPagoMensual.Text = "Nuevo pago mensual"
-        FrmPagoMensual.MdiParent = FrmPrincipal
+        'FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
         FrmPagoMensual.LblCliente.Text = nombre & " " & apellido & " - " & edad
         FrmPagoMensual.DtpFdi.Value = DateTime.Now
         FrmPagoMensual.TxtPrecio.Text = precio
         FrmPagoMensual.TxtDscto.Text = descto
-        FrmPagoMensual.Show()
+        FrmPagoMensual.ShowDialog()
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click

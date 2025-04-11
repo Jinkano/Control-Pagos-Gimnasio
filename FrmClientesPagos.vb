@@ -7,14 +7,13 @@ Public Class FrmClientesPagos
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta, idClient, strIdCli As String
     Dim nRow, rptMsgBox As Int16
-    Dim arrayMeses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
     Public txtFlags As String
 
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If txtFlags = "UPDATE_PAY" Then
             'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
             sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
-            DgvLlenarPagos(sqlConsulta)
+            DgvLlenarPagos(sqlConsulta, DgvListaPagos)
             txtFlags = ""
         End If
     End Sub
@@ -192,7 +191,7 @@ Public Class FrmClientesPagos
 
         'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
         sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
-        DgvLlenarPagos(sqlConsulta)
+        DgvLlenarPagos(sqlConsulta, DgvListaPagos)
 
         BtnGuardarActualizarCancelar() 'ACTIVAR y DESACTIVAR BOTONES
 
@@ -426,7 +425,7 @@ Public Class FrmClientesPagos
 
         'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
         sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
-        DgvLlenarPagos(sqlConsulta)
+        DgvLlenarPagos(sqlConsulta, DgvListaPagos)
     End Sub
 
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
@@ -548,7 +547,7 @@ Public Class FrmClientesPagos
         Close()
     End Sub
 
-    ''----->>>>> PROCEDIMIENTOS <<<<<-----''
+    ''---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<----------''
     Sub TxtLostFocus(ByVal TxtCadena As TextBox)
         TxtCadena.Text = Trim(TxtCadena.Text)
         While TxtCadena.Text.Contains("  ")
@@ -713,56 +712,6 @@ Public Class FrmClientesPagos
                     DgvListaClientes.Rows(nRow).Cells(6).Value = drDataReader.GetString(6).ToString 'DIRECCION
                     DgvListaClientes.Rows(nRow).Cells(7).Value = drDataReader.GetDateTime(7).ToShortDateString 'FECHA DE INSCRIPCION
                     DgvListaClientes.Rows(nRow).Cells(8).Value = drDataReader.GetString(8).ToString 'ESTADO
-                End While
-            End If
-
-            drDataReader.Close()
-            cnxnMySql.Close()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-    Sub DgvLlenarPagos(ByVal strConsulta As String)
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
-            DgvListaPagos.Rows.Clear()
-
-            If drDataReader.HasRows Then
-                While drDataReader.Read()
-                    Dim nRow = DgvListaPagos.Rows.Add()
-                    Dim fecha As DateTime = drDataReader.GetDateTime(1).ToShortDateString
-                    Dim dia = fecha.Day
-                    Dim mes = fecha.Month
-                    Dim ano = fecha.Year
-                    Dim precio = drDataReader.GetDecimal(4).ToString
-                    Dim dscto = drDataReader.GetDecimal(5).ToString
-                    Dim total = precio - dscto
-                    Dim nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
-                    Dim prcDia = total / nDias
-                    nDias = nDias - dia + 1
-
-                    DgvListaPagos.Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0).ToString 'ID PAGO
-                    DgvListaPagos.Rows(nRow).Cells(1).Value = dia & " de " & arrayMeses(mes - 1) & " de " & ano 'FECHA DE INICIO
-                    DgvListaPagos.Rows(nRow).Cells(2).Value = FormatCurrency(precio) 'PRECIO
-                    DgvListaPagos.Rows(nRow).Cells(3).Value = FormatCurrency(dscto) 'DESCUENTO
-                    DgvListaPagos.Rows(nRow).Cells(4).Value = FormatCurrency(total) 'TOTAL
-                    DgvListaPagos.Rows(nRow).Cells(5).Value = nDias 'NUMERO DE DIAS
-                    DgvListaPagos.Rows(nRow).Cells(6).Value = FormatCurrency(prcDia * nDias) 'A PAGAR
-                    If drDataReader.GetDateTime(2).ToShortDateString = "01/01/0101" Then
-                        DgvListaPagos.Rows(nRow).Cells(7).Value = "--/--/----" 'FECHA DE PAGO
-                        DgvListaPagos.Rows(nRow).Cells(8).Value = "DEBE" 'FORMA DE PAGO
-                        'DgvListaPagos.Rows(nRow).DefaultCellStyle.BackColor = Color.LightSalmon
-                        DgvListaPagos.Rows(nRow).DefaultCellStyle.ForeColor = Color.Red
-                        DgvListaPagos.Rows(nRow).DefaultCellStyle.Font = New Drawing.Font("Arial", 10, FontStyle.Bold)
-                        '
-                    Else
-                        DgvListaPagos.Rows(nRow).Cells(7).Value = FechaLarga(drDataReader.GetDateTime(2).ToShortDateString) 'FECHA DE PAGO
-                        DgvListaPagos.Rows(nRow).Cells(8).Value = drDataReader.GetString(3).ToString 'FORMA DE PAGO
-                    End If
                 End While
             End If
 

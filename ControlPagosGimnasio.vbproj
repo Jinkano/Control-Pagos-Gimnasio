@@ -305,5 +305,8 @@
   <ItemGroup>
     <None Include="img\nuevo_pago 28x32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\pagar_mes 28x32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

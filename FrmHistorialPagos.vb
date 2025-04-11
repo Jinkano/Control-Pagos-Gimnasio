@@ -7,59 +7,12 @@ Public Class FrmHistorialPagos
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta As String
     Public Shared psIdCli As String
-    Dim arrayMeses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
 
     Private Sub FrmHistorialPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY id_pgs"
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
-            'DgvHistorialPagos.Rows.Clear()
-
-            If drDataReader.HasRows Then
-
-                While drDataReader.Read()
-
-                    Dim nRow = DgvHistorialPagos.Rows.Add()
-                    Dim fecha As DateTime = drDataReader.GetDateTime(1).ToShortDateString
-                    Dim dia = fecha.Day
-                    Dim mes = fecha.Month
-                    Dim ano = fecha.Year
-                    DgvHistorialPagos.Rows(nRow).Cells(0).Value = dia & " de " & arrayMeses(mes - 1) & " de " & ano 'FECHA DE INICIO
-
-                    Dim precio = drDataReader.GetDecimal(4).ToString
-                    DgvHistorialPagos.Rows(nRow).Cells(1).Value = FormatCurrency(precio)
-                    Dim dscto = drDataReader.GetDecimal(5).ToString
-                    DgvHistorialPagos.Rows(nRow).Cells(2).Value = FormatCurrency(dscto)
-                    Dim total = precio - dscto
-                    DgvHistorialPagos.Rows(nRow).Cells(3).Value = FormatCurrency(total)
-                    Dim nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
-                    Dim prcDia = total / nDias
-                    nDias = nDias - dia + 1
-                    DgvHistorialPagos.Rows(nRow).Cells(4).Value = nDias
-                    DgvHistorialPagos.Rows(nRow).Cells(5).Value = FormatCurrency(prcDia * nDias) 'A PAGAR
-
-                    'COMPROBAR SI SE DEBE O YA ESTÁ PAGADO
-                    If drDataReader.GetDateTime(2).ToShortDateString = "01/01/0101" Then
-                        DgvHistorialPagos.Rows(nRow).Cells(6).Value = ""
-                    Else
-                        DgvHistorialPagos.Rows(nRow).Cells(6).Value = FechaLarga(drDataReader.GetDateTime(2).ToShortDateString)
-                    End If
-                    '
-                    DgvHistorialPagos.Rows(nRow).Cells(7).Value = drDataReader.GetString(3).ToString 'FORMA DE PAGO
-                End While
-            End If
-
-            drDataReader.Close() 'CERRAR EL DATAREADER
-
-            cnxnMySql.Close() 'CERRAR LA BBDD
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
+        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY id_pgs DESC"
+        DgvLlenarPagos(sqlConsulta, DgvListaPagos)
     End Sub
 
     Private Sub TxtEstado_TextChanged(sender As Object, e As EventArgs) Handles TxtEstado.TextChanged
@@ -68,16 +21,59 @@ Public Class FrmHistorialPagos
     End Sub
 
     Private Sub BtnPagarMes_Click(sender As Object, e As EventArgs) Handles BtnPagarMes.Click
-        '
+
+        'COMPROBAMOS SI EL MES SELECCIONADO YA ESTÁ PAGADO
+        If DgvListaPagos.CurrentRow.Cells(7).Value = "--/--/----" Then
+            'txtFlags = "UPDATE_PAY"
+            'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
+            FrmPagoMensual.psIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
+            FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
+            FrmPagoMensual.DtpFdi.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
+            FrmPagoMensual.TxtPrecio.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
+            FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
+            FrmPagoMensual.ShowDialog()
+        Else
+            MsgBox("YA ESTA, SELECT OTRO")
+        End If
     End Sub
 
     Private Sub BtnNuevoPago_Click(sender As Object, e As EventArgs) Handles BtnNuevoPago.Click
-        '
+        'DECLARAR VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
+        Dim precio, descto As Decimal
+        Try
+            'CONECTAR Y ABRIR BBDD
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+
+            sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & TxtEdad.Text & "' AND e_max >= '" & TxtEdad.Text & "'"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader
+            drDataReader.Read()
+
+            precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
+            descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
+
+            drDataReader.Close()
+            cnxnMySql.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        'txtFlags = "UPDATE_PAY"
+        'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
+        FrmPagoMensual.Text = "Nuevo pago mensual"
+        FrmPagoMensual.psIdCli = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID CLIENTE
+        FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
+        FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
+        FrmPagoMensual.TxtPrecio.Text = precio & " €"
+        FrmPagoMensual.TxtDscto.Text = descto & " €"
+        FrmPagoMensual.ShowDialog()
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
         'CERRAR FORM FrmHistorialPagos
         Close()
     End Sub
+
+    ''---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<----------''
 
 End Class
