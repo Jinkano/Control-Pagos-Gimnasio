@@ -9,15 +9,17 @@ Public Class FrmListaClientes
     Dim intMsgBox As Int16
 
     Private Sub ListaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '
+
+        'COMPROBAR QUE RADIO BUTTON ESTA ACTIVO YBHACER CONSULTA A LA BBDD
         If RbActivo.Checked Then
             sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'SI' ORDER BY nom_cli"
         Else
             sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'NO' ORDER BY nom_cli"
         End If
-        '
-        ListaClientes(sqlConsulta, "", DgvListaClientes)
-        '
+
+        ListaClientes(sqlConsulta, "", DgvListaClientes) 'LLAMAR FUNCION Y PASAR LA CONSULTA
+
+        'MARCAMOS LA PRIMERA OPCIÓN DEL COMBOBOX Y CAMBIAR TEXTO A LA BARRA DE ESTADO
         CmbBuscar.SelectedIndex = 0
         SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
     End Sub
@@ -189,21 +191,24 @@ Public Class FrmListaClientes
 
     Private Sub BtnHistorialPagos_Click(sender As Object, e As EventArgs) Handles BtnHistorialPagos.Click
 
+        'COMPROBAR SI HAY REGISTROS EN LA GRILLA DgvListaClientes
         If DgvListaClientes.RowCount = 0 Then Exit Sub
-        FrmHistorialPagos.MdiParent = FrmPrincipal
+
+        'ENVIAMOS LOS DATOS AL FORM FrmHistorialPagos PARA REALIZAR EL PAGO
+        'FrmHistorialPagos.MdiParent = FrmPrincipal
         FrmHistorialPagos.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
         FrmHistorialPagos.TxtCliente.Text = DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString
         FrmHistorialPagos.TxtInscripcion.Text = DgvListaClientes.CurrentRow.Cells(7).Value.ToString
-        '
+        'COMPROBAR SI EL CLIENTE ESTA EN ACTIVIDAD O INACTIVIDAD
         If DgvListaClientes.CurrentRow.Cells(9).Value.ToString = "SI" Then
             FrmHistorialPagos.TxtEstado.Text = "EN ACTIVIDAD"
         Else
             FrmHistorialPagos.TxtEstado.ForeColor = Color.Red
             FrmHistorialPagos.TxtEstado.Text = "INACTIVO"
         End If
-        '
         FrmHistorialPagos.TxtEdad.Text = DgvListaClientes.CurrentRow.Cells(2).Value.ToString
-        FrmHistorialPagos.Show()
+
+        FrmHistorialPagos.ShowDialog() 'MOSTRAMOS EL FORM
     End Sub
 
     Private Sub BtnNuevoPago_Click(sender As Object, e As EventArgs) Handles BtnNuevoPago.Click
@@ -223,8 +228,9 @@ Public Class FrmListaClientes
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
-            precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
-            descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
+
+            precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
+            descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
 
             drDataReader.Close()
             cnxnMySql.Close()
@@ -238,15 +244,16 @@ Public Class FrmListaClientes
         Dim apellido = DgvListaClientes.CurrentRow.Cells(1).Value.ToString
         Dim edad = DgvListaClientes.CurrentRow.Cells(2).Value.ToString
 
-        'PASAR LOS DATOS PARA EL NUEVO PAGO
+        'ENVIAMOS LOS DATOS AL FORM FrmPagoMensual PARA EL NUEVO PAGO
         FrmPagoMensual.Text = "Nuevo pago mensual"
         'FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
-        FrmPagoMensual.LblCliente.Text = nombre & " " & apellido & " - " & edad
-        FrmPagoMensual.DtpFdi.Value = DateTime.Now
-        FrmPagoMensual.TxtPrecio.Text = precio
-        FrmPagoMensual.TxtDscto.Text = descto
-        FrmPagoMensual.ShowDialog()
+        FrmPagoMensual.LblCliente.Text = nombre & " " & apellido & " - " & edad 'NOMBRE, APELLIDO y EDAD
+        FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
+        FrmPagoMensual.TxtPrecio.Text = precio & " €"
+        FrmPagoMensual.TxtDscto.Text = descto & " €"
+
+        FrmPagoMensual.ShowDialog() 'MOSTRAR EL FORM
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click

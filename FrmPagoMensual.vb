@@ -22,7 +22,8 @@ Public Class FrmPagoMensual
 
             If Me.Text = "Nuevo pago mensual" Then
                 sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli) VALUES 
-                              ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', '" & CmbFdp.Text & "', '" & precio & "', '" & dscto & "', '" & psIdCli & "')"
+                              ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "',
+                              '" & CmbFdp.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "', '" & psIdCli & "')"
             Else
                 sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
                               frm_pgs='" & CmbFdp.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "' 
@@ -207,7 +208,7 @@ Public Class FrmPagoMensual
         nDias = nDias - dia + 1
         TxtDias.Text = nDias
         TxtPrcDia.Text = FormatCurrency(prcDia)
-        TxtApagar.Text = FormatCurrency(prcDia * nDias) 'Val(TxtDias.Text))
+        TxtApagar.Text = FormatCurrency(prcDia * nDias)
     End Sub
     '
 End Class

@@ -55,18 +55,20 @@ Public Class FrmHistorialPagos
 
             drDataReader.Close()
             cnxnMySql.Close()
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
         'txtFlags = "UPDATE_PAY"
         'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
         FrmPagoMensual.Text = "Nuevo pago mensual"
-        FrmPagoMensual.psIdCli = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID CLIENTE
+        FrmPagoMensual.psIdCli = psIdCli 'ID CLIENTE
         FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
         FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrecio.Text = precio & " €"
         FrmPagoMensual.TxtDscto.Text = descto & " €"
-        FrmPagoMensual.ShowDialog()
+
+        FrmPagoMensual.ShowDialog() 'MOSTRAR EL FORM
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
