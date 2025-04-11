@@ -124,11 +124,11 @@
   <data name="clear22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\clear22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nuevo 24x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\nuevo 24x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nuevo_pago 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\nuevo_pago 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cambiarstd 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\cambiarstd 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eliminar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\eliminar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="guardar 31x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\guardar 31x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,6 +139,9 @@
   <data name="cancel 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\cancel 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cancel 34x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\cancel 34x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="historial 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\historial 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,14 +151,14 @@
   <data name="box entrena" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\box entrena.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cambiarstd 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\cambiarstd 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="guardar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\guardar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nuevo_pago 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\nuevo_pago 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eliminar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\eliminar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pagar_mes2 28x34" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\pagar_mes2 28x34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="salir22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\salir22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,10 +172,16 @@
   <data name="cambiar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\cambiar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nuevo 24x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\nuevo 24x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pagar_mes 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\pagar_mes 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancel_pago 34x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\cancel_pago 34x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="caja_regis 60x60" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\caja_regis 60x60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,44 +1,43 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports Mysqlx.Cursor
 
 Public Class FrmNuevoEditarCliente
-    '
+
     Dim cnxnMySql As New MySqlConnection
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta As String
     Dim fila As Int16
     Public Shared strIdCli As String
-    '
+
     Private Sub NuevoEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '
+
         ' COMPROBAMOS EL TÍTULO PARA DESACTIVAR UN BOTON
         If Me.Text = "Registrar nuevo cliente" Then
-            'BtnGuardar.Enabled = True
             BtnActualizar.Enabled = False
-            'TxtNombre.Clear()
-            'TxtApellido.Clear()
-            ''DtpFdn .Value =
-            'TxtEdad.ResetText()
-            'TxtTelefono.Clear()
-            'TxtEmail.Clear()
-            'TxtDireccion.Clear()
-            ''DtpFdi .Value =
         Else
             BtnGuardar.Enabled = False
-            'BtnActualizar.Enabled = True
         End If
-        '
+
+        'VARIABLE PARA ALMACENAR LA FECHA ACTUAL
+        Dim ano = Year(Date.Now)
+
+        'ASIGNAR VALORES NIM Y MAX A LOS DATETIMEPICKER
+        DtpFdn.MinDate = "01/01/" & ano - 99
+        DtpFdn.MaxDate = DateTime.Now
+        DtpFdi.MinDate = "01/01/" & ano - 1
+        DtpFdi.MaxDate = "31/12/" & ano + 1
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
-        '
+
         'COMPROBAMOS SI HAY INFORMACION DEL CLIENTE EN LOS TEXTBOX
         If TxtNombre.Text = "" Then MsgBox("Ingrese el NOMBRE del cliente.", vbCritical, "Guardar Datos Cliente") : TxtNombre.Focus() : Exit Sub
         If TxtApellido.Text = "" Then MsgBox("Ingrese el APELLIDO del cliente.", vbCritical, "Guardar Datos Cliente") : TxtApellido.Focus() : Exit Sub
-        'If dtpfdn.value= "" Then MsgBox "Ingrese la fecha de NACIMIENTO del cliente.", vbCritical, "Guardar Datos Cliente": dtpfdn.Focus : Exit Sub
-        'QUITAR ESPACIOS EN BLANCO TxtClientes(intIndex).Text = Trim(TxtClientes(intIndex).Text)
-        '
+        If TxtEdad.Text = "" Or TxtEdad.Text = "0 años" Then MsgBox("Verifica la fecha de NACIMIENTO del cliente.", vbCritical, "Guardar Datos Cliente") : DtpFdn.Focus() : Exit Sub
+
         Try
+            'CONECTAR Y ABRIR LA BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
@@ -74,73 +73,74 @@ Public Class FrmNuevoEditarCliente
             drDataReader = cmdCommand.ExecuteReader()
             drDataReader.Close()
 
+            'CERRAR BBDD
             cnxnMySql.Close()
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
-        If strIdCli.Length = 1 Then strIdCli = "CLI-00" & strIdCli
-        If strIdCli.Length = 2 Then strIdCli = "CLI-0" & strIdCli
-        If strIdCli.Length = 3 Then strIdCli = "CLI-" & strIdCli
+        'DAR FORMATO EL CODIGO DEL CLIENTE
+        If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
+        If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
+        If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+
         'MOSTRAMOS UN MESAJE DE CONFIRMACIÓN
         MsgBox("Datos GUARDADOS satisfactoriamente." & Chr(13) & Chr(13) _
                 & "NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & Chr(13) _
                 & "CODIGO   :  " & strIdCli, vbInformation, "Guardar Cliente")
 
         FrmListaClientes.TxtBuscarCliente.Text = TxtNombre.Text
-        'FrmListaClientes.DgvListaClientes.Sort(FrmListaClientes.DgvListaClientes.Columns(8), System.ComponentModel.ListSortDirection.Descending)
-        'dgvConsultaEstudiante.Sort(dgvConsultaEstudiante.Columns(0), System.ComponentModel.ListSortDirection.Ascending)
+
         Close()
     End Sub
 
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
-        '
+
         'COMPROBAMOS SI HAYINFORMACION DEL CLIENTE
         If TxtNombre.Text = "" Then MsgBox("Ingrese el NOMBRE del cliente.", vbCritical, "Actualizar Datos Cliente") : TxtNombre.Focus() : Exit Sub
         If TxtApellido.Text = "" Then MsgBox("Ingrese la DIRECCION del cliente.", vbCritical, "Actualizar Datos Cliente") : TxtApellido.Focus() : Exit Sub
-        'If dtpfdn.value= "" Then MsgBox "Ingrese la fecha de NACIMIENTO del cliente.", vbCritical, "Guardar Datos Cliente": dtpfdn.Focus : Exit Sub
-        'QUITAR ESPACIOS EN BLANCO TxtClientes(intIndex).Text = Trim(TxtClientes(intIndex).Text)
-        '
+        If TxtEdad.Text = "" Or TxtEdad.Text = "0 años" Then MsgBox("Verifica la fecha de NACIMIENTO del cliente.", vbCritical, "Actualizar Datos Cliente") : DtpFdn.Focus() : Exit Sub
+
         Try
-            '
+            'CONECTAR Y ABRIR LA BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-            '
+
             'ACTUALIZAMOS LOS DATOS DEL CLIENTE
             sqlConsulta = "UPDATE clientes SET nom_cli='" & TxtNombre.Text & "', ape_cli='" & TxtApellido.Text & "', fdn_cli='" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', 
                           tlf_cli='" & TxtTelefono.Text & "', eml_cli='" & TxtEmail.Text & "', dir_cli='" & TxtDireccion.Text & "', 
-                          fdi_cli='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "' WHERE id_cli='" & strIdCli & "'" ', std_cli='" & strEstado & "' 
-            '
+                          fdi_cli='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "' WHERE id_cli='" & strIdCli & "'"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
-            '
             drDataReader.Close()
+
+            'CARRAR BBDD
             cnxnMySql.Close()
-            '
+
         Catch ex As Exception
-            '
             MsgBox(ex.ToString)
-            '
         End Try
-        '
-        If strIdCli.Length = 1 Then strIdCli = "CLI-00" & strIdCli
-        If strIdCli.Length = 2 Then strIdCli = "CLI-0" & strIdCli
-        If strIdCli.Length = 3 Then strIdCli = "CLI-" & strIdCli
+
+        'DAR FORMATO EL CODIGO DEL CLIENTE
+        If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
+        If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
+        If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+
         'ENVIAMOS UN MENSAJE DE CONFIRMACION
         MsgBox("Datos ACTUALIZADOS satisfactoriamente." & Chr(13) & Chr(13) _
             & "NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & Chr(13) _
             & "CODIGO   :  " & strIdCli, vbInformation, "Actualizar Cliente")
-        '
+
         FrmListaClientes.TxtBuscarCliente.Text = TxtNombre.Text
-        'FrmListaClientes.DgvListaClientes.Sort(FrmListaClientes.DgvListaClientes.Columns(8), System.ComponentModel.ListSortDirection.Descending)
+
         Close()
-        '
+
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
-        '
+        'CERRAR VENTANA
         Close()
-        '
     End Sub
 
     Private Sub TxtNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtNombre.TextChanged
@@ -148,16 +148,13 @@ Public Class FrmNuevoEditarCliente
     End Sub
 
     Private Sub TxtNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtNombre.GotFocus
-        '
+        'CAMBIAR COLOR
         TxtNombre.BackColor = Color.Beige
-        '
     End Sub
 
     Private Sub TxtNombre_LostFocus(sender As Object, e As EventArgs) Handles TxtNombre.LostFocus
-        '
-        TxtNombre.BackColor = Color.Azure
-        If TxtNombre.Text = "" Then TxtNombre.BackColor = Color.MistyRose
-        '
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtNombre)
     End Sub
 
     Private Sub TxtApellido_TextChanged(sender As Object, e As EventArgs) Handles TxtApellido.TextChanged
@@ -165,34 +162,36 @@ Public Class FrmNuevoEditarCliente
     End Sub
 
     Private Sub TxtApellido_GotFocus(sender As Object, e As EventArgs) Handles TxtApellido.GotFocus
-        '
+        'CAMBIAR COLOR
         TxtApellido.BackColor = Color.Beige
-        '
     End Sub
 
     Private Sub TxtApellido_LostFocus(sender As Object, e As EventArgs) Handles TxtApellido.LostFocus
-        '
-        TxtApellido.BackColor = Color.Azure
-        If TxtApellido.Text = "" Then TxtApellido.BackColor = Color.MistyRose
-        '
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtApellido)
     End Sub
 
     Private Sub DtpFdn_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdn.ValueChanged
-        '
-        TxtEdad.Text = Int(DateDiff("m", DtpFdn.Value, Now) / 12) & " años"
-        '
+
+        'CALCULAR LA EDAD Y ALMACENAR EN LA VARIBLE
+        Dim dtpEdad = Int(DateDiff("m", DtpFdn.Value, Now) / 12)
+
+        TxtEdad.Text = dtpEdad & " años" 'MOSTRAR EDAD
+
+        'COMPROBAR LA EDAD
+        If dtpEdad < 1 Then TxtEdad.Text = "0 años"
+        If dtpEdad > 99 Then TxtEdad.Text = "99 años"
     End Sub
 
     Private Sub DtpFdn_GotFocus(sender As Object, e As EventArgs) Handles DtpFdn.GotFocus
-        '
+        'CAMBIAR COLOR
         TxtEdad.BackColor = Color.Beige
-        '
     End Sub
 
     Private Sub DtpFdn_LostFocus(sender As Object, e As EventArgs) Handles DtpFdn.LostFocus
-        '
+        'CAMBIAR COLOR 
         TxtEdad.BackColor = Color.Azure
-        '
+        If TxtEdad.Text = "" Then TxtEdad.BackColor = Color.MistyRose
     End Sub
 
     Private Sub TxtTelefono_TextChanged(sender As Object, e As EventArgs) Handles TxtTelefono.TextChanged
@@ -200,15 +199,13 @@ Public Class FrmNuevoEditarCliente
     End Sub
 
     Private Sub TxtTelefono_GotFocus(sender As Object, e As EventArgs) Handles TxtTelefono.GotFocus
-        '
+        'CAMBIAR COLOR
         TxtTelefono.BackColor = Color.Beige
-        '
     End Sub
 
     Private Sub TxtTelefono_LostFocus(sender As Object, e As EventArgs) Handles TxtTelefono.LostFocus
-        '
-        TxtTelefono.BackColor = Color.Azure
-        '
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtTelefono)
     End Sub
 
     Private Sub TxtEmail_TextChanged(sender As Object, e As EventArgs) Handles TxtEmail.TextChanged
@@ -216,15 +213,13 @@ Public Class FrmNuevoEditarCliente
     End Sub
 
     Private Sub TxtEmail_GotFocus(sender As Object, e As EventArgs) Handles TxtEmail.GotFocus
-        '
+        'CAMBIAR COLOR
         TxtEmail.BackColor = Color.Beige
-        '
     End Sub
 
     Private Sub TxtEmail_LostFocus(sender As Object, e As EventArgs) Handles TxtEmail.LostFocus
-        '
-        TxtEmail.BackColor = Color.Azure
-        '
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtEmail)
     End Sub
 
     Private Sub TxtDireccion_TextChanged(sender As Object, e As EventArgs) Handles TxtDireccion.TextChanged
@@ -232,15 +227,23 @@ Public Class FrmNuevoEditarCliente
     End Sub
 
     Private Sub TxtDireccion_GotFocus(sender As Object, e As EventArgs) Handles TxtDireccion.GotFocus
-        '
+        'CAMBIAR COLOR
         TxtDireccion.BackColor = Color.Beige
-        '
     End Sub
 
     Private Sub TxtDireccion_LostFocus(sender As Object, e As EventArgs) Handles TxtDireccion.LostFocus
-        '
-        TxtDireccion.BackColor = Color.Azure
-        '
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtDireccion)
     End Sub
-    '
+
+    ''---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<----------''
+    Sub TxtLostFocus(ByVal TxtCadena As TextBox)
+        TxtCadena.Text = Trim(TxtCadena.Text)
+        While TxtCadena.Text.Contains("  ")
+            TxtCadena.Text = TxtCadena.Text.Replace("  ", " ")
+        End While
+        TxtCadena.BackColor = Color.Azure
+        If TxtCadena.Text = "" Then TxtCadena.BackColor = Color.MistyRose
+    End Sub
+
 End Class

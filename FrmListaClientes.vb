@@ -195,7 +195,7 @@ Public Class FrmListaClientes
         If DgvListaClientes.RowCount = 0 Then Exit Sub
 
         'ENVIAMOS LOS DATOS AL FORM FrmHistorialPagos PARA REALIZAR EL PAGO
-        'FrmHistorialPagos.MdiParent = FrmPrincipal
+        FrmHistorialPagos.MdiParent = FrmPrincipal
         FrmHistorialPagos.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
         FrmHistorialPagos.TxtCliente.Text = DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString
         FrmHistorialPagos.TxtInscripcion.Text = DgvListaClientes.CurrentRow.Cells(7).Value.ToString
@@ -208,7 +208,7 @@ Public Class FrmListaClientes
         End If
         FrmHistorialPagos.TxtEdad.Text = DgvListaClientes.CurrentRow.Cells(2).Value.ToString
 
-        FrmHistorialPagos.ShowDialog() 'MOSTRAMOS EL FORM
+        FrmHistorialPagos.Show() 'MOSTRAMOS EL FORM
     End Sub
 
     Private Sub BtnNuevoPago_Click(sender As Object, e As EventArgs) Handles BtnNuevoPago.Click
@@ -246,14 +246,14 @@ Public Class FrmListaClientes
 
         'ENVIAMOS LOS DATOS AL FORM FrmPagoMensual PARA EL NUEVO PAGO
         FrmPagoMensual.Text = "Nuevo pago mensual"
-        'FrmPagoMensual.MdiParent = FrmPrincipal
+        FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
         FrmPagoMensual.LblCliente.Text = nombre & " " & apellido & " - " & edad 'NOMBRE, APELLIDO y EDAD
         FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrecio.Text = precio & " €"
         FrmPagoMensual.TxtDscto.Text = descto & " €"
 
-        FrmPagoMensual.ShowDialog() 'MOSTRAR EL FORM
+        FrmPagoMensual.Show() 'MOSTRAR EL FORM
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click

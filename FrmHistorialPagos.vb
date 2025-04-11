@@ -24,14 +24,15 @@ Public Class FrmHistorialPagos
 
         'COMPROBAMOS SI EL MES SELECCIONADO YA ESTÁ PAGADO
         If DgvListaPagos.CurrentRow.Cells(7).Value = "--/--/----" Then
-            'txtFlags = "UPDATE_PAY"
+
             'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
+            FrmPagoMensual.MdiParent = FrmPrincipal
             FrmPagoMensual.psIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
             FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
             FrmPagoMensual.DtpFdi.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
             FrmPagoMensual.TxtPrecio.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
             FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
-            FrmPagoMensual.ShowDialog()
+            FrmPagoMensual.Show()
         Else
             MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
                    "ESTADO  : PAGADO" & Chr(13&) & Chr(13&) &
@@ -61,8 +62,9 @@ Public Class FrmHistorialPagos
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-        'txtFlags = "UPDATE_PAY"
+
         'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
+        FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.Text = "Nuevo pago mensual"
         FrmPagoMensual.psIdCli = psIdCli 'ID CLIENTE
         FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
@@ -70,7 +72,7 @@ Public Class FrmHistorialPagos
         FrmPagoMensual.TxtPrecio.Text = precio & " €"
         FrmPagoMensual.TxtDscto.Text = descto & " €"
 
-        FrmPagoMensual.ShowDialog() 'MOSTRAR EL FORM
+        FrmPagoMensual.Show() 'MOSTRAR EL FORM
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
