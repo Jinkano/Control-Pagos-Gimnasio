@@ -153,7 +153,7 @@ Partial Class FrmPagoMensual
         Me.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnCancelar.Location = New System.Drawing.Point(384, 140)
         Me.BtnCancelar.Name = "BtnCancelar"
-        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 5)
+        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 9, 0, 5)
         Me.BtnCancelar.Size = New System.Drawing.Size(100, 75)
         Me.BtnCancelar.TabIndex = 6
         Me.BtnCancelar.Text = "C&ancelar"

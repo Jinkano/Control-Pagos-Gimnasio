@@ -6,7 +6,7 @@ Public Class FrmClientesPagos
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta, idClient, strIdCli As String
-    Dim nRow, rptMsgBox As Int16
+    Dim nRow As Int16 ', rptMsgBox
     Public txtFlags As String
 
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
@@ -24,7 +24,7 @@ Public Class FrmClientesPagos
         sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'SI' ORDER BY nom_cli"
         DgvLlenarClientes(sqlConsulta)
 
-        BtnGuardarActualizarCancelar() 'ACTIVAR y DESACTIVAR LOS BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR LOS BOTONES
 
         TxtEdaCli.Clear() 'LIMPIAR TXTEDAD
     End Sub
@@ -193,7 +193,7 @@ Public Class FrmClientesPagos
         sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
         DgvLlenarPagos(sqlConsulta, DgvListaPagos)
 
-        BtnGuardarActualizarCancelar() 'ACTIVAR y DESACTIVAR BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR BOTONES
 
         'CAMBIAMOS LOS TEXTOS DEL PANEL O BARRA DE ESTADO
         SlblTitulo.Text = "Cliente Encontrado"
@@ -210,7 +210,7 @@ Public Class FrmClientesPagos
 
         TxtDesactivar() 'DESACTIVAR CUADROS DE TEXTO
 
-        BtnGuardarActualizarCancelar() 'ACTIVAR y DESACTIVAR BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR BOTONES
     End Sub
 
     Private Sub RbNoCli_Click(sender As Object, e As EventArgs) Handles RbNoCli.Click
@@ -223,7 +223,7 @@ Public Class FrmClientesPagos
 
         TxtDesactivar() 'DESACTIVAR CUADROS DE TEXTO
 
-        BtnGuardarActualizarCancelar() 'ACTIVAR y DESACTIVAR BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR BOTONES
     End Sub
 
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
@@ -253,7 +253,7 @@ Public Class FrmClientesPagos
     Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
 
         'COMPROBAMOS SI HAY UN CLIENTE SELECCIONADO
-        If idClient = "" Then MsgBox("Selecciona un cliente de la lista", vbExclamation, "Modificar Datos") : DgvListaClientes.Focus() : Exit Sub
+        If idClient = "" Then MsgBox("Selecciona un cliente de la lista", vbInformation, "Modificar Datos") : DgvListaClientes.Focus() : Exit Sub
 
         'CAMBIAMOS EL TEXTO DE LA BARRA DE ESTADO
         SlblTitulo.Text = "Editar Cliente"
@@ -271,66 +271,127 @@ Public Class FrmClientesPagos
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
 
         'COMPROBAMOS SI HAY UN CLIENTE SELECCIONADO
-        If idClient = "" Then MsgBox("Selecciona un cliente de la lista", vbExclamation, "Eliminar Cliente") : DgvListaClientes.Focus() : Exit Sub
+        If idClient = "" Then MsgBox("Selecciona un cliente de la lista", vbInformation, "Eliminar Cliente") : DgvListaClientes.Focus() : Exit Sub
 
         'CAMBIAMOS EL TEXTO DE LA BARRA DE ESTADO
         SlblTitulo.Text = "Eliminar Cliente"
         SlblDescrip.Text = " ¿Desea eliminar al cliente seleccionado?."
-        '
+
         Try
+            'CONECTAR Y ABRIR LA BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
             'CONCATENAMOS EL CÓDIGO DEL CLIENTE
-            If idClient.Length = 1 Then strIdCli = "CLI-00" & idClient
-            If idClient.Length = 2 Then strIdCli = "CLI-0" & idClient
-            If idClient.Length = 3 Then strIdCli = "CLI-" & idClient
+            If idClient.Length = 1 Then strIdCli = "CLI - 00" & idClient
+            If idClient.Length = 2 Then strIdCli = "CLI - 0" & idClient
+            If idClient.Length = 3 Then strIdCli = "CLI - " & idClient
 
-            'MENSAJE DE CONFIRMACIÓN PARA ELIMINAR O PASAR A INACTIVIDAD UN CLIENTE
-            rptMsgBox = MsgBox("¿Desea eliminar al cliente?" & Chr(13) & Chr(13) _
-                   & "NOMBRE  :  " & TxtNomCli.Text & " " & TxtApeCli.Text & Chr(13) _
-                   & "CODIGO  :  " & strIdCli & "", vbQuestion + vbYesNoCancel, "Eliminar Cliente")
+            'MENSAJE DE CONFIRMACIÓN PARA ELIMINAR UN CLIENTE
+            If MsgBox("CLIENTE SELECCIONADO :" & Chr(13) & Chr(13) &
+                      "     NOMBRE  :  " & TxtNomCli.Text & " " & TxtApeCli.Text & Chr(13) &
+                      "     CODIGO  :  " & strIdCli & Chr(13) & Chr(13) &
+                      "Si elimina el registro, tambien se borraran todos los" & Chr(13) &
+                      "pagos relacionados al cliente." & Chr(13) & Chr(13) &
+                      "                                                       ¿Estás seguro?" _
+                      , vbQuestion + vbYesNo + vbDefaultButton2, "Eliminar Cliente") = vbYes Then
 
-            'COMPROBAMOS LA RESPUESTA Y HACEMOS LA CONSULTA A LA BBDD
-            If rptMsgBox = vbYes Then
+                'HACEMOS Y EJECUTAMOS LA CONSULTA A LA BBDD
                 sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & idClient & "'"
-            ElseIf rptMsgBox = vbNo Then
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+                drDataReader.Close()
+                cnxnMySql.Close() 'CERRAMOS LA BBDD
+
+                'HACEMOS LA CONSULTA A LA BBDD
+                If RbSiCli.Checked = True Then
+                    sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'SI' ORDER BY nom_cli"
+                Else
+                    sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'NO' ORDER BY nom_cli"
+                End If
+                DgvLlenarClientes(sqlConsulta) 'LLAMAMOS A LA FUNCIÓN DgvLlenar Y LE PASAMOS LA CONSULTA
+
+                TxtLimpiar() 'LIMPIAR CUADROS TEXTO
+
+                BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR BOTONES
+
+                BtnNuevo.Focus() 'ENVIAMOS EL ENFOQUE
+            Else
+                'CAMBIAMOS LOS TEXTOS DEL PANEL O BARRA DE ESTADO
+                SlblTitulo.Text = "Cliente Encontrado"
+                SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o cambiar su estado."
+                cnxnMySql.Close() 'CERRAMOS LA BBDD
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+    End Sub
+
+    Private Sub BtnCambiar_Click(sender As Object, e As EventArgs) Handles BtnCambiar.Click
+
+        'COMPROBAMOS SI HAY UN CLIENTE SELECCIONADO
+        If idClient = "" Then MsgBox("Selecciona un cliente de la lista", vbExclamation, "Cambiar estado") : DgvListaClientes.Focus() : Exit Sub
+
+        'CAMBIAMOS EL TEXTO DE LA BARRA DE ESTADO
+        SlblTitulo.Text = "Cambiar estado"
+        SlblDescrip.Text = " ¿Desea cambiar el estado cliente seleccionado?."
+
+        Try
+            'CONECTAR Y ABRIR LA BBDD
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+
+            'CONCATENAMOS EL CÓDIGO DEL CLIENTE
+            If idClient.Length = 1 Then strIdCli = "CLI - 00" & idClient
+            If idClient.Length = 2 Then strIdCli = "CLI - 0" & idClient
+            If idClient.Length = 3 Then strIdCli = "CLI - " & idClient
+
+            'MENSAJE DE CONFIRMACIÓN PARA CAMBIAR DE ESTADO UN CLIENTE
+            If MsgBox("CLIENTE SELECCIONADO :" & Chr(13) & Chr(13) &
+                      "     NOMBRE  :  " & DgvListaClientes.CurrentRow.Cells(0).Value.ToString & " " & DgvListaClientes.CurrentRow.Cells(1).Value.ToString & Chr(13) &
+                      "     CODIGO  :  " & strIdCli & Chr(13) & Chr(13) &
+                      "Vas a cambiar el estado del cliente." & Chr(13) &
+                      "Si pasa a INACTIVIDAD no se podra realizar nuevos pagos." & Chr(13) & Chr(13) &
+                      "                                                       ¿Estás seguro?" _
+                      , vbQuestion + vbYesNo + vbDefaultButton2, "Cambiar estado") = vbYes Then
+
+                'HACEMOS Y EJECUTAMOS LA CONSULTA A LA BBDD
                 If RbSiCli.Checked = True Then
                     sqlConsulta = "UPDATE clientes SET std_cli = 'NO' WHERE id_cli = '" & idClient & "'"
                 Else
                     sqlConsulta = "UPDATE clientes SET std_cli = 'SI' WHERE id_cli = '" & idClient & "'"
                 End If
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+                drDataReader.Close()
+                cnxnMySql.Close() 'CERRAMOS LA BBDD
+
+                'HACEMOS LA CONSULTA A LA BBDD
+                If RbSiCli.Checked = True Then
+                    sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'SI' ORDER BY nom_cli"
+                Else
+                    sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'NO' ORDER BY nom_cli"
+                End If
+                DgvLlenarClientes(sqlConsulta) 'LLAMAMOS A LA FUNCIÓN DgvLlenar Y LE PASAMOS LA CONSULTA
+
+                TxtLimpiar() 'LIMPIAR CUADROS TEXTO
+
+                BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR BOTONES
+
+                BtnNuevo.Focus() 'ENVIAMOS EL ENFOQUE
+            Else
+                'CAMBIAMOS LOS TEXTOS DEL PANEL O BARRA DE ESTADO
+                SlblTitulo.Text = "Cliente Encontrado"
+                SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o cambiar su estado."
+                cnxnMySql.Close() 'CERRAMOS LA BBDD
             End If
 
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
-            drDataReader.Close()
-            cnxnMySql.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
-        'COMPROBAR RESPUESTA, SI ES CANCELAR, SALIR SIN HACER CAMBIOS
-        If rptMsgBox = vbCancel Then
-
-            'CAMBIAMOS LOS TEXTOS DEL PANEL O BARRA DE ESTADO
-            SlblTitulo.Text = "Cliente Encontrado"
-            SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o cambiar su estado."
-        Else
-            'HACEMOS LA CONSULTA A LA BBDD
-            If RbSiCli.Checked = True Then
-                sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'SI' ORDER BY nom_cli"
-            Else
-                sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'NO' ORDER BY nom_cli"
-            End If
-            DgvLlenarClientes(sqlConsulta) 'LLAMAMOS A LA FUNCIÓN DgvLlenar Y LE PASAMOS LA CONSULTA
-
-            TxtLimpiar() 'LIMPIAR CUADROS TEXTO
-
-            BtnGuardarActualizarCancelar() 'ACTIVAR y DESACTIVAR BOTONES
-
-            BtnNuevo.Focus() 'ENVIAMOS EL ENFOQUE
-        End If
     End Sub
 
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
@@ -347,7 +408,7 @@ Public Class FrmClientesPagos
 
         TxtNomCli.Focus() 'ENVIA EL ENFOQUE
 
-        BtnGuardarActualizarCancelar() 'ACTIVAR Y DESACTIVAR LOS BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAR Y DESACTIVAR LOS BOTONES
 
         'CAMBIAMOS LOS TEXTOS DEL PANEL O BARRA DE ESTADO
         SlblTitulo.Text = "Buscar Cliente"
@@ -390,8 +451,8 @@ Public Class FrmClientesPagos
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
-            Dim precio = Replace(drDataReader.GetDecimal(0).ToString, ",", ".")
-            Dim descto = Replace(drDataReader.GetDecimal(3).ToString, ",", ".")
+            Dim precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
+            Dim descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
             drDataReader.Close()
             '
             'AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
@@ -407,9 +468,9 @@ Public Class FrmClientesPagos
             DgvLlenarClientes(sqlConsulta)
 
             'ENVIAMOS MENSAJE DE CONFIRMACIÓN
-            If idClient.Length = 1 Then strIdCli = "CLI-00" & idClient
-            If idClient.Length = 2 Then strIdCli = "CLI-0" & idClient
-            If idClient.Length = 3 Then strIdCli = "CLI-" & idClient
+            If idClient.Length = 1 Then strIdCli = "CLI - 00" & idClient
+            If idClient.Length = 2 Then strIdCli = "CLI - 0" & idClient
+            If idClient.Length = 3 Then strIdCli = "CLI - " & idClient
             MsgBox("Datos GUARDADOS satisfactoriamente." & Chr(13) & Chr(13) _
                    & "NOMBRE   :  " & TxtNomCli.Text & " " & TxtApeCli.Text & Chr(13) _
                    & "CODIGO   :  " & strIdCli, vbInformation, "Guardar Cliente")
@@ -417,7 +478,7 @@ Public Class FrmClientesPagos
             MsgBox(ex.ToString)
         End Try
 
-        BtnGuardarActualizarCancelar() 'ACTIVAR Y DESACTIVAR BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAR Y DESACTIVAR BOTONES
 
         TxtDesactivar() 'DESACTIVAR CUADROS DE TEXTO
 
@@ -472,7 +533,7 @@ Public Class FrmClientesPagos
             MsgBox(ex.ToString)
         End Try
 
-        BtnGuardarActualizarCancelar() 'ACTIVAMOS y DESACTIVAMOS LOS BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAMOS y DESACTIVAMOS LOS BOTONES
 
         BtnNuevo.Focus() 'ENVIAMOS EL ENFOQUE AL BOTON NUEVO
 
@@ -492,7 +553,7 @@ Public Class FrmClientesPagos
 
         TxtDesactivar() 'DESACTIVAR LOS CUADROS DE TEXTBOX
 
-        BtnGuardarActualizarCancelar() 'ACTIVAMOS y DESACTIVAMOS LOS BOTONES
+        BtnGuardaActualCancelCambia() 'ACTIVAMOS y DESACTIVAMOS LOS BOTONES
     End Sub
 
     Private Sub BtnPagarMes_Click(sender As Object, e As EventArgs) Handles BtnPagarMes.Click
@@ -524,8 +585,8 @@ Public Class FrmClientesPagos
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
-            precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
-            descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
+            precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
+            descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
             drDataReader.Close()
             cnxnMySql.Close()
         Catch ex As Exception
@@ -636,6 +697,7 @@ Public Class FrmClientesPagos
         BtnNuevo.Visible = False
         BtnModificar.Visible = False
         BtnEliminar.Visible = False
+        BtnCambiar.Visible = False
         BtnCancelar.Visible = True
         BtnBuscar.Visible = False
         RbSiCli.Enabled = False
@@ -654,11 +716,12 @@ Public Class FrmClientesPagos
         End If
     End Sub
 
-    Sub BtnGuardarActualizarCancelar()
+    Sub BtnGuardaActualCancelCambia()
 
         BtnNuevo.Visible = True
         BtnModificar.Visible = True
         BtnEliminar.Visible = True
+        BtnCambiar.Visible = True
         BtnGuardar.Visible = False
         BtnActualizar.Visible = False
         BtnCancelar.Visible = False
@@ -673,6 +736,7 @@ Public Class FrmClientesPagos
         If DgvListaClientes.RowCount = 0 Then
             BtnModificar.Visible = False
             BtnEliminar.Visible = False
+            BtnCambiar.Visible = False
             BtnBuscar.Visible = False
             SlblTitulo.Text = "Lista vacia"
             SlblDescrip.Text = " No hay clientes registrados en la Base de Datos."

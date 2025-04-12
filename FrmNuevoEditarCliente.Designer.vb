@@ -282,8 +282,8 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnCancelar.Location = New System.Drawing.Point(504, 274)
         Me.BtnCancelar.Name = "BtnCancelar"
-        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 4)
-        Me.BtnCancelar.Size = New System.Drawing.Size(100, 75)
+        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 8, 0, 3)
+        Me.BtnCancelar.Size = New System.Drawing.Size(120, 75)
         Me.BtnCancelar.TabIndex = 5
         Me.BtnCancelar.Text = "&Cancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -291,18 +291,18 @@ Partial Class FrmNuevoEditarCliente
         '
         'BtnActualizar
         '
-        Me.BtnActualizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnActualizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue
+        Me.BtnActualizar.FlatAppearance.BorderColor = System.Drawing.Color.Navy
+        Me.BtnActualizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue
         Me.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnActualizar.ForeColor = System.Drawing.Color.Navy
         Me.BtnActualizar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.actualizar_28x32
         Me.BtnActualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnActualizar.Location = New System.Drawing.Point(504, 126)
+        Me.BtnActualizar.Location = New System.Drawing.Point(504, 139)
         Me.BtnActualizar.Name = "BtnActualizar"
-        Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 4)
-        Me.BtnActualizar.Size = New System.Drawing.Size(100, 75)
+        Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 2)
+        Me.BtnActualizar.Size = New System.Drawing.Size(120, 75)
         Me.BtnActualizar.TabIndex = 4
         Me.BtnActualizar.Text = "&Actualizar"
         Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -310,18 +310,18 @@ Partial Class FrmNuevoEditarCliente
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue
-        Me.BtnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue
+        Me.BtnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green
+        Me.BtnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MintCream
         Me.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGuardar.ForeColor = System.Drawing.Color.Navy
+        Me.BtnGuardar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.BtnGuardar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.guardar_31x32
         Me.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnGuardar.Location = New System.Drawing.Point(504, 28)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 4)
-        Me.BtnGuardar.Size = New System.Drawing.Size(100, 75)
+        Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(0, 6, 0, 2)
+        Me.BtnGuardar.Size = New System.Drawing.Size(120, 75)
         Me.BtnGuardar.TabIndex = 3
         Me.BtnGuardar.Text = "&Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -331,7 +331,7 @@ Partial Class FrmNuevoEditarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(628, 651)
+        Me.ClientSize = New System.Drawing.Size(644, 651)
         Me.Controls.Add(Me.GbOtros)
         Me.Controls.Add(Me.GbContacto)
         Me.Controls.Add(Me.BtnCancelar)

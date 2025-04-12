@@ -136,6 +136,9 @@
   <data name="actualizar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\actualizar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="actualizar2 34x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\actualizar2 34x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cancel 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\cancel 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,6 +169,9 @@
   <data name="saco entrena" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\saco entrena.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cancel_pago 34x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\cancel_pago 34x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="editar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\editar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,10 +184,10 @@
   <data name="pagar_mes 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\pagar_mes 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancel_pago 34x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\cancel_pago 34x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="caja_regis 60x60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\caja_regis 60x60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buscar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\buscar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

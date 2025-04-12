@@ -27,12 +27,22 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.actualizar2_34x28">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.box_entrena">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.boxeador">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.buscar_28x32">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
