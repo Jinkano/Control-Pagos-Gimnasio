@@ -26,7 +26,7 @@ Public Class FrmClientesPagos
 
         BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR LOS BOTONES
 
-        TxtEdaCli.Clear() 'LIMPIAR TXTEDAD
+        TxtEdaCli.Text = "" 'LIMPIAR TXTEDAD
     End Sub
 
     Private Sub TxtNomCli_GotFocus(sender As Object, e As EventArgs) Handles TxtNomCli.GotFocus
@@ -451,6 +451,8 @@ Public Class FrmClientesPagos
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
+            'Dim precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
+            'Dim descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
             Dim precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
             Dim descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
             drDataReader.Close()
@@ -625,12 +627,12 @@ Public Class FrmClientesPagos
         TxtNomCli.Clear()
         TxtApeCli.Clear()
         DtpFdnCli.Value = New DateTime(2000, 1, 1)
-        TxtEdaCli.Clear()
+        TxtEdaCli.Text = ""
         TxtTlfCli.Clear()
         TxtEmlCli.Clear()
         TxtDirCli.Clear()
         DtpFdiCli.Value = DateTime.Now
-        TxtStdCli.Clear()
+        TxtStdCli.Text = ""
         DgvListaPagos.Rows.Clear()
     End Sub
 
@@ -714,6 +716,10 @@ Public Class FrmClientesPagos
             BtnGuardar.Visible = False
             BtnActualizar.Visible = True
         End If
+    End Sub
+
+    Private Sub RbSiCli_CheckedChanged(sender As Object, e As EventArgs) Handles RbSiCli.CheckedChanged
+
     End Sub
 
     Sub BtnGuardaActualCancelCambia()
