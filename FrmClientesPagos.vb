@@ -562,17 +562,21 @@ Public Class FrmClientesPagos
 
         'COMPROBAMOS SI EL MES SELECCIONADO YA ESTÁ PAGADO
         If DgvListaPagos.CurrentRow.Cells(7).Value = "--/--/----" Then
-            txtFlags = "UPDATE_PAY"
+
+            txtFlags = "UPDATE_PAY" 'VARIABLE BANDERA PARA ACTUALIZAR LA GRILLA DgvListaPagos
+
             'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
-            'FrmPagoMensual.MdiParent = FrmPrincipal
+            FrmPagoMensual.MdiParent = FrmPrincipal
             FrmPagoMensual.psIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
             FrmPagoMensual.LblCliente.Text = TxtNomCli.Text & " " & TxtApeCli.Text & " - " & TxtEdaCli.Text 'NOMBRE, APELLIDO y EDAD
             FrmPagoMensual.DtpFdi.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
             FrmPagoMensual.TxtPrecio.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
             FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
-            FrmPagoMensual.ShowDialog()
+            FrmPagoMensual.Show()
         Else
-            MsgBox("YA ESTA, SELECT OTRO")
+            MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
+                   "ESTADO  : PAGADO" & Chr(13&) & Chr(13&) &
+                   "Selecciona otro registro para realizar el pago.", vbInformation, "Pago mensual")
         End If
 
     End Sub
@@ -595,15 +599,17 @@ Public Class FrmClientesPagos
             MsgBox(ex.ToString)
         End Try
 
-        txtFlags = "UPDATE_PAY"
+        txtFlags = "UPDATE_PAY" 'VARIABLE BANDERA PARA ACTUALIZAR LA GRILLA DgvListaPagos
+
+        'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
         FrmPagoMensual.Text = "Nuevo pago mensual"
-        'FrmPagoMensual.MdiParent = FrmPrincipal
+        FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(0).Value.ToString 'ID CLIENTE
         FrmPagoMensual.LblCliente.Text = TxtNomCli.Text & " " & TxtApeCli.Text & " - " & TxtEdaCli.Text 'NOMBRE, APELLIDO y EDAD
         FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrecio.Text = precio & " €"
         FrmPagoMensual.TxtDscto.Text = descto & " €"
-        FrmPagoMensual.ShowDialog()
+        FrmPagoMensual.Show()
     End Sub
 
     Private Sub BtnCerrar_Click_1(sender As Object, e As EventArgs) Handles BtnCerrar.Click
@@ -718,10 +724,6 @@ Public Class FrmClientesPagos
         End If
     End Sub
 
-    Private Sub RbSiCli_CheckedChanged(sender As Object, e As EventArgs) Handles RbSiCli.CheckedChanged
-
-    End Sub
-
     Sub BtnGuardaActualCancelCambia()
 
         BtnNuevo.Visible = True
@@ -732,10 +734,12 @@ Public Class FrmClientesPagos
         BtnActualizar.Visible = False
         BtnCancelar.Visible = False
         BtnBuscar.Visible = True
-        RbSiCli.Enabled = True
-        RbNoCli.Enabled = True
         BtnPagarMes.Visible = True
         BtnNuevoPago.Visible = True
+
+        RbSiCli.Enabled = True
+        RbNoCli.Enabled = True
+
         DgvListaClientes.Enabled = True
         DgvListaPagos.Enabled = True
 
@@ -744,6 +748,7 @@ Public Class FrmClientesPagos
             BtnEliminar.Visible = False
             BtnCambiar.Visible = False
             BtnBuscar.Visible = False
+
             SlblTitulo.Text = "Lista vacia"
             SlblDescrip.Text = " No hay clientes registrados en la Base de Datos."
         Else
@@ -756,9 +761,12 @@ Public Class FrmClientesPagos
             End If
         End If
 
-        If DgvListaPagos.RowCount = 0 Then
+        If RbNoCli.Checked = True Or DgvListaPagos.RowCount = 0 Then
             BtnPagarMes.Visible = False
             BtnNuevoPago.Visible = False
+        Else
+            BtnPagarMes.Visible = True
+            BtnNuevoPago.Visible = True
         End If
     End Sub
 

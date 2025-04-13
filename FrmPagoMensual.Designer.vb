@@ -174,7 +174,7 @@ Partial Class FrmPagoMensual
         Me.BtnPagar.Name = "BtnPagar"
         Me.BtnPagar.Padding = New System.Windows.Forms.Padding(0, 10, 0, 5)
         Me.BtnPagar.Size = New System.Drawing.Size(100, 75)
-        Me.BtnPagar.TabIndex = 6
+        Me.BtnPagar.TabIndex = 5
         Me.BtnPagar.Text = "&Pagar"
         Me.BtnPagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnPagar.UseVisualStyleBackColor = True

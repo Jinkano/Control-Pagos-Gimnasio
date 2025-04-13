@@ -6,7 +6,17 @@ Public Class FrmHistorialPagos
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta As String
+    Public txtFlags As String
     Public Shared psIdCli As String
+
+    Private Sub FrmHistorialPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        If txtFlags = "UPDATE_PAY" Then
+            'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
+            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY id_pgs DESC"
+            DgvLlenarPagos(sqlConsulta, DgvListaPagos)
+            txtFlags = ""
+        End If
+    End Sub
 
     Private Sub FrmHistorialPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -22,8 +32,13 @@ Public Class FrmHistorialPagos
 
     Private Sub BtnPagarMes_Click(sender As Object, e As EventArgs) Handles BtnPagarMes.Click
 
+        'COMPROBAR SI HAY REGISTROS EN LA GRILLA
+        If DgvListaPagos.RowCount = 0 Then Exit Sub
+
         'COMPROBAMOS SI EL MES SELECCIONADO YA ESTÁ PAGADO
         If DgvListaPagos.CurrentRow.Cells(7).Value = "--/--/----" Then
+
+            txtFlags = "UPDATE_PAY" 'VARIABLE BANDERA PARA ACTUALIZAR LA GRILLA DgvListaPagos
 
             'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
             FrmPagoMensual.MdiParent = FrmPrincipal
@@ -32,7 +47,7 @@ Public Class FrmHistorialPagos
             FrmPagoMensual.DtpFdi.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
             FrmPagoMensual.TxtPrecio.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
             FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
-            FrmPagoMensual.Show()
+            FrmPagoMensual.Show() 'MOSTRAR EL FORM
         Else
             MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
                    "ESTADO  : PAGADO" & Chr(13&) & Chr(13&) &
@@ -63,6 +78,8 @@ Public Class FrmHistorialPagos
             MsgBox(ex.ToString)
         End Try
 
+        txtFlags = "UPDATE_PAY" 'VARIABLE BANDERA PARA ACTUALIZAR LA GRILLA DgvListaPagos
+
         'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
         FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.Text = "Nuevo pago mensual"
@@ -71,7 +88,6 @@ Public Class FrmHistorialPagos
         FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrecio.Text = precio & " €"
         FrmPagoMensual.TxtDscto.Text = descto & " €"
-
         FrmPagoMensual.Show() 'MOSTRAR EL FORM
     End Sub
 
@@ -79,5 +95,4 @@ Public Class FrmHistorialPagos
         'CERRAR FORM FrmHistorialPagos
         Close()
     End Sub
-
 End Class

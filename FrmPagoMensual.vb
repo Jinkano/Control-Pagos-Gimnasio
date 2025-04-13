@@ -47,19 +47,22 @@ Public Class FrmPagoMensual
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
-        '
+
+        'LIMPIAR LAS VARIBLES BANDERAS
         FrmClientesPagos.txtFlags = ""
-        Close()
+        FrmHistorialPagos.txtFlags = ""
+
+        Close() 'CERRAR FORM
     End Sub
 
     Private Sub DtpFdi_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdi.ValueChanged
-        '
-        CalcPrecio()
+
+        CalcPrecio() 'LLAMAR FUNCIÓN PARA CALCULAR EL PRECIO
     End Sub
 
     Private Sub TxtPrecio_GotFocus(sender As Object, e As EventArgs) Handles TxtPrecio.GotFocus
-        '
-        TxtPrecio.SelectAll()
+
+        TxtPrecio.SelectAll() 'SELECCIONA TODO EL TEXTO
     End Sub
 
     Private Sub TxtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPrecio.KeyPress
@@ -112,8 +115,8 @@ Public Class FrmPagoMensual
     End Sub
 
     Private Sub TxtDscto_GotFocus(sender As Object, e As EventArgs) Handles TxtDscto.GotFocus
-        '
-        TxtDscto.SelectAll()
+
+        TxtDscto.SelectAll() 'SELECCIONA TODO EL TEXTO
     End Sub
 
     Private Sub TxtDscto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDscto.KeyPress

@@ -28,14 +28,17 @@ Partial Class Form1
         Me.LblContrasena = New System.Windows.Forms.Label()
         Me.TxtUsuario = New System.Windows.Forms.TextBox()
         Me.LblUsuario = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSalir
         '
+        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Location = New System.Drawing.Point(429, 217)
+        Me.BtnSalir.ForeColor = System.Drawing.Color.Brown
+        Me.BtnSalir.Location = New System.Drawing.Point(250, 186)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(150, 30)
         Me.BtnSalir.TabIndex = 13
@@ -44,8 +47,10 @@ Partial Class Form1
         '
         'BtnEntrar
         '
+        Me.BtnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnEntrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEntrar.Location = New System.Drawing.Point(264, 217)
+        Me.BtnEntrar.Location = New System.Drawing.Point(415, 186)
         Me.BtnEntrar.Name = "BtnEntrar"
         Me.BtnEntrar.Size = New System.Drawing.Size(150, 30)
         Me.BtnEntrar.TabIndex = 12
@@ -54,10 +59,10 @@ Partial Class Form1
         '
         'TxtContrasena
         '
-        Me.TxtContrasena.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtContrasena.Location = New System.Drawing.Point(264, 156)
+        Me.TxtContrasena.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtContrasena.Location = New System.Drawing.Point(250, 132)
         Me.TxtContrasena.Name = "TxtContrasena"
-        Me.TxtContrasena.Size = New System.Drawing.Size(315, 26)
+        Me.TxtContrasena.Size = New System.Drawing.Size(315, 24)
         Me.TxtContrasena.TabIndex = 11
         Me.TxtContrasena.Text = "txtContraseña"
         '
@@ -65,7 +70,7 @@ Partial Class Form1
         '
         Me.LblContrasena.AutoSize = True
         Me.LblContrasena.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblContrasena.Location = New System.Drawing.Point(260, 131)
+        Me.LblContrasena.Location = New System.Drawing.Point(246, 107)
         Me.LblContrasena.Name = "LblContrasena"
         Me.LblContrasena.Size = New System.Drawing.Size(105, 22)
         Me.LblContrasena.TabIndex = 10
@@ -73,10 +78,10 @@ Partial Class Form1
         '
         'TxtUsuario
         '
-        Me.TxtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtUsuario.Location = New System.Drawing.Point(264, 84)
+        Me.TxtUsuario.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtUsuario.Location = New System.Drawing.Point(250, 55)
         Me.TxtUsuario.Name = "TxtUsuario"
-        Me.TxtUsuario.Size = New System.Drawing.Size(315, 26)
+        Me.TxtUsuario.Size = New System.Drawing.Size(315, 25)
         Me.TxtUsuario.TabIndex = 9
         Me.TxtUsuario.Text = "txtUsuario"
         '
@@ -84,41 +89,41 @@ Partial Class Form1
         '
         Me.LblUsuario.AutoSize = True
         Me.LblUsuario.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblUsuario.Location = New System.Drawing.Point(260, 59)
+        Me.LblUsuario.Location = New System.Drawing.Point(246, 30)
         Me.LblUsuario.Name = "LblUsuario"
         Me.LblUsuario.Size = New System.Drawing.Size(166, 22)
         Me.LblUsuario.TabIndex = 8
         Me.LblUsuario.Text = "&Nombre de usuario"
         '
-        'PictureBox1
+        'PictureBox
         '
-        Me.PictureBox1.Image = Global.ControlPagosGimnasio.My.Resources.Resources.saco_entrena
-        Me.PictureBox1.Location = New System.Drawing.Point(43, 42)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(211, 206)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 7
-        Me.PictureBox1.TabStop = False
+        Me.PictureBox.Image = Global.ControlPagosGimnasio.My.Resources.Resources.saco_entrena
+        Me.PictureBox.Location = New System.Drawing.Point(30, 30)
+        Me.PictureBox.Name = "PictureBox"
+        Me.PictureBox.Size = New System.Drawing.Size(186, 186)
+        Me.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox.TabIndex = 7
+        Me.PictureBox.TabStop = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(660, 311)
+        Me.ClientSize = New System.Drawing.Size(597, 261)
         Me.Controls.Add(Me.BtnSalir)
         Me.Controls.Add(Me.BtnEntrar)
         Me.Controls.Add(Me.TxtContrasena)
         Me.Controls.Add(Me.LblContrasena)
         Me.Controls.Add(Me.TxtUsuario)
         Me.Controls.Add(Me.LblUsuario)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Usuario y Contraseña"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -130,5 +135,5 @@ Partial Class Form1
     Friend WithEvents LblContrasena As Label
     Friend WithEvents TxtUsuario As TextBox
     Friend WithEvents LblUsuario As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox As PictureBox
 End Class
