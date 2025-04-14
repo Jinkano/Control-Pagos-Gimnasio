@@ -55,6 +55,10 @@ Public Class FrmClientesPagos
         'COMPROBAR BUSCAR UN CLIENTE POR NOMBRE
         If SlblTitulo.Text = "Buscar Cliente" Then
 
+            'COMPROBAR EL TIPO DE CARACTERES PARA EVITAR ERRORES AL BUSCAR
+            If TxtNomCli.Text.Contains("'") Or TxtNomCli.Text.Contains("º") Or TxtNomCli.Text.Contains("ª") Or TxtNomCli.Text.Contains("ç") Or TxtNomCli.Text.Contains("Ç") Or
+               TxtNomCli.Text.Contains("%") Or TxtNomCli.Text.Contains("_") Then DgvListaClientes.Rows.Clear() : SlblDescrip.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
+
             If RbSiCli.Checked Then 'HACEMOS LA CONSULTA A LA BBDD
                 sqlConsulta = "SELECT * FROM clientes WHERE nom_cli LIKE '" & TxtNomCli.Text & "%' AND std_cli = 'SI' ORDER BY nom_cli"
             Else
@@ -96,6 +100,10 @@ Public Class FrmClientesPagos
 
         'COMPROBAR BUSCAR UN CLIENTE POR APELLIDO
         If SlblTitulo.Text = "Buscar Cliente" Then
+
+            'COMPROBAR EL TIPO DE CARACTERES PARA EVITAR ERRORES AL BUSCAR
+            If TxtApeCli.Text.Contains("'") Or TxtApeCli.Text.Contains("º") Or TxtApeCli.Text.Contains("ª") Or TxtApeCli.Text.Contains("ç") Or TxtApeCli.Text.Contains("Ç") Or
+               TxtApeCli.Text.Contains("%") Or TxtApeCli.Text.Contains("_") Then DgvListaClientes.Rows.Clear() : SlblDescrip.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
 
             If RbSiCli.Checked Then 'HACEMOS LA CONSULTA A LA BBDD
                 sqlConsulta = "SELECT * FROM clientes WHERE ape_cli LIKE '" & TxtApeCli.Text & "%' AND std_cli = 'SI' ORDER BY ape_cli"
@@ -451,8 +459,6 @@ Public Class FrmClientesPagos
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
-            'Dim precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
-            'Dim descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
             Dim precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
             Dim descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
             drDataReader.Close()
@@ -481,15 +487,15 @@ Public Class FrmClientesPagos
             MsgBox(ex.ToString)
         End Try
 
+        'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
+        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
+        DgvLlenarPagos(sqlConsulta, DgvListaPagos)
+
         BtnGuardaActualCancelCambia() 'ACTIVAR Y DESACTIVAR BOTONES
 
         TxtDesactivar() 'DESACTIVAR CUADROS DE TEXTO
 
         BtnNuevo.Focus() 'ENVIAMOS EL ENFOQUE AL BOTON NUEVO
-
-        'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
-        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
-        DgvLlenarPagos(sqlConsulta, DgvListaPagos)
     End Sub
 
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click

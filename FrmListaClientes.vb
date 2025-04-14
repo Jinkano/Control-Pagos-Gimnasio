@@ -290,52 +290,45 @@ Public Class FrmListaClientes
     End Sub
 
     Private Sub TxtBuscarCliente_TextChanged(sender As Object, e As EventArgs) Handles TxtBuscarCliente.TextChanged
-        '
-        If TxtBuscarCliente.Text.Contains("'") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        If TxtBuscarCliente.Text.Contains("º") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        If TxtBuscarCliente.Text.Contains("ª") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        If TxtBuscarCliente.Text.Contains("ç") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        If TxtBuscarCliente.Text.Contains("Ç") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        If TxtBuscarCliente.Text.Contains("%") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        If TxtBuscarCliente.Text.Contains("_") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
-        '
+
+        'COMPROBAR EL TIPO DE CARACTERES PARA EVITAR ERRORES AL BUSCAR
+        If TxtBuscarCliente.Text.Contains("'") Or TxtBuscarCliente.Text.Contains("º") Or TxtBuscarCliente.Text.Contains("ª") Or TxtBuscarCliente.Text.Contains("ç") Or TxtBuscarCliente.Text.Contains("Ç") Or
+           TxtBuscarCliente.Text.Contains("%") Or TxtBuscarCliente.Text.Contains("_") Then DgvListaClientes.Rows.Clear() : SlblMensaje.Text = " 0 - Registro(s) que coincide(n) con su búsqueda." : Exit Sub
+
+        'HACER LA CONSULTA SEGÚN EL CRITERIO DE BUSQUEDA
         Select Case CmbBuscar.Text
-                '
             Case "Nombre"
-                '
                 If RbActivo.Checked Then
                     sqlConsulta = "SELECT * FROM clientes WHERE nom_cli LIKE '" & TxtBuscarCliente.Text & "%' AND std_cli = 'SI' ORDER BY nom_cli"
                 Else
                     sqlConsulta = "SELECT * FROM clientes WHERE nom_cli LIKE '" & TxtBuscarCliente.Text & "%' AND std_cli = 'NO' ORDER BY nom_cli"
                 End If
-                    '
+
             Case "Apellido"
-                '
                 If RbActivo.Checked Then
                     sqlConsulta = "SELECT * FROM clientes WHERE ape_cli LIKE '" & TxtBuscarCliente.Text & "%' AND std_cli = 'SI' ORDER BY ape_cli"
                 Else
                     sqlConsulta = "SELECT * FROM clientes WHERE ape_cli LIKE '" & TxtBuscarCliente.Text & "%' AND std_cli = 'NO' ORDER BY ape_cli"
                 End If
-                '
+
             Case "Teléfono"
-                '
                 If RbActivo.Checked Then
                     sqlConsulta = "SELECT * FROM clientes WHERE tlf_cli LIKE '" & TxtBuscarCliente.Text & "%' AND std_cli = 'SI' ORDER BY tlf_cli"
                 Else
                     sqlConsulta = "SELECT * FROM clientes WHERE tlf_cli LIKE '" & TxtBuscarCliente.Text & "%' AND std_cli = 'NO' ORDER BY tlf_cli"
                 End If
         End Select
-        '
+
+        'LLAMAMOS A LA FUNCIÓN ListaClientes Y LE PASAMOS LA CONSULTA
         ListaClientes(sqlConsulta, CmbBuscar.Text, DgvListaClientes)
-        '
+
+        'HACER COMPROBACIONES PARA MOSTRAR TEXTO EN EL STATUSBAR
         If TxtBuscarCliente.Text = "" Then
             SlblTitulo.Text = "Nº de Registros"
             SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Cliente(s) registrado(s) en la Base de Datos"
-            '
         Else
             SlblTitulo.Text = "Buscar Cliente"
             SlblMensaje.Text = " " & DgvListaClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
-            '
         End If
     End Sub
 

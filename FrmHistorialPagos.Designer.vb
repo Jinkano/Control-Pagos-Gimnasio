@@ -70,18 +70,18 @@ Partial Class FrmHistorialPagos
         Me.GroupBox.Controls.Add(Me.TxtInscripcion)
         Me.GroupBox.Controls.Add(Me.LblEstado)
         Me.GroupBox.Controls.Add(Me.LblEdad)
-        Me.GroupBox.Location = New System.Drawing.Point(22, 12)
+        Me.GroupBox.Location = New System.Drawing.Point(24, 12)
         Me.GroupBox.Name = "GroupBox"
-        Me.GroupBox.Size = New System.Drawing.Size(986, 104)
+        Me.GroupBox.Size = New System.Drawing.Size(726, 104)
         Me.GroupBox.TabIndex = 0
         Me.GroupBox.TabStop = False
         '
         'TxtCliente
         '
         Me.TxtCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtCliente.Location = New System.Drawing.Point(0, 24)
+        Me.TxtCliente.Location = New System.Drawing.Point(6, 16)
         Me.TxtCliente.Name = "TxtCliente"
-        Me.TxtCliente.Size = New System.Drawing.Size(986, 23)
+        Me.TxtCliente.Size = New System.Drawing.Size(714, 23)
         Me.TxtCliente.TabIndex = 7
         Me.TxtCliente.Text = "NOMBRE COMPLETO DEL CLIENTE"
         Me.TxtCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -92,7 +92,7 @@ Partial Class FrmHistorialPagos
         Me.TxtEdad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtEdad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtEdad.ForeColor = System.Drawing.Color.Blue
-        Me.TxtEdad.Location = New System.Drawing.Point(744, 64)
+        Me.TxtEdad.Location = New System.Drawing.Point(611, 58)
         Me.TxtEdad.Name = "TxtEdad"
         Me.TxtEdad.Size = New System.Drawing.Size(96, 22)
         Me.TxtEdad.TabIndex = 3
@@ -102,7 +102,7 @@ Partial Class FrmHistorialPagos
         '
         Me.LblInscripcion.AutoSize = True
         Me.LblInscripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblInscripcion.Location = New System.Drawing.Point(128, 64)
+        Me.LblInscripcion.Location = New System.Drawing.Point(18, 61)
         Me.LblInscripcion.Name = "LblInscripcion"
         Me.LblInscripcion.Size = New System.Drawing.Size(151, 16)
         Me.LblInscripcion.TabIndex = 4
@@ -115,7 +115,7 @@ Partial Class FrmHistorialPagos
         Me.TxtEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtEstado.ForeColor = System.Drawing.Color.Blue
-        Me.TxtEstado.Location = New System.Drawing.Point(552, 64)
+        Me.TxtEstado.Location = New System.Drawing.Point(431, 58)
         Me.TxtEstado.Name = "TxtEstado"
         Me.TxtEstado.Size = New System.Drawing.Size(112, 22)
         Me.TxtEstado.TabIndex = 2
@@ -127,7 +127,7 @@ Partial Class FrmHistorialPagos
         Me.TxtInscripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtInscripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtInscripcion.ForeColor = System.Drawing.Color.Blue
-        Me.TxtInscripcion.Location = New System.Drawing.Point(288, 64)
+        Me.TxtInscripcion.Location = New System.Drawing.Point(175, 58)
         Me.TxtInscripcion.Name = "TxtInscripcion"
         Me.TxtInscripcion.Size = New System.Drawing.Size(176, 22)
         Me.TxtInscripcion.TabIndex = 1
@@ -137,7 +137,7 @@ Partial Class FrmHistorialPagos
         '
         Me.LblEstado.AutoSize = True
         Me.LblEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEstado.Location = New System.Drawing.Point(488, 64)
+        Me.LblEstado.Location = New System.Drawing.Point(369, 61)
         Me.LblEstado.Name = "LblEstado"
         Me.LblEstado.Size = New System.Drawing.Size(56, 16)
         Me.LblEstado.TabIndex = 5
@@ -147,7 +147,7 @@ Partial Class FrmHistorialPagos
         '
         Me.LblEdad.AutoSize = True
         Me.LblEdad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEdad.Location = New System.Drawing.Point(688, 64)
+        Me.LblEdad.Location = New System.Drawing.Point(561, 61)
         Me.LblEdad.Name = "LblEdad"
         Me.LblEdad.Size = New System.Drawing.Size(44, 16)
         Me.LblEdad.TabIndex = 6
@@ -181,7 +181,7 @@ Partial Class FrmHistorialPagos
         DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DgvListaPagos.DefaultCellStyle = DataGridViewCellStyle12
-        Me.DgvListaPagos.Location = New System.Drawing.Point(22, 132)
+        Me.DgvListaPagos.Location = New System.Drawing.Point(24, 122)
         Me.DgvListaPagos.MultiSelect = False
         Me.DgvListaPagos.Name = "DgvListaPagos"
         Me.DgvListaPagos.ReadOnly = True
@@ -193,7 +193,7 @@ Partial Class FrmHistorialPagos
         Me.DgvListaPagos.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvListaPagos.RowTemplate.Height = 27
         Me.DgvListaPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DgvListaPagos.Size = New System.Drawing.Size(986, 360)
+        Me.DgvListaPagos.Size = New System.Drawing.Size(1085, 360)
         Me.DgvListaPagos.TabIndex = 3
         '
         'BtnNuevoPago
@@ -206,10 +206,10 @@ Partial Class FrmHistorialPagos
         Me.BtnNuevoPago.ForeColor = System.Drawing.Color.DarkGreen
         Me.BtnNuevoPago.Image = Global.ControlPagosGimnasio.My.Resources.Resources.nuevo_pago_28x32
         Me.BtnNuevoPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnNuevoPago.Location = New System.Drawing.Point(198, 509)
+        Me.BtnNuevoPago.Location = New System.Drawing.Point(939, 70)
         Me.BtnNuevoPago.Name = "BtnNuevoPago"
         Me.BtnNuevoPago.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BtnNuevoPago.Size = New System.Drawing.Size(160, 48)
+        Me.BtnNuevoPago.Size = New System.Drawing.Size(170, 44)
         Me.BtnNuevoPago.TabIndex = 1
         Me.BtnNuevoPago.Text = "N&uevo pago"
         Me.BtnNuevoPago.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -225,10 +225,10 @@ Partial Class FrmHistorialPagos
         Me.BtnPagarMes.ForeColor = System.Drawing.Color.DarkGreen
         Me.BtnPagarMes.Image = Global.ControlPagosGimnasio.My.Resources.Resources.pagar_mes_28x32
         Me.BtnPagarMes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnPagarMes.Location = New System.Drawing.Point(22, 509)
+        Me.BtnPagarMes.Location = New System.Drawing.Point(756, 70)
         Me.BtnPagarMes.Name = "BtnPagarMes"
-        Me.BtnPagarMes.Padding = New System.Windows.Forms.Padding(14, 0, 12, 0)
-        Me.BtnPagarMes.Size = New System.Drawing.Size(160, 48)
+        Me.BtnPagarMes.Padding = New System.Windows.Forms.Padding(12, 0, 14, 0)
+        Me.BtnPagarMes.Size = New System.Drawing.Size(170, 44)
         Me.BtnPagarMes.TabIndex = 0
         Me.BtnPagarMes.Text = "&Pagar mes"
         Me.BtnPagarMes.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -246,10 +246,10 @@ Partial Class FrmHistorialPagos
         Me.BtnCerrar.ForeColor = System.Drawing.Color.Brown
         Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtnCerrar.Location = New System.Drawing.Point(828, 509)
+        Me.BtnCerrar.Location = New System.Drawing.Point(929, 488)
         Me.BtnCerrar.Name = "BtnCerrar"
-        Me.BtnCerrar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BtnCerrar.Size = New System.Drawing.Size(180, 48)
+        Me.BtnCerrar.Padding = New System.Windows.Forms.Padding(2, 0, 10, 0)
+        Me.BtnCerrar.Size = New System.Drawing.Size(180, 44)
         Me.BtnCerrar.TabIndex = 2
         Me.BtnCerrar.Text = "  &Cerrar ventama"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -377,7 +377,7 @@ Partial Class FrmHistorialPagos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1032, 578)
+        Me.ClientSize = New System.Drawing.Size(1134, 551)
         Me.Controls.Add(Me.BtnNuevoPago)
         Me.Controls.Add(Me.GroupBox)
         Me.Controls.Add(Me.BtnPagarMes)
