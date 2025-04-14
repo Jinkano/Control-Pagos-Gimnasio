@@ -7,6 +7,7 @@ Public Class FrmPrincipal
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta As String
+    Public nomUser As String
 
     Private Sub FrmPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
@@ -87,8 +88,9 @@ Public Class FrmPrincipal
                     For Each iFe As DataRow In dtInsertPago.Rows
                         Dim precio = Replace(iFe("Precio"), ",", ".")
                         Dim descto = Replace(iFe("Descto"), ",", ".")
-                        sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli) VALUES
-                                 ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '', '" & precio & "', '" & descto & "', '" & iFe("IdCli") & "')"
+                        sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
+                                      VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '',
+                                      '" & precio & "', '" & descto & "', '" & iFe("IdCli") & "','')"
                         cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                         drDataReader = cmdCommand.ExecuteReader()
                         drDataReader.Close()
@@ -122,6 +124,8 @@ Public Class FrmPrincipal
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+
+        Me.Text = Me.Text & nomUser 'AGREGAR NOMBRE DE USUARIO A LA BARRA DE TITULO
     End Sub
 
     Private Sub BtnListaClientes_Click(sender As Object, e As EventArgs) Handles BtnListaClientes.Click

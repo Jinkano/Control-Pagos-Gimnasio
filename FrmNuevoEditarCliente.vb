@@ -67,8 +67,9 @@ Public Class FrmNuevoEditarCliente
             drDataReader.Close()
 
             'AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
-            sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli) VALUES 
-                          ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '', '" & precio & "', '" & descto & "', '" & strIdCli & "')"
+            sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
+                          VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '',
+                          '" & precio & "', '" & descto & "', '" & strIdCli & "', '')"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
             drDataReader.Close()

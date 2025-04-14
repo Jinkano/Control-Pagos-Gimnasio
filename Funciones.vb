@@ -211,6 +211,7 @@ Module Funciones
                     Else
                         DgvListaPagos.Rows(nRow).Cells(7).Value = FechaLarga(drDataReader.GetDateTime(2).ToShortDateString) 'FECHA DE PAGO
                         DgvListaPagos.Rows(nRow).Cells(8).Value = drDataReader.GetString(3).ToString 'FORMA DE PAGO
+                        DgvListaPagos.Rows(nRow).Cells(9).Value = drDataReader.GetString(7).ToString 'USUARIO
                     End If
                 End While
             End If

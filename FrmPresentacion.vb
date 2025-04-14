@@ -19,7 +19,7 @@
 
         Me.Close() 'CERRA EL FORMULARIO
 
-        Form1.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
+        FrmPrincipal.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
 
     End Sub
 End Class

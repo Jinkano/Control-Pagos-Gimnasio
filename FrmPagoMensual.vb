@@ -5,13 +5,16 @@ Public Class FrmPagoMensual
     Dim cnxnMySql As New MySqlConnection
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
-    Dim sqlConsulta As String
+    Dim sqlConsulta, nomUser As String
     Dim precio, dscto, total, prcDia As Decimal
+    'Public nomUser As String
     Public Shared psIdCli, psIdPgs As String
 
     Private Sub FrmPagoMensual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         CmbFdp.SelectedIndex = 0 'SELECCIONA LA PRIMA OPCIÓN DEL COMBOBOX
+
+        nomUser = FrmPrincipal.nomUser
     End Sub
 
     Private Sub BtnPagar_Click(sender As Object, e As EventArgs) Handles BtnPagar.Click
@@ -21,13 +24,14 @@ Public Class FrmPagoMensual
             cnxnMySql.Open()
 
             If Me.Text = "Nuevo pago mensual" Then
-                sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli) VALUES 
-                              ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "',
-                              '" & CmbFdp.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "', '" & psIdCli & "')"
+                sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
+                              VALUES ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "',
+                              '" & CmbFdp.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "',
+                              '" & psIdCli & "', '" & nomUser & "')"
             Else
                 sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
-                              frm_pgs='" & CmbFdp.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "' 
-                              WHERE id_pgs='" & psIdPgs & "'"
+                              frm_pgs='" & CmbFdp.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "',
+                              usuario ='" & nomUser & "' WHERE id_pgs='" & psIdPgs & "'"
             End If
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader

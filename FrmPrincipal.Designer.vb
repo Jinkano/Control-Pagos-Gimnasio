@@ -132,7 +132,7 @@ Partial Class FrmPrincipal
         Me.MinimumSize = New System.Drawing.Size(1200, 500)
         Me.Name = "FrmPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Segundos Fuera"
+        Me.Text = "Gimnasio Segundos Fuera   -   USUARIO : :  "
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.PnlBotonera.ResumeLayout(False)
         Me.ResumeLayout(False)

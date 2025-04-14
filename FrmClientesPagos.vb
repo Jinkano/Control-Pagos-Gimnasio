@@ -458,8 +458,9 @@ Public Class FrmClientesPagos
             drDataReader.Close()
             '
             'AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
-            sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli) VALUES 
-                          ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '', '" & precio & "', '" & descto & "', '" & idClient & "')"
+            sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
+                          VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '',
+                          '" & precio & "', '" & descto & "', '" & idClient & "', '')"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
             drDataReader.Close()
@@ -572,6 +573,7 @@ Public Class FrmClientesPagos
             FrmPagoMensual.DtpFdi.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
             FrmPagoMensual.TxtPrecio.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
             FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
+            'FrmPagoMensual.nomUser = FrmPrincipal.nomUser 'USUARIO
             FrmPagoMensual.Show()
         Else
             MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
@@ -609,6 +611,7 @@ Public Class FrmClientesPagos
         FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrecio.Text = precio & " €"
         FrmPagoMensual.TxtDscto.Text = descto & " €"
+        'FrmPagoMensual.nomUser = FrmPrincipal.nomUser 'USUARIO
         FrmPagoMensual.Show()
     End Sub
 

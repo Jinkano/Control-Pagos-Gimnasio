@@ -24,8 +24,8 @@ Partial Class FrmHistorialPagos
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -34,6 +34,7 @@ Partial Class FrmHistorialPagos
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox = New System.Windows.Forms.GroupBox()
         Me.TxtCliente = New System.Windows.Forms.Label()
         Me.TxtEdad = New System.Windows.Forms.Label()
@@ -55,6 +56,7 @@ Partial Class FrmHistorialPagos
         Me.colApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFdpPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFrmPgs = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colUsuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox.SuspendLayout()
         CType(Me.DgvListaPagos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -170,24 +172,24 @@ Partial Class FrmHistorialPagos
         Me.DgvListaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DgvListaPagos.ColumnHeadersHeight = 35
         Me.DgvListaPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DgvListaPagos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idPagos, Me.colFdiPgs, Me.colPrcPgs, Me.colDescuento, Me.colTotal, Me.colNdias, Me.colApagar, Me.colFdpPgs, Me.colFrmPgs})
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaPagos.DefaultCellStyle = DataGridViewCellStyle11
+        Me.DgvListaPagos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idPagos, Me.colFdiPgs, Me.colPrcPgs, Me.colDescuento, Me.colTotal, Me.colNdias, Me.colApagar, Me.colFdpPgs, Me.colFrmPgs, Me.colUsuario})
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaPagos.DefaultCellStyle = DataGridViewCellStyle12
         Me.DgvListaPagos.Location = New System.Drawing.Point(22, 132)
         Me.DgvListaPagos.MultiSelect = False
         Me.DgvListaPagos.Name = "DgvListaPagos"
         Me.DgvListaPagos.ReadOnly = True
         Me.DgvListaPagos.RowHeadersWidth = 35
         Me.DgvListaPagos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvListaPagos.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvListaPagos.RowsDefaultCellStyle = DataGridViewCellStyle13
         Me.DgvListaPagos.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvListaPagos.RowTemplate.Height = 27
         Me.DgvListaPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
@@ -360,6 +362,17 @@ Partial Class FrmHistorialPagos
         Me.colFrmPgs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.colFrmPgs.Width = 140
         '
+        'colUsuario
+        '
+        Me.colUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colUsuario.DefaultCellStyle = DataGridViewCellStyle11
+        Me.colUsuario.HeaderText = "USUARIO"
+        Me.colUsuario.Name = "colUsuario"
+        Me.colUsuario.ReadOnly = True
+        Me.colUsuario.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colUsuario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
         'FrmHistorialPagos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -404,4 +417,5 @@ Partial Class FrmHistorialPagos
     Friend WithEvents colApagar As DataGridViewTextBoxColumn
     Friend WithEvents colFdpPgs As DataGridViewTextBoxColumn
     Friend WithEvents colFrmPgs As DataGridViewTextBoxColumn
+    Friend WithEvents colUsuario As DataGridViewTextBoxColumn
 End Class
