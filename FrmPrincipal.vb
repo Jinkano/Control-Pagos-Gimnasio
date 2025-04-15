@@ -12,11 +12,15 @@ Public Class FrmPrincipal
     Private Sub FrmPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
         'COMPRUEBA SI EL FORMULARIO DE ESTÁ CERRANDO
-        If MsgBox("¿Está seguro que desea CERRAR la aplicación?", vbQuestion + vbYesNo, "Segundos Fuera") = vbNo Then
-            e.Cancel = True
-        Else
-            End
-        End If
+        Try
+            If MsgBox("¿Está seguro que desea CERRAR la aplicación?", vbQuestion + vbYesNo, "Segundos Fuera") = vbNo Then
+                e.Cancel = True
+            Else
+                End
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -39,7 +43,7 @@ Public Class FrmPrincipal
                 Dim strDia As String = DateTime.Now.Day
 
                 'COMPROBAMOS SI ES EL PRIMER DÍA DEL MES
-                If strDia = 1 Then
+                If strDia = 15 Then
                     'HACEMOS LA CONSULTA PARA OBTENER LOS ID Y LA FECHA DE NACIEMIENTO DE LOS CLIENTES ACTIVOS
                     sqlConsulta = "SELECT id_cli, fdn_cli FROM clientes WHERE std_cli = 'SI'"
                     cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
@@ -78,33 +82,21 @@ Public Class FrmPrincipal
                         sqlConsulta = "SELECT precio, dscto FROM tarifas WHERE e_min <= '" & iFe("Descto") & "' AND e_max >= '" & iFe("Descto") & "'"
                         cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                         drDataReader = cmdCommand.ExecuteReader
-                        drDataReader.Read()
-                        iFe("Precio") = drDataReader.GetDecimal(0).ToString
-                        iFe("Descto") = drDataReader.GetDecimal(1).ToString
-                        drDataReader.Close()
-                        ''---''
-                        'VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
-                        Dim precio, descto As Decimal
-                        'SELECCIONAMOS EL DESCUENTO CORRESPONDIENTE POR LA EDAD
-                        sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & TxtEdaCli.Text & "' AND e_max >= '" & TxtEdaCli.Text & "'"
-                        cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-                        drDataReader = cmdCommand.ExecuteReader
-                        'COMPROBAMOS SI HAY REGISTROS
+                        'COMPROBAMOS SI HAY O NO DESCUENTOS
                         If drDataReader.HasRows Then
                             drDataReader.Read()
-                            precio = drDataReader.GetDecimal(1)
-                            descto = drDataReader.GetDecimal(4)
+                            iFe("Precio") = drDataReader.GetDecimal(0)
+                            iFe("Descto") = drDataReader.GetDecimal(1)
                         Else
                             drDataReader.Close()
                             sqlConsulta = "SELECT precio FROM tarifas WHERE id_tarifa = 1"
                             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                             drDataReader = cmdCommand.ExecuteReader
                             drDataReader.Read()
-                            precio = drDataReader.GetDecimal(0)
-                            descto = 0
+                            iFe("Precio") = drDataReader.GetDecimal(0)
+                            iFe("Descto") = 0
                         End If
                         drDataReader.Close()
-                        ''---''
                     Next
 
                     'AGREGAMOS LOS NUEVOS REGISTROS EN LA TABLA PAGOS

@@ -603,9 +603,10 @@ Public Class FrmClientesPagos
     End Sub
 
     Private Sub BtnNuevoPago_Click(sender As Object, e As EventArgs) Handles BtnNuevoPago.Click
-
+        Select Case* From pagos Where Month(fdi_pgs) = 4 And Year(fdi_pgs) = 2025
+            DELETE From pagos Where Month(fdi_pgs) = 4 And Year(fdi_pgs) = 2025
         'VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
-        Dim precio, descto As Decimal
+            Dim precio, descto As Decimal
         Try
             'CONECTAR Y ABRIR LA BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
