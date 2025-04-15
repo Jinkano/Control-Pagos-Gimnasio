@@ -57,19 +57,32 @@ Public Class FrmNuevoEditarCliente
             strIdCli = drDataReader.GetInt16(0).ToString
             drDataReader.Close()
 
-            'SELECCIONAMOS EL DESCUENTO CORRESPONDIENTE POR LA EDAD
+            'VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
+            Dim precio, descto As Decimal
+            'SELECCIONAMOS EL DESCUENTO CORRESPONDIENTE A LA EDAD
             sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & TxtEdad.Text & "' AND e_max >= '" & TxtEdad.Text & "'"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
-            drDataReader.Read()
-            Dim precio = Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
-            Dim descto = Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
+            'COMPROBAMOS SI HAY REGISTROS
+            If drDataReader.HasRows Then
+                drDataReader.Read()
+                precio = drDataReader.GetDecimal(1) 'Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
+                descto = drDataReader.GetDecimal(4) 'Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
+            Else
+                drDataReader.Close()
+                sqlConsulta = "SELECT precio FROM tarifas WHERE id_tarifa = 1"
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+                drDataReader.Read()
+                precio = drDataReader.GetDecimal(0) 'Replace(drDataReader.GetDecimal(0).ToString, ",", ".")
+                descto = 0
+            End If
             drDataReader.Close()
 
             'AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
             sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
                           VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '',
-                          '" & precio & "', '" & descto & "', '" & strIdCli & "', '')"
+                          '" & Replace(precio, ",", ".") & "', '" & Replace(descto, ",", ".") & "', '" & strIdCli & "', '')"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
             drDataReader.Close()

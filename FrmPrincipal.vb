@@ -82,6 +82,29 @@ Public Class FrmPrincipal
                         iFe("Precio") = drDataReader.GetDecimal(0).ToString
                         iFe("Descto") = drDataReader.GetDecimal(1).ToString
                         drDataReader.Close()
+                        ''---''
+                        'VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
+                        Dim precio, descto As Decimal
+                        'SELECCIONAMOS EL DESCUENTO CORRESPONDIENTE POR LA EDAD
+                        sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & TxtEdaCli.Text & "' AND e_max >= '" & TxtEdaCli.Text & "'"
+                        cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                        drDataReader = cmdCommand.ExecuteReader
+                        'COMPROBAMOS SI HAY REGISTROS
+                        If drDataReader.HasRows Then
+                            drDataReader.Read()
+                            precio = drDataReader.GetDecimal(1)
+                            descto = drDataReader.GetDecimal(4)
+                        Else
+                            drDataReader.Close()
+                            sqlConsulta = "SELECT precio FROM tarifas WHERE id_tarifa = 1"
+                            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                            drDataReader = cmdCommand.ExecuteReader
+                            drDataReader.Read()
+                            precio = drDataReader.GetDecimal(0)
+                            descto = 0
+                        End If
+                        drDataReader.Close()
+                        ''---''
                     Next
 
                     'AGREGAMOS LOS NUEVOS REGISTROS EN LA TABLA PAGOS

@@ -24,11 +24,11 @@ Partial Class FrmPrincipal
     Private Sub InitializeComponent()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnClientesPagos = New System.Windows.Forms.Button()
-        Me.BtnSalir = New System.Windows.Forms.Button()
         Me.Panel = New System.Windows.Forms.Panel()
         Me.BtnPrecioDsctos = New System.Windows.Forms.Button()
         Me.BtnPagoPendiente = New System.Windows.Forms.Button()
         Me.BtnListaClientes = New System.Windows.Forms.Button()
+        Me.BtnSalir = New System.Windows.Forms.Button()
         Me.PnlBotonera.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,25 +58,6 @@ Partial Class FrmPrincipal
         Me.BtnClientesPagos.Text = "Clientes JUNTO"
         Me.BtnClientesPagos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnClientesPagos.UseVisualStyleBackColor = True
-        '
-        'BtnSalir
-        '
-        Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnSalir.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
-        Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnSalir.Location = New System.Drawing.Point(0, 461)
-        Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(186, 74)
-        Me.BtnSalir.TabIndex = 3
-        Me.BtnSalir.Text = "CERRAR &APP"
-        Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnSalir.UseVisualStyleBackColor = False
         '
         'Panel
         '
@@ -121,6 +102,26 @@ Partial Class FrmPrincipal
         Me.BtnListaClientes.Text = "Clientes SEPARADO"
         Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnListaClientes.UseVisualStyleBackColor = True
+        '
+        'BtnSalir
+        '
+        Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
+        Me.BtnSalir.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir_34x31
+        Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnSalir.Location = New System.Drawing.Point(0, 461)
+        Me.BtnSalir.Name = "BtnSalir"
+        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 5, 0, 2)
+        Me.BtnSalir.Size = New System.Drawing.Size(186, 74)
+        Me.BtnSalir.TabIndex = 3
+        Me.BtnSalir.Text = "CERRAR &APP"
+        Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnSalir.UseVisualStyleBackColor = False
         '
         'FrmPrincipal
         '

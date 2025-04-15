@@ -40,7 +40,7 @@ Public Class FrmTablaDescuento
         If DgvTarifas.RowCount = 0 Then
             sqlConsulta = "INSERT INTO tarifas (precio, e_min, e_max, dscto) VALUES ('" & Replace(precio, ",", ".") & "', 0, 0, 0)"
         Else
-            sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "' WHERE id_tarifa=1" '" & idTarifa & "'"
+            sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "' WHERE id_tarifa = 1"
         End If
         Consultas(sqlConsulta)
 

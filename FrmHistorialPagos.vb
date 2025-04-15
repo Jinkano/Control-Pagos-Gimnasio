@@ -63,14 +63,27 @@ Public Class FrmHistorialPagos
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
+            'SELECCIONAMOS EL DESCUENTO CORRESPONDIENTE A LA EDAD
             sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & TxtEdad.Text & "' AND e_max >= '" & TxtEdad.Text & "'"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
-            drDataReader.Read()
 
-            precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
-            descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
+            'COMPROBAMOS SI HAY REGISTROS
+            If drDataReader.HasRows Then
+                drDataReader.Read()
+                precio = Replace(drDataReader.GetDecimal(1).ToString, ".", ",")
+                descto = Replace(drDataReader.GetDecimal(4).ToString, ".", ",")
+            Else
+                drDataReader.Close()
+                sqlConsulta = "SELECT precio FROM tarifas WHERE id_tarifa = 1"
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+                drDataReader.Read()
+                precio = Replace(drDataReader.GetDecimal(0).ToString, ".", ",")
+                descto = 0
+            End If
 
+            'CERRAR EL DATAREADER Y LA BBDD
             drDataReader.Close()
             cnxnMySql.Close()
 
