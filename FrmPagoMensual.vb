@@ -22,26 +22,42 @@ Public Class FrmPagoMensual
         Try
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-
-            If Me.Text = "Nuevo pago mensual" Then
-                sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
+            ''
+            ''
+            'SELECT From pagos Where Month(fdi_pgs) = 4 And Year(fdi_pgs) = 2025
+            'DELETE From pagos Where Month(fdi_pgs) = 4 And Year(fdi_pgs) = 2025
+            'Dim dia = fechaIni.Day
+            Dim fechaPago As DateTime = DtpFdi.Value
+            Dim mes = fechaPago.Month
+            Dim ano = fechaPago.Year
+            sqlConsulta = "SELECT * FROM pagos WHERE MONTH(fdi_pgs) = '" & mes & "' AND YEAR(fdi_pgs) = ' " & ano & " ' AND id_cli = '" & psIdCli & "'"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader
+            If drDataReader.HasRows = True Then
+                MsgBox("ya está")
+            Else
+                drDataReader.Close()
+                If Me.Text = "Nuevo pago mensual" Then
+                    sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
                               VALUES ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "',
                               '" & CmbFdp.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "',
                               '" & psIdCli & "', '" & nomUser & "')"
-            Else
-                sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
+                Else
+                    sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
                               frm_pgs='" & CmbFdp.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "',
                               usuario ='" & nomUser & "' WHERE id_pgs='" & psIdPgs & "'"
+                End If
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+
+                'MENSAJE DE CONFIRMACIÓN
+                MsgBox("PAGO realizado con exito", vbInformation, "Pagos")
             End If
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
 
-            'MENSAJE DE CONFIRMACIÓN
-            MsgBox("PAGO realizado con exito", vbInformation, "Pagos")
+            'CERRAMOS EL DATAREADER y LA CONEXIÓN A LA BBDD
+            drDataReader.Close()
+            cnxnMySql.Close()
 
-            drDataReader.Close() 'CERRAMOS EL DATAREADER
-
-            cnxnMySql.Close() ' CERRAMOS LA CONEXIÓN A LA BBDD
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

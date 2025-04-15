@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmpagomensual.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmpagomensual.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmpagomensual.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmpagomensual.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\funciones.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:funciones.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,31 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmClientesPagos.vb",
-              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmClientesPagos.vb",
-              "RelativeDocumentMoniker": "FrmClientesPagos.vb",
-              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmClientesPagos.vb",
-              "RelativeToolTip": "FrmClientesPagos.vb",
-              "ViewState": "AgIAAEQCAAAAAAAAAAA0wF0CAABRAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Funciones.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Funciones.vb",
+              "RelativeDocumentMoniker": "Funciones.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Funciones.vb",
+              "RelativeToolTip": "Funciones.vb",
+              "ViewState": "AgIAADkAAAAAAAAAAAA5wEwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-15T16:41:32.469Z",
+              "WhenOpened": "2025-04-15T18:52:57.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmPagoMensual.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmPagoMensual.vb",
+              "RelativeDocumentMoniker": "FrmPagoMensual.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmPagoMensual.vb",
+              "RelativeToolTip": "FrmPagoMensual.vb",
+              "ViewState": "AgIAABUAAAAAAAAAAAAcwCUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-04-15T18:48:24.682Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FrmClientesPagos.vb [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmClientesPagos.vb",
-              "RelativeDocumentMoniker": "FrmClientesPagos.vb",
-              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmClientesPagos.vb [Dise\u00F1o]",
-              "RelativeToolTip": "FrmClientesPagos.vb [Dise\u00F1o]",
+              "Title": "FrmPagoMensual.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmPagoMensual.vb",
+              "RelativeDocumentMoniker": "FrmPagoMensual.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmPagoMensual.vb [Dise\u00F1o]",
+              "RelativeToolTip": "FrmPagoMensual.vb [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-15T16:41:24.657Z",
+              "WhenOpened": "2025-04-15T18:48:16.526Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]
