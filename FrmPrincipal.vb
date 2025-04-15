@@ -111,7 +111,7 @@ Public Class FrmPrincipal
                 'DESHABILITAR BOTONES
                 BtnListaClientes.Enabled = False
                 BtnClientesPagos.Enabled = False
-                BtnListaMorosos.Enabled = False
+                BtnPagoPendiente.Enabled = False
 
                 'EJECUTA EL FORMULARIO LISTA MOROSOS
                 FrmTablaDescuento.MdiParent = Me
@@ -138,13 +138,13 @@ Public Class FrmPrincipal
         FrmClientesPagos.Show()
     End Sub
 
-    Private Sub BtnListaMorosos_Click(sender As Object, e As EventArgs) Handles BtnListaMorosos.Click
+    Private Sub BtnPagoPendiente_Click(sender As Object, e As EventArgs) Handles BtnPagoPendiente.Click
         'EJECUTA FORMULARIO LISTA MOROSOS
         FrmListaMorosos.MdiParent = Me
         FrmListaMorosos.Show()
     End Sub
 
-    Private Sub BtnTablaDsctos_Click(sender As Object, e As EventArgs) Handles BtnTablaDsctos.Click
+    Private Sub BtnPrecioDsctos_Click(sender As Object, e As EventArgs) Handles BtnPrecioDsctos.Click
         'EJECTA FORMULARIO TABLA DE DESCUENTOS
         FrmTablaDescuento.MdiParent = Me
         FrmTablaDescuento.Show()

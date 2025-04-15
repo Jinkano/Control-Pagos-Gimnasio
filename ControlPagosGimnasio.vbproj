@@ -326,5 +326,17 @@
   <ItemGroup>
     <None Include="img\buscar 28x32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\en_actividad 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\inactivo 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\fijar_precio 34x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\guardar 22x22.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

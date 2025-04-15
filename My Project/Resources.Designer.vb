@@ -213,6 +213,36 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property en_actividad_60x60() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("en_actividad 60x60", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property fijar_precio_34x30() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("fijar_precio 34x30", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property guardar_22x22() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("guardar 22x22", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property guardar_28x32() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("guardar 28x32", resourceCulture)
@@ -236,6 +266,16 @@ Namespace My.Resources
         Friend ReadOnly Property historial_28x32() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("historial 28x32", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property inactivo_60x60() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("inactivo 60x60", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

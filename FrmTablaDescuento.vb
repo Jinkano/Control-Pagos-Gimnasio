@@ -16,6 +16,62 @@ Public Class FrmTablaDescuento
         BtnGuarActuCancElim() 'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
     End Sub
 
+    Private Sub BtnFijarPrecio_Click(sender As Object, e As EventArgs) Handles BtnFijarPrecio.Click
+
+        'ACTIVAR Y DESACTIVAR CONTROLES PARA FIJAR EL PRECIO
+        BtnFijarPrecio.Enabled = False
+        BtnNuevo.Visible = False
+        BtnModificar.Visible = False
+        BtnEliminar.Visible = False
+        GbPrecio.Enabled = True
+        BtnGuardarPrecio.Enabled = True
+        BtnCancelPrecio.Enabled = True
+        DgvTarifas.Enabled = False
+        TxtPrecio.Focus()
+    End Sub
+
+    Private Sub BtnGuardarPrecio_Click(sender As Object, e As EventArgs) Handles BtnGuardarPrecio.Click
+
+        'COMPROBAR SI HAY PRECIO
+        If TxtPrecio.Text = "" Then MsgBox("Ingrese el PRECIO.", vbCritical, "Fijar precio") : TxtPrecio.Focus() : Exit Sub
+        If TxtPrecio.Text = "0 €" Or precio > 100 Then MsgBox("Corrige el PRECIO.", vbCritical, "Fijar precio") : TxtPrecio.Focus() : Exit Sub
+
+        'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION Consultas
+        If DgvTarifas.RowCount = 0 Then
+            sqlConsulta = "INSERT INTO tarifas (precio, e_min, e_max, dscto) VALUES ('" & Replace(precio, ",", ".") & "', 0, 0, 0)"
+        Else
+            sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "' WHERE id_tarifa=1" '" & idTarifa & "'"
+        End If
+        Consultas(sqlConsulta)
+
+        LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
+
+        BtnGuarActuCancElim() 'LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
+
+        MsgBox("Se ha REGISTRADO el precio.", vbInformation, "Guardar Precio") 'MENSAJE DE INFORMACIÓN
+
+        'ACTIVAR Y DESACTIVAR CONTROLES DESPUES FIJAR EL PRECIO
+        GbPrecio.Enabled = False
+        BtnGuardarPrecio.Enabled = False
+        BtnCancelPrecio.Enabled = False
+
+        'HABILITAR BOTONES
+        FrmPrincipal.BtnListaClientes.Enabled = True
+        FrmPrincipal.BtnClientesPagos.Enabled = True
+        FrmPrincipal.BtnPagoPendiente.Enabled = True
+    End Sub
+
+    Private Sub BtnCancelPrecio_Click(sender As Object, e As EventArgs) Handles BtnCancelPrecio.Click
+
+        'ACTIVAR Y DESACTIVAR CONTROLES DESPUES FIJAR EL PRECIO
+        GbPrecio.Enabled = False
+        BtnGuardarPrecio.Enabled = False
+        BtnCancelPrecio.Enabled = False
+
+        BtnGuarActuCancElim()
+        BtnFijarPrecio.Focus()
+    End Sub
+
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
 
         BtnNuevoModificar() 'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
@@ -78,21 +134,11 @@ Public Class FrmTablaDescuento
                 LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
             End If
         End If
-
-        'COMPROBAR SI HAY REGISTROS EN LA TABLA TARIFAS
-        If DgvTarifas.RowCount = 0 Then
-            'DESHABILITAR BOTONES
-            FrmPrincipal.BtnListaClientes.Enabled = False
-            FrmPrincipal.BtnClientesPagos.Enabled = False
-            FrmPrincipal.BtnListaMorosos.Enabled = False
-        End If
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
 
         'COMPROBAR SI HAY INFORMACION EN LOS CUADROS
-        If TxtPrecio.Text = "" Then MsgBox("Ingrese el PRECIO.", vbCritical, "Precios y Descuentos") : TxtPrecio.Focus() : Exit Sub
-        If TxtPrecio.Text = "0 €" Or precio > 100 Then MsgBox("Corrige el PRECIO.", vbCritical, "Precios y Descuentos") : TxtPrecio.Focus() : Exit Sub
         If TxtDscnto.Text = "" Then MsgBox("Ingresa el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
         If dscnto > precio / 2 Then MsgBox("Corrige el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
         If NudEdadMin.Value = 0 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
@@ -113,14 +159,12 @@ Public Class FrmTablaDescuento
         'HABILITAR BOTONES
         FrmPrincipal.BtnListaClientes.Enabled = True
         FrmPrincipal.BtnClientesPagos.Enabled = True
-        FrmPrincipal.BtnListaMorosos.Enabled = True
+        FrmPrincipal.BtnPagoPendiente.Enabled = True
     End Sub
 
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
 
         'COMPROBAR SI HAY INFORMACION EN LOS CUADROS
-        If TxtPrecio.Text = "" Then MsgBox("Ingrese el PRECIO.", vbCritical, "Precios y Descuentos") : TxtPrecio.Focus() : Exit Sub
-        If TxtPrecio.Text = "0 €" Or precio > 100 Then MsgBox("Corrige el PRECIO.", vbCritical, "Precios y Descuentos") : TxtPrecio.Focus() : Exit Sub
         If TxtDscnto.Text = "" Then MsgBox("Ingresa el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
         If dscnto > precio / 2 Then MsgBox("Corrige el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
         If NudEdadMin.Value = 0 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
@@ -128,8 +172,8 @@ Public Class FrmTablaDescuento
         If NudEdadMin.Value >= NudEdadMax.Value Then MsgBox("Verifica el INTERVALO de edades.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
 
         'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION
-        sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "', e_min='" & NudEdadMin.Value & "',
-                        e_max='" & NudEdadMax.Value & "', dscto='" & Replace(dscnto, ",", ".") & "' WHERE id_tarifa='" & idTarifa & "'"
+        sqlConsulta = "UPDATE tarifas SET e_min='" & NudEdadMin.Value & "', e_max='" & NudEdadMax.Value & "',
+                      dscto='" & Replace(dscnto, ",", ".") & "' WHERE id_tarifa='" & idTarifa & "'" 'precio='" & Replace(precio, ",", ".") & "',
         Consultas(sqlConsulta)
 
         LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
@@ -266,11 +310,21 @@ Public Class FrmTablaDescuento
 
     Private Sub DgvTarifas_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvTarifas.CellClick
 
+        'LLENAR INFORMACION
         idTarifa = DgvTarifas.CurrentRow.Cells(0).Value  'LLENAR VARIABLE CON ID TARIFA
         TxtPrecio.Text = DgvTarifas.CurrentRow.Cells(1).Value 'PRECIO
         NudEdadMin.Value = DgvTarifas.CurrentRow.Cells(2).Value 'EDAD MINIMA
         NudEdadMax.Value = DgvTarifas.CurrentRow.Cells(3).Value 'EDAD MAXIMA
         TxtDscnto.Text = DgvTarifas.CurrentRow.Cells(4).Value 'DESCUENTO
+
+        'COMPROBAR SI EL REGISTRO ES EL PRECIO
+        If idTarifa = 1 Then
+            BtnModificar.Visible = False
+            BtnEliminar.Visible = False
+        Else
+            BtnModificar.Visible = True
+            BtnEliminar.Visible = True
+        End If
 
     End Sub
 
@@ -278,42 +332,37 @@ Public Class FrmTablaDescuento
     '----->>>>> PROCEDIMIENTOS <<<<<-----'
     Sub BtnNuevoModificar()
 
+        BtnFijarPrecio.Enabled = False
         BtnNuevo.Visible = False
         BtnModificar.Visible = False
         BtnCancelar.Visible = True
         BtnEliminar.Visible = False
 
-        GbPrecio.Enabled = True
         GbIntervaloEdad.Enabled = True
         GbDscto.Enabled = True
-
         DgvTarifas.Enabled = False
 
-        TxtPrecio.Focus()
+        'T'xtPrecio.Focus()
     End Sub
 
     Sub BtnGuarActuCancElim()
 
+        BtnFijarPrecio.Enabled = True
         BtnNuevo.Visible = True
         BtnGuardar.Visible = False
         BtnActualizar.Visible = False
         BtnModificar.Visible = True
         BtnCancelar.Visible = False
         BtnEliminar.Visible = True
+        DgvTarifas.Enabled = True
 
         If DgvTarifas.RowCount = 0 Then
+            BtnNuevo.Visible = False
             BtnModificar.Visible = False
             BtnEliminar.Visible = False
-
             DgvTarifas.Enabled = False
-        Else
-            BtnModificar.Visible = True
-            BtnEliminar.Visible = True
-
-            DgvTarifas.Enabled = True
         End If
 
-        GbPrecio.Enabled = False
         GbIntervaloEdad.Enabled = False
         GbDscto.Enabled = False
 
@@ -323,7 +372,6 @@ Public Class FrmTablaDescuento
     End Sub
 
     Sub LimpiarCuadros()
-        TxtPrecio.Text = ""
         NudEdadMin.Value = 0
         NudEdadMax.Value = 0
         TxtDscnto.Text = ""
@@ -359,6 +407,7 @@ Public Class FrmTablaDescuento
                     DgvTarifas.Rows(nRow).Cells(3).Value = drDataReader.GetInt16(3).ToString 'EDAD MAXIMA
                     DgvTarifas.Rows(nRow).Cells(4).Value = drDataReader.GetDecimal(4).ToString & " €" 'DESCUENTO
                 End While
+                TxtPrecio.Text = DgvTarifas.CurrentRow.Cells(1).Value
             End If
 
             drDataReader.Close()

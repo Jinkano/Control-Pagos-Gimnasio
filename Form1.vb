@@ -61,7 +61,9 @@ Public Class Form1
     End Sub
 
     Private Sub BtnCerrar_Click_1(sender As Object, e As EventArgs) Handles BtnCerrar.Click
-        End
+        FrmPresentacion.Show()
+        Me.Hide()
+        'End
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click

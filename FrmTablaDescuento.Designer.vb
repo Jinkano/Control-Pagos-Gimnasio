@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmTablaDescuento
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmTablaDescuento
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -28,6 +28,7 @@ Partial Class FrmTablaDescuento
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
+        Me.BtnFijarPrecio = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
@@ -43,6 +44,8 @@ Partial Class FrmTablaDescuento
         Me.LblMax = New System.Windows.Forms.Label()
         Me.LblMin = New System.Windows.Forms.Label()
         Me.GbPrecio = New System.Windows.Forms.GroupBox()
+        Me.BtnGuardarPrecio = New System.Windows.Forms.Button()
+        Me.BtnCancelPrecio = New System.Windows.Forms.Button()
         Me.TxtPrecio = New System.Windows.Forms.TextBox()
         Me.DgvTarifas = New System.Windows.Forms.DataGridView()
         Me.id_tarifa = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,30 +64,46 @@ Partial Class FrmTablaDescuento
         '
         'PnlBotonera
         '
+        Me.PnlBotonera.AutoSize = True
         Me.PnlBotonera.BackColor = System.Drawing.Color.LightGray
         Me.PnlBotonera.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PnlBotonera.Controls.Add(Me.BtnFijarPrecio)
         Me.PnlBotonera.Controls.Add(Me.BtnEliminar)
-        Me.PnlBotonera.Controls.Add(Me.BtnCerrar)
+        Me.PnlBotonera.Controls.Add(Me.BtnCancelar)
+        Me.PnlBotonera.Controls.Add(Me.BtnModificar)
         Me.PnlBotonera.Controls.Add(Me.BtnNuevo)
         Me.PnlBotonera.Controls.Add(Me.BtnGuardar)
         Me.PnlBotonera.Controls.Add(Me.BtnActualizar)
-        Me.PnlBotonera.Controls.Add(Me.BtnModificar)
-        Me.PnlBotonera.Controls.Add(Me.BtnCancelar)
         Me.PnlBotonera.Dock = System.Windows.Forms.DockStyle.Top
         Me.PnlBotonera.Location = New System.Drawing.Point(0, 0)
         Me.PnlBotonera.Name = "PnlBotonera"
-        Me.PnlBotonera.Size = New System.Drawing.Size(701, 76)
+        Me.PnlBotonera.Padding = New System.Windows.Forms.Padding(20, 10, 20, 10)
+        Me.PnlBotonera.Size = New System.Drawing.Size(789, 78)
         Me.PnlBotonera.TabIndex = 0
+        '
+        'BtnFijarPrecio
+        '
+        Me.BtnFijarPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnFijarPrecio.Image = Global.ControlPagosGimnasio.My.Resources.Resources.fijar_precio_34x30
+        Me.BtnFijarPrecio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnFijarPrecio.Location = New System.Drawing.Point(23, 13)
+        Me.BtnFijarPrecio.Name = "BtnFijarPrecio"
+        Me.BtnFijarPrecio.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.BtnFijarPrecio.Size = New System.Drawing.Size(160, 48)
+        Me.BtnFijarPrecio.TabIndex = 0
+        Me.BtnFijarPrecio.Text = "&Fijar precio"
+        Me.BtnFijarPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnFijarPrecio.UseVisualStyleBackColor = True
         '
         'BtnEliminar
         '
         Me.BtnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnEliminar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.eliminar_28x32
         Me.BtnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnEliminar.Location = New System.Drawing.Point(310, 10)
+        Me.BtnEliminar.Location = New System.Drawing.Point(602, 13)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BtnEliminar.Size = New System.Drawing.Size(140, 48)
+        Me.BtnEliminar.Padding = New System.Windows.Forms.Padding(18, 0, 18, 0)
+        Me.BtnEliminar.Size = New System.Drawing.Size(160, 48)
         Me.BtnEliminar.TabIndex = 3
         Me.BtnEliminar.Text = "&Eliminar"
         Me.BtnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -101,12 +120,12 @@ Partial Class FrmTablaDescuento
         Me.BtnCerrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtnCerrar.Location = New System.Drawing.Point(559, 12)
+        Me.BtnCerrar.Location = New System.Drawing.Point(594, 404)
         Me.BtnCerrar.Name = "BtnCerrar"
-        Me.BtnCerrar.Padding = New System.Windows.Forms.Padding(6, 0, 4, 0)
-        Me.BtnCerrar.Size = New System.Drawing.Size(115, 44)
+        Me.BtnCerrar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.BtnCerrar.Size = New System.Drawing.Size(170, 40)
         Me.BtnCerrar.TabIndex = 7
-        Me.BtnCerrar.Text = "&Cerrar"
+        Me.BtnCerrar.Text = "&Cerrar ventana"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCerrar.UseVisualStyleBackColor = False
         '
@@ -115,12 +134,12 @@ Partial Class FrmTablaDescuento
         Me.BtnNuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnNuevo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.nuevo_24x32
         Me.BtnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnNuevo.Location = New System.Drawing.Point(18, 10)
+        Me.BtnNuevo.Location = New System.Drawing.Point(270, 13)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Padding = New System.Windows.Forms.Padding(10, 0, 20, 0)
-        Me.BtnNuevo.Size = New System.Drawing.Size(140, 48)
+        Me.BtnNuevo.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.BtnNuevo.Size = New System.Drawing.Size(160, 48)
         Me.BtnNuevo.TabIndex = 1
-        Me.BtnNuevo.Text = "&Nuevo"
+        Me.BtnNuevo.Text = "&Nuevo dscto."
         Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
@@ -129,38 +148,40 @@ Partial Class FrmTablaDescuento
         Me.BtnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnGuardar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.guardar_28x32
         Me.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnGuardar.Location = New System.Drawing.Point(18, 10)
+        Me.BtnGuardar.Location = New System.Drawing.Point(436, 13)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(10, 0, 14, 0)
-        Me.BtnGuardar.Size = New System.Drawing.Size(140, 48)
+        Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(18, 0, 18, 0)
+        Me.BtnGuardar.Size = New System.Drawing.Size(160, 48)
         Me.BtnGuardar.TabIndex = 4
         Me.BtnGuardar.Text = "&Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnGuardar.UseVisualStyleBackColor = True
+        Me.BtnGuardar.Visible = False
         '
         'BtnActualizar
         '
         Me.BtnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnActualizar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.actualizar_28x32
         Me.BtnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnActualizar.Location = New System.Drawing.Point(18, 10)
+        Me.BtnActualizar.Location = New System.Drawing.Point(436, 13)
         Me.BtnActualizar.Name = "BtnActualizar"
-        Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BtnActualizar.Size = New System.Drawing.Size(140, 48)
+        Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(18, 0, 18, 0)
+        Me.BtnActualizar.Size = New System.Drawing.Size(160, 48)
         Me.BtnActualizar.TabIndex = 5
         Me.BtnActualizar.Text = "&Actualizar"
         Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnActualizar.UseVisualStyleBackColor = True
+        Me.BtnActualizar.Visible = False
         '
         'BtnModificar
         '
         Me.BtnModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnModificar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.editar_28x32
         Me.BtnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnModificar.Location = New System.Drawing.Point(164, 10)
+        Me.BtnModificar.Location = New System.Drawing.Point(436, 13)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Padding = New System.Windows.Forms.Padding(10, 0, 11, 0)
-        Me.BtnModificar.Size = New System.Drawing.Size(140, 48)
+        Me.BtnModificar.Padding = New System.Windows.Forms.Padding(18, 0, 18, 0)
+        Me.BtnModificar.Size = New System.Drawing.Size(160, 48)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "&Modificar"
         Me.BtnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -171,36 +192,37 @@ Partial Class FrmTablaDescuento
         Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCancelar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cancel_28x32
         Me.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnCancelar.Location = New System.Drawing.Point(164, 10)
+        Me.BtnCancelar.Location = New System.Drawing.Point(602, 13)
         Me.BtnCancelar.Name = "BtnCancelar"
-        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BtnCancelar.Size = New System.Drawing.Size(140, 48)
+        Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(18, 0, 18, 0)
+        Me.BtnCancelar.Size = New System.Drawing.Size(160, 48)
         Me.BtnCancelar.TabIndex = 6
         Me.BtnCancelar.Text = "&Cancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCancelar.UseVisualStyleBackColor = True
+        Me.BtnCancelar.Visible = False
         '
         'GbDscto
         '
+        Me.GbDscto.AutoSize = True
         Me.GbDscto.Controls.Add(Me.TxtDscnto)
         Me.GbDscto.Enabled = False
         Me.GbDscto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GbDscto.Location = New System.Drawing.Point(546, 99)
+        Me.GbDscto.Location = New System.Drawing.Point(618, 99)
         Me.GbDscto.Name = "GbDscto"
-        Me.GbDscto.Size = New System.Drawing.Size(130, 72)
-        Me.GbDscto.TabIndex = 3
+        Me.GbDscto.Padding = New System.Windows.Forms.Padding(20, 10, 20, 4)
+        Me.GbDscto.Size = New System.Drawing.Size(146, 76)
+        Me.GbDscto.TabIndex = 2
         Me.GbDscto.TabStop = False
         Me.GbDscto.Text = "Descuento"
         '
         'TxtDscnto
         '
-        Me.TxtDscnto.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtDscnto.BackColor = System.Drawing.SystemColors.Window
         Me.TxtDscnto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtDscnto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtDscnto.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtDscnto.Location = New System.Drawing.Point(15, 32)
+        Me.TxtDscnto.Location = New System.Drawing.Point(23, 28)
         Me.TxtDscnto.MaxLength = 10
         Me.TxtDscnto.Name = "TxtDscnto"
         Me.TxtDscnto.Size = New System.Drawing.Size(100, 26)
@@ -210,16 +232,20 @@ Partial Class FrmTablaDescuento
         '
         'GbIntervaloEdad
         '
+        Me.GbIntervaloEdad.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GbIntervaloEdad.AutoSize = True
         Me.GbIntervaloEdad.Controls.Add(Me.NudEdadMax)
         Me.GbIntervaloEdad.Controls.Add(Me.NudEdadMin)
         Me.GbIntervaloEdad.Controls.Add(Me.LblMax)
         Me.GbIntervaloEdad.Controls.Add(Me.LblMin)
         Me.GbIntervaloEdad.Enabled = False
         Me.GbIntervaloEdad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GbIntervaloEdad.Location = New System.Drawing.Point(174, 99)
+        Me.GbIntervaloEdad.Location = New System.Drawing.Point(252, 100)
         Me.GbIntervaloEdad.Name = "GbIntervaloEdad"
-        Me.GbIntervaloEdad.Size = New System.Drawing.Size(344, 72)
-        Me.GbIntervaloEdad.TabIndex = 2
+        Me.GbIntervaloEdad.Padding = New System.Windows.Forms.Padding(20, 10, 20, 4)
+        Me.GbIntervaloEdad.Size = New System.Drawing.Size(360, 76)
+        Me.GbIntervaloEdad.TabIndex = 1
         Me.GbIntervaloEdad.TabStop = False
         Me.GbIntervaloEdad.Text = "Intervalo de edad"
         '
@@ -227,8 +253,7 @@ Partial Class FrmTablaDescuento
         '
         Me.NudEdadMax.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NudEdadMax.ForeColor = System.Drawing.Color.MediumBlue
-        Me.NudEdadMax.Location = New System.Drawing.Point(245, 31)
-        Me.NudEdadMax.Margin = New System.Windows.Forms.Padding(10)
+        Me.NudEdadMax.Location = New System.Drawing.Point(251, 28)
         Me.NudEdadMax.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NudEdadMax.Name = "NudEdadMax"
         Me.NudEdadMax.Size = New System.Drawing.Size(86, 26)
@@ -239,8 +264,7 @@ Partial Class FrmTablaDescuento
         '
         Me.NudEdadMin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NudEdadMin.ForeColor = System.Drawing.Color.MediumBlue
-        Me.NudEdadMin.Location = New System.Drawing.Point(71, 31)
-        Me.NudEdadMin.Margin = New System.Windows.Forms.Padding(10)
+        Me.NudEdadMin.Location = New System.Drawing.Point(79, 28)
         Me.NudEdadMin.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NudEdadMin.Name = "NudEdadMin"
         Me.NudEdadMin.Size = New System.Drawing.Size(86, 26)
@@ -251,7 +275,7 @@ Partial Class FrmTablaDescuento
         '
         Me.LblMax.AutoSize = True
         Me.LblMax.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblMax.Location = New System.Drawing.Point(184, 36)
+        Me.LblMax.Location = New System.Drawing.Point(191, 33)
         Me.LblMax.Name = "LblMax"
         Me.LblMax.Size = New System.Drawing.Size(54, 16)
         Me.LblMax.TabIndex = 39
@@ -261,7 +285,7 @@ Partial Class FrmTablaDescuento
         '
         Me.LblMin.AutoSize = True
         Me.LblMin.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblMin.Location = New System.Drawing.Point(14, 36)
+        Me.LblMin.Location = New System.Drawing.Point(23, 33)
         Me.LblMin.Name = "LblMin"
         Me.LblMin.Size = New System.Drawing.Size(50, 16)
         Me.LblMin.TabIndex = 38
@@ -269,25 +293,51 @@ Partial Class FrmTablaDescuento
         '
         'GbPrecio
         '
+        Me.GbPrecio.AutoSize = True
+        Me.GbPrecio.Controls.Add(Me.BtnGuardarPrecio)
+        Me.GbPrecio.Controls.Add(Me.BtnCancelPrecio)
         Me.GbPrecio.Controls.Add(Me.TxtPrecio)
         Me.GbPrecio.Enabled = False
         Me.GbPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GbPrecio.Location = New System.Drawing.Point(20, 99)
+        Me.GbPrecio.Location = New System.Drawing.Point(25, 99)
         Me.GbPrecio.Name = "GbPrecio"
-        Me.GbPrecio.Size = New System.Drawing.Size(130, 72)
-        Me.GbPrecio.TabIndex = 1
+        Me.GbPrecio.Padding = New System.Windows.Forms.Padding(20, 10, 20, 4)
+        Me.GbPrecio.Size = New System.Drawing.Size(218, 77)
+        Me.GbPrecio.TabIndex = 4
         Me.GbPrecio.TabStop = False
         Me.GbPrecio.Text = "Precio"
         '
+        'BtnGuardarPrecio
+        '
+        Me.BtnGuardarPrecio.Enabled = False
+        Me.BtnGuardarPrecio.FlatAppearance.BorderSize = 0
+        Me.BtnGuardarPrecio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnGuardarPrecio.Image = Global.ControlPagosGimnasio.My.Resources.Resources.guardar_22x22
+        Me.BtnGuardarPrecio.Location = New System.Drawing.Point(129, 28)
+        Me.BtnGuardarPrecio.Name = "BtnGuardarPrecio"
+        Me.BtnGuardarPrecio.Size = New System.Drawing.Size(26, 26)
+        Me.BtnGuardarPrecio.TabIndex = 1
+        Me.BtnGuardarPrecio.UseVisualStyleBackColor = True
+        '
+        'BtnCancelPrecio
+        '
+        Me.BtnCancelPrecio.Enabled = False
+        Me.BtnCancelPrecio.FlatAppearance.BorderSize = 0
+        Me.BtnCancelPrecio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnCancelPrecio.Image = Global.ControlPagosGimnasio.My.Resources.Resources.clear22
+        Me.BtnCancelPrecio.Location = New System.Drawing.Point(161, 29)
+        Me.BtnCancelPrecio.Name = "BtnCancelPrecio"
+        Me.BtnCancelPrecio.Size = New System.Drawing.Size(30, 26)
+        Me.BtnCancelPrecio.TabIndex = 2
+        Me.BtnCancelPrecio.UseVisualStyleBackColor = True
+        '
         'TxtPrecio
         '
-        Me.TxtPrecio.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtPrecio.BackColor = System.Drawing.SystemColors.Window
         Me.TxtPrecio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtPrecio.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtPrecio.Location = New System.Drawing.Point(15, 31)
+        Me.TxtPrecio.Location = New System.Drawing.Point(23, 28)
         Me.TxtPrecio.MaxLength = 10
         Me.TxtPrecio.Name = "TxtPrecio"
         Me.TxtPrecio.Size = New System.Drawing.Size(100, 26)
@@ -324,7 +374,7 @@ Partial Class FrmTablaDescuento
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DgvTarifas.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DgvTarifas.Location = New System.Drawing.Point(20, 190)
+        Me.DgvTarifas.Location = New System.Drawing.Point(25, 192)
         Me.DgvTarifas.MultiSelect = False
         Me.DgvTarifas.Name = "DgvTarifas"
         Me.DgvTarifas.ReadOnly = True
@@ -346,8 +396,8 @@ Partial Class FrmTablaDescuento
         Me.DgvTarifas.RowTemplate.DividerHeight = 2
         Me.DgvTarifas.RowTemplate.Height = 30
         Me.DgvTarifas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DgvTarifas.Size = New System.Drawing.Size(656, 200)
-        Me.DgvTarifas.TabIndex = 8
+        Me.DgvTarifas.Size = New System.Drawing.Size(739, 200)
+        Me.DgvTarifas.TabIndex = 3
         '
         'id_tarifa
         '
@@ -368,7 +418,7 @@ Partial Class FrmTablaDescuento
         Me.colPrecio.ReadOnly = True
         Me.colPrecio.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colPrecio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colPrecio.Width = 150
+        Me.colPrecio.Width = 170
         '
         'colEmin
         '
@@ -378,7 +428,7 @@ Partial Class FrmTablaDescuento
         Me.colEmin.ReadOnly = True
         Me.colEmin.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colEmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colEmin.Width = 150
+        Me.colEmin.Width = 170
         '
         'colEmax
         '
@@ -388,7 +438,7 @@ Partial Class FrmTablaDescuento
         Me.colEmax.ReadOnly = True
         Me.colEmax.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colEmax.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colEmax.Width = 150
+        Me.colEmax.Width = 170
         '
         'colDescuento
         '
@@ -398,15 +448,16 @@ Partial Class FrmTablaDescuento
         Me.colDescuento.ReadOnly = True
         Me.colDescuento.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colDescuento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colDescuento.Width = 150
+        Me.colDescuento.Width = 170
         '
         'FrmTablaDescuento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(701, 431)
+        Me.ClientSize = New System.Drawing.Size(789, 456)
         Me.Controls.Add(Me.PnlBotonera)
         Me.Controls.Add(Me.GbDscto)
+        Me.Controls.Add(Me.BtnCerrar)
         Me.Controls.Add(Me.GbIntervaloEdad)
         Me.Controls.Add(Me.GbPrecio)
         Me.Controls.Add(Me.DgvTarifas)
@@ -426,6 +477,7 @@ Partial Class FrmTablaDescuento
         Me.GbPrecio.PerformLayout()
         CType(Me.DgvTarifas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -447,6 +499,9 @@ Partial Class FrmTablaDescuento
     Friend WithEvents GbPrecio As GroupBox
     Friend WithEvents TxtPrecio As TextBox
     Friend WithEvents DgvTarifas As DataGridView
+    Friend WithEvents BtnCancelPrecio As Button
+    Friend WithEvents BtnFijarPrecio As Button
+    Friend WithEvents BtnGuardarPrecio As Button
     Friend WithEvents id_tarifa As DataGridViewTextBoxColumn
     Friend WithEvents colPrecio As DataGridViewTextBoxColumn
     Friend WithEvents colEmin As DataGridViewTextBoxColumn
