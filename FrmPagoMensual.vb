@@ -7,7 +7,6 @@ Public Class FrmPagoMensual
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta, nomUser As String
     Dim precio, dscto, total, prcDia As Decimal
-    'Public nomUser As String
     Public Shared psIdCli, psIdPgs As String
 
     Private Sub FrmPagoMensual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -18,52 +17,67 @@ Public Class FrmPagoMensual
     End Sub
 
     Private Sub BtnPagar_Click(sender As Object, e As EventArgs) Handles BtnPagar.Click
-
         Try
+            'CONECTAMOS Y ABRIMOS LA BBDD 
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-            ''
-            ''
-            'SELECT From pagos Where Month(fdi_pgs) = 4 And Year(fdi_pgs) = 2025
-            'DELETE From pagos Where Month(fdi_pgs) = 4 And Year(fdi_pgs) = 2025
-            'Dim dia = fechaIni.Day
-            Dim fechaPago As DateTime = DtpFdi.Value
-            Dim mes = fechaPago.Month
-            Dim ano = fechaPago.Year
-            sqlConsulta = "SELECT * FROM pagos WHERE MONTH(fdi_pgs) = '" & mes & "' AND YEAR(fdi_pgs) = ' " & ano & " ' AND id_cli = '" & psIdCli & "'"
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
-            If drDataReader.HasRows = True Then
-                MsgBox("ya está")
-            Else
-                drDataReader.Close()
-                If Me.Text = "Nuevo pago mensual" Then
+
+            'COMPROBAMOS EL TÍTULO DE LA VENTANA
+            If Me.Text = "Nuevo pago mensual" Then
+
+                'DECLARAMOS VARIABLES PARA ALMACENAR EL MES Y EL AÑO DEL DtpFdi
+                Dim fechaPago As DateTime = DtpFdi.Value
+                Dim mes = fechaPago.Month
+                Dim ano = fechaPago.Year
+
+                'HACEMOS LA CONSULTA PARA VER SI HAY ALGÚN REGISTRO CON LA MISMA FECHA
+                sqlConsulta = "SELECT * FROM pagos WHERE MONTH(fdi_pgs) = '" & mes & "' AND YEAR(fdi_pgs) = ' " & ano & " ' AND id_cli = '" & psIdCli & "'"
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader
+
+                'SI ENCUENTRA UN REGISTRO
+                If drDataReader.HasRows = True Then
+                    'MENSAJE PARA AVISAR QUE HAY UN REGISTRO CON LA MISMA FECHA
+                    MsgBox("Estás intentando cobrar un mes que ya está pagado" & Chr(13) & Chr(13) &
+                           "     FECHA : " & DtpFdi.Value & Chr(13) & Chr(13) &
+                           "Cambia la FECHA para realizar el pago.", vbCritical, "Verificar pagos")
+                    'ENVIAMOS EL ENFOQUE AL DtpFdi
+                    DtpFdi.Focus()
+                Else
+                    'CERRAMOS EL DATAREADER 
+                    drDataReader.Close()
+                    'HACEMOS LA CONSULTA PARA INSERTA UN NUEVO REGISTRO A LA TABLA PAGOS
                     sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
                               VALUES ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "',
                               '" & CmbFdp.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "',
                               '" & psIdCli & "', '" & nomUser & "')"
-                Else
-                    sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
+                    cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                    drDataReader = cmdCommand.ExecuteReader
+                    'MENSAJE PARA AVISAR QUE SE HA PAGADO
+                    MsgBox("Se ha realizado un NUEVO pago del siguiente mes :" & Chr(13) & Chr(13) &
+                           "     FECHA : " & DtpFdi.Value, vbInformation, "Nuevo pago")
+                End If
+            Else
+                'HACEMOS LA CONSULTA PARA ACTUALIZAR EL REGISTRO DEL MES
+                sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
                               frm_pgs='" & CmbFdp.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "',
                               usuario ='" & nomUser & "' WHERE id_pgs='" & psIdPgs & "'"
-                End If
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader
-
-                'MENSAJE DE CONFIRMACIÓN
-                MsgBox("PAGO realizado con exito", vbInformation, "Pagos")
+                'MENSAJE PARA AVISAR QUE SE HA PAGADO
+                MsgBox("Se ha realizado el PAGO del mes :" & Chr(13) & Chr(13) &
+                           "     FECHA : " & DtpFdi.Value, vbInformation, "Cobrar mes")
             End If
 
             'CERRAMOS EL DATAREADER y LA CONEXIÓN A LA BBDD
             drDataReader.Close()
             cnxnMySql.Close()
-
+            Exit Sub
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
-        'TENEMOS QUE MANDAR LA INFO A LA GRILA
-        Close()
+        Close() 'CERRAMOS LA VENTANA
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click

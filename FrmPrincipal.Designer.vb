@@ -25,10 +25,10 @@ Partial Class FrmPrincipal
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnClientesPagos = New System.Windows.Forms.Button()
         Me.Panel = New System.Windows.Forms.Panel()
+        Me.BtnSalir = New System.Windows.Forms.Button()
         Me.BtnPrecioDsctos = New System.Windows.Forms.Button()
         Me.BtnPagoPendiente = New System.Windows.Forms.Button()
         Me.BtnListaClientes = New System.Windows.Forms.Button()
-        Me.BtnSalir = New System.Windows.Forms.Button()
         Me.PnlBotonera.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -50,9 +50,11 @@ Partial Class FrmPrincipal
         'BtnClientesPagos
         '
         Me.BtnClientesPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnClientesPagos.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cliente_37x35
         Me.BtnClientesPagos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnClientesPagos.Location = New System.Drawing.Point(3, 108)
         Me.BtnClientesPagos.Name = "BtnClientesPagos"
+        Me.BtnClientesPagos.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
         Me.BtnClientesPagos.Size = New System.Drawing.Size(180, 74)
         Me.BtnClientesPagos.TabIndex = 4
         Me.BtnClientesPagos.Text = "Clientes JUNTO"
@@ -67,42 +69,6 @@ Partial Class FrmPrincipal
         Me.Panel.Size = New System.Drawing.Size(186, 26)
         Me.Panel.TabIndex = 1
         '
-        'BtnPrecioDsctos
-        '
-        Me.BtnPrecioDsctos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnPrecioDsctos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPrecioDsctos.Location = New System.Drawing.Point(3, 369)
-        Me.BtnPrecioDsctos.Name = "BtnPrecioDsctos"
-        Me.BtnPrecioDsctos.Size = New System.Drawing.Size(180, 74)
-        Me.BtnPrecioDsctos.TabIndex = 2
-        Me.BtnPrecioDsctos.Text = "&Precio y Descuentos"
-        Me.BtnPrecioDsctos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnPrecioDsctos.UseVisualStyleBackColor = True
-        '
-        'BtnPagoPendiente
-        '
-        Me.BtnPagoPendiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnPagoPendiente.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPagoPendiente.Location = New System.Drawing.Point(3, 207)
-        Me.BtnPagoPendiente.Name = "BtnPagoPendiente"
-        Me.BtnPagoPendiente.Size = New System.Drawing.Size(180, 74)
-        Me.BtnPagoPendiente.TabIndex = 1
-        Me.BtnPagoPendiente.Text = "Pagos pendientes"
-        Me.BtnPagoPendiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnPagoPendiente.UseVisualStyleBackColor = True
-        '
-        'BtnListaClientes
-        '
-        Me.BtnListaClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnListaClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnListaClientes.Location = New System.Drawing.Point(3, 12)
-        Me.BtnListaClientes.Name = "BtnListaClientes"
-        Me.BtnListaClientes.Size = New System.Drawing.Size(180, 74)
-        Me.BtnListaClientes.TabIndex = 0
-        Me.BtnListaClientes.Text = "Clientes SEPARADO"
-        Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnListaClientes.UseVisualStyleBackColor = True
-        '
         'BtnSalir
         '
         Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
@@ -116,12 +82,54 @@ Partial Class FrmPrincipal
         Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnSalir.Location = New System.Drawing.Point(0, 461)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 5, 0, 2)
+        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 6, 0, 2)
         Me.BtnSalir.Size = New System.Drawing.Size(186, 74)
         Me.BtnSalir.TabIndex = 3
         Me.BtnSalir.Text = "CERRAR &APP"
         Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnSalir.UseVisualStyleBackColor = False
+        '
+        'BtnPrecioDsctos
+        '
+        Me.BtnPrecioDsctos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnPrecioDsctos.Image = Global.ControlPagosGimnasio.My.Resources.Resources.precio_dscnto_45x33
+        Me.BtnPrecioDsctos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnPrecioDsctos.Location = New System.Drawing.Point(3, 369)
+        Me.BtnPrecioDsctos.Name = "BtnPrecioDsctos"
+        Me.BtnPrecioDsctos.Padding = New System.Windows.Forms.Padding(0, 6, 0, 5)
+        Me.BtnPrecioDsctos.Size = New System.Drawing.Size(180, 74)
+        Me.BtnPrecioDsctos.TabIndex = 2
+        Me.BtnPrecioDsctos.Text = "&Precio y Descuentos"
+        Me.BtnPrecioDsctos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnPrecioDsctos.UseVisualStyleBackColor = True
+        '
+        'BtnPagoPendiente
+        '
+        Me.BtnPagoPendiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnPagoPendiente.Image = Global.ControlPagosGimnasio.My.Resources.Resources.morosos_35x35
+        Me.BtnPagoPendiente.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnPagoPendiente.Location = New System.Drawing.Point(3, 207)
+        Me.BtnPagoPendiente.Name = "BtnPagoPendiente"
+        Me.BtnPagoPendiente.Padding = New System.Windows.Forms.Padding(0, 6, 0, 5)
+        Me.BtnPagoPendiente.Size = New System.Drawing.Size(180, 74)
+        Me.BtnPagoPendiente.TabIndex = 1
+        Me.BtnPagoPendiente.Text = "Pagos pendientes"
+        Me.BtnPagoPendiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnPagoPendiente.UseVisualStyleBackColor = True
+        '
+        'BtnListaClientes
+        '
+        Me.BtnListaClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnListaClientes.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cliente_37x35
+        Me.BtnListaClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnListaClientes.Location = New System.Drawing.Point(3, 12)
+        Me.BtnListaClientes.Name = "BtnListaClientes"
+        Me.BtnListaClientes.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
+        Me.BtnListaClientes.Size = New System.Drawing.Size(180, 74)
+        Me.BtnListaClientes.TabIndex = 0
+        Me.BtnListaClientes.Text = "Clientes SEPARADO"
+        Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnListaClientes.UseVisualStyleBackColor = True
         '
         'FrmPrincipal
         '

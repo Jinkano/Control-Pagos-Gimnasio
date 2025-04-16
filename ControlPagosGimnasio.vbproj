@@ -347,5 +347,29 @@
   <ItemGroup>
     <None Include="img\actualizar 28x27.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\precio_dscnto 35x28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\precio_dscnto 39x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\precio_dscnto 48x35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\precio_dscnto 45x33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\morosos 32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\morosos 28x34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\morosos 35x35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cliente 37x35.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
