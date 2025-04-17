@@ -113,12 +113,11 @@ Partial Class Form1
         '
         Me.TxtContrasena.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtContrasena.Location = New System.Drawing.Point(23, 149)
-        Me.TxtContrasena.Margin = New System.Windows.Forms.Padding(30)
+        Me.TxtContrasena.MaxLength = 50
         Me.TxtContrasena.Name = "TxtContrasena"
         Me.TxtContrasena.PasswordChar = Global.Microsoft.VisualBasic.ChrW(172)
         Me.TxtContrasena.Size = New System.Drawing.Size(304, 26)
         Me.TxtContrasena.TabIndex = 3
-        Me.TxtContrasena.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'LblContrasena
         '
@@ -135,11 +134,10 @@ Partial Class Form1
         Me.TxtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtUsuario.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtUsuario.Location = New System.Drawing.Point(23, 65)
-        Me.TxtUsuario.Margin = New System.Windows.Forms.Padding(30)
+        Me.TxtUsuario.MaxLength = 50
         Me.TxtUsuario.Name = "TxtUsuario"
         Me.TxtUsuario.Size = New System.Drawing.Size(304, 26)
         Me.TxtUsuario.TabIndex = 1
-        Me.TxtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'LblUsuario
         '

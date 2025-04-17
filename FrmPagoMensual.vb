@@ -8,11 +8,17 @@ Public Class FrmPagoMensual
     Dim sqlConsulta, nomUser As String
     Dim precio, dscto, total, prcDia As Decimal
     Public Shared psIdCli, psIdPgs As String
+    Dim arrayMes() As String = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"}
 
     Private Sub FrmPagoMensual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        CmbFdp.SelectedIndex = 0 'SELECCIONA LA PRIMA OPCIÓN DEL COMBOBOX
+        'COMPROBAMOS EL TÍTULO DE LA VENTANA PARA DESACTIVAR EL DtpFdi
+        If Me.Text = "Pago de mensualidad" Then DtpFdi.Enabled = False
 
+        'SELECCIONA LA PRIMA OPCIÓN DEL COMBOBOX
+        CmbFdp.SelectedIndex = 0
+
+        'VARIBLE PARA SABER EL USUARIO
         nomUser = FrmPrincipal.nomUser
     End Sub
 
@@ -22,13 +28,14 @@ Public Class FrmPagoMensual
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
+            'DECLARAMOS VARIABLES PARA ALMACENAR EL MES Y EL AÑO DEL DtpFdi
+            Dim fechaPago As DateTime = DtpFdi.Value
+            Dim dia = fechaPago.Day
+            Dim mes = fechaPago.Month
+            Dim ano = fechaPago.Year
+
             'COMPROBAMOS EL TÍTULO DE LA VENTANA
             If Me.Text = "Nuevo pago mensual" Then
-
-                'DECLARAMOS VARIABLES PARA ALMACENAR EL MES Y EL AÑO DEL DtpFdi
-                Dim fechaPago As DateTime = DtpFdi.Value
-                Dim mes = fechaPago.Month
-                Dim ano = fechaPago.Year
 
                 'HACEMOS LA CONSULTA PARA VER SI HAY ALGÚN REGISTRO CON LA MISMA FECHA
                 sqlConsulta = "SELECT * FROM pagos WHERE MONTH(fdi_pgs) = '" & mes & "' AND YEAR(fdi_pgs) = ' " & ano & " ' AND id_cli = '" & psIdCli & "'"
@@ -38,11 +45,15 @@ Public Class FrmPagoMensual
                 'SI ENCUENTRA UN REGISTRO
                 If drDataReader.HasRows = True Then
                     'MENSAJE PARA AVISAR QUE HAY UN REGISTRO CON LA MISMA FECHA
-                    MsgBox("Estás intentando cobrar un mes que ya está pagado" & Chr(13) & Chr(13) &
-                           "     FECHA : " & DtpFdi.Value & Chr(13) & Chr(13) &
+                    MsgBox("Estás intentando cobrar un mes que ya está registrado" & Chr(13) & Chr(13) &
+                           "     FECHA : " & dia & " de " & arrayMes(mes) & " de " & ano & Chr(13) & Chr(13) &
                            "Cambia la FECHA para realizar el pago.", vbCritical, "Verificar pagos")
                     'ENVIAMOS EL ENFOQUE AL DtpFdi
                     DtpFdi.Focus()
+                    'CERRAMOS EL DATAREADER y LA CONEXIÓN A LA BBDD
+                    drDataReader.Close()
+                    cnxnMySql.Close()
+                    Exit Sub
                 Else
                     'CERRAMOS EL DATAREADER 
                     drDataReader.Close()
@@ -54,8 +65,8 @@ Public Class FrmPagoMensual
                     cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                     drDataReader = cmdCommand.ExecuteReader
                     'MENSAJE PARA AVISAR QUE SE HA PAGADO
-                    MsgBox("Se ha realizado un NUEVO pago del siguiente mes :" & Chr(13) & Chr(13) &
-                           "     FECHA : " & DtpFdi.Value, vbInformation, "Nuevo pago")
+                    MsgBox("Se ha realizado un NUEVO pago del mes" & Chr(13) & Chr(13) &
+                           "     FECHA : " & dia & " de " & arrayMes(mes) & " de " & ano, vbInformation, "Nuevo pago")
                 End If
             Else
                 'HACEMOS LA CONSULTA PARA ACTUALIZAR EL REGISTRO DEL MES
@@ -65,19 +76,19 @@ Public Class FrmPagoMensual
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader
                 'MENSAJE PARA AVISAR QUE SE HA PAGADO
-                MsgBox("Se ha realizado el PAGO del mes :" & Chr(13) & Chr(13) &
-                           "     FECHA : " & DtpFdi.Value, vbInformation, "Cobrar mes")
+                MsgBox("Se ha realizado el PAGO del mes" & Chr(13) & Chr(13) &
+                           "     FECHA : " & dia & " de " & arrayMes(mes) & " de " & ano, vbInformation, "Cobrar mes")
             End If
 
             'CERRAMOS EL DATAREADER y LA CONEXIÓN A LA BBDD
             drDataReader.Close()
             cnxnMySql.Close()
-            Exit Sub
+
+            'CERRAMOS LA VENTANA
+            Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-
-        Close() 'CERRAMOS LA VENTANA
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
