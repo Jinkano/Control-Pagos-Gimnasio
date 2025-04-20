@@ -3,11 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\frmprincipal.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\frmprincipal.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:frmprincipal.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     }
   ],
@@ -23,25 +19,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.vb [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Form1.vb",
-              "RelativeDocumentMoniker": "Form1.vb",
-              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Form1.vb [Dise\u00F1o]",
-              "RelativeToolTip": "Form1.vb [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-17T00:08:01.334Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "FrmPrincipal.vb [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmPrincipal.vb",
               "RelativeDocumentMoniker": "FrmPrincipal.vb",
               "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\FrmPrincipal.vb [Dise\u00F1o]",
               "RelativeToolTip": "FrmPrincipal.vb [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-04-16T16:22:27.986Z",
+              "WhenOpened": "2025-04-20T12:57:37.398Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

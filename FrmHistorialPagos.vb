@@ -12,7 +12,7 @@ Public Class FrmHistorialPagos
     Private Sub FrmHistorialPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If txtFlags = "UPDATE_PAY" Then
             'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
-            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY id_pgs DESC"
+            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY fdi_pgs DESC"
             DgvLlenarPagos(sqlConsulta, DgvListaPagos)
             txtFlags = ""
         End If
@@ -21,7 +21,7 @@ Public Class FrmHistorialPagos
     Private Sub FrmHistorialPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
-        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY id_pgs DESC"
+        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & psIdCli & "' ORDER BY fdi_pgs DESC"
         DgvLlenarPagos(sqlConsulta, DgvListaPagos)
     End Sub
 

@@ -46,7 +46,7 @@ Public Class FrmPagoMensual
                 If drDataReader.HasRows = True Then
                     'MENSAJE PARA AVISAR QUE HAY UN REGISTRO CON LA MISMA FECHA
                     MsgBox("Estás intentando cobrar un mes que ya está registrado" & Chr(13) & Chr(13) &
-                           "     FECHA : " & dia & " de " & arrayMes(mes) & " de " & ano & Chr(13) & Chr(13) &
+                           "     FECHA : " & dia & " de " & arrayMes(mes - 1) & " de " & ano & Chr(13) & Chr(13) &
                            "Cambia la FECHA para realizar el pago.", vbCritical, "Verificar pagos")
                     'ENVIAMOS EL ENFOQUE AL DtpFdi
                     DtpFdi.Focus()
@@ -66,7 +66,7 @@ Public Class FrmPagoMensual
                     drDataReader = cmdCommand.ExecuteReader
                     'MENSAJE PARA AVISAR QUE SE HA PAGADO
                     MsgBox("Se ha realizado un NUEVO pago del mes" & Chr(13) & Chr(13) &
-                           "     FECHA : " & dia & " de " & arrayMes(mes) & " de " & ano, vbInformation, "Nuevo pago")
+                           "     FECHA : " & dia & " de " & arrayMes(mes - 1) & " de " & ano, vbInformation, "Nuevo pago")
                 End If
             Else
                 'HACEMOS LA CONSULTA PARA ACTUALIZAR EL REGISTRO DEL MES
@@ -77,7 +77,7 @@ Public Class FrmPagoMensual
                 drDataReader = cmdCommand.ExecuteReader
                 'MENSAJE PARA AVISAR QUE SE HA PAGADO
                 MsgBox("Se ha realizado el PAGO del mes" & Chr(13) & Chr(13) &
-                           "     FECHA : " & dia & " de " & arrayMes(mes) & " de " & ano, vbInformation, "Cobrar mes")
+                           "     FECHA : " & dia & " de " & arrayMes(mes - 1) & " de " & ano, vbInformation, "Cobrar mes")
             End If
 
             'CERRAMOS EL DATAREADER y LA CONEXIÓN A LA BBDD

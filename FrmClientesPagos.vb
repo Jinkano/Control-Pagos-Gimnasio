@@ -12,7 +12,7 @@ Public Class FrmClientesPagos
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If txtFlags = "UPDATE_PAY" Then
             'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
-            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
+            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY fdi_pgs DESC"
             DgvLlenarPagos(sqlConsulta, DgvListaPagos)
             txtFlags = ""
         End If
@@ -198,7 +198,7 @@ Public Class FrmClientesPagos
         TxtDesactivar() 'DESACTIVAR CUADROS DE TEXTO
 
         'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
-        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY id_pgs DESC"
+        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & idClient & "' ORDER BY fdi_pgs DESC"
         DgvLlenarPagos(sqlConsulta, DgvListaPagos)
 
         BtnGuardaActualCancelCambia() 'ACTIVAR y DESACTIVAR BOTONES

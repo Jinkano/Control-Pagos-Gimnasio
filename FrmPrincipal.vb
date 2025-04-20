@@ -43,7 +43,7 @@ Public Class FrmPrincipal
                 Dim strDia As String = DateTime.Now.Day
 
                 'COMPROBAMOS SI ES EL PRIMER DÍA DEL MES
-                If strDia = 15 Then
+                If strDia = 1 Then
                     'HACEMOS LA CONSULTA PARA OBTENER LOS ID Y LA FECHA DE NACIEMIENTO DE LOS CLIENTES ACTIVOS
                     sqlConsulta = "SELECT id_cli, fdn_cli FROM clientes WHERE std_cli = 'SI'"
                     cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
