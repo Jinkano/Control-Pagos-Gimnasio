@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class FrmUserPassword
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -240,18 +240,18 @@ Partial Class Form1
         Me.LblIngresa.TabIndex = 1
         Me.LblIngresa.Text = "&Ingresa contraseña"
         '
-        'Form1
+        'FrmUserPassword
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(579, 311)
-        Me.Controls.Add(Me.GbUsuarioContrasena)
         Me.Controls.Add(Me.PictureBox)
+        Me.Controls.Add(Me.GbUsuarioContrasena)
         Me.Controls.Add(Me.GbGuardarContrasena)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "FrmUserPassword"
         Me.Padding = New System.Windows.Forms.Padding(15)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Control de acceso"

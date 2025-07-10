@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports ZstdSharp.Unsafe
 
-Public Class Form1
+Public Class FrmUserPassword
 
     Dim cnxnMySql As New MySqlConnection
     Dim drDataReader As MySqlDataReader
