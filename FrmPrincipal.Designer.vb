@@ -24,8 +24,8 @@ Partial Class FrmPrincipal
     Private Sub InitializeComponent()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnClientesPagos = New System.Windows.Forms.Button()
-        Me.Panel = New System.Windows.Forms.Panel()
         Me.BtnSalir = New System.Windows.Forms.Button()
+        Me.Panel = New System.Windows.Forms.Panel()
         Me.BtnPrecioDsctos = New System.Windows.Forms.Button()
         Me.BtnPagoPendiente = New System.Windows.Forms.Button()
         Me.BtnListaClientes = New System.Windows.Forms.Button()
@@ -61,14 +61,6 @@ Partial Class FrmPrincipal
         Me.BtnClientesPagos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnClientesPagos.UseVisualStyleBackColor = True
         '
-        'Panel
-        '
-        Me.Panel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel.Location = New System.Drawing.Point(0, 535)
-        Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(186, 26)
-        Me.Panel.TabIndex = 1
-        '
         'BtnSalir
         '
         Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
@@ -88,6 +80,14 @@ Partial Class FrmPrincipal
         Me.BtnSalir.Text = "CERRAR &APP"
         Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnSalir.UseVisualStyleBackColor = False
+        '
+        'Panel
+        '
+        Me.Panel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel.Location = New System.Drawing.Point(0, 535)
+        Me.Panel.Name = "Panel"
+        Me.Panel.Size = New System.Drawing.Size(186, 26)
+        Me.Panel.TabIndex = 1
         '
         'BtnPrecioDsctos
         '

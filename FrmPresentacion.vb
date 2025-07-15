@@ -1,4 +1,6 @@
-﻿Public Class FrmPresentacion
+﻿Imports MySql.Data.MySqlClient
+
+Public Class FrmPresentacion
     Private Sub FrmPresentacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'ASIRNAR TEXTO A LA ETIQUE VERSIÓN
@@ -8,18 +10,56 @@
         'ASIRNAR TEXTO A LA ETIQUE CON LA INFORMACIÓN DEL COPYRIGHT 
         'LblCopyright.Text = My.Application.Info.Copyright
 
-        'INICIAR EL TIMER
-        Timer.Start()
+        If VerificarConexion() = True Then
+            Timer.Start() 'INICIAR EL TIMER
 
+        Else
+            Me.Show()
+            Timer.Stop()
+            LblBarra.Text = "No hay CONEXIÓN con la Base de Datos"
+            LblBarra.ForeColor = Color.Red
+
+            MsgBox("No se puede acceder al programa." & Chr(13) & Chr(13) & "No se ha podido conectar con la BBDD.", vbCritical, "Error de conexión")
+            End
+        End If
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
 
-        Timer.Stop() 'DETENER TIMER
+        BarraProgreso.Increment(2)
 
-        Me.Close() 'CERRA EL FORMULARIO
+        If BarraProgreso.Value < 30 Then
+            LblBarra.Text = "Iniciando conexión a la BBDD " & BarraProgreso.Value & ("%")
+            LblBarra.ForeColor = Color.Red
 
-        FrmPrincipal.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
+        ElseIf BarraProgreso.Value < 60 Then
+            LblBarra.Text = "Conexión exitosa con la BBDD " & BarraProgreso.Value & ("%")
+            LblBarra.ForeColor = Color.Green
+
+        ElseIf BarraProgreso.Value < 100 Then
+            LblBarra.Text = "Iniciando el programa ... " & BarraProgreso.Value & ("%")
+            LblBarra.ForeColor = Color.Black
+
+        ElseIf BarraProgreso.Value = 100 Then
+            Timer.Stop() 'DETENER TIMER
+            FrmUserPassword.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
+            Me.Hide() 'CERRA EL FORMULARIO -- Close()
+        End If
 
     End Sub
+
+    Public Function VerificarConexion() As Boolean
+
+        Dim cnxnMySql As New MySqlConnection
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+            cnxnMySql.Close()
+            Return True
+        Catch
+            Return False
+        End Try
+
+    End Function
+
 End Class

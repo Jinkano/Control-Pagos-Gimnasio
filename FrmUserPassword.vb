@@ -44,9 +44,10 @@ Public Class FrmUserPassword
 
                 If drDataReader.HasRows Then
                     drDataReader.Read()
+                    FrmPrincipal.idUser = drDataReader.GetInt16(0).ToString
                     FrmPrincipal.nomUser = drDataReader.GetString(1).ToString
-                    FrmPresentacion.Show()
-                    Me.Hide()
+                    FrmPrincipal.Show()
+                    Me.Close() '.Hide()
                 Else
                     MsgBox("El usuario o la contraseña son incorreco.", vbCritical, "Control de acceso")
                     TxtUsuario.Focus()
@@ -60,7 +61,7 @@ Public Class FrmUserPassword
         End Try
     End Sub
 
-    Private Sub BtnCerrar_Click_1(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
         End
     End Sub
 
@@ -70,7 +71,7 @@ Public Class FrmUserPassword
             Try
                 cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
                 cnxnMySql.Open()
-                sqlConsulta = "UPDATE usuarios SET contrasena='" & TxtContrasena1.Text & "' WHERE id='" & idUser & "'"
+                sqlConsulta = "UPDATE usuarios SET contrasena='" & TxtContrasena1.Text & "' WHERE id_user='" & idUser & "'"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader()
                 drDataReader.Close()

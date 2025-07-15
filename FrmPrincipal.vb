@@ -7,7 +7,7 @@ Public Class FrmPrincipal
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta As String
-    Public nomUser As String
+    Public idUser, nomUser As String
 
     Private Sub FrmPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
@@ -169,4 +169,5 @@ Public Class FrmPrincipal
         'CIERRA EL FORMULARIO
         Close()
     End Sub
+
 End Class
