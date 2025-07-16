@@ -26,15 +26,15 @@ Public Class FrmPresentacion
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
 
-        BarraProgreso.Increment(2)
+        BarraProgreso.Increment(4)
 
-        If BarraProgreso.Value < 30 Then
+        If BarraProgreso.Value < 40 Then
             LblBarra.Text = "Iniciando conexión a la BBDD " & BarraProgreso.Value & ("%")
             LblBarra.ForeColor = Color.Red
 
-        ElseIf BarraProgreso.Value < 60 Then
+        ElseIf BarraProgreso.Value < 70 Then
             LblBarra.Text = "Conexión exitosa con la BBDD " & BarraProgreso.Value & ("%")
-            LblBarra.ForeColor = Color.Green
+            LblBarra.ForeColor = Color.Blue
 
         ElseIf BarraProgreso.Value < 100 Then
             LblBarra.Text = "Iniciando el programa ... " & BarraProgreso.Value & ("%")

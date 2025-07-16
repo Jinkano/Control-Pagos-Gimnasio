@@ -373,7 +373,7 @@
     <None Include="img\cliente 37x35.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\juan.jpg" />
+    <None Include="Resources\juanh.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

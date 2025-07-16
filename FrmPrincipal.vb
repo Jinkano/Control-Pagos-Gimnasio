@@ -7,7 +7,7 @@ Public Class FrmPrincipal
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta As String
-    Public idUser, nomUser As String
+    Public idUser, nomUser, cargoUser As String
 
     Private Sub FrmPrincipal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
@@ -16,6 +16,14 @@ Public Class FrmPrincipal
             If MsgBox("¿Está seguro que desea CERRAR la aplicación?", vbQuestion + vbYesNo, "Segundos Fuera") = vbNo Then
                 e.Cancel = True
             Else
+                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+                cnxnMySql.Open()
+                sqlConsulta = "UPDATE reg_sesion_user SET fh_salida ='" & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE id_user ='" & idUser & "'"
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                drDataReader = cmdCommand.ExecuteReader()
+                drDataReader.Close()
+                cnxnMySql.Close()
+
                 End
             End If
         Catch ex As Exception
@@ -119,6 +127,9 @@ Public Class FrmPrincipal
                 'EJECUTA EL FORMULARIO LISTA MOROSOS
                 FrmListaMorosos.MdiParent = Me
                 FrmListaMorosos.Show()
+
+                ' COMPROBAR SI NO ES ADMIN PARA DESACTIVAR BUTTON
+                If cargoUser <> "ADMINISTRADOR" Then BtnPrecioDsctos.Enabled = False
             Else
                 'CERRAR EL DATAREADER
                 drDataReader.Close()
@@ -128,9 +139,13 @@ Public Class FrmPrincipal
                 BtnClientesPagos.Enabled = False
                 BtnPagoPendiente.Enabled = False
 
-                'EJECUTA EL FORMULARIO LISTA MOROSOS
-                FrmTablaDescuento.MdiParent = Me
-                FrmTablaDescuento.Show()
+                'EJECUTA EL FORMULARIO TABLA DE DESCUENTOS
+                If cargoUser = "ADMINISTRADOR" Then
+                    FrmTablaDescuento.MdiParent = Me
+                    FrmTablaDescuento.Show()
+                Else
+                    BtnPrecioDsctos.Enabled = False
+                End If
             End If
 
             'CERRAR BBDD
@@ -140,7 +155,8 @@ Public Class FrmPrincipal
             MsgBox(ex.ToString)
         End Try
 
-        Me.Text = Me.Text & nomUser 'AGREGAR NOMBRE DE USUARIO A LA BARRA DE TITULO
+        'AGREGAR NOMBRE DE USUARIO A LA BARRA DE TITULO
+        Me.Text = Me.Text & nomUser & " - " & cargoUser
     End Sub
 
     Private Sub BtnListaClientes_Click(sender As Object, e As EventArgs) Handles BtnListaClientes.Click

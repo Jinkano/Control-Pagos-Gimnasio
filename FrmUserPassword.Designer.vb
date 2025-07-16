@@ -39,6 +39,7 @@ Partial Class FrmUserPassword
         Me.TxtContrasena2 = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.BtnGuardar = New System.Windows.Forms.Button()
+        Me.BtnCancelar = New System.Windows.Forms.Button()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbUsuarioContrasena.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -49,7 +50,7 @@ Partial Class FrmUserPassword
         'PictureBox
         '
         Me.PictureBox.Image = Global.ControlPagosGimnasio.My.Resources.Resources.saco_entrena
-        Me.PictureBox.Location = New System.Drawing.Point(14, 51)
+        Me.PictureBox.Location = New System.Drawing.Point(36, 36)
         Me.PictureBox.Name = "PictureBox"
         Me.PictureBox.Size = New System.Drawing.Size(186, 200)
         Me.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -58,12 +59,12 @@ Partial Class FrmUserPassword
         '
         'GbUsuarioContrasena
         '
-        Me.GbUsuarioContrasena.Controls.Add(Me.Panel1)
-        Me.GbUsuarioContrasena.Controls.Add(Me.TxtContrasena)
-        Me.GbUsuarioContrasena.Controls.Add(Me.LblContrasena)
-        Me.GbUsuarioContrasena.Controls.Add(Me.TxtUsuario)
         Me.GbUsuarioContrasena.Controls.Add(Me.LblUsuario)
-        Me.GbUsuarioContrasena.Location = New System.Drawing.Point(210, 18)
+        Me.GbUsuarioContrasena.Controls.Add(Me.TxtUsuario)
+        Me.GbUsuarioContrasena.Controls.Add(Me.LblContrasena)
+        Me.GbUsuarioContrasena.Controls.Add(Me.TxtContrasena)
+        Me.GbUsuarioContrasena.Controls.Add(Me.Panel1)
+        Me.GbUsuarioContrasena.Location = New System.Drawing.Point(245, 18)
         Me.GbUsuarioContrasena.Name = "GbUsuarioContrasena"
         Me.GbUsuarioContrasena.Padding = New System.Windows.Forms.Padding(0, 20, 0, 0)
         Me.GbUsuarioContrasena.Size = New System.Drawing.Size(350, 277)
@@ -74,13 +75,13 @@ Partial Class FrmUserPassword
         '
         Me.Panel1.AutoSize = True
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.BtnCerrar)
         Me.Panel1.Controls.Add(Me.BtnIniciar)
+        Me.Panel1.Controls.Add(Me.BtnCerrar)
         Me.Panel1.Location = New System.Drawing.Point(0, 201)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Padding = New System.Windows.Forms.Padding(20)
         Me.Panel1.Size = New System.Drawing.Size(350, 76)
-        Me.Panel1.TabIndex = 4
+        Me.Panel1.TabIndex = 6
         '
         'BtnCerrar
         '
@@ -91,7 +92,7 @@ Partial Class FrmUserPassword
         Me.BtnCerrar.Location = New System.Drawing.Point(197, 23)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Size = New System.Drawing.Size(130, 30)
-        Me.BtnCerrar.TabIndex = 3
+        Me.BtnCerrar.TabIndex = 5
         Me.BtnCerrar.Text = "Cerrar &App"
         Me.BtnCerrar.UseVisualStyleBackColor = True
         '
@@ -105,7 +106,7 @@ Partial Class FrmUserPassword
         Me.BtnIniciar.Location = New System.Drawing.Point(23, 23)
         Me.BtnIniciar.Name = "BtnIniciar"
         Me.BtnIniciar.Size = New System.Drawing.Size(130, 30)
-        Me.BtnIniciar.TabIndex = 2
+        Me.BtnIniciar.TabIndex = 4
         Me.BtnIniciar.Text = "&Iniciar sesión"
         Me.BtnIniciar.UseVisualStyleBackColor = True
         '
@@ -117,7 +118,7 @@ Partial Class FrmUserPassword
         Me.TxtContrasena.Name = "TxtContrasena"
         Me.TxtContrasena.PasswordChar = Global.Microsoft.VisualBasic.ChrW(172)
         Me.TxtContrasena.Size = New System.Drawing.Size(304, 26)
-        Me.TxtContrasena.TabIndex = 1
+        Me.TxtContrasena.TabIndex = 3
         '
         'LblContrasena
         '
@@ -126,7 +127,7 @@ Partial Class FrmUserPassword
         Me.LblContrasena.Location = New System.Drawing.Point(19, 117)
         Me.LblContrasena.Name = "LblContrasena"
         Me.LblContrasena.Size = New System.Drawing.Size(95, 18)
-        Me.LblContrasena.TabIndex = 6
+        Me.LblContrasena.TabIndex = 2
         Me.LblContrasena.Text = "&Contraseña"
         '
         'TxtUsuario
@@ -137,7 +138,7 @@ Partial Class FrmUserPassword
         Me.TxtUsuario.MaxLength = 50
         Me.TxtUsuario.Name = "TxtUsuario"
         Me.TxtUsuario.Size = New System.Drawing.Size(304, 26)
-        Me.TxtUsuario.TabIndex = 0
+        Me.TxtUsuario.TabIndex = 1
         '
         'LblUsuario
         '
@@ -146,28 +147,29 @@ Partial Class FrmUserPassword
         Me.LblUsuario.Location = New System.Drawing.Point(19, 33)
         Me.LblUsuario.Name = "LblUsuario"
         Me.LblUsuario.Size = New System.Drawing.Size(152, 18)
-        Me.LblUsuario.TabIndex = 5
+        Me.LblUsuario.TabIndex = 0
         Me.LblUsuario.Text = "&Nombre de usuario"
         '
         'GbGuardarContrasena
         '
-        Me.GbGuardarContrasena.Controls.Add(Me.LblUsuario2)
-        Me.GbGuardarContrasena.Controls.Add(Me.LblIngresa)
-        Me.GbGuardarContrasena.Controls.Add(Me.TxtContrasena1)
-        Me.GbGuardarContrasena.Controls.Add(Me.LblRepite)
-        Me.GbGuardarContrasena.Controls.Add(Me.TxtContrasena2)
         Me.GbGuardarContrasena.Controls.Add(Me.Panel2)
-        Me.GbGuardarContrasena.Location = New System.Drawing.Point(210, 18)
+        Me.GbGuardarContrasena.Controls.Add(Me.TxtContrasena2)
+        Me.GbGuardarContrasena.Controls.Add(Me.LblRepite)
+        Me.GbGuardarContrasena.Controls.Add(Me.TxtContrasena1)
+        Me.GbGuardarContrasena.Controls.Add(Me.LblIngresa)
+        Me.GbGuardarContrasena.Controls.Add(Me.LblUsuario2)
+        Me.GbGuardarContrasena.Location = New System.Drawing.Point(245, 18)
         Me.GbGuardarContrasena.Name = "GbGuardarContrasena"
         Me.GbGuardarContrasena.Padding = New System.Windows.Forms.Padding(0, 20, 0, 0)
         Me.GbGuardarContrasena.Size = New System.Drawing.Size(350, 277)
-        Me.GbGuardarContrasena.TabIndex = 18
+        Me.GbGuardarContrasena.TabIndex = 1
         Me.GbGuardarContrasena.TabStop = False
         Me.GbGuardarContrasena.Visible = False
         '
         'LblUsuario2
         '
-        Me.LblUsuario2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblUsuario2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblUsuario2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.LblUsuario2.Location = New System.Drawing.Point(3, 25)
         Me.LblUsuario2.Name = "LblUsuario2"
         Me.LblUsuario2.Size = New System.Drawing.Size(344, 18)
@@ -219,13 +221,14 @@ Partial Class FrmUserPassword
         '
         Me.Panel2.AutoSize = True
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.BtnCancelar)
         Me.Panel2.Controls.Add(Me.BtnGuardar)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 201)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(20)
         Me.Panel2.Size = New System.Drawing.Size(350, 76)
-        Me.Panel2.TabIndex = 6
+        Me.Panel2.TabIndex = 7
         '
         'BtnGuardar
         '
@@ -233,18 +236,31 @@ Partial Class FrmUserPassword
         Me.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnGuardar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnGuardar.Location = New System.Drawing.Point(137, 23)
+        Me.BtnGuardar.Location = New System.Drawing.Point(23, 23)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(190, 30)
+        Me.BtnGuardar.Size = New System.Drawing.Size(170, 30)
         Me.BtnGuardar.TabIndex = 5
         Me.BtnGuardar.Text = "&Guardar contraseña"
         Me.BtnGuardar.UseVisualStyleBackColor = True
+        '
+        'BtnCancelar
+        '
+        Me.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCancelar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCancelar.Location = New System.Drawing.Point(207, 23)
+        Me.BtnCancelar.Name = "BtnCancelar"
+        Me.BtnCancelar.Size = New System.Drawing.Size(120, 30)
+        Me.BtnCancelar.TabIndex = 6
+        Me.BtnCancelar.Text = "C&ancelar"
+        Me.BtnCancelar.UseVisualStyleBackColor = True
         '
         'FrmUserPassword
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(576, 313)
+        Me.ClientSize = New System.Drawing.Size(624, 316)
         Me.Controls.Add(Me.GbUsuarioContrasena)
         Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.GbGuardarContrasena)
@@ -282,4 +298,5 @@ Partial Class FrmUserPassword
     Friend WithEvents TxtContrasena1 As TextBox
     Friend WithEvents LblIngresa As Label
     Friend WithEvents BtnIniciar As Button
+    Friend WithEvents BtnCancelar As Button
 End Class
