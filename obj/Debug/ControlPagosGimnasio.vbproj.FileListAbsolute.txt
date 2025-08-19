@@ -53,3 +53,4 @@ C:\Users\Jinkis\Desktop\Projects Visual Basic\ControlPagosGimnasio\obj\Debug\Con
 C:\Users\Jinkis\Desktop\Projects Visual Basic\ControlPagosGimnasio\obj\Debug\ControlPagosGimnasio.FrmPagoMensual.resources
 C:\Users\Jinkis\Desktop\Projects Visual Basic\ControlPagosGimnasio\obj\Debug\ControlPagosGimnasio.exe.config
 C:\Users\Jinkis\Desktop\Projects Visual Basic\ControlPagosGimnasio\obj\Debug\ControlPagosGimnasio.FrmUserPassword.resources
+C:\Users\Jinkis\Desktop\Projects Visual Basic\ControlPagosGimnasio\obj\Debug\ControlPagosGimnasio.A_modify_A.resources

@@ -18,7 +18,7 @@ Public Class FrmPrincipal
             Else
                 cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
                 cnxnMySql.Open()
-                sqlConsulta = "UPDATE reg_sesion_user SET fh_salida ='" & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' WHERE id_user ='" & idUser & "'"
+                sqlConsulta = "UPDATE sesion_user SET fh_salida ='" & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' ORDER BY id_reg DESC LIMIT 1"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader()
                 drDataReader.Close()
@@ -39,7 +39,7 @@ Public Class FrmPrincipal
             cnxnMySql.Open()
 
             'HACER CONSULTA PARA COMPROBAR SI HAY PRECIO Y DESCUENTO
-            sqlConsulta = "SELECT * FROM tarifas"
+            sqlConsulta = "SELECT * FROM trfa_dscto"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
 
@@ -87,7 +87,7 @@ Public Class FrmPrincipal
                     'SELECCIONAMOS EL DESCUENTO Y EL PRECIO Y AGREGAMOS EL CAMPO PRECIO
                     dtInsertPago.Columns.Add("Precio", GetType(Decimal))
                     For Each iFe As DataRow In dtInsertPago.Rows
-                        sqlConsulta = "SELECT precio, dscto FROM tarifas WHERE e_min <= '" & iFe("Descto") & "' AND e_max >= '" & iFe("Descto") & "'"
+                        sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE emin_trfa <= '" & iFe("Descto") & "' AND emax_trfa >= '" & iFe("Descto") & "'"
                         cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                         drDataReader = cmdCommand.ExecuteReader
                         'COMPROBAMOS SI HAY O NO DESCUENTOS
@@ -97,7 +97,7 @@ Public Class FrmPrincipal
                             iFe("Descto") = drDataReader.GetDecimal(1)
                         Else
                             drDataReader.Close()
-                            sqlConsulta = "SELECT precio FROM tarifas WHERE id_tarifa = 1"
+                            sqlConsulta = "SELECT prcio_trfa FROM dscto_trfa WHERE id_trfa = 1"
                             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                             drDataReader = cmdCommand.ExecuteReader
                             drDataReader.Read()

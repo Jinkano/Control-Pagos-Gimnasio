@@ -50,9 +50,9 @@ Public Class FrmUserPassword
                     FrmPrincipal.cargoUser = drDataReader.GetString(3).ToString
                     drDataReader.Close()
 
-                    sqlConsulta = "INSERT INTO reg_sesion_user (fh_entrada, id_user) VALUES
+                sqlConsulta = "INSERT INTO sesion_user (fh_entrada, id_user) VALUES
                                 ('" & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "', '" & idUser & "')"
-                    cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                     drDataReader = cmdCommand.ExecuteReader()
                     idUser = ""
 
@@ -67,7 +67,7 @@ Public Class FrmUserPassword
             cnxnMySql.Close()
 
         Catch ex As Exception
-            MsgBox(e.ToString)
+        MsgBox(e.ToString)
         End Try
     End Sub
 
@@ -99,10 +99,6 @@ Public Class FrmUserPassword
             MsgBox("Las contraseñas no coinciden.", vbCritical, "Guardar contraseña")
             TxtContrasena1.Focus()
         End If
-    End Sub
-
-    Private Sub FrmUserPassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click

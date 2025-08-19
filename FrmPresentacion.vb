@@ -19,7 +19,7 @@ Public Class FrmPresentacion
             LblBarra.Text = "No hay CONEXIÓN con la Base de Datos"
             LblBarra.ForeColor = Color.Red
 
-            MsgBox("No se puede acceder al programa." & Chr(13) & Chr(13) & "No se ha podido conectar con la BBDD.", vbCritical, "Error de conexión")
+            MsgBox("No se ha podido conectar con la BBDD." & Chr(13) & Chr(13) & "No se puede acceder al programa.", vbCritical, "Error de conexión")
             End
         End If
     End Sub
