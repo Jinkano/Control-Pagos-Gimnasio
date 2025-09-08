@@ -89,6 +89,7 @@ Partial Class FrmPresentacion
         '
         'Timer
         '
+        Me.Timer.Interval = 1
         '
         'BarraProgreso
         '

@@ -24,22 +24,22 @@ Partial Class FrmUserPassword
     Private Sub InitializeComponent()
         Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.GbUsuarioContrasena = New System.Windows.Forms.GroupBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BtnCerrar = New System.Windows.Forms.Button()
-        Me.BtnIniciar = New System.Windows.Forms.Button()
-        Me.TxtContrasena = New System.Windows.Forms.TextBox()
-        Me.LblContrasena = New System.Windows.Forms.Label()
-        Me.TxtUsuario = New System.Windows.Forms.TextBox()
         Me.LblUsuario = New System.Windows.Forms.Label()
+        Me.TxtUsuario = New System.Windows.Forms.TextBox()
+        Me.LblContrasena = New System.Windows.Forms.Label()
+        Me.TxtContrasena = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.BtnIniciar = New System.Windows.Forms.Button()
+        Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.GbGuardarContrasena = New System.Windows.Forms.GroupBox()
-        Me.LblUsuario2 = New System.Windows.Forms.Label()
-        Me.LblIngresa = New System.Windows.Forms.Label()
-        Me.TxtContrasena1 = New System.Windows.Forms.TextBox()
-        Me.LblRepite = New System.Windows.Forms.Label()
-        Me.TxtContrasena2 = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
+        Me.BtnGuardar = New System.Windows.Forms.Button()
+        Me.TxtContrasena2 = New System.Windows.Forms.TextBox()
+        Me.LblRepite = New System.Windows.Forms.Label()
+        Me.TxtContrasena1 = New System.Windows.Forms.TextBox()
+        Me.LblIngresa = New System.Windows.Forms.Label()
+        Me.LblUsuario2 = New System.Windows.Forms.Label()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbUsuarioContrasena.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -71,6 +71,48 @@ Partial Class FrmUserPassword
         Me.GbUsuarioContrasena.TabIndex = 0
         Me.GbUsuarioContrasena.TabStop = False
         '
+        'LblUsuario
+        '
+        Me.LblUsuario.AutoSize = True
+        Me.LblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblUsuario.Location = New System.Drawing.Point(19, 33)
+        Me.LblUsuario.Name = "LblUsuario"
+        Me.LblUsuario.Size = New System.Drawing.Size(152, 18)
+        Me.LblUsuario.TabIndex = 0
+        Me.LblUsuario.Text = "&Nombre de usuario"
+        '
+        'TxtUsuario
+        '
+        Me.TxtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtUsuario.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtUsuario.Location = New System.Drawing.Point(23, 65)
+        Me.TxtUsuario.MaxLength = 50
+        Me.TxtUsuario.Name = "TxtUsuario"
+        Me.TxtUsuario.Size = New System.Drawing.Size(304, 26)
+        Me.TxtUsuario.TabIndex = 1
+        Me.TxtUsuario.Text = "A"
+        '
+        'LblContrasena
+        '
+        Me.LblContrasena.AutoSize = True
+        Me.LblContrasena.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblContrasena.Location = New System.Drawing.Point(19, 117)
+        Me.LblContrasena.Name = "LblContrasena"
+        Me.LblContrasena.Size = New System.Drawing.Size(95, 18)
+        Me.LblContrasena.TabIndex = 2
+        Me.LblContrasena.Text = "&Contraseña"
+        '
+        'TxtContrasena
+        '
+        Me.TxtContrasena.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtContrasena.Location = New System.Drawing.Point(23, 149)
+        Me.TxtContrasena.MaxLength = 50
+        Me.TxtContrasena.Name = "TxtContrasena"
+        Me.TxtContrasena.PasswordChar = Global.Microsoft.VisualBasic.ChrW(172)
+        Me.TxtContrasena.Size = New System.Drawing.Size(304, 26)
+        Me.TxtContrasena.TabIndex = 3
+        Me.TxtContrasena.Text = "a"
+        '
         'Panel1
         '
         Me.Panel1.AutoSize = True
@@ -82,19 +124,6 @@ Partial Class FrmUserPassword
         Me.Panel1.Padding = New System.Windows.Forms.Padding(20)
         Me.Panel1.Size = New System.Drawing.Size(350, 76)
         Me.Panel1.TabIndex = 6
-        '
-        'BtnCerrar
-        '
-        Me.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCerrar.ForeColor = System.Drawing.Color.Brown
-        Me.BtnCerrar.Location = New System.Drawing.Point(197, 23)
-        Me.BtnCerrar.Name = "BtnCerrar"
-        Me.BtnCerrar.Size = New System.Drawing.Size(130, 30)
-        Me.BtnCerrar.TabIndex = 5
-        Me.BtnCerrar.Text = "Cerrar &App"
-        Me.BtnCerrar.UseVisualStyleBackColor = True
         '
         'BtnIniciar
         '
@@ -110,45 +139,18 @@ Partial Class FrmUserPassword
         Me.BtnIniciar.Text = "&Iniciar sesión"
         Me.BtnIniciar.UseVisualStyleBackColor = True
         '
-        'TxtContrasena
+        'BtnCerrar
         '
-        Me.TxtContrasena.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtContrasena.Location = New System.Drawing.Point(23, 149)
-        Me.TxtContrasena.MaxLength = 50
-        Me.TxtContrasena.Name = "TxtContrasena"
-        Me.TxtContrasena.PasswordChar = Global.Microsoft.VisualBasic.ChrW(172)
-        Me.TxtContrasena.Size = New System.Drawing.Size(304, 26)
-        Me.TxtContrasena.TabIndex = 3
-        '
-        'LblContrasena
-        '
-        Me.LblContrasena.AutoSize = True
-        Me.LblContrasena.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblContrasena.Location = New System.Drawing.Point(19, 117)
-        Me.LblContrasena.Name = "LblContrasena"
-        Me.LblContrasena.Size = New System.Drawing.Size(95, 18)
-        Me.LblContrasena.TabIndex = 2
-        Me.LblContrasena.Text = "&Contraseña"
-        '
-        'TxtUsuario
-        '
-        Me.TxtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtUsuario.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtUsuario.Location = New System.Drawing.Point(23, 65)
-        Me.TxtUsuario.MaxLength = 50
-        Me.TxtUsuario.Name = "TxtUsuario"
-        Me.TxtUsuario.Size = New System.Drawing.Size(304, 26)
-        Me.TxtUsuario.TabIndex = 1
-        '
-        'LblUsuario
-        '
-        Me.LblUsuario.AutoSize = True
-        Me.LblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblUsuario.Location = New System.Drawing.Point(19, 33)
-        Me.LblUsuario.Name = "LblUsuario"
-        Me.LblUsuario.Size = New System.Drawing.Size(152, 18)
-        Me.LblUsuario.TabIndex = 0
-        Me.LblUsuario.Text = "&Nombre de usuario"
+        Me.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCerrar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCerrar.Location = New System.Drawing.Point(197, 23)
+        Me.BtnCerrar.Name = "BtnCerrar"
+        Me.BtnCerrar.Size = New System.Drawing.Size(130, 30)
+        Me.BtnCerrar.TabIndex = 5
+        Me.BtnCerrar.Text = "Cerrar &App"
+        Me.BtnCerrar.UseVisualStyleBackColor = True
         '
         'GbGuardarContrasena
         '
@@ -166,57 +168,6 @@ Partial Class FrmUserPassword
         Me.GbGuardarContrasena.TabStop = False
         Me.GbGuardarContrasena.Visible = False
         '
-        'LblUsuario2
-        '
-        Me.LblUsuario2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblUsuario2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.LblUsuario2.Location = New System.Drawing.Point(3, 25)
-        Me.LblUsuario2.Name = "LblUsuario2"
-        Me.LblUsuario2.Size = New System.Drawing.Size(344, 18)
-        Me.LblUsuario2.TabIndex = 0
-        Me.LblUsuario2.Text = "LblUsuario2"
-        Me.LblUsuario2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'LblIngresa
-        '
-        Me.LblIngresa.AutoSize = True
-        Me.LblIngresa.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblIngresa.Location = New System.Drawing.Point(20, 60)
-        Me.LblIngresa.Name = "LblIngresa"
-        Me.LblIngresa.Size = New System.Drawing.Size(152, 18)
-        Me.LblIngresa.TabIndex = 1
-        Me.LblIngresa.Text = "&Ingresa contraseña"
-        '
-        'TxtContrasena1
-        '
-        Me.TxtContrasena1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtContrasena1.Location = New System.Drawing.Point(23, 86)
-        Me.TxtContrasena1.Margin = New System.Windows.Forms.Padding(30)
-        Me.TxtContrasena1.Name = "TxtContrasena1"
-        Me.TxtContrasena1.Size = New System.Drawing.Size(304, 26)
-        Me.TxtContrasena1.TabIndex = 2
-        Me.TxtContrasena1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'LblRepite
-        '
-        Me.LblRepite.AutoSize = True
-        Me.LblRepite.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblRepite.Location = New System.Drawing.Point(20, 123)
-        Me.LblRepite.Name = "LblRepite"
-        Me.LblRepite.Size = New System.Drawing.Size(148, 18)
-        Me.LblRepite.TabIndex = 3
-        Me.LblRepite.Text = "&Repite Contraseña"
-        '
-        'TxtContrasena2
-        '
-        Me.TxtContrasena2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtContrasena2.Location = New System.Drawing.Point(23, 149)
-        Me.TxtContrasena2.Margin = New System.Windows.Forms.Padding(30)
-        Me.TxtContrasena2.Name = "TxtContrasena2"
-        Me.TxtContrasena2.Size = New System.Drawing.Size(304, 26)
-        Me.TxtContrasena2.TabIndex = 4
-        Me.TxtContrasena2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Panel2
         '
         Me.Panel2.AutoSize = True
@@ -229,6 +180,19 @@ Partial Class FrmUserPassword
         Me.Panel2.Padding = New System.Windows.Forms.Padding(20)
         Me.Panel2.Size = New System.Drawing.Size(350, 76)
         Me.Panel2.TabIndex = 7
+        '
+        'BtnCancelar
+        '
+        Me.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCancelar.ForeColor = System.Drawing.Color.Brown
+        Me.BtnCancelar.Location = New System.Drawing.Point(207, 23)
+        Me.BtnCancelar.Name = "BtnCancelar"
+        Me.BtnCancelar.Size = New System.Drawing.Size(120, 30)
+        Me.BtnCancelar.TabIndex = 6
+        Me.BtnCancelar.Text = "C&ancelar"
+        Me.BtnCancelar.UseVisualStyleBackColor = True
         '
         'BtnGuardar
         '
@@ -243,18 +207,56 @@ Partial Class FrmUserPassword
         Me.BtnGuardar.Text = "&Guardar contraseña"
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
-        'BtnCancelar
+        'TxtContrasena2
         '
-        Me.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancelar.ForeColor = System.Drawing.Color.Brown
-        Me.BtnCancelar.Location = New System.Drawing.Point(207, 23)
-        Me.BtnCancelar.Name = "BtnCancelar"
-        Me.BtnCancelar.Size = New System.Drawing.Size(120, 30)
-        Me.BtnCancelar.TabIndex = 6
-        Me.BtnCancelar.Text = "C&ancelar"
-        Me.BtnCancelar.UseVisualStyleBackColor = True
+        Me.TxtContrasena2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtContrasena2.Location = New System.Drawing.Point(23, 149)
+        Me.TxtContrasena2.Margin = New System.Windows.Forms.Padding(30)
+        Me.TxtContrasena2.Name = "TxtContrasena2"
+        Me.TxtContrasena2.Size = New System.Drawing.Size(304, 26)
+        Me.TxtContrasena2.TabIndex = 4
+        Me.TxtContrasena2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'LblRepite
+        '
+        Me.LblRepite.AutoSize = True
+        Me.LblRepite.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblRepite.Location = New System.Drawing.Point(20, 123)
+        Me.LblRepite.Name = "LblRepite"
+        Me.LblRepite.Size = New System.Drawing.Size(148, 18)
+        Me.LblRepite.TabIndex = 3
+        Me.LblRepite.Text = "&Repite Contraseña"
+        '
+        'TxtContrasena1
+        '
+        Me.TxtContrasena1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtContrasena1.Location = New System.Drawing.Point(23, 86)
+        Me.TxtContrasena1.Margin = New System.Windows.Forms.Padding(30)
+        Me.TxtContrasena1.Name = "TxtContrasena1"
+        Me.TxtContrasena1.Size = New System.Drawing.Size(304, 26)
+        Me.TxtContrasena1.TabIndex = 2
+        Me.TxtContrasena1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'LblIngresa
+        '
+        Me.LblIngresa.AutoSize = True
+        Me.LblIngresa.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblIngresa.Location = New System.Drawing.Point(20, 60)
+        Me.LblIngresa.Name = "LblIngresa"
+        Me.LblIngresa.Size = New System.Drawing.Size(152, 18)
+        Me.LblIngresa.TabIndex = 1
+        Me.LblIngresa.Text = "&Ingresa contraseña"
+        '
+        'LblUsuario2
+        '
+        Me.LblUsuario2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblUsuario2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblUsuario2.Location = New System.Drawing.Point(3, 25)
+        Me.LblUsuario2.Name = "LblUsuario2"
+        Me.LblUsuario2.Size = New System.Drawing.Size(344, 18)
+        Me.LblUsuario2.TabIndex = 0
+        Me.LblUsuario2.Text = "LblUsuario2"
+        Me.LblUsuario2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'FrmUserPassword
         '

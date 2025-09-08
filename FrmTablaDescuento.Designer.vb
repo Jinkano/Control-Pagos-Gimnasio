@@ -22,19 +22,19 @@ Partial Class FrmTablaDescuento
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
@@ -42,40 +42,40 @@ Partial Class FrmTablaDescuento
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.BtnActualizar = New System.Windows.Forms.Button()
         Me.BtnCerrar = New System.Windows.Forms.Button()
-        Me.DgvTabla = New System.Windows.Forms.DataGridView()
-        Me.ColId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColTipoPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColPrecio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColEdadMin = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColEdadMax = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColIntgrnts = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColDscto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel = New System.Windows.Forms.Panel()
+        Me.TxtApagar = New System.Windows.Forms.TextBox()
         Me.LblTotal = New System.Windows.Forms.Label()
         Me.TxtTotal = New System.Windows.Forms.TextBox()
         Me.LblPrecio = New System.Windows.Forms.Label()
         Me.TxtPrecio = New System.Windows.Forms.TextBox()
         Me.LblTipo = New System.Windows.Forms.Label()
-        Me.TxtApagar = New System.Windows.Forms.TextBox()
         Me.CmbTipoPago = New System.Windows.Forms.ComboBox()
         Me.TxtDscnto = New System.Windows.Forms.TextBox()
         Me.LblApagar = New System.Windows.Forms.Label()
         Me.LblDscto = New System.Windows.Forms.Label()
         Me.NudEdadMax = New System.Windows.Forms.NumericUpDown()
         Me.LblMax = New System.Windows.Forms.Label()
-        Me.LblIntegrantes = New System.Windows.Forms.Label()
+        Me.LblNumPerson = New System.Windows.Forms.Label()
         Me.NudEdadMin = New System.Windows.Forms.NumericUpDown()
-        Me.NudIntgrnts = New System.Windows.Forms.NumericUpDown()
+        Me.NudNumPerson = New System.Windows.Forms.NumericUpDown()
         Me.LblMin = New System.Windows.Forms.Label()
         Me.LblNomPago = New System.Windows.Forms.Label()
         Me.LblNombre = New System.Windows.Forms.Label()
-        CType(Me.DgvTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DgvTabla = New System.Windows.Forms.DataGridView()
+        Me.ColId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColTipoPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColPrecio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColEdadMin = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColEdadMax = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColNumPerson = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColDscto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColApagar = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel.SuspendLayout()
         CType(Me.NudEdadMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NudEdadMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NudIntgrnts, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NudNumPerson, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DgvTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnNuevo
@@ -83,7 +83,7 @@ Partial Class FrmTablaDescuento
         Me.BtnNuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnNuevo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.nuevo_24x32
         Me.BtnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnNuevo.Location = New System.Drawing.Point(729, 24)
+        Me.BtnNuevo.Location = New System.Drawing.Point(741, 39)
         Me.BtnNuevo.Name = "BtnNuevo"
         Me.BtnNuevo.Padding = New System.Windows.Forms.Padding(25, 0, 30, 0)
         Me.BtnNuevo.Size = New System.Drawing.Size(170, 46)
@@ -97,7 +97,7 @@ Partial Class FrmTablaDescuento
         Me.BtnEliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnEliminar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.eliminar_28x32
         Me.BtnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnEliminar.Location = New System.Drawing.Point(729, 136)
+        Me.BtnEliminar.Location = New System.Drawing.Point(741, 204)
         Me.BtnEliminar.Name = "BtnEliminar"
         Me.BtnEliminar.Padding = New System.Windows.Forms.Padding(25, 0, 20, 0)
         Me.BtnEliminar.Size = New System.Drawing.Size(170, 46)
@@ -111,11 +111,11 @@ Partial Class FrmTablaDescuento
         Me.BtnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCancelar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cancel_28x28
         Me.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnCancelar.Location = New System.Drawing.Point(729, 80)
+        Me.BtnCancelar.Location = New System.Drawing.Point(741, 126)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(25, 0, 20, 0)
         Me.BtnCancelar.Size = New System.Drawing.Size(170, 46)
-        Me.BtnCancelar.TabIndex = 6
+        Me.BtnCancelar.TabIndex = 2
         Me.BtnCancelar.Text = "&Cancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCancelar.UseVisualStyleBackColor = True
@@ -126,7 +126,7 @@ Partial Class FrmTablaDescuento
         Me.BtnModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnModificar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.editar_28x32
         Me.BtnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnModificar.Location = New System.Drawing.Point(729, 80)
+        Me.BtnModificar.Location = New System.Drawing.Point(741, 101)
         Me.BtnModificar.Name = "BtnModificar"
         Me.BtnModificar.Padding = New System.Windows.Forms.Padding(25, 0, 20, 0)
         Me.BtnModificar.Size = New System.Drawing.Size(170, 46)
@@ -140,7 +140,7 @@ Partial Class FrmTablaDescuento
         Me.BtnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnGuardar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.guardar_28x32
         Me.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnGuardar.Location = New System.Drawing.Point(729, 24)
+        Me.BtnGuardar.Location = New System.Drawing.Point(741, 39)
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(25, 0, 25, 0)
         Me.BtnGuardar.Size = New System.Drawing.Size(170, 46)
@@ -155,11 +155,11 @@ Partial Class FrmTablaDescuento
         Me.BtnActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnActualizar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.actualizar_28x27
         Me.BtnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnActualizar.Location = New System.Drawing.Point(729, 24)
+        Me.BtnActualizar.Location = New System.Drawing.Point(741, 39)
         Me.BtnActualizar.Name = "BtnActualizar"
         Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(18, 0, 18, 0)
         Me.BtnActualizar.Size = New System.Drawing.Size(170, 46)
-        Me.BtnActualizar.TabIndex = 5
+        Me.BtnActualizar.TabIndex = 1
         Me.BtnActualizar.Text = "&Actualizar"
         Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnActualizar.UseVisualStyleBackColor = True
@@ -176,206 +176,65 @@ Partial Class FrmTablaDescuento
         Me.BtnCerrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.BtnCerrar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir22
         Me.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtnCerrar.Location = New System.Drawing.Point(729, 208)
+        Me.BtnCerrar.Location = New System.Drawing.Point(760, 524)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
         Me.BtnCerrar.Size = New System.Drawing.Size(170, 42)
-        Me.BtnCerrar.TabIndex = 13
+        Me.BtnCerrar.TabIndex = 4
         Me.BtnCerrar.Text = "&Cerrar ventana"
         Me.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCerrar.UseVisualStyleBackColor = False
-        '
-        'DgvTabla
-        '
-        Me.DgvTabla.AllowUserToAddRows = False
-        Me.DgvTabla.AllowUserToDeleteRows = False
-        Me.DgvTabla.AllowUserToResizeColumns = False
-        Me.DgvTabla.AllowUserToResizeRows = False
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvTabla.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvTabla.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.DgvTabla.ColumnHeadersHeight = 35
-        Me.DgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DgvTabla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColId, Me.ColTipoPago, Me.ColPrecio, Me.ColEdadMin, Me.ColEdadMax, Me.ColIntgrnts, Me.ColTotal, Me.ColDscto, Me.ColApagar})
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvTabla.DefaultCellStyle = DataGridViewCellStyle24
-        Me.DgvTabla.Location = New System.Drawing.Point(24, 270)
-        Me.DgvTabla.MultiSelect = False
-        Me.DgvTabla.Name = "DgvTabla"
-        Me.DgvTabla.ReadOnly = True
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvTabla.RowHeadersDefaultCellStyle = DataGridViewCellStyle25
-        Me.DgvTabla.RowHeadersWidth = 35
-        Me.DgvTabla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvTabla.RowsDefaultCellStyle = DataGridViewCellStyle26
-        Me.DgvTabla.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DgvTabla.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvTabla.RowTemplate.DividerHeight = 2
-        Me.DgvTabla.RowTemplate.Height = 30
-        Me.DgvTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DgvTabla.Size = New System.Drawing.Size(896, 216)
-        Me.DgvTabla.TabIndex = 14
-        '
-        'ColId
-        '
-        Me.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ColId.HeaderText = "id"
-        Me.ColId.Name = "ColId"
-        Me.ColId.ReadOnly = True
-        Me.ColId.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ColId.Visible = False
-        Me.ColId.Width = 20
-        '
-        'ColTipoPago
-        '
-        Me.ColTipoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColTipoPago.DefaultCellStyle = DataGridViewCellStyle16
-        Me.ColTipoPago.HeaderText = "TIPO DE PAGO"
-        Me.ColTipoPago.Name = "ColTipoPago"
-        Me.ColTipoPago.ReadOnly = True
-        Me.ColTipoPago.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColTipoPago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ColTipoPago.Width = 120
-        '
-        'ColPrecio
-        '
-        Me.ColPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColPrecio.DefaultCellStyle = DataGridViewCellStyle17
-        Me.ColPrecio.HeaderText = "PRECIO"
-        Me.ColPrecio.Name = "ColPrecio"
-        Me.ColPrecio.ReadOnly = True
-        Me.ColPrecio.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColPrecio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ColEdadMin
-        '
-        Me.ColEdadMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColEdadMin.DefaultCellStyle = DataGridViewCellStyle18
-        Me.ColEdadMin.HeaderText = "EDAD MIN"
-        Me.ColEdadMin.Name = "ColEdadMin"
-        Me.ColEdadMin.ReadOnly = True
-        Me.ColEdadMin.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColEdadMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ColEdadMax
-        '
-        Me.ColEdadMax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColEdadMax.DefaultCellStyle = DataGridViewCellStyle19
-        Me.ColEdadMax.HeaderText = "EDAD MAX"
-        Me.ColEdadMax.Name = "ColEdadMax"
-        Me.ColEdadMax.ReadOnly = True
-        Me.ColEdadMax.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColEdadMax.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ColIntgrnts
-        '
-        Me.ColIntgrnts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColIntgrnts.DefaultCellStyle = DataGridViewCellStyle20
-        Me.ColIntgrnts.HeaderText = "INTEGRANTES"
-        Me.ColIntgrnts.Name = "ColIntgrnts"
-        Me.ColIntgrnts.ReadOnly = True
-        Me.ColIntgrnts.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColIntgrnts.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ColIntgrnts.Width = 110
-        '
-        'ColTotal
-        '
-        Me.ColTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColTotal.DefaultCellStyle = DataGridViewCellStyle21
-        Me.ColTotal.HeaderText = "TOTAL"
-        Me.ColTotal.Name = "ColTotal"
-        Me.ColTotal.ReadOnly = True
-        Me.ColTotal.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ColDscto
-        '
-        Me.ColDscto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColDscto.DefaultCellStyle = DataGridViewCellStyle22
-        Me.ColDscto.HeaderText = "DESCUENTO"
-        Me.ColDscto.Name = "ColDscto"
-        Me.ColDscto.ReadOnly = True
-        Me.ColDscto.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColDscto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ColDscto.Width = 110
-        '
-        'ColApagar
-        '
-        Me.ColApagar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ColApagar.DefaultCellStyle = DataGridViewCellStyle23
-        Me.ColApagar.HeaderText = "A PAGAR"
-        Me.ColApagar.Name = "ColApagar"
-        Me.ColApagar.ReadOnly = True
-        Me.ColApagar.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColApagar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'Panel
         '
         Me.Panel.BackColor = System.Drawing.SystemColors.Control
         Me.Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel.Controls.Add(Me.TxtApagar)
         Me.Panel.Controls.Add(Me.LblTotal)
         Me.Panel.Controls.Add(Me.TxtTotal)
         Me.Panel.Controls.Add(Me.LblPrecio)
         Me.Panel.Controls.Add(Me.TxtPrecio)
         Me.Panel.Controls.Add(Me.LblTipo)
-        Me.Panel.Controls.Add(Me.TxtApagar)
         Me.Panel.Controls.Add(Me.CmbTipoPago)
         Me.Panel.Controls.Add(Me.TxtDscnto)
         Me.Panel.Controls.Add(Me.LblApagar)
         Me.Panel.Controls.Add(Me.LblDscto)
         Me.Panel.Controls.Add(Me.NudEdadMax)
         Me.Panel.Controls.Add(Me.LblMax)
-        Me.Panel.Controls.Add(Me.LblIntegrantes)
+        Me.Panel.Controls.Add(Me.LblNumPerson)
         Me.Panel.Controls.Add(Me.NudEdadMin)
-        Me.Panel.Controls.Add(Me.NudIntgrnts)
+        Me.Panel.Controls.Add(Me.NudNumPerson)
         Me.Panel.Controls.Add(Me.LblMin)
         Me.Panel.Controls.Add(Me.LblNomPago)
         Me.Panel.Controls.Add(Me.LblNombre)
         Me.Panel.Location = New System.Drawing.Point(24, 24)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(670, 226)
-        Me.Panel.TabIndex = 28
+        Me.Panel.Size = New System.Drawing.Size(677, 226)
+        Me.Panel.TabIndex = 5
+        '
+        'TxtApagar
+        '
+        Me.TxtApagar.BackColor = System.Drawing.SystemColors.Window
+        Me.TxtApagar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtApagar.Enabled = False
+        Me.TxtApagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtApagar.ForeColor = System.Drawing.Color.MediumBlue
+        Me.TxtApagar.Location = New System.Drawing.Point(140, 174)
+        Me.TxtApagar.MaxLength = 10
+        Me.TxtApagar.Name = "TxtApagar"
+        Me.TxtApagar.Size = New System.Drawing.Size(170, 26)
+        Me.TxtApagar.TabIndex = 4
+        Me.TxtApagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtApagar.WordWrap = False
         '
         'LblTotal
         '
         Me.LblTotal.AutoSize = True
         Me.LblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTotal.Location = New System.Drawing.Point(94, 104)
+        Me.LblTotal.Location = New System.Drawing.Point(89, 104)
         Me.LblTotal.Name = "LblTotal"
         Me.LblTotal.Size = New System.Drawing.Size(43, 16)
-        Me.LblTotal.TabIndex = 11
+        Me.LblTotal.TabIndex = 2
         Me.LblTotal.Text = "Total"
         Me.LblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -386,11 +245,11 @@ Partial Class FrmTablaDescuento
         Me.TxtTotal.Enabled = False
         Me.TxtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtTotal.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtTotal.Location = New System.Drawing.Point(145, 98)
+        Me.TxtTotal.Location = New System.Drawing.Point(140, 98)
         Me.TxtTotal.MaxLength = 10
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.Size = New System.Drawing.Size(170, 26)
-        Me.TxtTotal.TabIndex = 10
+        Me.TxtTotal.TabIndex = 2
         Me.TxtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.TxtTotal.WordWrap = False
         '
@@ -398,10 +257,10 @@ Partial Class FrmTablaDescuento
         '
         Me.LblPrecio.AutoSize = True
         Me.LblPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPrecio.Location = New System.Drawing.Point(85, 66)
+        Me.LblPrecio.Location = New System.Drawing.Point(80, 66)
         Me.LblPrecio.Name = "LblPrecio"
         Me.LblPrecio.Size = New System.Drawing.Size(52, 16)
-        Me.LblPrecio.TabIndex = 7
+        Me.LblPrecio.TabIndex = 1
         Me.LblPrecio.Text = "Precio"
         Me.LblPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -412,11 +271,11 @@ Partial Class FrmTablaDescuento
         Me.TxtPrecio.Enabled = False
         Me.TxtPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtPrecio.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtPrecio.Location = New System.Drawing.Point(145, 60)
+        Me.TxtPrecio.Location = New System.Drawing.Point(140, 60)
         Me.TxtPrecio.MaxLength = 10
         Me.TxtPrecio.Name = "TxtPrecio"
         Me.TxtPrecio.Size = New System.Drawing.Size(170, 26)
-        Me.TxtPrecio.TabIndex = 6
+        Me.TxtPrecio.TabIndex = 1
         Me.TxtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.TxtPrecio.WordWrap = False
         '
@@ -424,27 +283,12 @@ Partial Class FrmTablaDescuento
         '
         Me.LblTipo.AutoSize = True
         Me.LblTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTipo.Location = New System.Drawing.Point(36, 27)
+        Me.LblTipo.Location = New System.Drawing.Point(31, 27)
         Me.LblTipo.Name = "LblTipo"
         Me.LblTipo.Size = New System.Drawing.Size(101, 16)
         Me.LblTipo.TabIndex = 0
         Me.LblTipo.Text = "Tipo de pago"
         Me.LblTipo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'TxtApagar
-        '
-        Me.TxtApagar.BackColor = System.Drawing.SystemColors.Window
-        Me.TxtApagar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtApagar.Enabled = False
-        Me.TxtApagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtApagar.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtApagar.Location = New System.Drawing.Point(145, 174)
-        Me.TxtApagar.MaxLength = 10
-        Me.TxtApagar.Name = "TxtApagar"
-        Me.TxtApagar.Size = New System.Drawing.Size(170, 26)
-        Me.TxtApagar.TabIndex = 6
-        Me.TxtApagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.TxtApagar.WordWrap = False
         '
         'CmbTipoPago
         '
@@ -453,10 +297,11 @@ Partial Class FrmTablaDescuento
         Me.CmbTipoPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmbTipoPago.ForeColor = System.Drawing.Color.MediumBlue
         Me.CmbTipoPago.FormattingEnabled = True
-        Me.CmbTipoPago.Items.AddRange(New Object() {"CLASES SUELTAS", "DESCUENTO POR EDAD", "GRUPO FAMILIAR", "MENSUALIDAD + IMPLEMENTOS"})
-        Me.CmbTipoPago.Location = New System.Drawing.Point(145, 24)
+        Me.CmbTipoPago.IntegralHeight = False
+        Me.CmbTipoPago.Items.AddRange(New Object() {"", "CLASES SUELTAS", "DESCUENTO POR EDAD", "GRUPO FAMILIAR", "MENSUALIDAD + IMPLEMENTOS"})
+        Me.CmbTipoPago.Location = New System.Drawing.Point(140, 24)
         Me.CmbTipoPago.Name = "CmbTipoPago"
-        Me.CmbTipoPago.Size = New System.Drawing.Size(488, 24)
+        Me.CmbTipoPago.Size = New System.Drawing.Size(500, 24)
         Me.CmbTipoPago.TabIndex = 0
         '
         'TxtDscnto
@@ -466,11 +311,11 @@ Partial Class FrmTablaDescuento
         Me.TxtDscnto.Enabled = False
         Me.TxtDscnto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtDscnto.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtDscnto.Location = New System.Drawing.Point(145, 136)
+        Me.TxtDscnto.Location = New System.Drawing.Point(140, 136)
         Me.TxtDscnto.MaxLength = 10
         Me.TxtDscnto.Name = "TxtDscnto"
         Me.TxtDscnto.Size = New System.Drawing.Size(170, 26)
-        Me.TxtDscnto.TabIndex = 5
+        Me.TxtDscnto.TabIndex = 3
         Me.TxtDscnto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.TxtDscnto.WordWrap = False
         '
@@ -478,10 +323,10 @@ Partial Class FrmTablaDescuento
         '
         Me.LblApagar.AutoSize = True
         Me.LblApagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblApagar.Location = New System.Drawing.Point(75, 180)
+        Me.LblApagar.Location = New System.Drawing.Point(70, 180)
         Me.LblApagar.Name = "LblApagar"
         Me.LblApagar.Size = New System.Drawing.Size(62, 16)
-        Me.LblApagar.TabIndex = 7
+        Me.LblApagar.TabIndex = 4
         Me.LblApagar.Text = "A pagar"
         Me.LblApagar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -489,10 +334,10 @@ Partial Class FrmTablaDescuento
         '
         Me.LblDscto.AutoSize = True
         Me.LblDscto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDscto.Location = New System.Drawing.Point(56, 142)
+        Me.LblDscto.Location = New System.Drawing.Point(51, 142)
         Me.LblDscto.Name = "LblDscto"
         Me.LblDscto.Size = New System.Drawing.Size(81, 16)
-        Me.LblDscto.TabIndex = 6
+        Me.LblDscto.TabIndex = 3
         Me.LblDscto.Text = "Descuento"
         Me.LblDscto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -501,103 +346,243 @@ Partial Class FrmTablaDescuento
         Me.NudEdadMax.Enabled = False
         Me.NudEdadMax.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NudEdadMax.ForeColor = System.Drawing.Color.MediumBlue
-        Me.NudEdadMax.Location = New System.Drawing.Point(463, 175)
+        Me.NudEdadMax.Location = New System.Drawing.Point(470, 175)
         Me.NudEdadMax.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NudEdadMax.Name = "NudEdadMax"
         Me.NudEdadMax.Size = New System.Drawing.Size(170, 26)
-        Me.NudEdadMax.TabIndex = 3
+        Me.NudEdadMax.TabIndex = 7
         Me.NudEdadMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'LblMax
         '
         Me.LblMax.AutoSize = True
         Me.LblMax.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblMax.Location = New System.Drawing.Point(354, 180)
+        Me.LblMax.Location = New System.Drawing.Point(361, 180)
         Me.LblMax.Name = "LblMax"
         Me.LblMax.Size = New System.Drawing.Size(101, 16)
-        Me.LblMax.TabIndex = 4
-        Me.LblMax.Text = "Edad Maxima"
+        Me.LblMax.TabIndex = 9
+        Me.LblMax.Text = "Edad maxima"
         '
-        'LblIntegrantes
+        'LblNumPerson
         '
-        Me.LblIntegrantes.AutoSize = True
-        Me.LblIntegrantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblIntegrantes.Location = New System.Drawing.Point(336, 104)
-        Me.LblIntegrantes.Name = "LblIntegrantes"
-        Me.LblIntegrantes.Size = New System.Drawing.Size(119, 16)
-        Me.LblIntegrantes.TabIndex = 2
-        Me.LblIntegrantes.Text = "Num integrantes"
-        Me.LblIntegrantes.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LblNumPerson.AutoSize = True
+        Me.LblNumPerson.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNumPerson.Location = New System.Drawing.Point(355, 104)
+        Me.LblNumPerson.Name = "LblNumPerson"
+        Me.LblNumPerson.Size = New System.Drawing.Size(107, 16)
+        Me.LblNumPerson.TabIndex = 7
+        Me.LblNumPerson.Text = "Num personas"
+        Me.LblNumPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'NudEdadMin
         '
         Me.NudEdadMin.Enabled = False
         Me.NudEdadMin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NudEdadMin.ForeColor = System.Drawing.Color.MediumBlue
-        Me.NudEdadMin.Location = New System.Drawing.Point(463, 137)
+        Me.NudEdadMin.Location = New System.Drawing.Point(470, 137)
         Me.NudEdadMin.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.NudEdadMin.Name = "NudEdadMin"
         Me.NudEdadMin.Size = New System.Drawing.Size(170, 26)
-        Me.NudEdadMin.TabIndex = 2
+        Me.NudEdadMin.TabIndex = 6
         Me.NudEdadMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'NudIntgrnts
+        'NudNumPerson
         '
-        Me.NudIntgrnts.Enabled = False
-        Me.NudIntgrnts.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NudIntgrnts.ForeColor = System.Drawing.Color.MediumBlue
-        Me.NudIntgrnts.Location = New System.Drawing.Point(463, 99)
-        Me.NudIntgrnts.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.NudIntgrnts.Name = "NudIntgrnts"
-        Me.NudIntgrnts.Size = New System.Drawing.Size(170, 26)
-        Me.NudIntgrnts.TabIndex = 1
-        Me.NudIntgrnts.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.NudNumPerson.Enabled = False
+        Me.NudNumPerson.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NudNumPerson.ForeColor = System.Drawing.Color.MediumBlue
+        Me.NudNumPerson.Location = New System.Drawing.Point(470, 99)
+        Me.NudNumPerson.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.NudNumPerson.Name = "NudNumPerson"
+        Me.NudNumPerson.Size = New System.Drawing.Size(170, 26)
+        Me.NudNumPerson.TabIndex = 5
+        Me.NudNumPerson.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'LblMin
         '
         Me.LblMin.AutoSize = True
         Me.LblMin.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblMin.Location = New System.Drawing.Point(358, 142)
+        Me.LblMin.Location = New System.Drawing.Point(365, 142)
         Me.LblMin.Name = "LblMin"
         Me.LblMin.Size = New System.Drawing.Size(97, 16)
-        Me.LblMin.TabIndex = 3
-        Me.LblMin.Text = "Edad Minima"
+        Me.LblMin.TabIndex = 8
+        Me.LblMin.Text = "Edad minima"
         '
         'LblNomPago
         '
         Me.LblNomPago.BackColor = System.Drawing.Color.WhiteSmoke
         Me.LblNomPago.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblNomPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNomPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblNomPago.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblNomPago.Location = New System.Drawing.Point(463, 60)
+        Me.LblNomPago.Location = New System.Drawing.Point(470, 60)
         Me.LblNomPago.Name = "LblNomPago"
         Me.LblNomPago.Size = New System.Drawing.Size(170, 26)
-        Me.LblNomPago.TabIndex = 8
+        Me.LblNomPago.TabIndex = 6
         Me.LblNomPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'LblNombre
         '
         Me.LblNombre.AutoSize = True
         Me.LblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombre.Location = New System.Drawing.Point(353, 66)
+        Me.LblNombre.Location = New System.Drawing.Point(360, 66)
         Me.LblNombre.Name = "LblNombre"
         Me.LblNombre.Size = New System.Drawing.Size(102, 16)
-        Me.LblNombre.TabIndex = 1
+        Me.LblNombre.TabIndex = 5
         Me.LblNombre.Text = "Nombre pago"
         Me.LblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'DgvTabla
+        '
+        Me.DgvTabla.AllowUserToAddRows = False
+        Me.DgvTabla.AllowUserToDeleteRows = False
+        Me.DgvTabla.AllowUserToResizeColumns = False
+        Me.DgvTabla.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvTabla.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        Me.DgvTabla.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DgvTabla.ColumnHeadersHeight = 35
+        Me.DgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DgvTabla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColId, Me.ColTipoPago, Me.ColPrecio, Me.ColEdadMin, Me.ColEdadMax, Me.ColNumPerson, Me.ColTotal, Me.ColDscto, Me.ColApagar})
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvTabla.DefaultCellStyle = DataGridViewCellStyle11
+        Me.DgvTabla.Location = New System.Drawing.Point(24, 264)
+        Me.DgvTabla.MultiSelect = False
+        Me.DgvTabla.Name = "DgvTabla"
+        Me.DgvTabla.ReadOnly = True
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        Me.DgvTabla.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
+        Me.DgvTabla.RowHeadersWidth = 35
+        Me.DgvTabla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvTabla.RowsDefaultCellStyle = DataGridViewCellStyle13
+        Me.DgvTabla.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvTabla.RowTemplate.DividerHeight = 2
+        Me.DgvTabla.RowTemplate.Height = 30
+        Me.DgvTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgvTabla.Size = New System.Drawing.Size(906, 246)
+        Me.DgvTabla.TabIndex = 9
+        '
+        'ColId
+        '
+        Me.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ColId.HeaderText = "id"
+        Me.ColId.Name = "ColId"
+        Me.ColId.ReadOnly = True
+        Me.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ColId.Visible = False
+        Me.ColId.Width = 20
+        '
+        'ColTipoPago
+        '
+        Me.ColTipoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ColTipoPago.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ColTipoPago.HeaderText = "TIPO DE PAGO"
+        Me.ColTipoPago.Name = "ColTipoPago"
+        Me.ColTipoPago.ReadOnly = True
+        Me.ColTipoPago.Width = 130
+        '
+        'ColPrecio
+        '
+        Me.ColPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ColPrecio.DefaultCellStyle = DataGridViewCellStyle4
+        Me.ColPrecio.HeaderText = "PRECIO"
+        Me.ColPrecio.Name = "ColPrecio"
+        Me.ColPrecio.ReadOnly = True
+        Me.ColPrecio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ColEdadMin
+        '
+        Me.ColEdadMin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ColEdadMin.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ColEdadMin.HeaderText = "EDAD MIN"
+        Me.ColEdadMin.Name = "ColEdadMin"
+        Me.ColEdadMin.ReadOnly = True
+        Me.ColEdadMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ColEdadMax
+        '
+        Me.ColEdadMax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ColEdadMax.DefaultCellStyle = DataGridViewCellStyle6
+        Me.ColEdadMax.HeaderText = "EDAD MAX"
+        Me.ColEdadMax.Name = "ColEdadMax"
+        Me.ColEdadMax.ReadOnly = True
+        Me.ColEdadMax.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ColNumPerson
+        '
+        Me.ColNumPerson.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ColNumPerson.DefaultCellStyle = DataGridViewCellStyle7
+        Me.ColNumPerson.HeaderText = "Nº PERSONAS"
+        Me.ColNumPerson.Name = "ColNumPerson"
+        Me.ColNumPerson.ReadOnly = True
+        Me.ColNumPerson.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ColNumPerson.Width = 110
+        '
+        'ColTotal
+        '
+        Me.ColTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ColTotal.DefaultCellStyle = DataGridViewCellStyle8
+        Me.ColTotal.HeaderText = "TOTAL"
+        Me.ColTotal.Name = "ColTotal"
+        Me.ColTotal.ReadOnly = True
+        Me.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ColDscto
+        '
+        Me.ColDscto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ColDscto.DefaultCellStyle = DataGridViewCellStyle9
+        Me.ColDscto.HeaderText = "DESCUENTO"
+        Me.ColDscto.Name = "ColDscto"
+        Me.ColDscto.ReadOnly = True
+        Me.ColDscto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ColDscto.Width = 110
+        '
+        'ColApagar
+        '
+        Me.ColApagar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ColApagar.DefaultCellStyle = DataGridViewCellStyle10
+        Me.ColApagar.HeaderText = "A PAGAR"
+        Me.ColApagar.Name = "ColApagar"
+        Me.ColApagar.ReadOnly = True
+        Me.ColApagar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'FrmTablaDescuento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(944, 511)
+        Me.ClientSize = New System.Drawing.Size(955, 590)
+        Me.Controls.Add(Me.BtnModificar)
+        Me.Controls.Add(Me.DgvTabla)
         Me.Controls.Add(Me.Panel)
         Me.Controls.Add(Me.BtnCerrar)
-        Me.Controls.Add(Me.DgvTabla)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnNuevo)
         Me.Controls.Add(Me.BtnGuardar)
-        Me.Controls.Add(Me.BtnModificar)
         Me.Controls.Add(Me.BtnActualizar)
         Me.Controls.Add(Me.BtnCancelar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -605,12 +590,12 @@ Partial Class FrmTablaDescuento
         Me.Name = "FrmTablaDescuento"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tabla de precios y descuentos"
-        CType(Me.DgvTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
         CType(Me.NudEdadMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NudEdadMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NudIntgrnts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NudNumPerson, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DgvTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -621,33 +606,33 @@ Partial Class FrmTablaDescuento
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnActualizar As Button
     Friend WithEvents BtnCerrar As Button
-    Friend WithEvents DgvTabla As DataGridView
-    Friend WithEvents ColId As DataGridViewTextBoxColumn
-    Friend WithEvents ColTipoPago As DataGridViewTextBoxColumn
-    Friend WithEvents ColPrecio As DataGridViewTextBoxColumn
-    Friend WithEvents ColEdadMin As DataGridViewTextBoxColumn
-    Friend WithEvents ColEdadMax As DataGridViewTextBoxColumn
-    Friend WithEvents ColIntgrnts As DataGridViewTextBoxColumn
-    Friend WithEvents ColTotal As DataGridViewTextBoxColumn
-    Friend WithEvents ColDscto As DataGridViewTextBoxColumn
-    Friend WithEvents ColApagar As DataGridViewTextBoxColumn
     Friend WithEvents Panel As Panel
+    Friend WithEvents TxtApagar As TextBox
     Friend WithEvents LblTotal As Label
     Friend WithEvents TxtTotal As TextBox
     Friend WithEvents LblPrecio As Label
     Friend WithEvents TxtPrecio As TextBox
     Friend WithEvents LblTipo As Label
-    Friend WithEvents TxtApagar As TextBox
     Friend WithEvents CmbTipoPago As ComboBox
     Friend WithEvents TxtDscnto As TextBox
     Friend WithEvents LblApagar As Label
     Friend WithEvents LblDscto As Label
     Friend WithEvents NudEdadMax As NumericUpDown
     Friend WithEvents LblMax As Label
-    Friend WithEvents LblIntegrantes As Label
+    Friend WithEvents LblNumPerson As Label
     Friend WithEvents NudEdadMin As NumericUpDown
-    Friend WithEvents NudIntgrnts As NumericUpDown
+    Friend WithEvents NudNumPerson As NumericUpDown
     Friend WithEvents LblMin As Label
     Friend WithEvents LblNomPago As Label
     Friend WithEvents LblNombre As Label
+    Friend WithEvents DgvTabla As DataGridView
+    Friend WithEvents ColId As DataGridViewTextBoxColumn
+    Friend WithEvents ColTipoPago As DataGridViewTextBoxColumn
+    Friend WithEvents ColPrecio As DataGridViewTextBoxColumn
+    Friend WithEvents ColEdadMin As DataGridViewTextBoxColumn
+    Friend WithEvents ColEdadMax As DataGridViewTextBoxColumn
+    Friend WithEvents ColNumPerson As DataGridViewTextBoxColumn
+    Friend WithEvents ColTotal As DataGridViewTextBoxColumn
+    Friend WithEvents ColDscto As DataGridViewTextBoxColumn
+    Friend WithEvents ColApagar As DataGridViewTextBoxColumn
 End Class

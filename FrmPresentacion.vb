@@ -28,23 +28,23 @@ Public Class FrmPresentacion
 
         BarraProgreso.Increment(4)
 
-        If BarraProgreso.Value < 40 Then
-            LblBarra.Text = "Iniciando conexión a la BBDD " & BarraProgreso.Value & ("%")
-            LblBarra.ForeColor = Color.Red
+        'If BarraProgreso.Value < 40 Then
+        '    LblBarra.Text = "Iniciando conexión a la BBDD " & BarraProgreso.Value & ("%")
+        '    LblBarra.ForeColor = Color.Red
 
-        ElseIf BarraProgreso.Value < 70 Then
-            LblBarra.Text = "Conexión exitosa con la BBDD " & BarraProgreso.Value & ("%")
-            LblBarra.ForeColor = Color.Blue
+        'ElseIf BarraProgreso.Value < 70 Then
+        '    LblBarra.Text = "Conexión exitosa con la BBDD " & BarraProgreso.Value & ("%")
+        '    LblBarra.ForeColor = Color.Blue
 
-        ElseIf BarraProgreso.Value < 100 Then
-            LblBarra.Text = "Iniciando el programa ... " & BarraProgreso.Value & ("%")
-            LblBarra.ForeColor = Color.Black
+        'ElseIf BarraProgreso.Value < 100 Then
+        '    LblBarra.Text = "Iniciando el programa ... " & BarraProgreso.Value & ("%")
+        '    LblBarra.ForeColor = Color.Black
 
-        ElseIf BarraProgreso.Value = 100 Then
-            Timer.Stop() 'DETENER TIMER
+        'ElseIf BarraProgreso.Value = 1 Then
+        Timer.Stop() 'DETENER TIMER
             FrmUserPassword.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
             Me.Hide() 'CERRA EL FORMULARIO -- Close()
-        End If
+        'End If
 
     End Sub
 
