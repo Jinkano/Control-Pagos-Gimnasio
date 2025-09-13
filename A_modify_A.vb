@@ -1,445 +1,262 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class A_modify_A
-    Private Sub A_modify_A_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
-
-        BtnGuarActuCancElim() 'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
-    End Sub
 
     Dim cnxnMySql As New MySqlConnection
-        Dim drDataReader As MySqlDataReader
-        Dim cmdCommand As MySqlCommand
-        Dim sqlConsulta, strComa, strCadena, strPrecio As String
-        Dim nRow, idTarifa, intMsgBox As Int16
-        Dim precio, dscnto As Decimal
+    Dim drDataReader As MySqlDataReader
+    Dim cmdCommand As MySqlCommand
+    Dim sqlConsulta As String
+    Dim fila As Int16
+    Public Shared strIdCli As String
 
+    Private Sub A_modify_A_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Private Sub BtnFijarPrecio_Click(sender As Object, e As EventArgs) Handles BtnFijarPrecio.Click
+        ' COMPROBAMOS EL TÍTULO PARA DESACTIVAR UN BOTON
+        If Me.Text = "Registrar nuevo cliente" Then
+            BtnActualizar.Enabled = False
+        Else
+            BtnGuardar.Enabled = False
+        End If
 
-            'ACTIVAR Y DESACTIVAR CONTROLES PARA FIJAR EL PRECIO
-            BtnFijarPrecio.Enabled = False
-            BtnNuevo.Visible = False
-            BtnModificar.Visible = False
-            BtnEliminar.Visible = False
-        'GbPrecio.Enabled = True
-        BtnGuardarPrecio.Enabled = True
-            BtnCancelPrecio.Enabled = True
-            DgvTarifas.Enabled = False
-            strPrecio = TxtPrecio.Text
-            TxtPrecio.Focus()
-        End Sub
+        'VARIABLE PARA ALMACENAR LA FECHA ACTUAL
+        Dim ano = Year(Date.Now)
 
-        Private Sub BtnGuardarPrecio_Click(sender As Object, e As EventArgs) Handles BtnGuardarPrecio.Click
+        'ASIGNAR VALORES NIM Y MAX A LOS DATETIMEPICKER
+        DtpFdn.MinDate = "01/01/" & ano - 99
+        DtpFdn.MaxDate = DateTime.Now
+        DtpFdi.MinDate = "01/01/" & ano - 1
+        DtpFdi.MaxDate = "31/12/" & ano + 1
+    End Sub
 
-            'COMPROBAR SI HAY PRECIO
-            If TxtPrecio.Text = "" Then MsgBox("Ingrese el PRECIO.", vbCritical, "Fijar precio") : TxtPrecio.Focus() : Exit Sub
-            If TxtPrecio.Text = "0 €" Or precio > 100 Then MsgBox("Corrige el PRECIO.", vbCritical, "Fijar precio") : TxtPrecio.Focus() : Exit Sub
+    Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
 
-            'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION Consultas
-            If DgvTarifas.RowCount = 0 Then
-                sqlConsulta = "INSERT INTO tarifas (precio, e_min, e_max, dscto) VALUES ('" & Replace(precio, ",", ".") & "', 0, 0, 0)"
-                strPrecio = "Se ha guardado el PRECIO : " & TxtPrecio.Text & Chr(13) & Chr(13) & "El precio fijado se usará en todos los pagos."
+        'COMPROBAMOS SI HAY INFORMACION DEL CLIENTE EN LOS TEXTBOX
+        If TxtNombre.Text = "" Then MsgBox("Ingrese el NOMBRE del cliente.", vbCritical, "Guardar Datos Cliente") : TxtNombre.Focus() : Exit Sub
+        If TxtApellido.Text = "" Then MsgBox("Ingrese el APELLIDO del cliente.", vbCritical, "Guardar Datos Cliente") : TxtApellido.Focus() : Exit Sub
+        If TxtEdad.Text = "" Or TxtEdad.Text = "0 años" Then MsgBox("Verifica la fecha de NACIMIENTO del cliente.", vbCritical, "Guardar Datos Cliente") : DtpFdn.Focus() : Exit Sub
+
+        Try
+            'CONECTAR Y ABRIR LA BBDD
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+
+            'AGREGAMOS EL NUEVO CLIENTE A LA TABLA CLIENTES
+            sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli, fdn_cli, tlf_cli, eml_cli, dir_cli, fdi_cli, std_cli) VALUES 
+                          ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "', '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "', 
+                          '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "', '" & DtpFdi.Value.Date.ToString("yyyy-MM-dd") & "', 'SI')"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader()
+            drDataReader.Close()
+
+            'OBTENEMOS EL ID DEL ÚLTIMO REGISTRO Y LO ALMACENAMOS EN LA VARIABLE strIdCli
+            sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader
+            drDataReader.Read()
+            strIdCli = drDataReader.GetInt16(0).ToString
+            drDataReader.Close()
+
+            'VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
+            Dim precio, descto As Decimal
+            'SELECCIONAMOS EL DESCUENTO CORRESPONDIENTE A LA EDAD
+            sqlConsulta = "SELECT * FROM tarifas WHERE e_min <= '" & TxtEdad.Text & "' AND e_max >= '" & TxtEdad.Text & "'"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader
+            'COMPROBAMOS SI HAY REGISTROS
+            If drDataReader.HasRows Then
+                drDataReader.Read()
+                precio = drDataReader.GetDecimal(1) 'Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
+                descto = drDataReader.GetDecimal(4) 'Replace(drDataReader.GetDecimal(4).ToString, ",", ".")
             Else
-                sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "' WHERE id_tarifa = 1"
-                strPrecio = "Se ha modificado el PRECIO a : " & TxtPrecio.Text
-            End If
-            Consultas(sqlConsulta)
-
-            LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
-
-            BtnGuarActuCancElim() 'LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
-
-            MsgBox(strPrecio, vbInformation, "Fijar precio") 'MENSAJE DE INFORMACIÓN
-
-        'ACTIVAR Y DESACTIVAR CONTROLES DESPUES FIJAR EL PRECIO
-        'GbPrecio.Enabled = False
-        BtnGuardarPrecio.Enabled = False
-            BtnCancelPrecio.Enabled = False
-
-            'HABILITAR BOTONES
-            FrmPrincipal.BtnListaClientes.Enabled = True
-            FrmPrincipal.BtnClientesPagos.Enabled = True
-            FrmPrincipal.BtnPagoPendiente.Enabled = True
-        End Sub
-
-        Private Sub BtnCancelPrecio_Click(sender As Object, e As EventArgs) Handles BtnCancelPrecio.Click
-
-        'ACTIVAR Y DESACTIVAR CONTROLES DESPUES FIJAR EL PRECIO
-        'GbPrecio.Enabled = False
-        BtnGuardarPrecio.Enabled = False
-            BtnCancelPrecio.Enabled = False
-            TxtPrecio.Text = strPrecio
-            BtnGuarActuCancElim()
-            BtnFijarPrecio.Focus()
-        End Sub
-
-        Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
-
-            BtnNuevoModificar() 'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
-
-            'ACTIVAR Y DESACTIVAR BOTONES
-            BtnGuardar.Visible = True
-            BtnActualizar.Visible = False
-
-            LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
-        End Sub
-
-        Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
-
-            'COMPROBAR SI HAY REGISTRO SELECCIONADO
-            If idTarifa = 0 Then
-                MsgBox("Selecciona un registro para MODIFICAR.", vbCritical, "Verificar")
-                DgvTarifas.Focus()
-            Else
-                'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
-                BtnNuevoModificar()
-
-                'ACTIVAR Y DESACTIVAR BOTONES
-                BtnGuardar.Visible = False
-                BtnActualizar.Visible = True
-            End If
-        End Sub
-
-        Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-
-            'COMPROBAR SI HAY REGISTRO SELECCIONADO
-            If idTarifa = 0 Then
-                MsgBox("Selecciona un registro para ELIMINAR.", vbCritical, "Verificar")
-                DgvTarifas.Focus()
-            Else
-                'MENSAJE DE INFORMACIÓN
-                intMsgBox = MsgBox("REGISTRO SELECCIONADO :" & Chr(13) & Chr(13) &
-                                   "Código de registro - " & idTarifa & Chr(13) &
-                                   "------------------------------- " & Chr(13) &
-                                   "Precio         --->  " & TxtPrecio.Text & Chr(13) &
-                                   "Descuento --->  " & TxtDscnto.Text & Chr(13) &
-                                   "EDAD" & Chr(13) &
-                                   "   Mínima   --->  " & NudEdadMin.Value & Chr(13) &
-                                   "   Máxima   --->  " & NudEdadMax.Value & Chr(13) & Chr(13) &
-                                   "¿Está seguro de ELIMINAR el registro?" _
-                                   , vbQuestion + vbYesNo + vbDefaultButton2, "Eliminar un registro")
-                'COMPROBAMOS LA RESPUESTA DEL MENSAJE
-                If intMsgBox = vbYes Then
-                    'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION
-                    sqlConsulta = "DELETE FROM tarifas WHERE id_tarifa  = '" & idTarifa & "'"
-                    Consultas(sqlConsulta)
-
-                    LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
-
-                    BtnGuarActuCancElim() 'LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
-
-                    LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
-                Else
-                    idTarifa = 0 'PONER LA VARIABLE A CERO
-
-                    LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
-                End If
-            End If
-        End Sub
-
-        Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
-
-            'PASAR A LA VARIABLE EL PRECIO  FIJADO
-            precio = TxtPrecio.Text.Substring(0, Len(TxtPrecio.Text) - 2)
-
-            'COMPROBAR SI HAY INFORMACION EN LOS CUADROS
-            If TxtDscnto.Text = "" Then MsgBox("Ingresa el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
-            If dscnto > precio / 2 Then MsgBox("Corrige el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
-            If NudEdadMin.Value = 0 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
-            If NudEdadMax.Value = 0 Then MsgBox("Corrige la edad MÁXIMA.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
-            If NudEdadMin.Value >= NudEdadMax.Value Then MsgBox("Verifica el INTERVALO de edades.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
-
-            'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION
-            sqlConsulta = "INSERT INTO tarifas (precio, e_min, e_max, dscto) VALUES
-                        ('" & Replace(precio, ",", ".") & "', '" & NudEdadMin.Value & "', '" & NudEdadMax.Value & "', '" & Replace(dscnto, ",", ".") & "')"
-            Consultas(sqlConsulta)
-
-            LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
-
-            BtnGuarActuCancElim() 'LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
-
-            MsgBox("Se ha REGISTRADO la nueva tarifa.", vbInformation, "Guardar Tarifa") 'MENSAJE DE INFORMACIÓN
-
-            'HABILITAR BOTONES
-            FrmPrincipal.BtnListaClientes.Enabled = True
-            FrmPrincipal.BtnClientesPagos.Enabled = True
-            FrmPrincipal.BtnPagoPendiente.Enabled = True
-        End Sub
-
-        Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
-
-            'PASAR A LA VARIABLE EL PRECIO  FIJADO
-            precio = TxtPrecio.Text.Substring(0, Len(TxtPrecio.Text) - 2)
-
-            'COMPROBAR SI HAY INFORMACION EN LOS CUADROS
-            If TxtDscnto.Text = "" Then MsgBox("Ingresa el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
-            If dscnto > precio / 2 Then MsgBox("Corrige el DESCUENTO.", vbCritical, "Precios y Descuentos") : TxtDscnto.Focus() : Exit Sub
-            If NudEdadMin.Value = 0 Then MsgBox("Corrige la edad MÍNIMA.", vbCritical, "Precios y Descuentos") : NudEdadMin.Focus() : Exit Sub
-            If NudEdadMax.Value = 0 Then MsgBox("Corrige la edad MÁXIMA.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
-            If NudEdadMin.Value >= NudEdadMax.Value Then MsgBox("Verifica el INTERVALO de edades.", vbCritical, "Precios y Descuentos") : NudEdadMax.Focus() : Exit Sub
-
-            'HACER CONSULTA A LA BBDD Y PASAR A LA FUNCION
-            sqlConsulta = "UPDATE tarifas SET precio='" & Replace(precio, ",", ".") & "', e_min='" & NudEdadMin.Value & "',
-                      e_max='" & NudEdadMax.Value & "', dscto='" & Replace(dscnto, ",", ".") & "' WHERE id_tarifa='" & idTarifa & "'"
-            Consultas(sqlConsulta)
-
-            LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
-
-            BtnGuarActuCancElim() ' LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
-
-            MsgBox("Se ha ACTUALIZADO la tarifa.", vbInformation, "Actualizar Tarifa") 'MENSAJE DE INFORMACIÓN
-        End Sub
-
-        Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
-
-            BtnGuarActuCancElim() ' LLAMAR FUNCION ACTIVAR/DESACTIVAR BOTONES
-
-            LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
-        End Sub
-
-        Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
-            Close()
-        End Sub
-
-        Private Sub TxtPrecio_GotFocus(sender As Object, e As EventArgs)
-            TxtPrecio.SelectAll()
-        End Sub
-
-        Private Sub TxtPrecio_LostFocus(sender As Object, e As EventArgs)
-
-            If TxtPrecio.Text = "" Then TxtPrecio.Text = "0"
-        End Sub
-
-        Private Sub TxtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs)
-            'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
-            SoloNumeros(TxtPrecio.Text, e)
-        End Sub
-
-        Private Sub TxtPrecio_TextChanged(sender As Object, e As EventArgs)
-
-            'VALIDAR PARA NO PONER LA COMA SIN NÚMEROS Y NO ACEPTAR DOS COMAS
-            If strComa = "UNACOMA" Then strComa = "" : TxtPrecio.Clear() : Exit Sub
-            If strComa = "DOSCOMAS" Then strComa = "" : TxtPrecio.Text = strCadena : Exit Sub
-
-            'REEMPLAZAR EL PUNTO POR LA COMA
-            TxtPrecio.Text = Replace(TxtPrecio.Text, ".", ",")
-
-            'COMPROBAR EL LARGO DEL TEXTBOX
-            If Len(TxtPrecio.Text) = 1 Then TxtPrecio.Text = TxtPrecio.Text & " €" : TxtPrecio.SelectionStart = 1
-            If Len(TxtPrecio.Text) = 2 Then TxtPrecio.Clear()
-            If Len(TxtPrecio.Text) >= 3 Then
-                Dim largo = TxtPrecio.Text.Substring(0, Len(TxtPrecio.Text) - 2)
-                TxtPrecio.Text = largo & " €"
-                TxtPrecio.SelectionStart = Len(largo)
-                If Len(largo) >= 1 Then precio = largo
-            End If
-
-            'COMPROBAR SI EL TEXTBOX CONTIENE LA COMA
-            If TxtPrecio.Text.Contains(",") Then
-                Dim intDec() As String = TxtPrecio.Text.Split(",")
-                If (intDec(0).Length = 0) OrElse (intDec(1).Length = 2 Or intDec(1).Length > 4) Or (precio < 20 Or precio > 90) Then
-                    TxtPrecio.ForeColor = Color.Red
-                    TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, FontStyle.Bold)
-                Else
-                    TxtPrecio.ForeColor = Color.Green
-                    TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, TxtPrecio.Font.Style And Not FontStyle.Bold)
-                End If
-                '
-            ElseIf (precio < 20 Or precio > 90) Then
-                TxtPrecio.ForeColor = Color.Red
-                TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, FontStyle.Bold)
-            Else
-                TxtPrecio.ForeColor = Color.Green
-                TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, TxtPrecio.Font.Style And Not FontStyle.Bold)
-            End If
-        End Sub
-
-        Private Sub NudEdadMin_GotFocus(sender As Object, e As EventArgs) Handles NudEdadMin.GotFocus
-            'NudEdadMin.Select(0, NudEdadMin.Value)
-        End Sub
-
-        Private Sub NudEdadMax_GotFocus(sender As Object, e As EventArgs) Handles NudEdadMax.GotFocus
-            'NudEdadMax.Select()
-        End Sub
-
-        Private Sub TxtDscnto_GotFocus(sender As Object, e As EventArgs) Handles TxtDscnto.GotFocus
-            TxtDscnto.SelectAll()
-        End Sub
-
-        Private Sub TxtDscnto_LostFocus(sender As Object, e As EventArgs) Handles TxtDscnto.LostFocus
-
-            If TxtDscnto.Text = "" Then TxtDscnto.Text = "0"
-        End Sub
-
-        Private Sub TxtDscnto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDscnto.KeyPress
-            'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
-            SoloNumeros(TxtDscnto.Text, e)
-        End Sub
-
-        Private Sub TxtDscnto_TextChanged(sender As Object, e As EventArgs) Handles TxtDscnto.TextChanged
-
-            'VALIDAR PARA NO PONER LA COMA SIN NÚMEROS Y NO ACEPTAR DOS COMAS
-            If strComa = "UNACOMA" Then strComa = "" : TxtDscnto.Clear() : Exit Sub
-            If strComa = "DOSCOMAS" Then strComa = "" : TxtDscnto.Text = strCadena : Exit Sub
-
-            'REEMPLAZAR EL PUNTO POR LA COMA
-            TxtDscnto.Text = Replace(TxtDscnto.Text, ".", ",")
-
-            'COMPROBAR EL LARGO DEL TEXTBOX
-            If Len(TxtDscnto.Text) = 1 Then TxtDscnto.Text = TxtDscnto.Text & " €" : TxtDscnto.SelectionStart = 1
-            If Len(TxtDscnto.Text) = 2 Then TxtDscnto.Clear()
-            If Len(TxtDscnto.Text) >= 3 Then
-                Dim largo = TxtDscnto.Text.Substring(0, Len(TxtDscnto.Text) - 2)
-                TxtDscnto.Text = largo & " €"
-                TxtDscnto.SelectionStart = Len(largo)
-                If Len(largo) >= 1 Then dscnto = largo
-            End If
-
-            'COMPROBAR SI EL TEXTBOX CONTIENE LA COMA
-            If TxtDscnto.Text.Contains(",") Then
-                Dim intDec() As String = TxtDscnto.Text.Split(",")
-                If (intDec(0).Length = 0) OrElse (intDec(1).Length = 2 Or intDec(1).Length > 4) Or (dscnto < 0 Or dscnto > 50) Then
-                    TxtDscnto.ForeColor = Color.Red
-                    TxtDscnto.Font = New System.Drawing.Font(TxtDscnto.Font, FontStyle.Bold)
-                Else
-                    TxtDscnto.ForeColor = Color.Green
-                    TxtDscnto.Font = New System.Drawing.Font(TxtDscnto.Font, TxtDscnto.Font.Style And Not FontStyle.Bold)
-                End If
-
-            ElseIf (dscnto < 0 Or dscnto > 50) Then
-                TxtDscnto.ForeColor = Color.Red
-                TxtDscnto.Font = New System.Drawing.Font(TxtDscnto.Font, FontStyle.Bold)
-            Else
-                TxtDscnto.ForeColor = Color.Green
-                TxtDscnto.Font = New System.Drawing.Font(TxtDscnto.Font, TxtDscnto.Font.Style And Not FontStyle.Bold)
-            End If
-        End Sub
-
-        Private Sub DgvTarifas_CellClick(sender As Object, e As DataGridViewCellEventArgs)
-
-            'LLENAR INFORMACION
-            idTarifa = DgvTarifas.CurrentRow.Cells(0).Value  'LLENAR VARIABLE CON ID TARIFA
-            'TxtPrecio.Text = DgvTarifas.CurrentRow.Cells(1).Value 'PRECIO
-            NudEdadMin.Value = DgvTarifas.CurrentRow.Cells(2).Value 'EDAD MINIMA
-            NudEdadMax.Value = DgvTarifas.CurrentRow.Cells(3).Value 'EDAD MAXIMA
-            TxtDscnto.Text = DgvTarifas.CurrentRow.Cells(4).Value 'DESCUENTO
-
-            'COMPROBAR SI EL REGISTRO ES EL PRECIO
-            If idTarifa = 1 Then
-                BtnModificar.Visible = False
-                BtnEliminar.Visible = False
-            Else
-                BtnModificar.Visible = True
-                BtnEliminar.Visible = True
-            End If
-
-        End Sub
-
-
-        '----->>>>> PROCEDIMIENTOS <<<<<-----'
-        Sub BtnNuevoModificar()
-
-            BtnFijarPrecio.Enabled = False
-            BtnNuevo.Visible = False
-            BtnModificar.Visible = False
-            BtnCancelar.Visible = True
-            BtnEliminar.Visible = False
-
-            GbFormulario.Enabled = True
-        'GbDscto.Enabled = True
-        DgvTarifas.Enabled = False
-
-            'T'xtPrecio.Focus()
-        End Sub
-
-        Private Sub DgvTarifas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-
-        End Sub
-
-        Sub BtnGuarActuCancElim()
-
-            BtnFijarPrecio.Enabled = True
-            BtnNuevo.Visible = True
-            BtnGuardar.Visible = False
-            BtnActualizar.Visible = False
-            BtnModificar.Visible = True
-            BtnCancelar.Visible = False
-            BtnEliminar.Visible = True
-            DgvTarifas.Enabled = True
-
-            If DgvTarifas.RowCount = 0 Then
-                BtnNuevo.Visible = False
-                BtnModificar.Visible = False
-                BtnEliminar.Visible = False
-                DgvTarifas.Enabled = False
-            End If
-
-            GbFormulario.Enabled = False
-        'GbDscto.Enabled = False
-
-        idTarifa = 0 'LIMPIAR VARIABLE
-
-            BtnNuevo.Focus()
-        End Sub
-
-        Sub LimpiarCuadros()
-            NudEdadMin.Value = 0
-            NudEdadMax.Value = 0
-            TxtDscnto.Text = ""
-        End Sub
-
-        Sub SoloNumeros(ByVal Numero As String, e As KeyPressEventArgs)
-            'COMPROBAR SI SE PONE LA COMA SIN NÚMEROS Y LLENAR VARIABLE
-            If Numero = "" And e.KeyChar = "." Then strComa = "UNACOMA"
-
-            strCadena = Numero
-            'COMPROBAR SI SE PONEN DOS COMAS Y LLENAR VARIABLE
-            If Numero.IndexOf(",") = 1 And e.KeyChar = "." Then strComa = "DOSCOMAS"
-
-            If (e.KeyChar = ".") Then e.Handled = False : Exit Sub
-            If Char.IsControl(e.KeyChar) Then e.Handled = False : Exit Sub
-            If Not Char.IsNumber(e.KeyChar) Then e.Handled = True : Exit Sub
-        End Sub
-
-        Sub LlenarDgvTarifas()
-            Try
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-                cnxnMySql.Open()
-                sqlConsulta = "SELECT * FROM tarifas ORDER BY id_tarifa"
-                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-                drDataReader = cmdCommand.ExecuteReader()
-                DgvTarifas.Rows.Clear()
-                If drDataReader.HasRows Then
-                    While drDataReader.Read()
-                        nRow = DgvTarifas.Rows.Add()
-                        DgvTarifas.Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0).ToString 'ID TARIFA
-                        DgvTarifas.Rows(nRow).Cells(1).Value = drDataReader.GetDecimal(1).ToString & " €" 'PRECIO
-                        DgvTarifas.Rows(nRow).Cells(2).Value = drDataReader.GetInt16(2).ToString 'EDAD MINIMA
-                        DgvTarifas.Rows(nRow).Cells(3).Value = drDataReader.GetInt16(3).ToString 'EDAD MAXIMA
-                        DgvTarifas.Rows(nRow).Cells(4).Value = drDataReader.GetDecimal(4).ToString & " €" 'DESCUENTO
-                    End While
-                    TxtPrecio.Text = DgvTarifas.CurrentRow.Cells(1).Value
-                End If
-
                 drDataReader.Close()
-                cnxnMySql.Close()
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-        End Sub
-
-        Sub Consultas(ByVal sqlConsulta As String)
-            Try
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-                cnxnMySql.Open()
+                sqlConsulta = "SELECT precio FROM tarifas WHERE id_tarifa = 1"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-                drDataReader = cmdCommand.ExecuteReader()
-                drDataReader.Close()
-                cnxnMySql.Close()
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-        End Sub
+                drDataReader = cmdCommand.ExecuteReader
+                drDataReader.Read()
+                precio = drDataReader.GetDecimal(0) 'Replace(drDataReader.GetDecimal(0).ToString, ",", ".")
+                descto = 0
+            End If
+            drDataReader.Close()
+
+            'AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
+            sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
+                          VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '0101-01-01', '',
+                          '" & Replace(precio, ",", ".") & "', '" & Replace(descto, ",", ".") & "', '" & strIdCli & "', '')"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader()
+            drDataReader.Close()
+
+            'CERRAR BBDD
+            cnxnMySql.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        'DAR FORMATO EL CODIGO DEL CLIENTE
+        If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
+        If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
+        If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+
+        'MOSTRAMOS UN MESAJE DE CONFIRMACIÓN
+        MsgBox("Datos GUARDADOS satisfactoriamente." & Chr(13) & Chr(13) _
+                & "NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & Chr(13) _
+                & "CODIGO   :  " & strIdCli, vbInformation, "Guardar Cliente")
+
+        FrmListaClientes.TxtBuscarCliente.Text = TxtNombre.Text
+
+        Close()
+    End Sub
+
+    Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
+
+        'COMPROBAMOS SI HAYINFORMACION DEL CLIENTE
+        If TxtNombre.Text = "" Then MsgBox("Ingrese el NOMBRE del cliente.", vbCritical, "Actualizar Datos Cliente") : TxtNombre.Focus() : Exit Sub
+        If TxtApellido.Text = "" Then MsgBox("Ingrese la DIRECCION del cliente.", vbCritical, "Actualizar Datos Cliente") : TxtApellido.Focus() : Exit Sub
+        If TxtEdad.Text = "" Or TxtEdad.Text = "0 años" Then MsgBox("Verifica la fecha de NACIMIENTO del cliente.", vbCritical, "Actualizar Datos Cliente") : DtpFdn.Focus() : Exit Sub
+
+        Try
+            'CONECTAR Y ABRIR LA BBDD
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+
+            'ACTUALIZAMOS LOS DATOS DEL CLIENTE
+            sqlConsulta = "UPDATE clientes SET nom_cli='" & TxtNombre.Text & "', ape_cli='" & TxtApellido.Text & "', fdn_cli='" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', 
+                          tlf_cli='" & TxtTelefono.Text & "', eml_cli='" & TxtEmail.Text & "', dir_cli='" & TxtDireccion.Text & "', 
+                          fdi_cli='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "' WHERE id_cli='" & strIdCli & "'"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader
+            drDataReader.Close()
+
+            'CARRAR BBDD
+            cnxnMySql.Close()
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        'DAR FORMATO EL CODIGO DEL CLIENTE
+        If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
+        If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
+        If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+
+        'ENVIAMOS UN MENSAJE DE CONFIRMACION
+        MsgBox("Datos ACTUALIZADOS satisfactoriamente." & Chr(13) & Chr(13) _
+            & "NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & Chr(13) _
+            & "CODIGO   :  " & strIdCli, vbInformation, "Actualizar Cliente")
+
+        FrmListaClientes.TxtBuscarCliente.Text = TxtNombre.Text
+
+        Close()
+
+    End Sub
+
+    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+        'CERRAR VENTANA
+        Close()
+    End Sub
+
+    Private Sub TxtNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtNombre.TextChanged
+        'validar
+    End Sub
+
+    Private Sub TxtNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtNombre.GotFocus
+        'CAMBIAR COLOR
+        TxtNombre.BackColor = Color.Beige
+    End Sub
+
+    Private Sub TxtNombre_LostFocus(sender As Object, e As EventArgs) Handles TxtNombre.LostFocus
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtNombre)
+    End Sub
+
+    Private Sub TxtApellido_TextChanged(sender As Object, e As EventArgs) Handles TxtApellido.TextChanged
+        'validar
+    End Sub
+
+    Private Sub TxtApellido_GotFocus(sender As Object, e As EventArgs) Handles TxtApellido.GotFocus
+        'CAMBIAR COLOR
+        TxtApellido.BackColor = Color.Beige
+    End Sub
+
+    Private Sub TxtApellido_LostFocus(sender As Object, e As EventArgs) Handles TxtApellido.LostFocus
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtApellido)
+    End Sub
+
+    Private Sub DtpFdn_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdn.ValueChanged
+
+        'CALCULAR LA EDAD Y ALMACENAR EN LA VARIBLE
+        Dim dtpEdad = Int(DateDiff("m", DtpFdn.Value, Now) / 12)
+
+        TxtEdad.Text = dtpEdad & " años" 'MOSTRAR EDAD
+
+        'COMPROBAR LA EDAD
+        If dtpEdad < 1 Then TxtEdad.Text = "0 años"
+        If dtpEdad > 99 Then TxtEdad.Text = "99 años"
+    End Sub
+
+    Private Sub DtpFdn_GotFocus(sender As Object, e As EventArgs) Handles DtpFdn.GotFocus
+        'CAMBIAR COLOR
+        TxtEdad.BackColor = Color.Beige
+    End Sub
+
+    Private Sub DtpFdn_LostFocus(sender As Object, e As EventArgs) Handles DtpFdn.LostFocus
+        'CAMBIAR COLOR 
+        TxtEdad.BackColor = Color.Azure
+        If TxtEdad.Text = "" Then TxtEdad.BackColor = Color.MistyRose
+    End Sub
+
+    Private Sub TxtTelefono_TextChanged(sender As Object, e As EventArgs) Handles TxtTelefono.TextChanged
+        'validar
+    End Sub
+
+    Private Sub TxtTelefono_GotFocus(sender As Object, e As EventArgs) Handles TxtTelefono.GotFocus
+        'CAMBIAR COLOR
+        TxtTelefono.BackColor = Color.Beige
+    End Sub
+
+    Private Sub TxtTelefono_LostFocus(sender As Object, e As EventArgs) Handles TxtTelefono.LostFocus
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtTelefono)
+    End Sub
+
+    Private Sub TxtEmail_TextChanged(sender As Object, e As EventArgs) Handles TxtEmail.TextChanged
+        'validar
+    End Sub
+
+    Private Sub TxtEmail_GotFocus(sender As Object, e As EventArgs) Handles TxtEmail.GotFocus
+        'CAMBIAR COLOR
+        TxtEmail.BackColor = Color.Beige
+    End Sub
+
+    Private Sub TxtEmail_LostFocus(sender As Object, e As EventArgs) Handles TxtEmail.LostFocus
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtEmail)
+    End Sub
+
+    Private Sub TxtDireccion_TextChanged(sender As Object, e As EventArgs) Handles TxtDireccion.TextChanged
+        'validar
+    End Sub
+
+    Private Sub TxtDireccion_GotFocus(sender As Object, e As EventArgs) Handles TxtDireccion.GotFocus
+        'CAMBIAR COLOR
+        TxtDireccion.BackColor = Color.Beige
+    End Sub
+
+    Private Sub TxtDireccion_LostFocus(sender As Object, e As EventArgs) Handles TxtDireccion.LostFocus
+        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
+        TxtLostFocus(TxtDireccion)
+    End Sub
+
+    ''---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<----------''
+    Sub TxtLostFocus(ByVal TxtCadena As TextBox)
+        TxtCadena.Text = Trim(TxtCadena.Text)
+        While TxtCadena.Text.Contains("  ")
+            TxtCadena.Text = TxtCadena.Text.Replace("  ", " ")
+        End While
+        TxtCadena.BackColor = Color.Azure
+        If TxtCadena.Text = "" Then TxtCadena.BackColor = Color.MistyRose
+    End Sub
 
 End Class

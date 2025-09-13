@@ -384,5 +384,17 @@
   <ItemGroup>
     <None Include="Resources\juanh.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\addgrupo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\grupfamily.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\mensual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\diario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

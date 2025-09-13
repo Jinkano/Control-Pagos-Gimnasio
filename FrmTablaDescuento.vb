@@ -769,7 +769,7 @@ Public Class FrmTablaDescuento
     Sub LlenarDgvTarifas()
 
         Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=para_probar"
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
             sqlConsulta = "SELECT * FROM trfa_dscto ORDER BY tipo_trfa"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
@@ -806,7 +806,7 @@ Public Class FrmTablaDescuento
     Sub Consultas(ByVal sqlConsulta As String)
 
         Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=para_probar"
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
