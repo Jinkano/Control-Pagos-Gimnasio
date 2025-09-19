@@ -131,6 +131,12 @@
     <Compile Include="A_modify_A.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmGrupoFamiliar.Designer.vb">
+      <DependentUpon>FrmGrupoFamiliar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGrupoFamiliar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmUserPassword.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,9 @@
   <ItemGroup>
     <EmbeddedResource Include="A_modify_A.resx">
       <DependentUpon>A_modify_A.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGrupoFamiliar.resx">
+      <DependentUpon>FrmGrupoFamiliar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUserPassword.resx">
       <DependentUpon>FrmUserPassword.vb</DependentUpon>
@@ -395,6 +404,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\diario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\guardar 28x28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cancel_c_28x28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\cancel_r_28x28.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
