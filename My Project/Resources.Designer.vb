@@ -363,6 +363,26 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property images() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("images", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property images1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("images1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property inactivo_60x60() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("inactivo 60x60", resourceCulture)
@@ -386,6 +406,26 @@ Namespace My.Resources
         Friend ReadOnly Property mensual() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("mensual", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property monit() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("monit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property monitor() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("monitor", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
