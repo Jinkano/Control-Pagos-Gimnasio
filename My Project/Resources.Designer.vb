@@ -483,6 +483,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property ok_c_28x28() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ok_c_28x28", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property pagar_mes_28x32() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("pagar_mes 28x32", resourceCulture)
@@ -536,6 +546,16 @@ Namespace My.Resources
         Friend ReadOnly Property precio_dscnto_48x35() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("precio_dscnto 48x35", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property quitar_30x30() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("quitar 30x30", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

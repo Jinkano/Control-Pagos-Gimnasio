@@ -414,5 +414,11 @@
   <ItemGroup>
     <None Include="img\cancel_r_28x28.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\quitar 30x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\ok_c_28x28.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

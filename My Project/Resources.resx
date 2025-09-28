@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="morosos 32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\morosos 32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="addgrupo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\addgrupo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,6 +135,9 @@
   </data>
   <data name="cancel_c_28x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\cancel_c_28x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="monit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\monit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eliminar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\eliminar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,6 +169,9 @@
   <data name="pagar_mes 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\pagar_mes 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="quitar 30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\quitar 30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="morosos 28x34" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\morosos 28x34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,11 +202,14 @@
   <data name="saco entrena" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\saco entrena.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="diario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\diario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="morosos 32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\morosos 32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="caja_regis 60x60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\caja_regis 60x60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inactivo 60x60" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\inactivo 60x60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="grupfamily" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\grupfamily.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,8 +256,8 @@
   <data name="en_actividad 60x60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\en_actividad 60x60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inactivo 60x60" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\inactivo 60x60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="diario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\diario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="editar 28x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\editar 28x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -268,7 +274,7 @@
   <data name="cancel 34x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\cancel 34x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="monit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\monit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ok_c_28x28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\ok_c_28x28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
