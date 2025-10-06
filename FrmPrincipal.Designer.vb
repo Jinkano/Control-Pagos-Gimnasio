@@ -24,27 +24,28 @@ Partial Class FrmPrincipal
     Private Sub InitializeComponent()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnClientesPagos = New System.Windows.Forms.Button()
-        Me.BtnSalir = New System.Windows.Forms.Button()
-        Me.Panel = New System.Windows.Forms.Panel()
         Me.BtnPrecioDsctos = New System.Windows.Forms.Button()
         Me.BtnPagoPendiente = New System.Windows.Forms.Button()
         Me.BtnListaClientes = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.BtnSalir = New System.Windows.Forms.Button()
         Me.PnlBotonera.SuspendLayout()
         Me.SuspendLayout()
         '
         'PnlBotonera
         '
         Me.PnlBotonera.AutoSize = True
-        Me.PnlBotonera.Controls.Add(Me.BtnClientesPagos)
         Me.PnlBotonera.Controls.Add(Me.BtnSalir)
-        Me.PnlBotonera.Controls.Add(Me.Panel)
+        Me.PnlBotonera.Controls.Add(Me.Panel1)
+        Me.PnlBotonera.Controls.Add(Me.BtnClientesPagos)
         Me.PnlBotonera.Controls.Add(Me.BtnPrecioDsctos)
         Me.PnlBotonera.Controls.Add(Me.BtnPagoPendiente)
         Me.PnlBotonera.Controls.Add(Me.BtnListaClientes)
         Me.PnlBotonera.Dock = System.Windows.Forms.DockStyle.Left
         Me.PnlBotonera.Location = New System.Drawing.Point(0, 0)
+        Me.PnlBotonera.Margin = New System.Windows.Forms.Padding(0)
         Me.PnlBotonera.Name = "PnlBotonera"
-        Me.PnlBotonera.Size = New System.Drawing.Size(186, 561)
+        Me.PnlBotonera.Size = New System.Drawing.Size(188, 561)
         Me.PnlBotonera.TabIndex = 0
         '
         'BtnClientesPagos
@@ -52,49 +53,23 @@ Partial Class FrmPrincipal
         Me.BtnClientesPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnClientesPagos.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cliente_37x35
         Me.BtnClientesPagos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnClientesPagos.Location = New System.Drawing.Point(3, 108)
+        Me.BtnClientesPagos.Location = New System.Drawing.Point(4, 17)
+        Me.BtnClientesPagos.Margin = New System.Windows.Forms.Padding(4, 8, 4, 0)
         Me.BtnClientesPagos.Name = "BtnClientesPagos"
         Me.BtnClientesPagos.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
         Me.BtnClientesPagos.Size = New System.Drawing.Size(180, 74)
-        Me.BtnClientesPagos.TabIndex = 4
-        Me.BtnClientesPagos.Text = "Clientes JUNTO"
+        Me.BtnClientesPagos.TabIndex = 0
+        Me.BtnClientesPagos.Text = "Clientes"
         Me.BtnClientesPagos.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnClientesPagos.UseVisualStyleBackColor = True
-        '
-        'BtnSalir
-        '
-        Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnSalir.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir_34x31
-        Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnSalir.Location = New System.Drawing.Point(0, 461)
-        Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 6, 0, 2)
-        Me.BtnSalir.Size = New System.Drawing.Size(186, 74)
-        Me.BtnSalir.TabIndex = 3
-        Me.BtnSalir.Text = "CERRAR &APP"
-        Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnSalir.UseVisualStyleBackColor = False
-        '
-        'Panel
-        '
-        Me.Panel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel.Location = New System.Drawing.Point(0, 535)
-        Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(186, 26)
-        Me.Panel.TabIndex = 1
         '
         'BtnPrecioDsctos
         '
         Me.BtnPrecioDsctos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPrecioDsctos.Image = Global.ControlPagosGimnasio.My.Resources.Resources.precio_dscnto_45x33
         Me.BtnPrecioDsctos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPrecioDsctos.Location = New System.Drawing.Point(3, 369)
+        Me.BtnPrecioDsctos.Location = New System.Drawing.Point(4, 189)
+        Me.BtnPrecioDsctos.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
         Me.BtnPrecioDsctos.Name = "BtnPrecioDsctos"
         Me.BtnPrecioDsctos.Padding = New System.Windows.Forms.Padding(0, 6, 0, 5)
         Me.BtnPrecioDsctos.Size = New System.Drawing.Size(180, 74)
@@ -108,7 +83,8 @@ Partial Class FrmPrincipal
         Me.BtnPagoPendiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPagoPendiente.Image = Global.ControlPagosGimnasio.My.Resources.Resources.morosos_35x35
         Me.BtnPagoPendiente.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPagoPendiente.Location = New System.Drawing.Point(3, 207)
+        Me.BtnPagoPendiente.Location = New System.Drawing.Point(4, 103)
+        Me.BtnPagoPendiente.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
         Me.BtnPagoPendiente.Name = "BtnPagoPendiente"
         Me.BtnPagoPendiente.Padding = New System.Windows.Forms.Padding(0, 6, 0, 5)
         Me.BtnPagoPendiente.Size = New System.Drawing.Size(180, 74)
@@ -122,14 +98,44 @@ Partial Class FrmPrincipal
         Me.BtnListaClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnListaClientes.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cliente_37x35
         Me.BtnListaClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnListaClientes.Location = New System.Drawing.Point(3, 12)
+        Me.BtnListaClientes.Location = New System.Drawing.Point(4, 281)
+        Me.BtnListaClientes.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnListaClientes.Name = "BtnListaClientes"
         Me.BtnListaClientes.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
         Me.BtnListaClientes.Size = New System.Drawing.Size(180, 74)
         Me.BtnListaClientes.TabIndex = 0
-        Me.BtnListaClientes.Text = "Clientes SEPARADO"
         Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnListaClientes.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 537)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(188, 24)
+        Me.Panel1.TabIndex = 0
+        '
+        'BtnSalir
+        '
+        Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
+        Me.BtnSalir.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir_34x31
+        Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnSalir.Location = New System.Drawing.Point(0, 463)
+        Me.BtnSalir.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtnSalir.Name = "BtnSalir"
+        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 6, 0, 2)
+        Me.BtnSalir.Size = New System.Drawing.Size(188, 74)
+        Me.BtnSalir.TabIndex = 5
+        Me.BtnSalir.Text = "CERRAR &APP"
+        Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnSalir.UseVisualStyleBackColor = False
         '
         'FrmPrincipal
         '
@@ -150,10 +156,10 @@ Partial Class FrmPrincipal
     End Sub
 
     Friend WithEvents PnlBotonera As Panel
-    Friend WithEvents BtnSalir As Button
-    Friend WithEvents Panel As Panel
     Friend WithEvents BtnPrecioDsctos As Button
     Friend WithEvents BtnPagoPendiente As Button
     Friend WithEvents BtnListaClientes As Button
     Friend WithEvents BtnClientesPagos As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents BtnSalir As Button
 End Class

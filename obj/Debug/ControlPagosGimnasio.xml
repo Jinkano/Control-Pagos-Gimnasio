@@ -37,6 +37,11 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.addgrupo">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.box_entrena">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -87,7 +92,17 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.cancel_c_28x28">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.cancel_pago_34x28">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.cancel_r_28x28">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -98,6 +113,11 @@ ControlPagosGimnasio
 </summary>
 </member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.cliente_37x35">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.diario">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -122,7 +142,17 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.grupfamily">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.guardar_22x22">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.guardar_28x28">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -142,12 +172,37 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.images">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.images1">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.inactivo_60x60">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.juanh">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.mensual">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.monit">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.monitor">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -173,6 +228,11 @@ ControlPagosGimnasio
 </summary>
 </member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.nuevo_pago_28x32">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.ok_c_28x28">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -203,6 +263,11 @@ ControlPagosGimnasio
 </summary>
 </member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.precio_dscnto_48x35">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.quitar_30x30">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

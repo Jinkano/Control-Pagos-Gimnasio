@@ -10,11 +10,14 @@ Public Class FrmListaClientes
 
     Private Sub ListaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        '
+        ToolTip.SetToolTip(DgvListaClientes, "probando")
+
         'COMPROBAR QUE RADIO BUTTON ESTA ACTIVO YBHACER CONSULTA A LA BBDD
         If RbActivo.Checked Then
-            sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'SI' ORDER BY nom_cli"
+            sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'ACTIVO' ORDER BY nom_cli"
         Else
-            sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'NO' ORDER BY nom_cli"
+            sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'INACTIVO' ORDER BY nom_cli"
         End If
 
         ListaClientes(sqlConsulta, "", DgvListaClientes) 'LLAMAR FUNCION Y PASAR LA CONSULTA

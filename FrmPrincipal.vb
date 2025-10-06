@@ -181,7 +181,7 @@ Public Class FrmPrincipal
         FrmTablaDescuento.Show()
     End Sub
 
-    Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
+    Private Sub BtnSalir_Click(sender As Object, e As EventArgs)
         'CIERRA EL FORMULARIO
         Close()
     End Sub

@@ -23,9 +23,15 @@ Partial Class FrmNuevoEditarCliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.ToolTipText = New System.Windows.Forms.ToolTip(Me.components)
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.TttNewUpdate = New System.Windows.Forms.ToolTip(Me.components)
+        Me.BtnAddGrupo = New System.Windows.Forms.Button()
+        Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
+        Me.ColIdGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColNomGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColNumIntgrntes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColIntgrntesReg = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RbEstadoInactivo = New System.Windows.Forms.RadioButton()
         Me.RbEstadoActivo = New System.Windows.Forms.RadioButton()
         Me.LblEstadoCli = New System.Windows.Forms.Label()
@@ -33,13 +39,11 @@ Partial Class FrmNuevoEditarCliente
         Me.RbDiario = New System.Windows.Forms.RadioButton()
         Me.RbMensual = New System.Windows.Forms.RadioButton()
         Me.RbGrupoFamiliar = New System.Windows.Forms.RadioButton()
-        Me.BtnAddGrupo = New System.Windows.Forms.Button()
         Me.GbOtros = New System.Windows.Forms.GroupBox()
         Me.LblFinscripcion = New System.Windows.Forms.Label()
         Me.GbListaGrupoFamiliar = New System.Windows.Forms.GroupBox()
         Me.LblNumIntgrntes = New System.Windows.Forms.Label()
         Me.TxtListaNombre = New System.Windows.Forms.TextBox()
-        Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.GbMetodoPago = New System.Windows.Forms.GroupBox()
         Me.BtnActualizar = New System.Windows.Forms.Button()
@@ -60,17 +64,92 @@ Partial Class FrmNuevoEditarCliente
         Me.LblEmail = New System.Windows.Forms.Label()
         Me.GbDatos = New System.Windows.Forms.GroupBox()
         Me.DtpFdn = New System.Windows.Forms.DateTimePicker()
-        Me.ColIdGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColNomGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColNumIntgrntes = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColIntgrntesReg = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
+        CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbOtros.SuspendLayout()
         Me.GbListaGrupoFamiliar.SuspendLayout()
-        CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbMetodoPago.SuspendLayout()
         Me.GbContacto.SuspendLayout()
         Me.GbDatos.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'BtnAddGrupo
+        '
+        Me.BtnAddGrupo.Enabled = False
+        Me.BtnAddGrupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAddGrupo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.addgrupo
+        Me.BtnAddGrupo.Location = New System.Drawing.Point(262, 75)
+        Me.BtnAddGrupo.Margin = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.BtnAddGrupo.Name = "BtnAddGrupo"
+        Me.BtnAddGrupo.Size = New System.Drawing.Size(90, 40)
+        Me.BtnAddGrupo.TabIndex = 4
+        Me.TttNewUpdate.SetToolTip(Me.BtnAddGrupo, "AGREGAR NUEVO GRUPO FAMILIAR")
+        Me.BtnAddGrupo.UseVisualStyleBackColor = True
+        '
+        'DgvListaNombre
+        '
+        Me.DgvListaNombre.AllowUserToAddRows = False
+        Me.DgvListaNombre.AllowUserToDeleteRows = False
+        Me.DgvListaNombre.AllowUserToResizeColumns = False
+        Me.DgvListaNombre.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DgvListaNombre.ColumnHeadersHeight = 4
+        Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DgvListaNombre.Enabled = False
+        Me.DgvListaNombre.Location = New System.Drawing.Point(0, 56)
+        Me.DgvListaNombre.Margin = New System.Windows.Forms.Padding(0, 4, 0, 0)
+        Me.DgvListaNombre.MultiSelect = False
+        Me.DgvListaNombre.Name = "DgvListaNombre"
+        Me.DgvListaNombre.ReadOnly = True
+        Me.DgvListaNombre.RowHeadersWidth = 4
+        Me.DgvListaNombre.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.DgvListaNombre.RowTemplate.DividerHeight = 2
+        Me.DgvListaNombre.RowTemplate.Height = 25
+        Me.DgvListaNombre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.DgvListaNombre.Size = New System.Drawing.Size(328, 130)
+        Me.DgvListaNombre.TabIndex = 1
+        Me.TttNewUpdate.SetToolTip(Me.DgvListaNombre, "JWIR")
+        '
+        'ColIdGrupo
+        '
+        Me.ColIdGrupo.HeaderText = "ColIdGrupo"
+        Me.ColIdGrupo.Name = "ColIdGrupo"
+        Me.ColIdGrupo.ReadOnly = True
+        Me.ColIdGrupo.Visible = False
+        '
+        'ColNomGrupo
+        '
+        Me.ColNomGrupo.HeaderText = ""
+        Me.ColNomGrupo.Name = "ColNomGrupo"
+        Me.ColNomGrupo.ReadOnly = True
+        Me.ColNomGrupo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ColNomGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ColNomGrupo.Width = 303
+        '
+        'ColNumIntgrntes
+        '
+        Me.ColNumIntgrntes.HeaderText = "ColNumIntgrntes"
+        Me.ColNumIntgrntes.Name = "ColNumIntgrntes"
+        Me.ColNumIntgrntes.ReadOnly = True
+        Me.ColNumIntgrntes.Visible = False
+        '
+        'ColIntgrntesReg
+        '
+        Me.ColIntgrntesReg.HeaderText = "ColIntgrntesReg"
+        Me.ColIntgrntesReg.Name = "ColIntgrntesReg"
+        Me.ColIntgrntesReg.ReadOnly = True
+        Me.ColIntgrntesReg.Visible = False
         '
         'RbEstadoInactivo
         '
@@ -174,19 +253,6 @@ Partial Class FrmNuevoEditarCliente
         Me.RbGrupoFamiliar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.RbGrupoFamiliar.UseVisualStyleBackColor = True
         '
-        'BtnAddGrupo
-        '
-        Me.BtnAddGrupo.Enabled = False
-        Me.BtnAddGrupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAddGrupo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.addgrupo
-        Me.BtnAddGrupo.Location = New System.Drawing.Point(262, 75)
-        Me.BtnAddGrupo.Margin = New System.Windows.Forms.Padding(8, 0, 0, 0)
-        Me.BtnAddGrupo.Name = "BtnAddGrupo"
-        Me.BtnAddGrupo.Size = New System.Drawing.Size(90, 40)
-        Me.BtnAddGrupo.TabIndex = 4
-        Me.ToolTipText.SetToolTip(Me.BtnAddGrupo, "AGREGAR NUEVO GRUPO FAMILIAR")
-        Me.BtnAddGrupo.UseVisualStyleBackColor = True
-        '
         'GbOtros
         '
         Me.GbOtros.Controls.Add(Me.RbEstadoInactivo)
@@ -257,40 +323,6 @@ Partial Class FrmNuevoEditarCliente
         Me.TxtListaNombre.Size = New System.Drawing.Size(255, 26)
         Me.TxtListaNombre.TabIndex = 0
         Me.TxtListaNombre.WordWrap = False
-        '
-        'DgvListaNombre
-        '
-        Me.DgvListaNombre.AllowUserToAddRows = False
-        Me.DgvListaNombre.AllowUserToDeleteRows = False
-        Me.DgvListaNombre.AllowUserToResizeColumns = False
-        Me.DgvListaNombre.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
-        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
-        Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.DgvListaNombre.ColumnHeadersHeight = 4
-        Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle14
-        Me.DgvListaNombre.Enabled = False
-        Me.DgvListaNombre.Location = New System.Drawing.Point(0, 56)
-        Me.DgvListaNombre.Margin = New System.Windows.Forms.Padding(0, 4, 0, 0)
-        Me.DgvListaNombre.MultiSelect = False
-        Me.DgvListaNombre.Name = "DgvListaNombre"
-        Me.DgvListaNombre.ReadOnly = True
-        Me.DgvListaNombre.RowHeadersWidth = 4
-        Me.DgvListaNombre.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.DgvListaNombre.RowTemplate.DividerHeight = 2
-        Me.DgvListaNombre.RowTemplate.Height = 25
-        Me.DgvListaNombre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DgvListaNombre.Size = New System.Drawing.Size(328, 130)
-        Me.DgvListaNombre.TabIndex = 1
         '
         'BtnGuardar
         '
@@ -578,41 +610,32 @@ Partial Class FrmNuevoEditarCliente
         Me.DtpFdn.Size = New System.Drawing.Size(270, 26)
         Me.DtpFdn.TabIndex = 2
         '
-        'ColIdGrupo
+        'Button1
         '
-        Me.ColIdGrupo.HeaderText = "ColIdGrupo"
-        Me.ColIdGrupo.Name = "ColIdGrupo"
-        Me.ColIdGrupo.ReadOnly = True
-        Me.ColIdGrupo.Visible = False
-        '
-        'ColNomGrupo
-        '
-        Me.ColNomGrupo.HeaderText = ""
-        Me.ColNomGrupo.Name = "ColNomGrupo"
-        Me.ColNomGrupo.ReadOnly = True
-        Me.ColNomGrupo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColNomGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ColNomGrupo.Width = 303
-        '
-        'ColNumIntgrntes
-        '
-        Me.ColNumIntgrntes.HeaderText = "ColNumIntgrntes"
-        Me.ColNumIntgrntes.Name = "ColNumIntgrntes"
-        Me.ColNumIntgrntes.ReadOnly = True
-        Me.ColNumIntgrntes.Visible = False
-        '
-        'ColIntgrntesReg
-        '
-        Me.ColIntgrntesReg.HeaderText = "ColIntgrntesReg"
-        Me.ColIntgrntesReg.Name = "ColIntgrntesReg"
-        Me.ColIntgrntesReg.ReadOnly = True
-        Me.ColIntgrntesReg.Visible = False
+        Me.Button1.BackColor = System.Drawing.SystemColors.Control
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.Brown
+        Me.Button1.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cancel_34x28
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(852, 470)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(0, 8, 0, 3)
+        Me.Button1.Size = New System.Drawing.Size(120, 75)
+        Me.Button1.TabIndex = 12
+        Me.Button1.Text = "&Cancelar"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'FrmNuevoEditarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(997, 578)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GbOtros)
         Me.Controls.Add(Me.GbMetodoPago)
         Me.Controls.Add(Me.BtnCancelar)
@@ -626,11 +649,11 @@ Partial Class FrmNuevoEditarCliente
         Me.Name = "FrmNuevoEditarCliente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "REGISTRO Y ACTUALIZACIÓN DE USUARIOS"
+        CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GbOtros.ResumeLayout(False)
         Me.GbOtros.PerformLayout()
         Me.GbListaGrupoFamiliar.ResumeLayout(False)
         Me.GbListaGrupoFamiliar.PerformLayout()
-        CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GbMetodoPago.ResumeLayout(False)
         Me.GbContacto.ResumeLayout(False)
         Me.GbContacto.PerformLayout()
@@ -639,7 +662,7 @@ Partial Class FrmNuevoEditarCliente
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents ToolTipText As ToolTip
+    Friend WithEvents TttNewUpdate As ToolTip
     Friend WithEvents RbEstadoInactivo As RadioButton
     Friend WithEvents RbEstadoActivo As RadioButton
     Friend WithEvents LblEstadoCli As Label
@@ -678,4 +701,5 @@ Partial Class FrmNuevoEditarCliente
     Friend WithEvents ColNomGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColNumIntgrntes As DataGridViewTextBoxColumn
     Friend WithEvents ColIntgrntesReg As DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As Button
 End Class

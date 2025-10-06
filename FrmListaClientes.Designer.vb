@@ -22,6 +22,7 @@ Partial Class FrmListaClientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -52,10 +53,11 @@ Partial Class FrmListaClientes
         Me.BtnNuevoPago = New System.Windows.Forms.Button()
         Me.BtnHistorialPagos = New System.Windows.Forms.Button()
         Me.BtnModificar = New System.Windows.Forms.Button()
-        Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnCambiarEstado = New System.Windows.Forms.Button()
+        Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.PbLogo = New System.Windows.Forms.PictureBox()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.GbEncabezado.SuspendLayout()
         CType(Me.DgvListaClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StsBarra.SuspendLayout()
@@ -416,21 +418,6 @@ Partial Class FrmListaClientes
         Me.BtnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnModificar.UseVisualStyleBackColor = True
         '
-        'BtnNuevo
-        '
-        Me.BtnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Navy
-        Me.BtnNuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnNuevo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.nuevo_24x32
-        Me.BtnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnNuevo.Location = New System.Drawing.Point(20, 10)
-        Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Padding = New System.Windows.Forms.Padding(15, 0, 20, 0)
-        Me.BtnNuevo.Size = New System.Drawing.Size(140, 48)
-        Me.BtnNuevo.TabIndex = 1
-        Me.BtnNuevo.Text = "&Nuevo"
-        Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtnNuevo.UseVisualStyleBackColor = True
-        '
         'BtnEliminar
         '
         Me.BtnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Navy
@@ -460,6 +447,21 @@ Partial Class FrmListaClientes
         Me.BtnCambiarEstado.Text = "&Cambiar estado"
         Me.BtnCambiarEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCambiarEstado.UseVisualStyleBackColor = True
+        '
+        'BtnNuevo
+        '
+        Me.BtnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Navy
+        Me.BtnNuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnNuevo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.nuevo_24x32
+        Me.BtnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnNuevo.Location = New System.Drawing.Point(20, 10)
+        Me.BtnNuevo.Name = "BtnNuevo"
+        Me.BtnNuevo.Padding = New System.Windows.Forms.Padding(15, 0, 20, 0)
+        Me.BtnNuevo.Size = New System.Drawing.Size(140, 48)
+        Me.BtnNuevo.TabIndex = 1
+        Me.BtnNuevo.Text = "&Nuevo"
+        Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnNuevo.UseVisualStyleBackColor = True
         '
         'PbLogo
         '
@@ -532,4 +534,5 @@ Partial Class FrmListaClientes
     Friend WithEvents BtnNuevo As Button
     Friend WithEvents BtnEliminar As Button
     Friend WithEvents BtnCambiarEstado As Button
+    Friend WithEvents ToolTip As ToolTip
 End Class
