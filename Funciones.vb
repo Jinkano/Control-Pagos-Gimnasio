@@ -5,6 +5,9 @@ Module Funciones
     Dim cnxnMySql As New MySqlConnection
     Dim cmdCommand As MySqlCommand
     Dim drDataReader As MySqlDataReader
+    '
+    Dim dtDataTable As New DataTable
+    '
     Dim nRow, cMes, cReg, idCli As Int16
     Dim sTotal As Decimal
     Dim arrayMeses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
@@ -248,4 +251,58 @@ Module Funciones
         Return strFecha
     End Function
     '
+
+    '::VAMOS A INTENTAR CREAR UN MÉTODO PARA HACER EL CRUD DE LA BBDD
+    Public Sub MySqlCrud(ByVal SqlConsulta As String, ByRef dgvCrud As DataGridView)
+        '
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+            cmdCommand = New MySqlCommand(SqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader()
+            dgvCrud.Rows.Clear()
+
+            If drDataReader.HasRows Then
+
+                While drDataReader.Read()
+                    nRow = dgvCrud.Rows.Add()
+
+                    ''CREAMOS UN DATATABLE PARA ALMACENAR LOS ID Y LA FDN OBTENIDOS EN LA CONSULTA
+                    'Dim dtPago As New DataTable("Pago")
+                    'dtPago.Columns.Add("IdCli", GetType(Int16))
+                    'dtPago.Columns.Add("Descto", GetType(Decimal))
+                    'If drDataReader.HasRows Then
+                    '    While drDataReader.Read()
+                    '        Dim edad = Int(DateDiff("m", drDataReader.GetDateTime(1).ToString, Now) / 12)
+                    '        dtPago.Rows.Add(drDataReader.GetInt16(0).ToString, edad)
+                    '    End While
+                    'End If
+                    'drDataReader.Close()
+
+                    ''CREAMOS UN DATATABLE PARA ALMACENAR LOS ID Y LA FDN OBTENIDOS EN LA CONSULTA
+                    'Dim dtInsertPago As New DataTable("InsertPago")
+                    'dtInsertPago.Columns.Add("IdCli", GetType(Int16))
+                    'dtInsertPago.Columns.Add("Descto", GetType(Decimal))
+                    'For Each iFe As DataRow In dtPago.Rows
+                    '    'COMPROBAR SI HAY ALGUN REGISTRO CON EL PRIMER DÍA DEL MES
+                    '    SqlConsulta = "SELECT fdi_pgs, id_cli FROM pagos WHERE fdi_pgs = '" & DateTime.Now.ToString("yyyy-MM-dd") & "' AND id_cli = '" & iFe("IdCli") & "'"
+                    '    cmdCommand = New MySqlCommand(SqlConsulta, cnxnMySql)
+                    '    drDataReader = cmdCommand.ExecuteReader
+                    '    If Not drDataReader.HasRows Then
+                    '        dtInsertPago.Rows.Add(iFe("IdCli"), iFe("Descto"))
+                    '    End If
+                    '    drDataReader.Close()
+                    'Next
+                End While
+
+            End If
+
+            drDataReader.Close()
+            cnxnMySql.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        '
+    End Sub
+    '::ESPEROMOS QUE FUNCIONE
 End Module

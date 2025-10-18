@@ -10,9 +10,6 @@ Public Class FrmListaClientes
 
     Private Sub ListaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        '
-        ToolTip.SetToolTip(DgvListaClientes, "probando")
-
         'COMPROBAR QUE RADIO BUTTON ESTA ACTIVO YBHACER CONSULTA A LA BBDD
         If RbActivo.Checked Then
             sqlConsulta = "SELECT * FROM clientes WHERE std_cli = 'ACTIVO' ORDER BY nom_cli"
@@ -55,7 +52,7 @@ Public Class FrmListaClientes
         FrmNuevoEditarCliente.TxtEmail.Text = DgvListaClientes.CurrentRow.Cells(5).Value.ToString 'E-MAIL
         FrmNuevoEditarCliente.TxtDireccion.Text = DgvListaClientes.CurrentRow.Cells(6).Value.ToString 'DIRECCIÓN
         FrmNuevoEditarCliente.DtpFdi.Value = DgvListaClientes.CurrentRow.Cells(7).Value.ToString 'FECHA DE INSCRIPCIÓN
-        FrmNuevoEditarCliente.strIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString ' ID DEL CLIENTE
+        FrmNuevoEditarCliente.strIdClient = DgvListaClientes.CurrentRow.Cells(8).Value.ToString ' ID DEL CLIENTE
 
         FrmNuevoEditarCliente.Show() 'MOSTRAR FORM FrmNuevoEditarCliente
     End Sub

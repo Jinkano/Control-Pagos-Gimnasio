@@ -94,8 +94,8 @@ Public Class FrmPagoMensual
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
 
         'LIMPIAR LAS VARIBLES BANDERAS
-        FrmClientesPagos.txtFlags = ""
-        FrmHistorialPagos.txtFlags = ""
+        'FrmClientesPagos.txtFlags = ""
+        'FrmHistorialPagos.txtFlags = ""
 
         Close() 'CERRAR FORM
     End Sub

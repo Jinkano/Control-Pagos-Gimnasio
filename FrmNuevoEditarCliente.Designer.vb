@@ -64,7 +64,6 @@ Partial Class FrmNuevoEditarCliente
         Me.LblEmail = New System.Windows.Forms.Label()
         Me.GbDatos = New System.Windows.Forms.GroupBox()
         Me.DtpFdn = New System.Windows.Forms.DateTimePicker()
-        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbOtros.SuspendLayout()
         Me.GbListaGrupoFamiliar.SuspendLayout()
@@ -610,32 +609,11 @@ Partial Class FrmNuevoEditarCliente
         Me.DtpFdn.Size = New System.Drawing.Size(270, 26)
         Me.DtpFdn.TabIndex = 2
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.SystemColors.Control
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.Brown
-        Me.Button1.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cancel_34x28
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button1.Location = New System.Drawing.Point(852, 470)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(0, 8, 0, 3)
-        Me.Button1.Size = New System.Drawing.Size(120, 75)
-        Me.Button1.TabIndex = 12
-        Me.Button1.Text = "&Cancelar"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button1.UseVisualStyleBackColor = False
-        '
         'FrmNuevoEditarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(997, 578)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GbOtros)
         Me.Controls.Add(Me.GbMetodoPago)
         Me.Controls.Add(Me.BtnCancelar)
@@ -701,5 +679,4 @@ Partial Class FrmNuevoEditarCliente
     Friend WithEvents ColNomGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColNumIntgrntes As DataGridViewTextBoxColumn
     Friend WithEvents ColIntgrntesReg As DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As Button
 End Class

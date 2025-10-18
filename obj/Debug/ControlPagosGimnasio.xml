@@ -22,6 +22,11 @@ ControlPagosGimnasio
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.activo_50x50">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.actualizar_28x27">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -107,6 +112,11 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.cancel_search_30x30">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.clear22">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -182,6 +192,11 @@ ControlPagosGimnasio
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.inactivo_50x50">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.inactivo_60x60">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -233,6 +248,16 @@ ControlPagosGimnasio
 </summary>
 </member>
 <member name="P:ControlPagosGimnasio.My.Resources.Resources.ok_c_28x28">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.ok_r_24x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:ControlPagosGimnasio.My.Resources.Resources.ok_r_28x28">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

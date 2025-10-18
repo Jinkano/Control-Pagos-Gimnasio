@@ -23,12 +23,12 @@ Partial Class FrmPrincipal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
+        Me.BtnSalir = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BtnClientesPagos = New System.Windows.Forms.Button()
         Me.BtnPrecioDsctos = New System.Windows.Forms.Button()
         Me.BtnPagoPendiente = New System.Windows.Forms.Button()
         Me.BtnListaClientes = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BtnSalir = New System.Windows.Forms.Button()
         Me.PnlBotonera.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,6 +47,36 @@ Partial Class FrmPrincipal
         Me.PnlBotonera.Name = "PnlBotonera"
         Me.PnlBotonera.Size = New System.Drawing.Size(188, 561)
         Me.PnlBotonera.TabIndex = 0
+        '
+        'BtnSalir
+        '
+        Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
+        Me.BtnSalir.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir_34x31
+        Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnSalir.Location = New System.Drawing.Point(0, 463)
+        Me.BtnSalir.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtnSalir.Name = "BtnSalir"
+        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 6, 0, 2)
+        Me.BtnSalir.Size = New System.Drawing.Size(188, 74)
+        Me.BtnSalir.TabIndex = 5
+        Me.BtnSalir.Text = "CERRAR &APP"
+        Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnSalir.UseVisualStyleBackColor = False
+        '
+        'Panel1
+        '
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 537)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(188, 24)
+        Me.Panel1.TabIndex = 0
         '
         'BtnClientesPagos
         '
@@ -106,36 +136,6 @@ Partial Class FrmPrincipal
         Me.BtnListaClientes.TabIndex = 0
         Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnListaClientes.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 537)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(188, 24)
-        Me.Panel1.TabIndex = 0
-        '
-        'BtnSalir
-        '
-        Me.BtnSalir.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnSalir.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.BtnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Image = Global.ControlPagosGimnasio.My.Resources.Resources.salir_34x31
-        Me.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnSalir.Location = New System.Drawing.Point(0, 463)
-        Me.BtnSalir.Margin = New System.Windows.Forms.Padding(0)
-        Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Padding = New System.Windows.Forms.Padding(0, 6, 0, 2)
-        Me.BtnSalir.Size = New System.Drawing.Size(188, 74)
-        Me.BtnSalir.TabIndex = 5
-        Me.BtnSalir.Text = "CERRAR &APP"
-        Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnSalir.UseVisualStyleBackColor = False
         '
         'FrmPrincipal
         '

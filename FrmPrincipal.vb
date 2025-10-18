@@ -22,12 +22,13 @@ Public Class FrmPrincipal
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader()
                 drDataReader.Close()
-                cnxnMySql.Close()
-
                 End
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
+        Finally
+            'CERRAR BBDD
+            cnxnMySql.Close()
         End Try
     End Sub
 
@@ -148,11 +149,11 @@ Public Class FrmPrincipal
                 End If
             End If
 
-            'CERRAR BBDD
-            cnxnMySql.Close()
-
         Catch ex As Exception
             MsgBox(ex.ToString)
+        Finally
+            'CERRAR BBDD
+            cnxnMySql.Close()
         End Try
 
         'AGREGAR NOMBRE DE USUARIO A LA BARRA DE TITULO
@@ -175,15 +176,15 @@ Public Class FrmPrincipal
         FrmListaMorosos.Show()
     End Sub
 
+    Private Sub BtnSalir_Click_(sender As Object, e As EventArgs) Handles BtnSalir.Click
+        'CIERRA EL FORMULARIO
+        Close()
+    End Sub
+
     Private Sub BtnPrecioDsctos_Click(sender As Object, e As EventArgs) Handles BtnPrecioDsctos.Click
         'EJECTA FORMULARIO TABLA DE DESCUENTOS
         FrmTablaDescuento.MdiParent = Me
         FrmTablaDescuento.Show()
-    End Sub
-
-    Private Sub BtnSalir_Click(sender As Object, e As EventArgs)
-        'CIERRA EL FORMULARIO
-        Close()
     End Sub
 
 End Class

@@ -6,7 +6,7 @@ Public Class FrmNuevoEditarCliente
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo, strAddMembers As String
     Dim nRow, intAddMember As Int16
-    Public Shared strIdCli As String
+    Public strIdClient As String
 
     Private Sub FrmNuevoEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -464,18 +464,18 @@ Public Class FrmNuevoEditarCliente
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             drDataReader.Read()
-            strIdCli = drDataReader.GetInt16(0).ToString
+            strIdClient = drDataReader.GetInt16(0).ToString
             drDataReader.Close()
 
             '::: CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE AL NUEVO CLIENTE
             '    LA CONSULTA DEPENDE DEL VALOR DE LA VARIABLE strMpago :::'
             Select Case strMtdPgs
-                Case "DIARIO"
-                    sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = '" & strMtdPgs & "'"
                 Case "MENSUAL"
                     sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE emin_trfa <= '" & TxtEdad.Text & "' AND emax_trfa >= '" & TxtEdad.Text & "'"
                 Case "GRUPAL"
                     sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE nperson_trfa = '" & DgvListaNombre.CurrentRow.Cells(2).Value & "'"
+                Case Else 'DIARIO
+                    sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = '" & strMtdPgs & "'"
             End Select
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
@@ -484,15 +484,15 @@ Public Class FrmNuevoEditarCliente
             'COMPROBAMOS SI HAY REGISTROS 
             If drDataReader.HasRows Then
                 drDataReader.Read()
-                precio = drDataReader.GetDecimal(0) 'Replace(drDataReader.GetDecimal(0).ToString, ",", ".")
-                dscnto = drDataReader.GetDecimal(1) 'Replace(drDataReader.GetDecimal(1).ToString, ",", ".")
+                precio = drDataReader.GetDecimal(0)
+                dscnto = drDataReader.GetDecimal(1)
             Else
                 drDataReader.Close()
-                sqlConsulta = "SELECT prcio_trfa FROM trfa_dscto WHERE tipo_trfa = 'MENSUAL'" 'id_tarifa = 1
+                sqlConsulta = "SELECT prcio_trfa FROM trfa_dscto WHERE tipo_trfa = 'MENSUAL'"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader
                 drDataReader.Read()
-                precio = drDataReader.GetDecimal(0) 'Replace(drDataReader.GetDecimal(0).ToString, ",", ".")
+                precio = drDataReader.GetDecimal(0)
                 dscnto = 0
             End If
             drDataReader.Close()
@@ -501,7 +501,7 @@ Public Class FrmNuevoEditarCliente
             sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
                            VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "',
                                 '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "',
-                                '" & strIdCli & "', '" & FrmPrincipal.idUser & "')"
+                                '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
             drDataReader.Close()
@@ -520,8 +520,13 @@ Public Class FrmNuevoEditarCliente
                                     num_intgrntes_grp = '" & intAddMember & "',
                                     intgrntes_reg_grp = '" & intAddMember & "'
                                     WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
+                Case Else
+                    'SI NO SE CUMPLE UNA DE LAS CONDICIONES
+                    'SALIMOS DEL TRY-CATCH PARA EVITAR GUARDAR DOS REGISTROS
+                    Exit Try
             End Select
-            'EJECUTAMOS LA CAONSULTA Y ACTUALIZAMOS LOS CAMPOS DEL GRUPO FAMILIAR
+            'SI SE CUMPLLE ALGÚN CASO EJECUTAMOS LA CONSULTA
+            'Y ACTUALIZAMOS LOS CAMPOS DEL GRUPO FAMILIAR
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
 
@@ -535,21 +540,33 @@ Public Class FrmNuevoEditarCliente
         End Try
 
         '::: DAR FORMATO EL CODIGO DEL CLIENTE PARA EL MENSAJE DE CONFIRMACIÓN :::'
-        If strIdCli.Length = 1 Then strIdCli = "CLI - 00" & strIdCli
-        If strIdCli.Length = 2 Then strIdCli = "CLI - 0" & strIdCli
-        If strIdCli.Length = 3 Then strIdCli = "CLI - " & strIdCli
+        If strIdClient.Length = 1 Then strIdClient = "CLI - 00" & strIdClient
+        If strIdClient.Length = 2 Then strIdClient = "CLI - 0" & strIdClient
+        If strIdClient.Length = 3 Then strIdClient = "CLI - " & strIdClient
         'MOSTRAMOS UN MESAJE DE CONFIRMACIÓN
-        MsgBox("Datos GUARDADOS satisfactoriamente." & Chr(13) & Chr(13) _
-                & "NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & Chr(13) _
-                & "CODIGO   :  " & strIdCli, vbInformation, "Guardar Cliente")
+        MsgBox("DATOS DEL CLIENTE" & vbCr & vbCr &
+               "   NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & vbCr &
+               "   CODIGO   :  " & strIdClient & vbCr &
+               "   ---------------------------------------------" & vbCr &
+               "   Datos GUARDADOS correctamente.", vbInformation, "Guardar Cliente")
 
-
-        'FrmListaClientes.TxtBuscarCliente.Text = TxtNombre.Text
         ''''
         ''
         'LLENAR EL OTRO FORMULARIO CON LOS DATOS QUE SE HAN GUARDADO
-
-        '
+        With FrmClientesPagos
+            .strIdClient = strIdClient
+            .LblNomCli.Text = TxtNombre.Text
+            .LblApeCli.Text = TxtApellido.Text
+            .LblFdnCli.Text = FechaLarga(DtpFdn.Value)
+            .LblEdadCli.Text = TxtEdad.Text
+            .LblTlfCli.Text = TxtTelefono.Text
+            .LblEmlCli.Text = TxtEmail.Text
+            .LblDirCli.Text = TxtDireccion.Text
+            .LblMtdPgoCli.Text = strMtdPgs
+            '.LblGrpFamCli .Text = 
+            .LblFdiCli.Text = FechaLarga(DtpFdi.Value)
+            .LblEstCli.Text = strEstado
+        End With
         ''
         ''''
         'CERRAMOS EL FORM

@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.ComponentModel
+Imports MySql.Data.MySqlClient
 
 Public Class FrmTablaDescuento
 
@@ -8,15 +9,27 @@ Public Class FrmTablaDescuento
     Dim nRow, idTarifa, intMsgBox, nudMin, nudMax As Int16
     Dim precio, dscnto, apagar, pdMin, pdMax, fijoMes As Decimal
     Dim sqlConsulta, strCadena, strMsgBox, strBandera As String
-
+    '
+    '
+    '
     Private Sub FrmTablaDescuentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        LlenarDgvTarifas() 'LLENAR GRILLA CON LAS TARIFAS
-
-        BtnGuarActuCancElim() 'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
+        'LLENAR GRILLA CON LAS TARIFAS
+        'LLAMA FUNCIÓN ACTIVAR/DESACTIVAR BOTONES
+        LlenarDgvTarifas()
+        BtnGuarActuCancElim()
 
     End Sub
-
+    Private Sub FrmTablaDescuento_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        '
+        If FrmPrincipal.BtnClientesPagos.Enabled = False And DgvTabla.RowCount > 0 Then
+            FrmPrincipal.BtnClientesPagos.Enabled = True
+            FrmPrincipal.BtnPagoPendiente.Enabled = True
+        End If
+    End Sub
+    '
+    '
+    '
     Private Sub CmbTipoPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbTipoPago.SelectedIndexChanged
     End Sub
     Private Sub CmbTipoPago_TextChanged(sender As Object, e As EventArgs) Handles CmbTipoPago.TextChanged
@@ -68,7 +81,9 @@ Public Class FrmTablaDescuento
                 TxtPrecio.Focus()
         End Select
     End Sub
-
+    '
+    '
+    '
     Private Sub TxtPrecio_TextChanged(sender As Object, e As EventArgs) Handles TxtPrecio.TextChanged
 
         'EVALUAMOS LA VARIABLE PARA CALCULAR EL PRECIO APAGAR
@@ -107,22 +122,21 @@ Public Class FrmTablaDescuento
         FuenteErrorOk(TxtPrecio, precio, pdMin, pdMax)
 
     End Sub
-
     Private Sub TxtPrecio_GotFocus(sender As Object, e As EventArgs) Handles TxtPrecio.GotFocus
-
-        TxtPrecio.SelectAll() 'SELECCIONA TODO EL TEXTO AL RECIBIR EL ENFOQUE
+        'SELECCIONA TODO EL TEXTO AL RECIBIR EL ENFOQUE
+        TxtPrecio.SelectAll()
     End Sub
-
     Private Sub TxtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPrecio.KeyPress
-
-        SoloNumeros(TxtPrecio.Text, e) 'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
+        'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
+        SoloNumeros(TxtPrecio.Text, e)
     End Sub
-
     Private Sub TxtPrecio_LostFocus(sender As Object, e As EventArgs) Handles TxtPrecio.LostFocus
-
-        If TxtPrecio.Text = "" Then TxtPrecio.Text = "0" 'SI EL PRECIO ESTA VACIO LE ASIGNA CERO
+        'SI EL PRECIO ESTA VACIO LE ASIGNA CERO
+        If TxtPrecio.Text = "" Then TxtPrecio.Text = "0"
     End Sub
-
+    '
+    '
+    '
     Private Sub TxtDscnto_TextChanged(sender As Object, e As EventArgs) Handles TxtDscnto.TextChanged
 
         'EVALUAMOS LA VARIABLE PARA CALCULAR EL PRECIO APAGAR
@@ -157,26 +171,23 @@ Public Class FrmTablaDescuento
         If TxtDscnto.Text = "" Then TxtApagar.Text = ""
 
     End Sub
-
     Private Sub TxtDscnto_GotFocus(sender As Object, e As EventArgs) Handles TxtDscnto.GotFocus
-
-        TxtDscnto.SelectAll() 'AL RECIBIR EL ENFOQUE SELECCIONA TODO EL TEXTO
-
-        strBandera = "DESCUENTO" 'LLENAMOS LA VARIABLE PARA PODER CALCULAR EL PRECIO A PAGAR
+        'AL RECIBIR EL ENFOQUE SELECCIONA TODO EL TEXTO
+        TxtDscnto.SelectAll()
+        'LLENAMOS LA VARIABLE PARA PODER CALCULAR EL PRECIO A PAGAR
+        strBandera = "DESCUENTO"
     End Sub
-
     Private Sub TxtDscnto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDscnto.KeyPress
-
-        SoloNumeros(TxtDscnto.Text, e) 'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
+        'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
+        SoloNumeros(TxtDscnto.Text, e)
     End Sub
-
     Private Sub TxtDscnto_LostFocus(sender As Object, e As EventArgs) Handles TxtDscnto.LostFocus
-
         'AL PERDER EL ENFOQUE, SI ESTÁ VACIO LE ASIGNA CERO
         If TxtDscnto.Text = "" Then TxtDscnto.Text = "0" : TxtApagar.Text = ""
-
     End Sub
-
+    '
+    '
+    '
     Private Sub TxtApagar_TextChanged(sender As Object, e As EventArgs) Handles TxtApagar.TextChanged
 
         'EVALUAMOS LA VARIABLE PARA CALCULAR EL DESCUENTO
@@ -212,71 +223,70 @@ Public Class FrmTablaDescuento
         If TxtApagar.Text = "" Then TxtDscnto.Text = ""
 
     End Sub
-
     Private Sub TxtApagar_GotFocus(sender As Object, e As EventArgs) Handles TxtApagar.GotFocus
-
-        TxtApagar.SelectAll() 'AL RECIBIR EL ENFOQUE SELECCIONA TODO EL TEXTO
-
-        strBandera = "APAGAR" 'LLENAMOS LA VARIABLE PARA PODER CALCULAR EL DESCUENTO
+        'AL RECIBIR EL ENFOQUE SELECCIONA TODO EL TEXTO
+        TxtApagar.SelectAll()
+        'LLENAMOS LA VARIABLE PARA PODER CALCULAR EL DESCUENTO
+        strBandera = "APAGAR"
     End Sub
-
     Private Sub TxtApagar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtApagar.KeyPress
-
-        SoloNumeros(TxtApagar.Text, e) 'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
+        'FUNCIÓN PARA ADMITIR SOLO NÚMEROS
+        SoloNumeros(TxtApagar.Text, e)
     End Sub
-
     Private Sub TxtApagar_LostFocus(sender As Object, e As EventArgs) Handles TxtApagar.LostFocus
-
         'AL PERDER EL ENFOQUE, SI ESTÁ VACIO LE ASIGNA CERO
         If TxtApagar.Text = "" Then TxtApagar.Text = "0" : TxtDscnto.Text = ""
-
     End Sub
-
+    '
+    '
+    '
     Private Sub NudIntgrnts_ValueChanged(sender As Object, e As EventArgs) Handles NudNumPerson.ValueChanged
     End Sub
     Private Sub NudIntgrnts_GotFocus(sender As Object, e As EventArgs) Handles NudNumPerson.GotFocus
-
-        NudNumPerson.Select(0, 2) 'SELECCIONA TODO EL TEXTO AL RECIBIR EL EMFOQUE
+        'SELECCIONA TODO EL TEXTO AL RECIBIR EL EMFOQUE
+        NudNumPerson.Select(0, 2)
     End Sub
-
     Private Sub NudIntgrnts_TextChanged(sender As Object, e As EventArgs) Handles NudNumPerson.TextChanged
-
+        '
         If strBandera = "SELECT REG" Then Exit Sub
-
-        LblNomPago.Text = "GRUPO FAM " & NudNumPerson.Value 'LE ASIGNA EL NOMBRE DEL PAGO
-
-        TxtTotal.Text = FormatCurrency(fijoMes * NudNumPerson.Value) 'MULTIPLICA EL PRECIO POR EL Nº DE INTEGRANTES
-
+        'LE ASIGNA EL NOMBRE DEL PAGO
+        LblNomPago.Text = "GRUPO FAM " & NudNumPerson.Value
+        'MULTIPLICA EL PRECIO POR EL Nº DE INTEGRANTES
+        TxtTotal.Text = FormatCurrency(fijoMes * NudNumPerson.Value)
     End Sub
-
+    '
+    '
+    '
     Private Sub NudEdadMin_ValueChanged(sender As Object, e As EventArgs) Handles NudEdadMin.ValueChanged
     End Sub
     Private Sub NudEdadMin_GotFocus(sender As Object, e As EventArgs) Handles NudEdadMin.GotFocus
-
-        NudEdadMin.Select(0, 2) 'SELECCIONA TODO EL TEXTO AL RECIBIR EL EMFOQUE
+        'SELECCIONA TODO EL TEXTO AL RECIBIR EL EMFOQUE
+        NudEdadMin.Select(0, 2)
     End Sub
-
     Private Sub NudEdadMin_TextChanged(sender As Object, e As EventArgs) Handles NudEdadMin.TextChanged
-
+        '
         If strBandera = "SELECT REG" Then Exit Sub
-
-        LblNomPago.Text = "DSCTO EDAD " & NudEdadMin.Value & "-" & NudEdadMax.Value 'LE ASIGNA EL NOMBRE DEL PAGO
+        'LE ASIGNA EL NOMBRE DEL PAGO
+        LblNomPago.Text = "DSCTO EDAD " & NudEdadMin.Value & "-" & NudEdadMax.Value
     End Sub
-
+    '
+    '
+    '
     Private Sub NudEdadMax_ValueChanged(sender As Object, e As EventArgs) Handles NudEdadMax.ValueChanged
     End Sub
     Private Sub NudEdadMax_GotFocus(sender As Object, e As EventArgs) Handles NudEdadMax.GotFocus
-
-        NudEdadMax.Select(0, 2) 'SELECCIONA TODO EL TEXTO AL RECIBIR EL EMFOQUE
+        'SELECCIONA TODO EL TEXTO AL RECIBIR EL EMFOQUE
+        NudEdadMax.Select(0, 2)
     End Sub
-
     Private Sub NudEdadMax_TextChanged(sender As Object, e As EventArgs) Handles NudEdadMax.TextChanged
-
+        '
         If strBandera = "SELECT REG" Then Exit Sub
-
-        LblNomPago.Text = "DSCTO EDAD " & NudEdadMin.Value & "-" & NudEdadMax.Value 'LE ASIGNA EL NOMBRE DEL PAGO
+        'LE ASIGNA EL NOMBRE DEL PAGO
+        LblNomPago.Text = "DSCTO EDAD " & NudEdadMin.Value & "-" & NudEdadMax.Value
     End Sub
-
+    '
+    '
+    '
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
 
         LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
@@ -363,12 +373,12 @@ Public Class FrmTablaDescuento
         Select Case idTarifa
 
             Case 0 'SI NO SE SELECCIONA UN REGISTRO
-                MsgBox("Selecciona un registro para ELIMINAR.", vbCritical, "Verificar")
+                MsgBox("   Selecciona un registro para ELIMINAR.", vbCritical, "Verificar")
                 DgvTabla.Focus()
 
             Case 1 'SI SE SELECCIONA EL PRECIO FIJO
-                MsgBox("No se puede ELIMINAR el precio fijo mensual." + vbCr + vbCr +
-                       "Puedes MODIFICAR el valor del precio establecido.", vbInformation, "Advertencia")
+                MsgBox("   No se puede ELIMINAR el precio fijo mensual." + vbCr + vbCr +
+                       "   Puedes MODIFICAR el valor del precio establecido.", vbExclamation, "Advertencia")
                 DgvTabla.Focus()
 
             Case Else 'SI SE SELECCIONA UN REGISTRO DIFERENTE AL PRECIO FIJO
@@ -419,13 +429,10 @@ Public Class FrmTablaDescuento
                                    "¿Está seguro de ELIMINAR el registro?"
                 End If
 
-                'MENSAJE DE CONFIRMACION ANTES DE ELIMINAR
-                intMsgBox = MsgBox(strMsgBox, vbQuestion + vbYesNo + vbDefaultButton2, "Eliminar un registro")
+                'COMPROBAMOS LA RESPUESTA DEL MENSAJE ANTES DE ELIMINAR
+                If MsgBox(strMsgBox, vbQuestion + vbYesNo + vbDefaultButton2, "Eliminar un registro") = vbYes Then
 
-                'COMPROBAMOS LA RESPUESTA DEL MENSAJE
-                If intMsgBox = vbYes Then
-
-                    'CONSULTAMOS A LA BBDD Y LO PASAMOS A LA FUNCION
+                    'CONSULTAMOS A LA BBDD Y LE PASAMOS A LA FUNCION
                     sqlConsulta = "DELETE FROM trfa_dscto WHERE id_trfa  = '" & idTarifa & "'"
                     Consultas(sqlConsulta)
 
@@ -436,6 +443,8 @@ Public Class FrmTablaDescuento
                     LimpiarCuadros() 'LLAMA FUNCION LIMPIAR TEXTOS
 
                     DesactivarCuadros() 'DESACTIVA LOS CUADROS DE TEXTO
+
+                    idTarifa = 0
 
                 End If
         End Select
@@ -676,7 +685,9 @@ Public Class FrmTablaDescuento
 
         Close() 'CIERRA EL FORMULARIO
     End Sub
-
+    '
+    '
+    '
     Private Sub DgvTabla_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvTabla.CellContentClick
     End Sub
     Private Sub DgvTabla_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvTabla.CellClick
@@ -685,19 +696,22 @@ Public Class FrmTablaDescuento
         strBandera = "SELECT REG"
 
         'LLENAR INFORMACION
-        idTarifa = DgvTabla.CurrentRow.Cells(0).Value 'LLENAR VARIABLE CON ID TARIFA
-        LblNomPago.Text = DgvTabla.CurrentRow.Cells(1).Value 'NOMBRE PAGO
-        TxtPrecio.Text = DgvTabla.CurrentRow.Cells(2).Value 'PRECIO
-        NudEdadMin.Value = DgvTabla.CurrentRow.Cells(3).Value 'EDAD MINIMA
-        NudEdadMax.Value = DgvTabla.CurrentRow.Cells(4).Value 'EDAD MAXIMA
-        NudNumPerson.Value = DgvTabla.CurrentRow.Cells(5).Value 'Nº DE PERSONAS
-        TxtTotal.Text = DgvTabla.CurrentRow.Cells(6).Value 'TOTAL
-        TxtDscnto.Text = DgvTabla.CurrentRow.Cells(7).Value 'DESCUENTO
-        TxtApagar.Text = DgvTabla.CurrentRow.Cells(8).Value 'APAGAR
-
+        With DgvTabla
+            idTarifa = .CurrentRow.Cells(0).Value 'LLENAR VARIABLE CON ID TARIFA
+            LblNomPago.Text = .CurrentRow.Cells(1).Value 'NOMBRE PAGO
+            TxtPrecio.Text = .CurrentRow.Cells(2).Value 'PRECIO
+            NudEdadMin.Value = .CurrentRow.Cells(3).Value 'EDAD MINIMA
+            NudEdadMax.Value = .CurrentRow.Cells(4).Value 'EDAD MAXIMA
+            NudNumPerson.Value = .CurrentRow.Cells(5).Value 'Nº DE PERSONAS
+            TxtTotal.Text = .CurrentRow.Cells(6).Value 'TOTAL
+            TxtDscnto.Text = .CurrentRow.Cells(7).Value 'DESCUENTO
+            TxtApagar.Text = .CurrentRow.Cells(8).Value 'APAGAR
+        End With
     End Sub
 
+    '---------- >>>>>><  ><<<<<< ----------'
     '----->>>>> PROCEDIMIENTOS <<<<<-----'
+    '---------- >>>>>><  ><<<<<< ----------'
     Sub BtnNuevoModificar()
 
         BtnNuevo.Visible = False
