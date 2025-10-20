@@ -23,8 +23,8 @@ Partial Class FrmNuevoEditarCliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TttNewUpdate = New System.Windows.Forms.ToolTip(Me.components)
         Me.BtnAddGrupo = New System.Windows.Forms.Button()
         Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
@@ -91,20 +91,20 @@ Partial Class FrmNuevoEditarCliente
         Me.DgvListaNombre.AllowUserToDeleteRows = False
         Me.DgvListaNombre.AllowUserToResizeColumns = False
         Me.DgvListaNombre.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgvListaNombre.ColumnHeadersHeight = 4
         Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle4
         Me.DgvListaNombre.Enabled = False
         Me.DgvListaNombre.Location = New System.Drawing.Point(0, 56)
         Me.DgvListaNombre.Margin = New System.Windows.Forms.Padding(0, 4, 0, 0)
@@ -195,7 +195,7 @@ Partial Class FrmNuevoEditarCliente
         '
         'DtpFdi
         '
-        Me.DtpFdi.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DtpFdi.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DtpFdi.CustomFormat = "' ' dddd ', ' dd ' de ' MMMM ' de ' yyyy"
         Me.DtpFdi.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
         Me.DtpFdi.Format = System.Windows.Forms.DateTimePickerFormat.Custom
@@ -299,7 +299,7 @@ Partial Class FrmNuevoEditarCliente
         '
         Me.LblNumIntgrntes.BackColor = System.Drawing.Color.Azure
         Me.LblNumIntgrntes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblNumIntgrntes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNumIntgrntes.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblNumIntgrntes.ForeColor = System.Drawing.Color.MediumBlue
         Me.LblNumIntgrntes.Location = New System.Drawing.Point(258, 26)
         Me.LblNumIntgrntes.Margin = New System.Windows.Forms.Padding(0)

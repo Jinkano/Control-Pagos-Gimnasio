@@ -6,30 +6,40 @@ Public Class FrmNuevoEditarCliente
     Dim cmdCommand As MySqlCommand
     Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo, strAddMembers As String
     Dim nRow, intAddMember As Int16
+    Dim precio, dscnto As Decimal
     Public strIdClient As String
 
     Private Sub FrmNuevoEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        '' COMPROBAMOS EL TÍTULO PARA DESACTIVAR UN BOTON
-        'If Me.Text = "Registrar nuevo cliente" Then
-        '    BtnActualizar.Enabled = False
-        'Else
-        '    BtnGuardar.Enabled = False
-        'End If
+        '| Almacenamos el año actual en la variable currentYear para asignar valores mínimos y _
+        '| _ máximos a los DateTimePicker DtpFdn y DtpFdi.
+        '| Asignamos la fecha mínima y máxima al DtpFdn.
+        '| IF : Si el botón BtnGuardar está activado.
+        '|      * Limpiamos el DtpFdn y le damos una nueva fecha con 25 años menos.
+        '|      * Limpiamos el TxtEdad.
+        '|      * Restamos y sumamos en 1 la variable currentYear que tiene el año actual para _
+        '|        _ el valor mínimo y máximo del DtpFdi.
+        '| ELSE : Si el botón BtnActualizar está activado
+        '|      * Le pasamos al DtpFdn el formato personalizado de la fecha.
 
-        'LIMPIAMOS EL DTPFDN CON UN ESPACIO EN BLANCO
-        DtpFdn.CustomFormat = " "
+        Dim currentYear = Year(Date.Now)
 
-        'VARIABLE PARA ALMACENAR LA FECHA ACTUAL
-        Dim ano = Year(Date.Now)
-
-        'ASIGNAR VALORES NIM Y MAX A LOS DATETIMEPICKER
-        DtpFdn.MinDate = "01/01/" & ano - 90
+        DtpFdn.MinDate = "01/01/" & currentYear - 90
         DtpFdn.MaxDate = DateTime.Now
-        DtpFdn.Value = "01/07/" & ano - 25
-        TxtEdad.Text = ""
-        DtpFdi.MinDate = "01/01/" & ano - 1
-        DtpFdi.MaxDate = "31/12/" & ano + 1
+
+        If BtnGuardar.Visible = True Then
+
+            DtpFdn.CustomFormat = " "
+            DtpFdn.Value = "01/07/" & currentYear - 25
+
+            TxtEdad.Text = ""
+
+            DtpFdi.MinDate = "01/01/" & currentYear - 1
+            DtpFdi.MaxDate = "31/12/" & currentYear + 1
+        Else
+            DtpFdn.CustomFormat = "' ' dd ' de  ' MMMM ' de  ' yyyy"
+        End If
+
     End Sub
     '
     '
@@ -120,12 +130,22 @@ Public Class FrmNuevoEditarCliente
     '
     '
     Private Sub TxtListaNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtListaNombre.TextChanged
+
         '-*/
         If RbGrupoFamiliar.Checked Then
-            sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '%" & TxtListaNombre.Text & "%' ORDER BY nom_grp"
+
+            sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '" & TxtListaNombre.Text & "%' ORDER BY nom_grp"
             LlenarDgvListaNombre(sqlConsulta)
+
+            If String.IsNullOrWhiteSpace(TxtListaNombre.Text) Then LblNumIntgrntes.Text = ""
+
+            If DgvListaNombre.RowCount > 0 Then
+                If TxtListaNombre.Text = DgvListaNombre.CurrentRow.Cells(1).Value Then
+                    LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
+                End If
+            End If
         End If
-        '
+
     End Sub
     Private Sub TxtListaNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtListaNombre.GotFocus
         'TxtListaNombre_GotFocus
@@ -170,20 +190,27 @@ Public Class FrmNuevoEditarCliente
     '
     '
     Private Sub RbEstadoActivo_CheckedChanged(sender As Object, e As EventArgs) Handles RbEstadoActivo.CheckedChanged
-        'RbEstadoActivo_CheckedChanged
-    End Sub
-    Private Sub RbEstadoInactivo_CheckedChanged(sender As Object, e As EventArgs) Handles RbEstadoInactivo.CheckedChanged
-        'RbEstadoInactivo_CheckedChanged
+
+        '| Comprobamos si RbEstadoActivo está activado para llenar la variable strEstado el texto "ACTIVO", _
+        '| _ en caso contrario le pasamos a la variable el texto "INACTIVO".
+        '| La variable strEstado se usa para guardar o actualizar los datos del cliente.
+
+        If RbEstadoActivo.Checked Then
+            strEstado = "ACTIVO"
+        Else
+            strEstado = "INACTIVO"
+        End If
+
     End Sub
     '
     '
     '
     Private Sub RbDiario_CheckedChanged(sender As Object, e As EventArgs) Handles RbDiario.CheckedChanged
-        ''Nombre del grupo
-        'If RbDiario.Checked Then
-        'End If
     End Sub
     Private Sub RbDiario_Click(sender As Object, e As EventArgs) Handles RbDiario.Click
+
+        'ASIGNAR UN VALOR A LA VARIABLE VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES :::'
+        strMtdPgs = TxtListaNombre.Text
 
         TxtListaNombre.Text = "" 'LIMPIAMOS EL TEXTBOX
         'LblMetodoPago.BackColor = Color.Azure
@@ -231,11 +258,11 @@ Public Class FrmNuevoEditarCliente
     '
     '
     Private Sub RbMensual_CheckedChanged(sender As Object, e As EventArgs) Handles RbMensual.CheckedChanged
-        ''Nombre del grupo
-        'If RbMensual.Checked Then
-        'End If
     End Sub
     Private Sub RbMensual_Click(sender As Object, e As EventArgs) Handles RbMensual.Click
+
+        'ASIGNAR UN VALOR A LA VARIABLE, VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES
+        strMtdPgs = "MENSUAL"
 
         'LLENAMOS EL LABEL CON EL NOMBRE DEL METODO DEL PAGO PARA GUARDAR EN LA TABLA
         TxtListaNombre.Text = "" 'LIMPIAMOS EL TEXTBOX
@@ -258,8 +285,14 @@ Public Class FrmNuevoEditarCliente
     '
     '
     Private Sub RbGrupoFamiliar_CheckedChanged(sender As Object, e As EventArgs) Handles RbGrupoFamiliar.CheckedChanged
+        ''ASIGNAR UN VALOR A LA VARIABLE, VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES
+        'If RbGrupoFamiliar.Checked Then strMtdPgs = "GRUPAL"
+
         'Nombre del grupo
         If RbGrupoFamiliar.Checked Then
+
+            'ASIGNAR UN VALOR A LA VARIABLE, VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES
+            strMtdPgs = "GRUPAL"
 
             TxtListaNombre.Text = "" 'LIMPIAMOS EL TEXTBOX
             'LblMetodoPago.BackColor = Color.Azure
@@ -353,6 +386,9 @@ Public Class FrmNuevoEditarCliente
                             cnxnMySql.Close()
                             'LLENAMOS EL TEXTBOX CON EL NOMBRE DEL GRUPO
                             TxtListaNombre.Text = DgvListaNombre.CurrentRow.Cells(1).Value
+                            '
+                            LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
+                            '
                             'LLENAMOS LA VARIABLE PARA ACTUALIZAR LOS CAMPOS num_intgrntes_grp Y intgrntes_reg_grp AL MOMENTO DE GUARDAR
                             strAddMembers = "UPDATE_TWO_FIELDS"
                         End If
@@ -376,6 +412,9 @@ Public Class FrmNuevoEditarCliente
                 '    CON EL VALOR DE LA VARIABLE intAddMember DEL REGISTRO SELECCIONADO,
                 '    AL MOMENTO DE GUARDAR LOS DATOS DEL CLIENTE :::'
                 TxtListaNombre.Text = DgvListaNombre.CurrentRow.Cells(1).Value
+                '
+                LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
+                '
                 intAddMember = DgvListaNombre.CurrentRow.Cells(3).Value + 1
                 strAddMembers = "UPDATE_A_FIELD"
 
@@ -387,19 +426,16 @@ Public Class FrmNuevoEditarCliente
     '
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
 
-        '::::: COMPROBAMOS SI HAY INFORMACION DEL CLIENTE :::::'
-        If TxtNombre.Text = "" Then
-            MsgBox("Ingrese el NOMBRE del cliente.", vbCritical, "Comprobar datos")
-            TxtNombre.Focus() : Exit Sub
-        End If
-        If TxtApellido.Text = "" Then
-            MsgBox("Ingrese el APELLIDO del cliente.", vbCritical, "Comprobar datos")
-            TxtApellido.Focus() : Exit Sub
-        End If
-        If TxtEdad.Text = "" Then
-            MsgBox("Corrige la fecha de NACIMIENTO del cliente.", vbCritical, "Comprobar datos")
-            DtpFdn.Focus() : Exit Sub
-        End If
+        '| * Llamamos a la función FunMsgBox() si los TextBox o DateTimePicker no contienen información del cliente.
+        '|
+        '|'::::: COMPROBAMOS SI HAY INFORMACION DEL CLIENTE :::::'
+        '|
+        '|
+
+        If String.IsNullOrWhiteSpace(TxtNombre.Text) Then FunMsgBox(LblNombre.Text, BtnGuardar.Text, TxtNombre) : Exit Sub
+        If String.IsNullOrWhiteSpace(TxtApellido.Text) Then FunMsgBox(LblApellido.Text, BtnGuardar.Text, TxtApellido) : Exit Sub
+        If String.IsNullOrEmpty(TxtEdad.Text) Then FunMsgBox(LblFnacimiento.Text, BtnGuardar.Text, DtpFdn) : Exit Sub
+
         If Not RbDiario.Checked And Not RbMensual.Checked And Not RbGrupoFamiliar.Checked Then
             MsgBox("Selecciona un MÉTODO de pago.", vbCritical, "Comprobar datos")
             Exit Sub
@@ -413,51 +449,43 @@ Public Class FrmNuevoEditarCliente
             DgvListaNombre.Focus() : Exit Sub
         End If
 
-        '::: COMPROBAR QUE RADIOBUTTON ESTA ACTIVADO PARA ASIGNAR UN VALOR A LA VARIABLE,
-        '    VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES :::'
-        If RbDiario.Checked Then strMtdPgs = TxtListaNombre.Text
-        If RbMensual.Checked Then strMtdPgs = "MENSUAL"
-        If RbGrupoFamiliar.Checked Then strMtdPgs = "GRUPAL"
+        '-----------------------------------------------------------------------------------------------
+        '| GUARDAR UN NUEVO REGISTRO EN LA TABLA CLIENTES
+        '| ----------------------------------------------
+        '| * Comprobamos el valor de la variable strmpago para hacer la consulta a la BBDD
+        '| IF :
+        '|      * Si la variable strMtdPgs es igual a "GRUPAL" hacemos una consulta con el _
+        '|        _ campo [id_grp] de la tabla Gruppo Familiar.
+        '| ELSE :
+        '|      * Si la variable strMtdPgs es "MENSUAL" o "DIARIO" hacemos la consulta sin _
+        '|        _ el [id_grp] del grupo familiar.
+        '| * Llamamos a la función FunCrudSql() y le pasamos la consulta [sqlConsulta].
 
-        '::: COMPROBAR QUE RADIOBUTTON ESTA ACTIVADO PARA GUARDAR EL ESTADO DEL CLIENTE :::'
-        If RbEstadoActivo.Checked Then strEstado = "ACTIVO"
-        If RbEstadoInactivo.Checked Then strEstado = "INACTIVO"
+        If strMtdPgs = "GRUPAL" Then
+            sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli, fdn_cli, tlf_cli, eml_cli, dir_cli, mpg_cli, fdi_cli, std_cli, id_grp)
+                                VALUES ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "',
+                                '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "',
+                                '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "',
+                                '" & strMtdPgs & "', '" & DtpFdi.Value.ToString("yyyy-MM-dd") & "',
+                                '" & strEstado & "', '" & DgvListaNombre.CurrentRow.Cells(0).Value & "')"
 
+        Else
+            sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli, fdn_cli, tlf_cli, eml_cli, dir_cli, mpg_cli, fdi_cli, std_cli)
+                                VALUES ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "',
+                                '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "',
+                                '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "',
+                                '" & strMtdPgs & "', '" & DtpFdi.Value.ToString("yyyy-MM-dd") & "',
+                                '" & strEstado & "')"
+        End If
+        'Date
+        FunCrudSql(sqlConsulta)
+
+        '-----------------------------------------------------------------------------------------------
         '::: USAMOS TRY PARA CONTROLAR POSIBLES ERRORES :::'
         Try
             'CONECTAR Y ABRIR LA BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-
-            '::: COMPROBAMOS EL VALOR DE LA VARIABLE strMpago PARA HACER LA CONSULTA A LA BBSDD :::::'
-            If strMtdPgs = "GRUPAL" Then
-
-                'CONSULTA A LA BBDD CON EL ID DEL GRUPO FAMILIAR
-                sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli,
-                                fdn_cli, tlf_cli, eml_cli, dir_cli,
-                                mpg_cli, fdi_cli, std_cli, id_grp) VALUES
-                                ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "',
-                                '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "',
-                                '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "',
-                                '" & strMtdPgs & "', '" & DtpFdi.Value.Date.ToString("yyyy-MM-dd") & "',
-                                '" & strEstado & "', '" & DgvListaNombre.CurrentRow.Cells(0).Value & "')"
-
-            Else 'SI LA VARIABLE strMpago ES MENSUAL O DIARIO
-
-                'CONSULTA A LA BBDD SIN EL ID DEL GRUPO FAMILIAR
-                sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli,
-                                fdn_cli, tlf_cli, eml_cli, dir_cli,
-                                mpg_cli, fdi_cli, std_cli) VALUES
-                                ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "',
-                                '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "',
-                                '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "',
-                                '" & strMtdPgs & "', '" & DtpFdi.Value.Date.ToString("yyyy-MM-dd") & "',
-                                '" & strEstado & "')"
-            End If
-            'EJECUTAR LA CONSULTA PARA AGREGAR EL NUEVO CLIENTE A LA TABLA
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-            drDataReader.Close()
 
             '::: OBTENEMOS EL ID DEL ÚLTIMO REGISTRO Y LO ALMACENAMOS EN LA VARIABLE strIdCli :::'
             sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
@@ -480,7 +508,7 @@ Public Class FrmNuevoEditarCliente
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
             'CREAMOS DOS VARIABLES PARA ALMACENAR EL PRECIO Y EL DSCTO
-            Dim precio, dscnto As Decimal
+            'Dim precio, dscnto As Decimal
             'COMPROBAMOS SI HAY REGISTROS 
             If drDataReader.HasRows Then
                 drDataReader.Read()
@@ -497,39 +525,6 @@ Public Class FrmNuevoEditarCliente
             End If
             drDataReader.Close()
 
-            '::: AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS :::'
-            sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
-                           VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "',
-                                '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "',
-                                '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-            drDataReader.Close()
-
-            '::: COMPROBAMOS EL VALOR DE LA VARIABLE strAddMembers PARA HACER LA CONSULTA A LA BBDD :::'
-            Select Case strAddMembers
-                Case "UPDATE_A_FIELD"
-                    'ACTUALIZAR UN CAMPO DEL REGISTRO
-                    sqlConsulta = "UPDATE grp_familiar SET
-                                    intgrntes_reg_grp = '" & intAddMember & "'
-                                    WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
-
-                Case "UPDATE_TWO_FIELDS"
-                    'ACTUALIZAMOS DOS CAMPOS DEL REGISTRO
-                    sqlConsulta = "UPDATE grp_familiar SET
-                                    num_intgrntes_grp = '" & intAddMember & "',
-                                    intgrntes_reg_grp = '" & intAddMember & "'
-                                    WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
-                Case Else
-                    'SI NO SE CUMPLE UNA DE LAS CONDICIONES
-                    'SALIMOS DEL TRY-CATCH PARA EVITAR GUARDAR DOS REGISTROS
-                    Exit Try
-            End Select
-            'SI SE CUMPLLE ALGÚN CASO EJECUTAMOS LA CONSULTA
-            'Y ACTUALIZAMOS LOS CAMPOS DEL GRUPO FAMILIAR
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-
         Catch ex As Exception
             'MOSTRAMOS UN MENSAJE CON EL ERROR CAPTURADO
             MsgBox(ex.ToString)
@@ -539,51 +534,168 @@ Public Class FrmNuevoEditarCliente
             cnxnMySql.Close()
         End Try
 
-        '::: DAR FORMATO EL CODIGO DEL CLIENTE PARA EL MENSAJE DE CONFIRMACIÓN :::'
+        '-----------------------------------------------------------------------------------------------
+        '| AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
+        '| ---------------------------------------------
+        '| * Hacemos la consulta y lo almacenamos en la variable sqlConsulta.
+        '| * Llamamos al la función FunCrudSql() y le pasamos la consulta.
+
+        sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
+                           VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "',
+                                '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "',
+                                '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
+        FunCrudSql(sqlConsulta)
+
+        '-----------------------------------------------------------------------------------------------
+        '| ACTUALIZAR REGISTROS DE LA TABLA GRUPO_FAMILIAR
+        '| -------------------------------------------------
+        '| * Comprobamos el valor de la variable strAddMembers para hacer la consulta a la BBDD.
+        '|
+        '| CASE "UPDATE_A_FIELD" :
+        '|      * En este caso solo vamos a actualizar el campo [intgrntes_reg_grp] de la tabla [grp_familiar]
+        '|
+        '| CASE "UPDATE_TWO_FIELDS" :
+        '|      * En este caso actualizamos los campos [num_intgrntes_grp y intgrntes_reg_grp] de la tabla [grp_familiar]
+        '|
+        '| * Llamamos a la función FunCrudSql() y le pasamos la consulta [sqlConsulta].
+
+        Select Case strAddMembers
+            Case "UPDATE_A_FIELD"
+                sqlConsulta = "UPDATE grp_familiar SET
+                                    intgrntes_reg_grp = '" & intAddMember & "'
+                                    WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
+
+            Case "UPDATE_TWO_FIELDS"
+                sqlConsulta = "UPDATE grp_familiar SET
+                                    num_intgrntes_grp = '" & intAddMember & "',
+                                    intgrntes_reg_grp = '" & intAddMember & "'
+                                    WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
+        End Select
+        FunCrudSql(sqlConsulta)
+
+        '-----------------------------------------------------------------------------------------------
+        '| * Damos formato el codigo del cliente para mostrar en el mensaje de confirmación
+        '| * Llenamos los campos del formulario FrmClientesPagos con los datos que se han guardado.
+        '| * Cambiamos los textos de SlblTitulo y de SlblDescrip del formulario FrmClientesPagos _
+        '|   _ después de guardar un nuevo registro en la tabla clientes.
+        '| * Cerramos el formulario FrmNuevoEditarCliente
+
         If strIdClient.Length = 1 Then strIdClient = "CLI - 00" & strIdClient
         If strIdClient.Length = 2 Then strIdClient = "CLI - 0" & strIdClient
         If strIdClient.Length = 3 Then strIdClient = "CLI - " & strIdClient
-        'MOSTRAMOS UN MESAJE DE CONFIRMACIÓN
         MsgBox("DATOS DEL CLIENTE" & vbCr & vbCr &
                "   NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & vbCr &
                "   CODIGO   :  " & strIdClient & vbCr &
                "   ---------------------------------------------" & vbCr &
                "   Datos GUARDADOS correctamente.", vbInformation, "Guardar Cliente")
 
-        ''''
-        ''
-        'LLENAR EL OTRO FORMULARIO CON LOS DATOS QUE SE HAN GUARDADO
         With FrmClientesPagos
             .strIdClient = strIdClient
             .LblNomCli.Text = TxtNombre.Text
             .LblApeCli.Text = TxtApellido.Text
+            .FnacimientoCorto.Text = DtpFdn.Value
             .LblFdnCli.Text = FechaLarga(DtpFdn.Value)
             .LblEdadCli.Text = TxtEdad.Text
             .LblTlfCli.Text = TxtTelefono.Text
             .LblEmlCli.Text = TxtEmail.Text
             .LblDirCli.Text = TxtDireccion.Text
-            .LblMtdPgoCli.Text = strMtdPgs
-            '.LblGrpFamCli .Text = 
+            '------
+            If RbDiario.Checked = True Then
+                .LblMtdPgoCli.Text = TxtListaNombre.Text
+                '.LblGrpFamCli.Text = ""
+            Else
+                .LblMtdPgoCli.Text = strMtdPgs
+                .LblGrpFamCli.Text = TxtListaNombre.Text
+            End If
+            '------
+            .FregistroCorto.Text = DtpFdi.Value
             .LblFdiCli.Text = FechaLarga(DtpFdi.Value)
             .LblEstCli.Text = strEstado
         End With
-        ''
-        ''''
-        'CERRAMOS EL FORM
+
+        FrmClientesPagos.SlblTitulo.Text = "Cliente seleccionado"
+        FrmClientesPagos.SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o eliminar al cliente."
         Close()
+
     End Sub
     '
     '
     '
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
-        'BtnActualizar_Click
+
+        '| * Llamamos a la función FunMsgBox() si los TextBox o DateTimePicker no contienen información del cliente.
+        '|
+        '|
+        '|
+        '|
+
+        If String.IsNullOrWhiteSpace(TxtNombre.Text) Then FunMsgBox(LblNombre.Text, BtnActualizar.Text, TxtNombre)
+        If String.IsNullOrWhiteSpace(TxtApellido.Text) Then FunMsgBox(LblApellido.Text, BtnActualizar.Text, TxtApellido)
+        If String.IsNullOrEmpty(TxtEdad.Text) Then FunMsgBox(LblFnacimiento.Text, BtnActualizar.Text, DtpFdn)
+
+
+
+        ''CAMBIAMOS LOS TEXTOS DE LA BARRA DE ESTADO
+        'SlblTitulo.Text = "Actualizar Cliente"
+        'SlblDescrip.Text = " Los datos del cliente se están ACTUALIZANDO en la Base de Datos."
+
+        'Try
+        '    cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+        '    cnxnMySql.Open()
+
+        '    'ACTUALIZAMOS LOS DATOS DEL CLIENTE
+        '    sqlConsulta = "UPDATE clientes SET nom_cli='" & TxtNomCli.Text & "', ape_cli='" & TxtApeCli.Text & "', fdn_cli='" & DtpFdnCli.Value.ToString("yyyy-MM-dd") & "', 
+        '                  tlf_cli='" & TxtTlfCli.Text & "', eml_cli='" & TxtEmlCli.Text & "', dir_cli='" & TxtDirCli.Text & "', 
+        '                  fdi_cli='" & DtpFdiCli.Value.ToString("yyyy-MM-dd") & "' WHERE id_cli='" & idClient & "'" ', std_cli='" & strEstado & "' 
+        '    cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+        '    drDataReader = cmdCommand.ExecuteReader
+        '    drDataReader.Close()
+        '    cnxnMySql.Close()
+
+        '    'ACTUALIZAMOS LOS DATOS ENlos label
+
+        '    '''
+
+        '    'ENVIAMOS MENSAJE DE CONFIRMACION
+        '    If idClient.Length = 1 Then strIdCli = "CLI-00" & idClient
+        '    If idClient.Length = 2 Then strIdCli = "CLI-0" & idClient
+        '    If idClient.Length = 3 Then strIdCli = "CLI-" & idClient
+        '    MsgBox("Datos ACTUALIZADOS satisfactoriamente." & Chr(13) & Chr(13) _
+        '       & "NOMBRE   :  " & TxtNomCli.Text & " " & TxtApeCli.Text & Chr(13) _
+        '       & "CODIGO   :  " & strIdCli, vbInformation, "Actualizar Cliente")
+        'Catch ex As Exception
+        '    MsgBox(ex.ToString)
+        'End Try
+
+        'BtnGuardaActualCancelCambia() 'ACTIVAMOS y DESACTIVAMOS LOS BOTONES
+
+        'BtnNuevo.Focus() 'ENVIAMOS EL ENFOQUE AL BOTON NUEVO
+
+        'TxtDesactivar() 'DESACTIVAR CUADROS DE TEXTO
+
+        '98765431
+        '
     End Sub
     '
     '
     '
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
-        'CERRAMOS EL FORM
+
+        '| Al hacer clic en Cancelar comprobamos si el botón BtnGuardar está activado para limpiar los _
+        '| _ textos de SlblTitulo y de SlblDescrip del formulario FrmClientesPagos, si está activado _
+        '| _ el botón BtnActualizar cambiamos los textos avisando que se ha cancelado la actualización.
+        '| Cerramos el formulario.
+
+        If BtnGuardar.Visible = True Then
+            FrmClientesPagos.SlblTitulo.Text = ""
+            FrmClientesPagos.SlblDescrip.Text = ""
+        Else
+            FrmClientesPagos.SlblTitulo.Text = "Cliente seleccionado"
+            FrmClientesPagos.SlblDescrip.Text = " Se ha cancelado la actualización de los datos."
+        End If
+
         Close()
+
     End Sub
 
     '::: ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- :::'
@@ -595,7 +707,44 @@ Public Class FrmNuevoEditarCliente
         TxtCadena.BackColor = Color.Azure
         If TxtCadena.Text = "" Then TxtCadena.BackColor = Color.MistyRose
     End Sub
+    '
+    '
+    '
+    Overloads Sub FunMsgBox(clientData As String, titleMsgbox As String, textBox As TextBox)
 
+        '| * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas _
+        '|   _ respectivamente usando UCase() y LCase(), también se puede usar ToUpper() y ToLower()
+        '| * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando _
+        '|   _ Substring(), para mostrar en el título de mensaje
+        '| * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al textbox _
+        '|   _ que corresponda.
+
+        clientData = UCase(clientData)
+        titleMsgbox = LCase(titleMsgbox.Substring(1, titleMsgbox.Length - 1))
+        MsgBox(" Verifica la información del cliente" & vbCr & vbCr &
+               " El campo " & clientData & " no puede estar vacío.", vbCritical, "Error al " & titleMsgbox)
+        textBox.Focus()
+
+    End Sub
+    Overloads Sub FunMsgBox(clientData As String, titleMsgbox As String, dateTimePicker As DateTimePicker)
+
+        '| * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas _
+        '|   _ respectivamente usando UCase() y LCase(), también se puede usar ToUpper() y ToLower()
+        '| * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando _
+        '|   _ Substring(), para mostrar en el título de mensaje
+        '| * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al dateTimePicker _
+        '|   _ que corresponda.
+
+        clientData = UCase(clientData)
+        titleMsgbox = LCase(titleMsgbox.Substring(1, titleMsgbox.Length - 1))
+        MsgBox(" Verifica la información del cliente" & vbCr & vbCr &
+               " El campo " & clientData & " no puede estar vacío.", vbCritical, "Error al " & titleMsgbox)
+        dateTimePicker.Focus()
+
+    End Sub
+    '
+    '
+    '
     Private Sub LlenarDgvListaNombre(sqlConsulta As String)
 
         'USAMOS TRY PARA CONTROLAR POSIBLES ERRORES

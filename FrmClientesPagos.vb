@@ -13,59 +13,59 @@ Public Class FrmClientesPagos
     '
     '
     Private Sub FrmClientesPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        '| Llamamos a la función CleanLabel()
+        '| Limpiamos el texto de SlblTitulo y SlblDescrip
+
+        CleanLabel()
+        SlblTitulo.Text = ""
+        SlblDescrip.Text = ""
+
     End Sub
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
-        'USAMOS TRY-CATCH PARA CONTROLAR POSIBLES ERRORES
+        '| Usamos try-catch para controlar posibles errores.
+        '| Conectamos y abrimos la base de datos.
+        '| Hacemos una consulta para comprobar si hay registros en la tabla clientes y lo ejecutamos.
+        '| IF : Comprobamos si la consulta tiene registros:
+        '|      *FALTA DECIDIR BOTONES*'ACTIVAMOS LOS CONTROLES Y OCULTAMOS BOTONES
+        '| ELSE : Si la consulta no ha encontrado registros:
+        '|      *---*'DESACTIVAMOS LOS CONTROLES Y OCULTAMOS BOTONES
+        '|      * Cambiamos los textos del StsBarra (SlblTitulo y SlblDescrip) informando que la tabla está vacía.
+        '| Si se produce algún error lo capturamos en el Catch y mostramos un mensaje.
+        '| Cerramos el drDataReader y la base de datos.
+
         Try
-            'CONECTAMOS Y ABRIMOS LA BASE DE DATOS
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-            'HACEMOS UNA CONSULTA PARA COMPROBAR SI HAY REGISTROS EN LA TABLA CLIENTES
             sqlConsulta = "SELECT id_cli FROM clientes"
-            'EJECUTAMOS LA CONSULTA RECIBIDA POR PARÁMETRO
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
-            'COMPROBAMOS SI HAY REGISTROS
+
             If drDataReader.HasRows Then
-                'DESACTIVAMOS LOS CONTROLES Y OCULTAMOS BOTONES
                 BtnBuscar.Enabled = True
-                'GbEstado.Enabled = True
                 BtnModificar.Visible = True
                 BtnEliminar.Visible = True
                 DgvListaPagos.Enabled = True
                 BtnPagarMes.Visible = True
                 BtnNuevoPago.Visible = True
-                'TEXTO PARA EL STATUSSTRIP CON LA CANTIDAD DE CLIENTES REGISTRADOS
-                If LblNomCli.Text = "" Then
-                    SlblTitulo.Text = ""
-                    SlblDescrip.Text = ""
-                    'Else
-                    '    SlblTitulo.Text = "Nº de Registros"
-                    '    SlblDescrip.Text = " " & drDataReader.HasRows. & " - Cliente(s) registrado(s) en la Base de Datos."
-                End If
             Else
-                'DESACTIVAMOS LOS CONTROLES Y OCULTAMOS BOTONES
                 BtnBuscar.Enabled = False
-                'GbEstado.Enabled = False
                 BtnModificar.Visible = False
                 BtnEliminar.Visible = False
                 DgvListaPagos.Enabled = False
                 BtnPagarMes.Visible = False
                 BtnNuevoPago.Visible = False
-                'TEXTO PARA EL STATUSSTRIP CON INFORMACIÓN DE LA BBDD
+
                 SlblTitulo.Text = "No hay clientes"
                 SlblDescrip.Text = "  Haz clic en NUEVO para registrar un cliente."
             End If
         Catch ex As Exception
-            'MENSAJE CON EL ERROR CAPTURADO
             MsgBox(ex.ToString)
         Finally
-            'CERRAMOS EL DATAREADER Y LA BBDD
             drDataReader.Close()
             cnxnMySql.Close()
         End Try
-
     End Sub
     '
     '
@@ -138,7 +138,8 @@ Public Class FrmClientesPagos
         '| _ salir de la función usando Exit Sub y evitar que se ejecuten las demás líneas de código.
         '| Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
         '| Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
-        '| _ la función FillOutDgvClientes().
+        '| _ la función FillDataDgvClientes().
+        '| Llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
         '| Desactivamos los dos contenedores PnlBuscar y GbEstado.
         '| Cambiamos el texto del CmbFiltrar seleccionando el index uno (NOMBRE).
         '| Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
@@ -147,30 +148,31 @@ Public Class FrmClientesPagos
         '| AQUI FALTA HACER COMENTARIO
         '
         '| Limpiamos la variable strFlags para futuras comprobaciones.
+        '| Cambiamos los textos de SlblTitulo y de SlblDescrip después de seleccionar un cliente de la lista.
 
         If CmbFiltrar.Text = "" Or TxtBuscar.Text = "" Or DgvClientes.RowCount = 0 Then Exit Sub
 
         strFlags = "SKIP_SEARCH"
 
-        FillOutDgvClientes()
-        'ID DEL GRUPO FAMILIAR 11
-        'If Not (drDataReader("id_grp") Is DBNull.Value) Then
-        '    DgvClientes.Rows(nRow).Cells(11).Value = drDataReader.GetString(10).ToString
-        'End If
-        '
+        FillDataDgvClientes()
+
+        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then SearchFamilyGroup(LblGrpFamCli.Text)
+
         PnlBuscar.Enabled = False
         GbEstado.Enabled = False
         CmbFiltrar.SelectedIndex = 0
         RbActivo.Checked = False
         BtnBuscar.BringToFront()
-        '
+        '-----------------------'
         BtnNuevo.Enabled = True
         BtnModificar.Enabled = True
         BtnEliminar.Enabled = True
         BtnPagarMes.Enabled = True
         BtnNuevoPago.Enabled = True
-        '
+        '-----------------------'
         strFlags = ""
+        SlblTitulo.Text = "Cliente seleccionado"
+        SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o eliminar al cliente."
     End Sub
     '
     '
@@ -266,56 +268,60 @@ Public Class FrmClientesPagos
     End Sub
     Private Sub DgvClientes_DoubleClick(sender As Object, e As EventArgs) Handles DgvClientes.DoubleClick
 
-        '| Comprobamos si el DgvClientes no tiene filas, para salir de la función usando Exit Sub y evitar _
-        '| _ que se ejecuten las demás líneas de código.
-        '| Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
-        '| Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
-        '| _ la función FillOutDgvClientes().
-        '| Desactivamos los dos contenedores PnlBuscar y GbEstado.
-        '| Cambiamos el texto del CmbFiltrar seleccionando el index uno (NOMBRE).
-        '| Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
-        '| Ponemos BtnBuscar encima del otro button usando BringToFront().
+        '| * Comprobamos si el DgvClientes no tiene filas, para salir de la función usando Exit Sub y evitar _
+        '|   _ que se ejecuten las demás líneas de código.
+        '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
+        '| * Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
+        '|   _ la función FillOutDgvClientes().
+        '| * Llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
+        '| * Desactivamos los dos contenedores PnlBuscar y GbEstado.
+        '| * Cambiamos el texto del CmbFiltrar seleccionando el index uno (NOMBRE).
+        '| * Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
+        '| * Ponemos BtnBuscar encima del otro button usando BringToFront().
         '
         '| AQUI FALTA HACER COMENTARIO
         '
-        '| Limpiamos la variable strFlags para futuras comprobaciones.
+        '| * Limpiamos la variable strFlags para futuras comprobaciones.
+        '| * Cambiamos los textos de SlblTitulo y de SlblDescrip después de seleccionar un cliente de la lista.
 
         If DgvClientes.RowCount = 0 Then Exit Sub
 
         strFlags = "SKIP_SEARCH"
 
-        FillOutDgvClientes()
-        'ID DEL GRUPO FAMILIAR 11
-        'If Not (drDataReader("id_grp") Is DBNull.Value) Then
-        '    DgvClientes.Rows(nRow).Cells(11).Value = drDataReader.GetString(10).ToString
-        'End If
-        '
+        FillDataDgvClientes()
+
+        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then SearchFamilyGroup(LblGrpFamCli.Text)
+
         PnlBuscar.Enabled = False
         GbEstado.Enabled = False
         CmbFiltrar.SelectedIndex = 0
         RbActivo.Checked = False
         BtnBuscar.BringToFront()
-        '
+        '--------------------------'
         BtnNuevo.Enabled = True
         BtnModificar.Enabled = True
         BtnEliminar.Enabled = True
         BtnPagarMes.Enabled = True
         BtnNuevoPago.Enabled = True
-        '
+        '--------------------------'
         strFlags = ""
-
+        SlblTitulo.Text = "Cliente seleccionado"
+        SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o eliminar al cliente."
     End Sub
     '
     '
     '
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
 
-        '|
-        'HACEMOS AL FORM FrmNuevoEditarCliente COMO HIJO DE FrmPrincipal
-        'OCULTAMOS EL BUTTON
-        'MOSTRAR FORM FrmNuevoEditarCliente
+        '| Limpiamos todos los labels del contenedor PnlDatosCliente llamando a la función CleanLabel()
+        '| Cambiamos los textos de StsBarra para indicar al usuario que se va agregar un nuevo registro.
+        '| Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
+        '| Ocultamos el boton BtnActualizar para mostrar el boton de guardar.
+        '| Mostramos el formulario FrmNuevoEditarCliente
 
         CleanLabel()
+        SlblTitulo.Text = "Nuevo registro"
+        SlblDescrip.Text = " Esperando los datos del nuevo cliente."
         FrmNuevoEditarCliente.MdiParent = FrmPrincipal
         FrmNuevoEditarCliente.BtnActualizar.Visible = False
         FrmNuevoEditarCliente.Show()
@@ -326,25 +332,83 @@ Public Class FrmClientesPagos
     '
     Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
 
-        'COMPROBAMOS SI HAY UN REGISTRO SELECCIONADO
-        If LblNomCli.Text = "" Then Exit Sub
+        '| IF : Si la variable está vacio mostramos un mensaje de error y salimos de la función _
+        '|      _ usando Exit Sub.
+        '| ELSE : Si se ha seleccionado un registro
+        '|      * -----
+        '|      * Cambiamos los textos de SlblTitulo y SlblDescrip informando que se van a hcer cambios
+        '|      * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
+        '|      * Ocultamos el botón BtnGuardar para mostrar el botón Actualizar.
+        '|      * Mostramos el formulario FrmNuevoEditarCliente con los datos del cliente.
 
-        'HACEMOS AL FORM FrmNuevoEditarCliente COMO HIJO DE FrmPrincipal
-        FrmNuevoEditarCliente.MdiParent = FrmPrincipal
+        If LblNomCli.Text = "" Then
+            Exit Sub
+        Else
+            'llenar datos
+            With FrmNuevoEditarCliente
+                .strIdClient = strIdClient
+                .TxtNombre.Text = LblNomCli.Text
+                .TxtApellido.Text = LblApeCli.Text
+                .DtpFdn.Value = FnacimientoCorto.Text
+                .TxtTelefono.Text = LblTlfCli.Text
+                .TxtEmail.Text = LblEmlCli.Text
+                .TxtDireccion.Text = LblDirCli.Text
+                .DtpFdi.Value = FregistroCorto.Text
 
-        'OCULTAMOS EL BUTTON
-        FrmNuevoEditarCliente.BtnGuardar.Visible = False
+                If LblEstCli.Text = "ACTIVO" Then
+                    .RbEstadoActivo.Checked = True
+                Else
+                    .RbEstadoInactivo.Checked = True
+                End If
 
-        'MOSTRAR FORM FrmNuevoEditarCliente
-        FrmNuevoEditarCliente.Show()
+                Select Case LblMtdPgoCli.Text
+                    Case "MENSUAL"
+                        .RbMensual.Checked = True
+
+                    Case "GRUPAL"
+                        .RbGrupoFamiliar.Checked = True
+                        .TxtListaNombre.Text = LblGrpFamCli.Text
+
+                    Case Else '"DIARIO"
+                        .RbDiario.Checked = True
+                        .TxtListaNombre.Text = LblMtdPgoCli.Text
+                End Select
+            End With
+            'llenar datos
+            SlblTitulo.Text = "Actualizar datos"
+            SlblDescrip.Text = " Se va a modificar los datos, esperando los cambios."
+            FrmNuevoEditarCliente.MdiParent = FrmPrincipal
+            FrmNuevoEditarCliente.BtnGuardar.Visible = False
+            FrmNuevoEditarCliente.Show()
+        End If
+
     End Sub
     '
     '
     '
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-
+        '"  Cliente seleccionado :" & vbCr & vbCr &
+        '
         'COMPROBAMOS SI HAY UN REGISTRO SELECCIONADO
-        If LblNomCli.Text = "" Then Exit Sub
+        If strIdClient = "" Then MsgBox("  Para ELIMINAR selecciona un cliente :" & vbCr & vbCr &
+                                        "    1.- Haz clic en Buscar cliente." & vbCr &
+                                        "    2.- Selecciona un registro de la lista." _
+                                        , vbCritical, "Error al eliminar") : Exit Sub
+
+        If MsgBox("      NOMBRE  :  " & LblNomCli.Text & " " & LblApeCli.Text & vbCr &
+                  "      CODIGO   :  " & strIdClient & vbCr & vbCr &
+                  "   Si elimina el registro también eliminará toda la información" & vbCr &
+                  "   relacionada al cliente." & vbCr &
+                  "   _____________________________________________________________" & vbCr & vbCr &
+                  "                             ¿Seguro que quieres ELIMINAR al cliente?" _
+                  , vbExclamation + vbYesNo + vbDefaultButton2, "Eliminar registro del cliente") = vbYes Then
+
+            sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & strIdClient & "'"
+            FunCrudSql(sqlConsulta)
+
+            CleanLabel()
+
+        End If
     End Sub
     '
     '
@@ -395,20 +459,26 @@ Public Class FrmClientesPagos
         strIdClient = ""
     End Sub
 
-    Sub FillOutDgvClientes()
+    Sub FillDataDgvClientes()
+
+        '| * Depúes de confirmar la busqueda llenamos los label con información del cliente que lo obtenemos _
+        '|   _ del DgvClientes y lo ocultamos para visualizar el resultado.
+
         With DgvClientes
             strIdClient = .CurrentRow.Cells(0).Value
             LblNomCli.Text = .CurrentRow.Cells(1).Value
             LblApeCli.Text = .CurrentRow.Cells(2).Value
-            LblFdnCli.Text = .CurrentRow.Cells(3).Value
-            LblEdadCli.Text = .CurrentRow.Cells(4).Value
-            LblTlfCli.Text = .CurrentRow.Cells(5).Value
-            LblEmlCli.Text = .CurrentRow.Cells(6).Value
-            LblDirCli.Text = .CurrentRow.Cells(7).Value
-            LblMtdPgoCli.Text = .CurrentRow.Cells(8).Value
-            LblFdiCli.Text = .CurrentRow.Cells(9).Value
-            LblEstCli.Text = .CurrentRow.Cells(10).Value
-            LblGrpFamCli.Text = .CurrentRow.Cells(11).Value
+            FnacimientoCorto.Text = .CurrentRow.Cells(3).Value
+            LblFdnCli.Text = .CurrentRow.Cells(4).Value
+            LblEdadCli.Text = .CurrentRow.Cells(5).Value
+            LblTlfCli.Text = .CurrentRow.Cells(6).Value
+            LblEmlCli.Text = .CurrentRow.Cells(7).Value
+            LblDirCli.Text = .CurrentRow.Cells(8).Value
+            LblMtdPgoCli.Text = .CurrentRow.Cells(9).Value
+            FregistroCorto.Text = .CurrentRow.Cells(10).Value
+            LblFdiCli.Text = .CurrentRow.Cells(11).Value
+            LblEstCli.Text = .CurrentRow.Cells(12).Value
+            LblGrpFamCli.Text = .CurrentRow.Cells(13).Value
             .Visible = False
         End With
     End Sub
@@ -468,23 +538,25 @@ Public Class FrmClientesPagos
                     'APELLIDO DEL CLIENTE
                     DgvClientes.Rows(nRow).Cells(2).Value = drDataReader.GetString(2)
                     'FECHA DE NACIMIENTO Y EDAD DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(3).Value = FechaLarga(drDataReader.GetDateTime(3).ToShortDateString)
-                    DgvClientes.Rows(nRow).Cells(4).Value = Int(DateDiff("m", drDataReader.GetDateTime(3).ToString("yyyy-MM-dd"), Now) / 12) & " años"
+                    DgvClientes.Rows(nRow).Cells(3).Value = drDataReader.GetDateTime(3).ToShortDateString.ToString
+                    DgvClientes.Rows(nRow).Cells(4).Value = FechaLarga(drDataReader.GetDateTime(3).ToShortDateString)
+                    DgvClientes.Rows(nRow).Cells(5).Value = Int(DateDiff("m", drDataReader.GetDateTime(3).ToString("yyyy-MM-dd"), Now) / 12) & " años"
                     'TELEFONO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(5).Value = drDataReader.GetString(4)
+                    DgvClientes.Rows(nRow).Cells(6).Value = drDataReader.GetString(4)
                     'E-MAIL DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(6).Value = drDataReader.GetString(5)
+                    DgvClientes.Rows(nRow).Cells(7).Value = drDataReader.GetString(5)
                     'DIRECCIÓN DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(7).Value = drDataReader.GetString(6)
+                    DgvClientes.Rows(nRow).Cells(8).Value = drDataReader.GetString(6)
                     'MÉTODO DE PAGO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(8).Value = drDataReader.GetString(7)
+                    DgvClientes.Rows(nRow).Cells(9).Value = drDataReader.GetString(7)
                     'FECHA DE INSCRIPCIÓN
-                    DgvClientes.Rows(nRow).Cells(9).Value = FechaLarga(drDataReader.GetDateTime(8).ToShortDateString)
+                    DgvClientes.Rows(nRow).Cells(10).Value = drDataReader.GetDateTime(8).ToShortDateString.ToString
+                    DgvClientes.Rows(nRow).Cells(11).Value = FechaLarga(drDataReader.GetDateTime(8).ToShortDateString)
                     'ESTADO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(10).Value = drDataReader.GetString(9)
+                    DgvClientes.Rows(nRow).Cells(12).Value = drDataReader.GetString(9)
                     'ID DEL GRUPO FAMILIAR
                     If Not (drDataReader("id_grp") Is DBNull.Value) Then
-                        DgvClientes.Rows(nRow).Cells(11).Value = drDataReader.GetInt16(10).ToString
+                        DgvClientes.Rows(nRow).Cells(13).Value = drDataReader.GetInt16(10).ToString
                     End If
                 End While
 
@@ -501,11 +573,24 @@ Public Class FrmClientesPagos
                         DgvClientes.CurrentCell = DgvClientes.Item(5, 0)
 
                 End Select
+
+                TxtBuscar.BackColor = Color.Snow
+            Else
+                TxtBuscar.BackColor = Color.MistyRose
             End If
 
             'TEXTO PARA EL STATUSSTRIP CON LA CANTIDAD DE CLIENTES REGISTRADOS
             SlblTitulo.Text = "Buscar Cliente"
             SlblDescrip.Text = " " & DgvClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
+
+        Catch ex As MySql.Data.MySqlClient.MySqlException
+            'ERROR GENERADO POR INGRESAR ESTE CARACTER ' Y OTROS POSIBLES CARACTERES QUE INFLUYAN EN LA CONSULTA A LA BBDD
+            'mas comentario
+            TxtBuscar.BackColor = Color.MistyRose
+            MsgBox("El caractér ingresado es incorrecto [ ' ]", vbCritical, "Error")
+            TxtBuscar.SelectionStart = TxtBuscar.Text.Length - 1
+            TxtBuscar.SelectionLength = TxtBuscar.Text.Length
+            Exit Try
 
         Catch ex As Exception
             'MENSAJE CON EL ERROR CAPTURADO
@@ -518,7 +603,32 @@ Public Class FrmClientesPagos
         End Try
     End Sub
 
-    Private Sub CmbFiltrar_TextChanged(sender As Object, e As EventArgs) Handles CmbFiltrar.TextChanged
+    Sub SearchFamilyGroup(ByVal idGrupoFamiliar As String)
 
+        '| Usamos Try-Catch para controlar posibles errores.
+        '| Try :
+        '|      * Conectamos la base de datos y lo abrimos.
+        '|      * Hacemos la consulta a la tabla Grupo Familiar y lo ejecutamos.
+        '|      * Llenamos el label LblGrpFamCli con el nombre del grupo familiar.
+        '| Catch :
+        '|      * Si hay un error lo capturamo y mostramos un mensaje.
+        '| Finally :
+        '|      * Cerramos el drDataReader y la base de datos.
+
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+            sqlConsulta = "SELECT * FROM grp_familiar WHERE id_grp = '" & idGrupoFamiliar & "'"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader()
+            drDataReader.Read()
+            LblGrpFamCli.Text = drDataReader.GetString(1)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            drDataReader.Close()
+            cnxnMySql.Close()
+        End Try
     End Sub
+
 End Class

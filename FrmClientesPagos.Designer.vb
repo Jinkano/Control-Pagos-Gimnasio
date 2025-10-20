@@ -23,23 +23,23 @@ Partial Class FrmClientesPagos
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle65 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle66 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle68 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientesPagos))
-        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
@@ -69,6 +69,8 @@ Partial Class FrmClientesPagos
         Me.SlblDescrip = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GbDatosCliente = New System.Windows.Forms.GroupBox()
         Me.PnlDatosCliente = New System.Windows.Forms.Panel()
+        Me.FregistroCorto = New System.Windows.Forms.Label()
+        Me.FnacimientoCorto = New System.Windows.Forms.Label()
         Me.gb2 = New System.Windows.Forms.GroupBox()
         Me.gb1 = New System.Windows.Forms.GroupBox()
         Me.LblTlfCli = New System.Windows.Forms.Label()
@@ -97,24 +99,26 @@ Partial Class FrmClientesPagos
         Me.Colidcli = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Colnomcli = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Colapecli = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Colfechanacimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Colnacimientocorto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Colnacimientolargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Coledadcliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Coltlfcli = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Colmailcli = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Coldircli = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Colmetodopago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Colfechainscripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Colinscripcioncorto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Colinscripcionlargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Colestadocliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Colidgrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PnlBuscar = New System.Windows.Forms.Panel()
         Me.CmbFiltrar = New System.Windows.Forms.ComboBox()
         Me.TxtBuscar = New System.Windows.Forms.TextBox()
+        Me.LblFiltrar = New System.Windows.Forms.Label()
         Me.GbEstado = New System.Windows.Forms.GroupBox()
         Me.RbActivo = New System.Windows.Forms.RadioButton()
         Me.RbInactivo = New System.Windows.Forms.RadioButton()
         Me.BtnBuscar = New System.Windows.Forms.Button()
-        Me.LblFiltrar = New System.Windows.Forms.Label()
         Me.PnlBotonera.SuspendLayout()
         CType(Me.DgvListaPagos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -308,37 +312,37 @@ Partial Class FrmClientesPagos
         Me.DgvListaPagos.AllowUserToDeleteRows = False
         Me.DgvListaPagos.AllowUserToResizeColumns = False
         Me.DgvListaPagos.AllowUserToResizeRows = False
-        DataGridViewCellStyle65.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle65.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvListaPagos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle65
-        DataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle66.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle66.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvListaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle66
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvListaPagos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvListaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DgvListaPagos.ColumnHeadersHeight = 35
         Me.DgvListaPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvListaPagos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
-        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle76.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle76.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle76.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle76.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle76.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle76.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaPagos.DefaultCellStyle = DataGridViewCellStyle76
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaPagos.DefaultCellStyle = DataGridViewCellStyle12
         Me.DgvListaPagos.Location = New System.Drawing.Point(36, 493)
         Me.DgvListaPagos.MultiSelect = False
         Me.DgvListaPagos.Name = "DgvListaPagos"
         Me.DgvListaPagos.ReadOnly = True
         Me.DgvListaPagos.RowHeadersWidth = 35
         Me.DgvListaPagos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle77.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle77.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvListaPagos.RowsDefaultCellStyle = DataGridViewCellStyle77
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvListaPagos.RowsDefaultCellStyle = DataGridViewCellStyle13
         Me.DgvListaPagos.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvListaPagos.RowTemplate.Height = 27
         Me.DgvListaPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
@@ -359,8 +363,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle67
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn2.HeaderText = "FECHA DE INICIO"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
@@ -371,8 +375,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle68
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn3.HeaderText = "PRECIO"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -383,8 +387,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle69
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn4.HeaderText = "DESCT"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -395,8 +399,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle70
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn5.HeaderText = "TOTAL"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -407,8 +411,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle71
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn6.HeaderText = "Nº DE DIAS"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -419,8 +423,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle72
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn7.HeaderText = "A PAGAR"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -431,8 +435,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle73
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridViewTextBoxColumn8.HeaderText = "FECHA DE PAGO"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
@@ -443,8 +447,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn9
         '
         Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle74
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridViewTextBoxColumn9.HeaderText = "FORMA DE PAGO"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
@@ -455,8 +459,8 @@ Partial Class FrmClientesPagos
         'DataGridViewTextBoxColumn10
         '
         Me.DataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle75
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridViewTextBoxColumn10.HeaderText = "USUARIO"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
@@ -495,7 +499,7 @@ Partial Class FrmClientesPagos
         Me.SlblTitulo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.SlblTitulo.Margin = New System.Windows.Forms.Padding(24, 8, 0, 8)
         Me.SlblTitulo.Name = "SlblTitulo"
-        Me.SlblTitulo.Size = New System.Drawing.Size(160, 32)
+        Me.SlblTitulo.Size = New System.Drawing.Size(168, 32)
         Me.SlblTitulo.Text = "SlblTitulo"
         '
         'SlblDescrip
@@ -532,6 +536,8 @@ Partial Class FrmClientesPagos
         'PnlDatosCliente
         '
         Me.PnlDatosCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PnlDatosCliente.Controls.Add(Me.FregistroCorto)
+        Me.PnlDatosCliente.Controls.Add(Me.FnacimientoCorto)
         Me.PnlDatosCliente.Controls.Add(Me.gb2)
         Me.PnlDatosCliente.Controls.Add(Me.gb1)
         Me.PnlDatosCliente.Controls.Add(Me.LblTlfCli)
@@ -563,6 +569,34 @@ Partial Class FrmClientesPagos
         Me.PnlDatosCliente.Size = New System.Drawing.Size(893, 286)
         Me.PnlDatosCliente.TabIndex = 86
         '
+        'FregistroCorto
+        '
+        Me.FregistroCorto.AutoSize = True
+        Me.FregistroCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.FregistroCorto.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.FregistroCorto.Location = New System.Drawing.Point(793, 210)
+        Me.FregistroCorto.Margin = New System.Windows.Forms.Padding(0)
+        Me.FregistroCorto.Name = "FregistroCorto"
+        Me.FregistroCorto.Size = New System.Drawing.Size(72, 13)
+        Me.FregistroCorto.TabIndex = 13
+        Me.FregistroCorto.Text = "FregistroCorto"
+        Me.FregistroCorto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.FregistroCorto.Visible = False
+        '
+        'FnacimientoCorto
+        '
+        Me.FnacimientoCorto.AutoSize = True
+        Me.FnacimientoCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.FnacimientoCorto.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.FnacimientoCorto.Location = New System.Drawing.Point(776, 23)
+        Me.FnacimientoCorto.Margin = New System.Windows.Forms.Padding(0)
+        Me.FnacimientoCorto.Name = "FnacimientoCorto"
+        Me.FnacimientoCorto.Size = New System.Drawing.Size(89, 13)
+        Me.FnacimientoCorto.TabIndex = 11
+        Me.FnacimientoCorto.Text = "FnacimientoCorto"
+        Me.FnacimientoCorto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.FnacimientoCorto.Visible = False
+        '
         'gb2
         '
         Me.gb2.Location = New System.Drawing.Point(8, 186)
@@ -593,7 +627,8 @@ Partial Class FrmClientesPagos
         Me.LblTlfCli.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
         Me.LblTlfCli.Name = "LblTlfCli"
         Me.LblTlfCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblTlfCli.TabIndex = 41
+        Me.LblTlfCli.TabIndex = 4
+        Me.LblTlfCli.Text = "LblTlfCli"
         Me.LblTlfCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblTelefono
@@ -604,7 +639,7 @@ Partial Class FrmClientesPagos
         Me.LblTelefono.Margin = New System.Windows.Forms.Padding(0)
         Me.LblTelefono.Name = "LblTelefono"
         Me.LblTelefono.Size = New System.Drawing.Size(63, 15)
-        Me.LblTelefono.TabIndex = 40
+        Me.LblTelefono.TabIndex = 19
         Me.LblTelefono.Text = "Teléfono"
         Me.LblTelefono.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -616,7 +651,7 @@ Partial Class FrmClientesPagos
         Me.LblEmail.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.LblEmail.Name = "LblEmail"
         Me.LblEmail.Size = New System.Drawing.Size(49, 15)
-        Me.LblEmail.TabIndex = 42
+        Me.LblEmail.TabIndex = 20
         Me.LblEmail.Text = "E-Mail"
         Me.LblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -628,7 +663,7 @@ Partial Class FrmClientesPagos
         Me.LblDireccion.Margin = New System.Windows.Forms.Padding(0)
         Me.LblDireccion.Name = "LblDireccion"
         Me.LblDireccion.Size = New System.Drawing.Size(68, 15)
-        Me.LblDireccion.TabIndex = 44
+        Me.LblDireccion.TabIndex = 21
         Me.LblDireccion.Text = "Dirección"
         Me.LblDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -642,7 +677,8 @@ Partial Class FrmClientesPagos
         Me.LblEmlCli.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
         Me.LblEmlCli.Name = "LblEmlCli"
         Me.LblEmlCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblEmlCli.TabIndex = 43
+        Me.LblEmlCli.TabIndex = 5
+        Me.LblEmlCli.Text = "LblEmlCli"
         Me.LblEmlCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblDirCli
@@ -655,7 +691,8 @@ Partial Class FrmClientesPagos
         Me.LblDirCli.Margin = New System.Windows.Forms.Padding(0)
         Me.LblDirCli.Name = "LblDirCli"
         Me.LblDirCli.Size = New System.Drawing.Size(288, 60)
-        Me.LblDirCli.TabIndex = 45
+        Me.LblDirCli.TabIndex = 6
+        Me.LblDirCli.Text = "LblDirCli"
         '
         'LblEdad
         '
@@ -665,7 +702,7 @@ Partial Class FrmClientesPagos
         Me.LblEdad.Margin = New System.Windows.Forms.Padding(0)
         Me.LblEdad.Name = "LblEdad"
         Me.LblEdad.Size = New System.Drawing.Size(40, 15)
-        Me.LblEdad.TabIndex = 38
+        Me.LblEdad.TabIndex = 18
         Me.LblEdad.Text = "Edad"
         Me.LblEdad.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -679,7 +716,8 @@ Partial Class FrmClientesPagos
         Me.LblEdadCli.Margin = New System.Windows.Forms.Padding(0)
         Me.LblEdadCli.Name = "LblEdadCli"
         Me.LblEdadCli.Size = New System.Drawing.Size(136, 26)
-        Me.LblEdadCli.TabIndex = 39
+        Me.LblEdadCli.TabIndex = 3
+        Me.LblEdadCli.Text = "LblEdadCli"
         Me.LblEdadCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblGrupoFamiliar
@@ -690,7 +728,7 @@ Partial Class FrmClientesPagos
         Me.LblGrupoFamiliar.Margin = New System.Windows.Forms.Padding(0)
         Me.LblGrupoFamiliar.Name = "LblGrupoFamiliar"
         Me.LblGrupoFamiliar.Size = New System.Drawing.Size(99, 15)
-        Me.LblGrupoFamiliar.TabIndex = 48
+        Me.LblGrupoFamiliar.TabIndex = 24
         Me.LblGrupoFamiliar.Text = "Grupo familiar"
         Me.LblGrupoFamiliar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -704,7 +742,8 @@ Partial Class FrmClientesPagos
         Me.LblMtdPgoCli.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
         Me.LblMtdPgoCli.Name = "LblMtdPgoCli"
         Me.LblMtdPgoCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblMtdPgoCli.TabIndex = 47
+        Me.LblMtdPgoCli.TabIndex = 7
+        Me.LblMtdPgoCli.Text = "LblMtdPgoCli"
         Me.LblMtdPgoCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblEstado
@@ -715,7 +754,7 @@ Partial Class FrmClientesPagos
         Me.LblEstado.Margin = New System.Windows.Forms.Padding(0)
         Me.LblEstado.Name = "LblEstado"
         Me.LblEstado.Size = New System.Drawing.Size(51, 15)
-        Me.LblEstado.TabIndex = 52
+        Me.LblEstado.TabIndex = 25
         Me.LblEstado.Text = "Estado"
         Me.LblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -727,7 +766,7 @@ Partial Class FrmClientesPagos
         Me.LblFechaInscripcion.Margin = New System.Windows.Forms.Padding(0)
         Me.LblFechaInscripcion.Name = "LblFechaInscripcion"
         Me.LblFechaInscripcion.Size = New System.Drawing.Size(113, 15)
-        Me.LblFechaInscripcion.TabIndex = 50
+        Me.LblFechaInscripcion.TabIndex = 23
         Me.LblFechaInscripcion.Text = "F. de Inscripción"
         Me.LblFechaInscripcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -739,7 +778,7 @@ Partial Class FrmClientesPagos
         Me.LblMetodoPago.Margin = New System.Windows.Forms.Padding(0)
         Me.LblMetodoPago.Name = "LblMetodoPago"
         Me.LblMetodoPago.Size = New System.Drawing.Size(111, 15)
-        Me.LblMetodoPago.TabIndex = 46
+        Me.LblMetodoPago.TabIndex = 22
         Me.LblMetodoPago.Text = "Método de pago"
         Me.LblMetodoPago.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -753,7 +792,8 @@ Partial Class FrmClientesPagos
         Me.LblFdiCli.Margin = New System.Windows.Forms.Padding(0)
         Me.LblFdiCli.Name = "LblFdiCli"
         Me.LblFdiCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblFdiCli.TabIndex = 51
+        Me.LblFdiCli.TabIndex = 9
+        Me.LblFdiCli.Text = "LblFdiCli"
         Me.LblFdiCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblGrpFamCli
@@ -766,7 +806,8 @@ Partial Class FrmClientesPagos
         Me.LblGrpFamCli.Margin = New System.Windows.Forms.Padding(0, 8, 0, 16)
         Me.LblGrpFamCli.Name = "LblGrpFamCli"
         Me.LblGrpFamCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblGrpFamCli.TabIndex = 49
+        Me.LblGrpFamCli.TabIndex = 8
+        Me.LblGrpFamCli.Text = "LblGrpFamCli"
         Me.LblGrpFamCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblEstCli
@@ -779,7 +820,8 @@ Partial Class FrmClientesPagos
         Me.LblEstCli.Margin = New System.Windows.Forms.Padding(0)
         Me.LblEstCli.Name = "LblEstCli"
         Me.LblEstCli.Size = New System.Drawing.Size(136, 26)
-        Me.LblEstCli.TabIndex = 53
+        Me.LblEstCli.TabIndex = 10
+        Me.LblEstCli.Text = "LblEstCli"
         Me.LblEstCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblApeCli
@@ -792,7 +834,8 @@ Partial Class FrmClientesPagos
         Me.LblApeCli.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
         Me.LblApeCli.Name = "LblApeCli"
         Me.LblApeCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblApeCli.TabIndex = 35
+        Me.LblApeCli.TabIndex = 1
+        Me.LblApeCli.Text = "LblApeCli"
         Me.LblApeCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblFdnCli
@@ -805,7 +848,8 @@ Partial Class FrmClientesPagos
         Me.LblFdnCli.Margin = New System.Windows.Forms.Padding(8, 0, 24, 0)
         Me.LblFdnCli.Name = "LblFdnCli"
         Me.LblFdnCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblFdnCli.TabIndex = 37
+        Me.LblFdnCli.TabIndex = 2
+        Me.LblFdnCli.Text = "LblFdnCli"
         Me.LblFdnCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblNomCli
@@ -818,7 +862,8 @@ Partial Class FrmClientesPagos
         Me.LblNomCli.Margin = New System.Windows.Forms.Padding(8, 16, 0, 0)
         Me.LblNomCli.Name = "LblNomCli"
         Me.LblNomCli.Size = New System.Drawing.Size(288, 26)
-        Me.LblNomCli.TabIndex = 33
+        Me.LblNomCli.TabIndex = 0
+        Me.LblNomCli.Text = "LblNomCli"
         Me.LblNomCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblFechaNacimiento
@@ -829,7 +874,7 @@ Partial Class FrmClientesPagos
         Me.LblFechaNacimiento.Margin = New System.Windows.Forms.Padding(24, 0, 0, 0)
         Me.LblFechaNacimiento.Name = "LblFechaNacimiento"
         Me.LblFechaNacimiento.Size = New System.Drawing.Size(116, 15)
-        Me.LblFechaNacimiento.TabIndex = 36
+        Me.LblFechaNacimiento.TabIndex = 17
         Me.LblFechaNacimiento.Text = "F. de Nacimiento"
         Me.LblFechaNacimiento.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -841,7 +886,7 @@ Partial Class FrmClientesPagos
         Me.LblApellido.Margin = New System.Windows.Forms.Padding(24, 0, 0, 0)
         Me.LblApellido.Name = "LblApellido"
         Me.LblApellido.Size = New System.Drawing.Size(59, 15)
-        Me.LblApellido.TabIndex = 34
+        Me.LblApellido.TabIndex = 16
         Me.LblApellido.Text = "Apellido"
         Me.LblApellido.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -853,7 +898,7 @@ Partial Class FrmClientesPagos
         Me.LblNombre.Margin = New System.Windows.Forms.Padding(0)
         Me.LblNombre.Name = "LblNombre"
         Me.LblNombre.Size = New System.Drawing.Size(58, 15)
-        Me.LblNombre.TabIndex = 32
+        Me.LblNombre.TabIndex = 15
         Me.LblNombre.Text = "Nombre"
         Me.LblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -863,19 +908,19 @@ Partial Class FrmClientesPagos
         Me.DgvClientes.AllowUserToDeleteRows = False
         Me.DgvClientes.AllowUserToResizeColumns = False
         Me.DgvClientes.AllowUserToResizeRows = False
-        DataGridViewCellStyle78.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle78.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle78
-        DataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle79.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        Me.DgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle79
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        Me.DgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.DgvClientes.ColumnHeadersHeight = 32
         Me.DgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DgvClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Colidcli, Me.Colnomcli, Me.Colapecli, Me.Colfechanacimiento, Me.Coledadcliente, Me.Coltlfcli, Me.Colmailcli, Me.Coldircli, Me.Colmetodopago, Me.Colfechainscripcion, Me.Colestadocliente, Me.Colidgrupo})
+        Me.DgvClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Colidcli, Me.Colnomcli, Me.Colapecli, Me.Colnacimientocorto, Me.Colnacimientolargo, Me.Coledadcliente, Me.Coltlfcli, Me.Colmailcli, Me.Coldircli, Me.Colmetodopago, Me.Colinscripcioncorto, Me.Colinscripcionlargo, Me.Colestadocliente, Me.Colidgrupo})
         Me.DgvClientes.Location = New System.Drawing.Point(0, 0)
         Me.DgvClientes.Margin = New System.Windows.Forms.Padding(0)
         Me.DgvClientes.MultiSelect = False
@@ -883,9 +928,9 @@ Partial Class FrmClientesPagos
         Me.DgvClientes.ReadOnly = True
         Me.DgvClientes.RowHeadersWidth = 4
         Me.DgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle80.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle80.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvClientes.RowsDefaultCellStyle = DataGridViewCellStyle80
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvClientes.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.DgvClientes.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         Me.DgvClientes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvClientes.RowTemplate.Height = 27
@@ -919,12 +964,19 @@ Partial Class FrmClientesPagos
         Me.Colapecli.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Colapecli.Width = 192
         '
-        'Colfechanacimiento
+        'Colnacimientocorto
         '
-        Me.Colfechanacimiento.HeaderText = "Colfechanacimiento"
-        Me.Colfechanacimiento.Name = "Colfechanacimiento"
-        Me.Colfechanacimiento.ReadOnly = True
-        Me.Colfechanacimiento.Visible = False
+        Me.Colnacimientocorto.HeaderText = "Colnacimientocorto"
+        Me.Colnacimientocorto.Name = "Colnacimientocorto"
+        Me.Colnacimientocorto.ReadOnly = True
+        Me.Colnacimientocorto.Visible = False
+        '
+        'Colnacimientolargo
+        '
+        Me.Colnacimientolargo.HeaderText = "Colnacimientolargo"
+        Me.Colnacimientolargo.Name = "Colnacimientolargo"
+        Me.Colnacimientolargo.ReadOnly = True
+        Me.Colnacimientolargo.Visible = False
         '
         'Coledadcliente
         '
@@ -969,12 +1021,19 @@ Partial Class FrmClientesPagos
         Me.Colmetodopago.ReadOnly = True
         Me.Colmetodopago.Visible = False
         '
-        'Colfechainscripcion
+        'Colinscripcioncorto
         '
-        Me.Colfechainscripcion.HeaderText = "Colfechainscripcion"
-        Me.Colfechainscripcion.Name = "Colfechainscripcion"
-        Me.Colfechainscripcion.ReadOnly = True
-        Me.Colfechainscripcion.Visible = False
+        Me.Colinscripcioncorto.HeaderText = "Colinscripcioncorto"
+        Me.Colinscripcioncorto.Name = "Colinscripcioncorto"
+        Me.Colinscripcioncorto.ReadOnly = True
+        Me.Colinscripcioncorto.Visible = False
+        '
+        'Colinscripcionlargo
+        '
+        Me.Colinscripcionlargo.HeaderText = "Colinscripcionlargo"
+        Me.Colinscripcionlargo.Name = "Colinscripcionlargo"
+        Me.Colinscripcionlargo.ReadOnly = True
+        Me.Colinscripcionlargo.Visible = False
         '
         'Colestadocliente
         '
@@ -1040,6 +1099,20 @@ Partial Class FrmClientesPagos
         Me.TxtBuscar.TabIndex = 84
         Me.TxtBuscar.WordWrap = False
         '
+        'LblFiltrar
+        '
+        Me.LblFiltrar.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LblFiltrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblFiltrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblFiltrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblFiltrar.Location = New System.Drawing.Point(8, 6)
+        Me.LblFiltrar.Margin = New System.Windows.Forms.Padding(8, 6, 0, 6)
+        Me.LblFiltrar.Name = "LblFiltrar"
+        Me.LblFiltrar.Size = New System.Drawing.Size(229, 26)
+        Me.LblFiltrar.TabIndex = 88
+        Me.LblFiltrar.Text = "  Filtrar por"
+        Me.LblFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'GbEstado
         '
         Me.GbEstado.Controls.Add(Me.RbActivo)
@@ -1101,20 +1174,6 @@ Partial Class FrmClientesPagos
         Me.BtnBuscar.Text = "&Buscar cliente"
         Me.BtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnBuscar.UseVisualStyleBackColor = True
-        '
-        'LblFiltrar
-        '
-        Me.LblFiltrar.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblFiltrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblFiltrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFiltrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.LblFiltrar.Location = New System.Drawing.Point(8, 6)
-        Me.LblFiltrar.Margin = New System.Windows.Forms.Padding(8, 6, 0, 6)
-        Me.LblFiltrar.Name = "LblFiltrar"
-        Me.LblFiltrar.Size = New System.Drawing.Size(229, 26)
-        Me.LblFiltrar.TabIndex = 88
-        Me.LblFiltrar.Text = "  Filtrar por"
-        Me.LblFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'FrmClientesPagos
         '
@@ -1214,17 +1273,21 @@ Partial Class FrmClientesPagos
     Friend WithEvents RbActivo As RadioButton
     Friend WithEvents RbInactivo As RadioButton
     Friend WithEvents DgvClientes As DataGridView
+    Friend WithEvents LblFiltrar As Label
+    Friend WithEvents FregistroCorto As Label
+    Friend WithEvents FnacimientoCorto As Label
     Friend WithEvents Colidcli As DataGridViewTextBoxColumn
     Friend WithEvents Colnomcli As DataGridViewTextBoxColumn
     Friend WithEvents Colapecli As DataGridViewTextBoxColumn
-    Friend WithEvents Colfechanacimiento As DataGridViewTextBoxColumn
+    Friend WithEvents Colnacimientocorto As DataGridViewTextBoxColumn
+    Friend WithEvents Colnacimientolargo As DataGridViewTextBoxColumn
     Friend WithEvents Coledadcliente As DataGridViewTextBoxColumn
     Friend WithEvents Coltlfcli As DataGridViewTextBoxColumn
     Friend WithEvents Colmailcli As DataGridViewTextBoxColumn
     Friend WithEvents Coldircli As DataGridViewTextBoxColumn
     Friend WithEvents Colmetodopago As DataGridViewTextBoxColumn
-    Friend WithEvents Colfechainscripcion As DataGridViewTextBoxColumn
+    Friend WithEvents Colinscripcioncorto As DataGridViewTextBoxColumn
+    Friend WithEvents Colinscripcionlargo As DataGridViewTextBoxColumn
     Friend WithEvents Colestadocliente As DataGridViewTextBoxColumn
     Friend WithEvents Colidgrupo As DataGridViewTextBoxColumn
-    Friend WithEvents LblFiltrar As Label
 End Class
