@@ -12,6 +12,38 @@ Module Funciones
     Dim sTotal As Decimal
     Dim arrayMeses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
     '
+    '
+    '
+    Sub FunCrudSql(sqlConsulta As String)
+
+        '| * Usamos Try-Catch para controlar posibles errores
+        '| TRY :
+        '|      * Conectamos y abrimos la base de datos.
+        '|      * Ejecutamos la consulta recibida por parametro.
+        '| CATCH :
+        '|      * Mostramos un mensaje con el error capturado.
+        '| FINALLY :
+        '|      * Cerramos el datareader y la base de datos.
+
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader()
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+
+        Finally
+            drDataReader.Close()
+            cnxnMySql.Close()
+        End Try
+
+    End Sub
+    '
+    '
+    '
+
     Public Sub ListaClientes(ByVal SqlConsulta As String, CmbBuscar As String, ByVal DgvListaClientes As DataGridView)
 
         Try
@@ -250,33 +282,5 @@ Module Funciones
         Dim strFecha = dia & " de " & arrayMeses(mes - 1) & " de " & ano
         Return strFecha
     End Function
-    '
-    '
-    '
-    Sub FunCrudSql(sqlConsulta As String)
 
-        '| * Usamos Try-Catch para controlar posibles errores
-        '| TRY :
-        '|      * Conectamos y abrimos la base de datos.
-        '|      * Ejecutamos la consulta recibida por parametro.
-        '| CATCH :
-        '|      * Mostramos un mensaje con el error capturado.
-        '| FINALLY :
-        '|      * Cerramos el datareader y la base de datos.
-
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-
-        Finally
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
-
-    End Sub
 End Module

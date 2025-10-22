@@ -23,8 +23,8 @@ Partial Class FrmNuevoEditarCliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TttNewUpdate = New System.Windows.Forms.ToolTip(Me.components)
         Me.BtnAddGrupo = New System.Windows.Forms.Button()
         Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
@@ -43,7 +43,7 @@ Partial Class FrmNuevoEditarCliente
         Me.LblFinscripcion = New System.Windows.Forms.Label()
         Me.GbListaGrupoFamiliar = New System.Windows.Forms.GroupBox()
         Me.LblNumIntgrntes = New System.Windows.Forms.Label()
-        Me.TxtListaNombre = New System.Windows.Forms.TextBox()
+        Me.TxtListaNom = New System.Windows.Forms.TextBox()
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.GbMetodoPago = New System.Windows.Forms.GroupBox()
         Me.BtnActualizar = New System.Windows.Forms.Button()
@@ -91,20 +91,20 @@ Partial Class FrmNuevoEditarCliente
         Me.DgvListaNombre.AllowUserToDeleteRows = False
         Me.DgvListaNombre.AllowUserToResizeColumns = False
         Me.DgvListaNombre.AllowUserToResizeRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgvListaNombre.ColumnHeadersHeight = 4
         Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle2
         Me.DgvListaNombre.Enabled = False
         Me.DgvListaNombre.Location = New System.Drawing.Point(0, 56)
         Me.DgvListaNombre.Margin = New System.Windows.Forms.Padding(0, 4, 0, 0)
@@ -283,7 +283,7 @@ Partial Class FrmNuevoEditarCliente
         'GbListaGrupoFamiliar
         '
         Me.GbListaGrupoFamiliar.Controls.Add(Me.LblNumIntgrntes)
-        Me.GbListaGrupoFamiliar.Controls.Add(Me.TxtListaNombre)
+        Me.GbListaGrupoFamiliar.Controls.Add(Me.TxtListaNom)
         Me.GbListaGrupoFamiliar.Controls.Add(Me.DgvListaNombre)
         Me.GbListaGrupoFamiliar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GbListaGrupoFamiliar.Location = New System.Drawing.Point(24, 131)
@@ -308,20 +308,20 @@ Partial Class FrmNuevoEditarCliente
         Me.LblNumIntgrntes.TabIndex = 2
         Me.LblNumIntgrntes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TxtListaNombre
+        'TxtListaNom
         '
-        Me.TxtListaNombre.BackColor = System.Drawing.Color.Azure
-        Me.TxtListaNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtListaNombre.Enabled = False
-        Me.TxtListaNombre.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtListaNombre.ForeColor = System.Drawing.Color.MediumBlue
-        Me.TxtListaNombre.Location = New System.Drawing.Point(0, 26)
-        Me.TxtListaNombre.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.TxtListaNombre.MaxLength = 30
-        Me.TxtListaNombre.Name = "TxtListaNombre"
-        Me.TxtListaNombre.Size = New System.Drawing.Size(255, 26)
-        Me.TxtListaNombre.TabIndex = 0
-        Me.TxtListaNombre.WordWrap = False
+        Me.TxtListaNom.BackColor = System.Drawing.Color.Azure
+        Me.TxtListaNom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtListaNom.Enabled = False
+        Me.TxtListaNom.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtListaNom.ForeColor = System.Drawing.Color.MediumBlue
+        Me.TxtListaNom.Location = New System.Drawing.Point(0, 26)
+        Me.TxtListaNom.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
+        Me.TxtListaNom.MaxLength = 30
+        Me.TxtListaNom.Name = "TxtListaNom"
+        Me.TxtListaNom.Size = New System.Drawing.Size(255, 26)
+        Me.TxtListaNom.TabIndex = 0
+        Me.TxtListaNom.WordWrap = False
         '
         'BtnGuardar
         '
@@ -653,7 +653,7 @@ Partial Class FrmNuevoEditarCliente
     Friend WithEvents LblFinscripcion As Label
     Friend WithEvents GbListaGrupoFamiliar As GroupBox
     Friend WithEvents LblNumIntgrntes As Label
-    Friend WithEvents TxtListaNombre As TextBox
+    Friend WithEvents TxtListaNom As TextBox
     Friend WithEvents DgvListaNombre As DataGridView
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents GbMetodoPago As GroupBox

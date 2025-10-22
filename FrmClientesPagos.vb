@@ -367,11 +367,11 @@ Public Class FrmClientesPagos
 
                     Case "GRUPAL"
                         .RbGrupoFamiliar.Checked = True
-                        .TxtListaNombre.Text = LblGrpFamCli.Text
+                        .TxtListaNom.Text = LblGrpFamCli.Text
 
                     Case Else '"DIARIO"
                         .RbDiario.Checked = True
-                        .TxtListaNombre.Text = LblMtdPgoCli.Text
+                        .TxtListaNom.Text = LblMtdPgoCli.Text
                 End Select
             End With
             'llenar datos
