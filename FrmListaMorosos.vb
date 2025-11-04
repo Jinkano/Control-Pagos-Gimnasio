@@ -24,6 +24,7 @@
             SlblTitulo.Text = "Nº de Registros"
             SlblMensaje.Text = " " & cReg & " - Registros pendientes de pago."
         End If
+
     End Sub
 
     Private Sub CmbBuscar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbBuscar.SelectedIndexChanged

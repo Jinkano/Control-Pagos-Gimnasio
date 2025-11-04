@@ -14,58 +14,24 @@ Public Class FrmClientesPagos
     '
     Private Sub FrmClientesPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        '| Llamamos a la función CleanLabel()
-        '| Limpiamos el texto de SlblTitulo y SlblDescrip
-
-        CleanLabel()
-        SlblTitulo.Text = ""
-        SlblDescrip.Text = ""
+        '----------------------------------------------------------------------------------------
+        '| COMPROBAMOS SI HAY REGISTROS EN LA TABLA CLIENTES
+        '| -------------------------------------------------
+        '| * Llamamos a la función FunCheckRecords() para comprobar si hay registros.
+        '| ** El motivo porqué llamamos a la función en Activated y no Load, es para comprobar
+        '| 
+        FunCheckRecords()
+        '| * Llamamos a la función CleanLabel() para limpiar los label's.
+        FunCleanLabel()
 
     End Sub
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
-        '| Usamos try-catch para controlar posibles errores.
-        '| Conectamos y abrimos la base de datos.
-        '| Hacemos una consulta para comprobar si hay registros en la tabla clientes y lo ejecutamos.
-        '| IF : Comprobamos si la consulta tiene registros:
-        '|      *FALTA DECIDIR BOTONES*'ACTIVAMOS LOS CONTROLES Y OCULTAMOS BOTONES
-        '| ELSE : Si la consulta no ha encontrado registros:
-        '|      *---*'DESACTIVAMOS LOS CONTROLES Y OCULTAMOS BOTONES
-        '|      * Cambiamos los textos del StsBarra (SlblTitulo y SlblDescrip) informando que la tabla está vacía.
-        '| Si se produce algún error lo capturamos en el Catch y mostramos un mensaje.
-        '| Cerramos el drDataReader y la base de datos.
+        '----------------------------------------------------------------------------------------
+        '| COMPROBAMOS SI HAY REGISTROS EN LA TABLA CLIENTES
+        '| -------------------------------------------------
 
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            sqlConsulta = "SELECT id_cli FROM clientes"
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-
-            If drDataReader.HasRows Then
-                BtnBuscar.Enabled = True
-                BtnModificar.Visible = True
-                BtnEliminar.Visible = True
-                DgvListaPagos.Enabled = True
-                BtnPagarMes.Visible = True
-                BtnNuevoPago.Visible = True
-            Else
-                BtnBuscar.Enabled = False
-                BtnModificar.Visible = False
-                BtnEliminar.Visible = False
-                DgvListaPagos.Enabled = False
-                BtnPagarMes.Visible = False
-                BtnNuevoPago.Visible = False
-
-                SlblTitulo.Text = "No hay clientes"
-                SlblDescrip.Text = "  Haz clic en NUEVO para registrar un cliente."
-            End If
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
+        'MsgBox("FrmClientesPagos_Activated")
     End Sub
     '
     '
@@ -134,106 +100,49 @@ Public Class FrmClientesPagos
     '
     Private Sub BtnSeleccionar_Click(sender As Object, e As EventArgs) Handles BtnSeleccionar.Click
 
-        '| Comprobamos si el CmbFiltrar, TxtBuscar están vacios o el DgvClientes no tiene filas, para _
-        '| _ salir de la función usando Exit Sub y evitar que se ejecuten las demás líneas de código.
-        '| Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
-        '| Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
-        '| _ la función FillDataDgvClientes().
-        '| Llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
-        '| Desactivamos los dos contenedores PnlBuscar y GbEstado.
-        '| Cambiamos el texto del CmbFiltrar seleccionando el index uno (NOMBRE).
-        '| Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
-        '| Ponemos BtnBuscar encima del otro button usando BringToFront().
-        '
-        '| AQUI FALTA HACER COMENTARIO
-        '
-        '| Limpiamos la variable strFlags para futuras comprobaciones.
-        '| Cambiamos los textos de SlblTitulo y de SlblDescrip después de seleccionar un cliente de la lista.
+        '| * IF : Comprobamos si el CmbFiltrar, TxtBuscar están vacios o el DgvClientes no tiene filas, para _
+        '|        _ salir de la función usando Exit Sub y evitar que se ejecuten las demás líneas de código.
+        '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
+        '| * Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
+        '|   _ la función FillDataDgvClientes().
+        '| * IF : Comprobamos si el LblGrpFamCli tiene información para buscar un grupo familiar si se cumple la condición _
+        '|        _ llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
+        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, desactivar y ocultar controles.
+        '| * Limpiamos la variable strFlags para futuras comprobaciones.
 
         If CmbFiltrar.Text = "" Or TxtBuscar.Text = "" Or DgvClientes.RowCount = 0 Then Exit Sub
-
         strFlags = "SKIP_SEARCH"
-
-        FillDataDgvClientes()
-
-        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then SearchFamilyGroup(LblGrpFamCli.Text)
-
-        PnlBuscar.Enabled = False
-        GbEstado.Enabled = False
-        CmbFiltrar.SelectedIndex = 0
-        RbActivo.Checked = False
-        BtnBuscar.BringToFront()
-        '-----------------------'
-        BtnNuevo.Enabled = True
-        BtnModificar.Enabled = True
-        BtnEliminar.Enabled = True
-        BtnPagarMes.Enabled = True
-        BtnNuevoPago.Enabled = True
-        '-----------------------'
+        FunFillDataDgvClientes()
+        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then FunSearchFamilyGroup(LblGrpFamCli.Text)
+        FunSelectRecordCancelSearch()
+        FunActivateButtons()
         strFlags = ""
-        SlblTitulo.Text = "Cliente seleccionado"
-        SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o eliminar al cliente."
-    End Sub
-    '
-    '
-    '
-    Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
-
-        '| Activamos los dos contenedores PnlBuscar y GbEstado.
-        '| Cambiamos el texto del PnlBuscar seleccionando el index 1 (NOMBRE).
-        '| Activamos el RbActivo para mostrar y buscar los clientes en actividad.
-        '| Mostramos el DgvClientes y lo ponemos delante de los otros controles usando BringToFront.
-        '| Ponemos BtnCancelSearch encima del otro button usando BringToFront.
-        '
-        'FALTA DECIDIR EL COMPORTAMIENTO DE LOS BOTONES
-        '
-        PnlBuscar.Enabled = True
-        GbEstado.Enabled = True
-        CmbFiltrar.SelectedIndex = 1
-        RbActivo.Checked = True
-        DgvClientes.Visible = True
-        DgvClientes.BringToFront()
-        BtnCancelSearch.BringToFront()
-        '
-        BtnNuevo.Enabled = False
-        BtnModificar.Enabled = False
-        BtnEliminar.Enabled = False
-        BtnPagarMes.Enabled = False
-        BtnNuevoPago.Enabled = False
 
     End Sub
     '
     '
     '
-    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelSearch.Click
+    Private Sub BtnFindClient_Click(sender As Object, e As EventArgs) Handles BtnFindClient.Click
 
-        '| Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
-        '| Desactivamos el contenedor PnlBuscar.
-        '| Limpiamos el CmbFiltrar cambiando el index a cero.
-        '| Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
-        '| Ocultamos el DgvClientes.
-        '| Ponemos el BtnBuscar encima del otro control usando BringToFront.
-        '| Desactivvamos el GbEstado para no cambiar de valor los RadioButton.
-        '
-        '|FALTA DECIDIR SOBRE EL COMPORTAMIENTO DE LOS BOTONES
-        '
-        '| Limpiamos la variable strFlags para otras comprobaciones
+        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, desactivar y ocultar controles.
+        FunSearchRecord()
+        FunDisableButtons()
+
+    End Sub
+    '
+    '
+    '
+    Private Sub BtnCancelSearch_Click(sender As Object, e As EventArgs) Handles BtnCancelSearch.Click
+
+        '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para _
+        '|   - hacer comprobaciones.
+        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, _
+        '|   _ desactivar y ocultar controles.
+        '| * Limpiamos la variable strFlags para otras comprobaciones.
 
         strFlags = "SKIP_SEARCH"
-        PnlBuscar.Enabled = False
-        CmbFiltrar.SelectedIndex = 0
-        RbActivo.Checked = False
-        DgvClientes.Visible = False
-        BtnBuscar.BringToFront()
-        GbEstado.Enabled = False
-        '
-        BtnNuevo.Enabled = True
-        BtnModificar.Enabled = True
-        BtnEliminar.Enabled = True
-        'BtnPagarMes.Enabled = True
-        'BtnNuevoPago.Enabled = True
-        'ChangeBackColor()
-        '
+        FunSelectRecordCancelSearch()
+        FunActivateButtons()
         strFlags = ""
 
     End Sub
@@ -242,11 +151,11 @@ Public Class FrmClientesPagos
     '
     Private Sub RbActivo_CheckedChanged(sender As Object, e As EventArgs) Handles RbActivo.CheckedChanged
 
-        '| Comprobamos si el RbActivo está activado para llenar la variable strState con la cadena "ACTIVO".
-        '| Caso contrario llenamos la variable strState con la cadena "INACTIVO".
-        '| * La variable strState se usa para hacer las consultas a la tabla Clientes.
-        '| Llenamos el TxtBuscar con "JWIR" y luego borramos el texto, de esa manera activamos el TextChanged _
-        '| _ del TextBox para hacer la consulta, mostramos el resultado en el DgvClientes y enviamos el enfoque.
+        '| IF : Comprobamos si el RbActivo está activado para llenar la variable strState con la cadena "ACTIVO".
+        '| ELSE : Caso contrario llenamos la variable strState con la cadena "INACTIVO".
+        '| ** La variable strState se usa para hacer las consultas a la tabla Clientes.**
+        '| * Llenamos el TxtBuscar con "JWIR" y luego borramos el texto, de esa manera activamos el TextChanged _
+        '|   _ del TextBox para hacer la consulta, mostramos el resultado en el DgvClientes y enviamos el enfoque.
 
         If RbActivo.Checked Then
             strState = "ACTIVO"
@@ -268,60 +177,41 @@ Public Class FrmClientesPagos
     End Sub
     Private Sub DgvClientes_DoubleClick(sender As Object, e As EventArgs) Handles DgvClientes.DoubleClick
 
-        '| * Comprobamos si el DgvClientes no tiene filas, para salir de la función usando Exit Sub y evitar _
-        '|   _ que se ejecuten las demás líneas de código.
+        '| * IF : Comprobamos si el DgvClientes no tiene filas, para salir de la función usando Exit Sub y _
+        '|        _ evitar que se ejecuten las demás líneas de código.
         '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
         '| * Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
         '|   _ la función FillOutDgvClientes().
-        '| * Llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
-        '| * Desactivamos los dos contenedores PnlBuscar y GbEstado.
-        '| * Cambiamos el texto del CmbFiltrar seleccionando el index uno (NOMBRE).
-        '| * Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
-        '| * Ponemos BtnBuscar encima del otro button usando BringToFront().
-        '
-        '| AQUI FALTA HACER COMENTARIO
-        '
+        '| * IF : Comprobamos si el LblGrpFamCli tiene información para buscar un grupo familiar si se cumple la condición _
+        '|        _ llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
+        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, desactivar y ocultar controles.
         '| * Limpiamos la variable strFlags para futuras comprobaciones.
-        '| * Cambiamos los textos de SlblTitulo y de SlblDescrip después de seleccionar un cliente de la lista.
 
         If DgvClientes.RowCount = 0 Then Exit Sub
-
         strFlags = "SKIP_SEARCH"
-
-        FillDataDgvClientes()
-
-        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then SearchFamilyGroup(LblGrpFamCli.Text)
-
-        PnlBuscar.Enabled = False
-        GbEstado.Enabled = False
-        CmbFiltrar.SelectedIndex = 0
-        RbActivo.Checked = False
-        BtnBuscar.BringToFront()
-        '--------------------------'
-        BtnNuevo.Enabled = True
-        BtnModificar.Enabled = True
-        BtnEliminar.Enabled = True
-        BtnPagarMes.Enabled = True
-        BtnNuevoPago.Enabled = True
-        '--------------------------'
+        FunFillDataDgvClientes()
+        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then FunSearchFamilyGroup(LblGrpFamCli.Text)
+        FunSelectRecordCancelSearch()
+        FunActivateButtons()
         strFlags = ""
-        SlblTitulo.Text = "Cliente seleccionado"
-        SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o eliminar al cliente."
+
     End Sub
     '
     '
     '
-    Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
+    Private Sub BtnNewClient_Click(sender As Object, e As EventArgs) Handles BtnNewClient.Click
 
-        '| Limpiamos todos los labels del contenedor PnlDatosCliente llamando a la función CleanLabel()
-        '| Cambiamos los textos de StsBarra para indicar al usuario que se va agregar un nuevo registro.
-        '| Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
-        '| Ocultamos el boton BtnActualizar para mostrar el boton de guardar.
-        '| Mostramos el formulario FrmNuevoEditarCliente
+        '| -------------------------------------------------------------------------------------
+        '| REGISTRAR UN NUEVO CLIENTE EN LA BASE DE DATOS
+        '| ----------------------------------------------
+        '| * Limpiamos todos los labels del contenedor PnlDatosCliente llamando a la función CleanLabel().
+        '| * Desactivamos los botones llamando a la función FunDisableButtons().
+        '| * Ocultamos el boton BtnActualizar para mostrar el boton de guardar.
+        '| * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
+        '| * Mostramos el formulario FrmNuevoEditarCliente
 
-        CleanLabel()
-        SlblTitulo.Text = "Nuevo registro"
-        SlblDescrip.Text = " Esperando los datos del nuevo cliente."
+        FunCleanLabel()
+        FunDisableButtons()
         FrmNuevoEditarCliente.MdiParent = FrmPrincipal
         FrmNuevoEditarCliente.BtnActualizar.Visible = False
         FrmNuevoEditarCliente.Show()
@@ -330,21 +220,24 @@ Public Class FrmClientesPagos
     '
     '
     '
-    Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
+    Private Sub BtnModifyData_Click(sender As Object, e As EventArgs) Handles BtnModifyData.Click
 
-        '| IF : Si la variable está vacio mostramos un mensaje de error y salimos de la función _
-        '|      _ usando Exit Sub.
-        '| ELSE : Si se ha seleccionado un registro
-        '|      * -----
-        '|      * Cambiamos los textos de SlblTitulo y SlblDescrip informando que se van a hcer cambios
+        '| --------------------------------------------------------------------------------------
+        '| MODIFICAR LOS DATOS DEL CLIENTE EN LA BASE DE DATOS
+        '| ---------------------------------------------------
+        '| IF : Si la variable está vacia:
+        '|      * Salimos de la función usando Exit Sub para no ejecutar el resto del código.
+        '| ELSE : Si se ha seleccionado un registro:
+        '|      With : Enviamos al formulario FrmNuevoEditarCliente los datos del cliente.
         '|      * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
         '|      * Ocultamos el botón BtnGuardar para mostrar el botón Actualizar.
         '|      * Mostramos el formulario FrmNuevoEditarCliente con los datos del cliente.
 
+
         If LblNomCli.Text = "" Then
             Exit Sub
         Else
-            'llenar datos
+
             With FrmNuevoEditarCliente
                 .strIdClient = strIdClient
                 .TxtNombre.Text = LblNomCli.Text
@@ -370,26 +263,31 @@ Public Class FrmClientesPagos
                         .TxtListaNom.Text = LblGrpFamCli.Text
 
                     Case Else '"DIARIO"
-                        .RbDiario.Checked = True
                         .TxtListaNom.Text = LblMtdPgoCli.Text
+                        .RbDiario.Checked = True
                 End Select
             End With
-            'llenar datos
-            SlblTitulo.Text = "Actualizar datos"
-            SlblDescrip.Text = " Se va a modificar los datos, esperando los cambios."
+
             FrmNuevoEditarCliente.MdiParent = FrmPrincipal
             FrmNuevoEditarCliente.BtnGuardar.Visible = False
             FrmNuevoEditarCliente.Show()
+
         End If
 
     End Sub
     '
     '
     '
-    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-        '"  Cliente seleccionado :" & vbCr & vbCr &
-        '
-        'COMPROBAMOS SI HAY UN REGISTRO SELECCIONADO
+    Private Sub BtnDeleteClient_Click(sender As Object, e As EventArgs) Handles BtnDeleteClient.Click
+
+        '| ------------------------------------------------------------------------------------------
+        '| ELIMINAR UN REGISTRO DE LA TABLA CLIENTE
+        '| -----------------------------------------
+        '| IF : Comprobamos si la variable strIdClient está vacio, si se cumple la condición:
+        '|      * Mostramos un mensaje de error informando que se 
+        '|
+        '|
+
         If strIdClient = "" Then MsgBox("  Para ELIMINAR selecciona un cliente :" & vbCr & vbCr &
                                         "    1.- Haz clic en Buscar cliente." & vbCr &
                                         "    2.- Selecciona un registro de la lista." _
@@ -406,8 +304,12 @@ Public Class FrmClientesPagos
             sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & strIdClient & "'"
             FunCrudSql(sqlConsulta)
 
-            CleanLabel()
+            FunCleanLabel()
 
+            '----------------------------------
+            FunCheckRecords()
+
+            '----------------------------------
         End If
     End Sub
     '
@@ -419,21 +321,21 @@ Public Class FrmClientesPagos
     '
     '
     '
-    Private Sub BtnPagarMes_Click(sender As Object, e As EventArgs) Handles BtnPagarMes.Click
+    Private Sub BtnPayMonth_Click(sender As Object, e As EventArgs) Handles BtnPayMonth.Click
         'BtnPagarMes_Click
         If DgvListaPagos.RowCount = 0 Then Exit Sub
     End Sub
     '
     '
     '
-    Private Sub BtnNuevoPago_Click(sender As Object, e As EventArgs) Handles BtnNuevoPago.Click
+    Private Sub BtnNewPayment_Click(sender As Object, e As EventArgs) Handles BtnNewPayment.Click
         'BtnNuevoPago_Click
         If DgvListaPagos.RowCount = 0 Then Exit Sub
     End Sub
     '
     '
     '
-    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+    Private Sub BtnCloseWindow_Click(sender As Object, e As EventArgs) Handles BtnCloseWindow.Click
         'CERRAMOS LA VENTANA
         Close()
     End Sub
@@ -442,11 +344,83 @@ Public Class FrmClientesPagos
     '::: ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- :::'
     '::: -------------------------------------------------------- :::'
     '
-    Sub CleanLabel()
-        ' Recorremos todos los controles que están dentro del contenedor PnlDatosCliente.
-        '   Comprobamos si los controles son de tipo Label.
-        '       Comprobamos si el Name del control contiene "Cli".
-        '       Limpiamos el texto del label.
+    Sub FunActivateButtons()
+
+        '| -----------------------------
+        '| * DESACTIVAMOS LOS BOTONES
+        '| -----------------------------
+
+        BtnModifyData.Enabled = True
+        BtnDeleteClient.Enabled = True
+        BtnPayMonth.Enabled = True
+        BtnNewPayment.Enabled = True
+        DgvListaPagos.Enabled = True
+
+    End Sub
+
+    Sub FunDisableButtons()
+
+        '| -----------------------------
+        '| * DESACTIVAMOS LOS BOTONES
+        '| -----------------------------
+
+        BtnModifyData.Enabled = False
+        BtnDeleteClient.Enabled = False
+        BtnPayMonth.Enabled = False
+        BtnNewPayment.Enabled = False
+        DgvListaPagos.Enabled = False
+
+    End Sub
+
+    Sub FunSelectRecordCancelSearch()
+
+        '| * Mostramos el botón BtnCancelSearch y ocultamos el botón BtnFindClient.
+        '| * Desactivamos el contenedor PnlBuscar.
+        '| * Limpiamos el CmbFiltrar cambiando el index a cero.
+        '| * Desactivamos el RbActivo, para que al momento de hacer clic en BtnBuscar nos muestre todos los clientes.
+        '| * Ocultamos el DgvClientes.
+        '| * Desactivvamos el GbEstado para no cambiar de valor los RadioButton.
+
+        BtnFindClient.Visible = True
+        BtnCancelSearch.Visible = False
+        PnlBuscar.Enabled = False
+        CmbFiltrar.SelectedIndex = 0
+        RbActivo.Checked = False
+        DgvClientes.Visible = False
+        LblResult.Visible = False
+        GbEstado.Enabled = False
+
+    End Sub
+
+    Sub FunSearchRecord()
+
+        '| * Ocultamos el botón BtnFindClient y mostramos el botón BtnCancelSearch.
+        '| * Activamos los dos contenedores PnlBuscar y GbEstado.
+        '| * Cambiamos el texto del PnlBuscar seleccionando el index 1 (NOMBRE).
+        '| * Activamos el RbActivo para mostrar y buscar los clientes en actividad.
+        '| * Mostramos el DgvClientes y lo ponemos delante de los otros controles usando BringToFront.
+
+        BtnFindClient.Visible = False
+        BtnCancelSearch.Visible = True
+        PnlBuscar.Enabled = True
+        GbEstado.Enabled = True
+        CmbFiltrar.SelectedIndex = 1
+        RbActivo.Checked = True
+        DgvClientes.Visible = True
+        LblResult.Visible = True
+        DgvClientes.BringToFront()
+
+    End Sub
+
+    Sub FunCleanLabel()
+
+        '| * Recorremos todos los controles que están dentro del contenedor PnlDatosCliente.
+        '|    * Comprobamos si los controles son de tipo Label.
+        '|       * Comprobamos si el Name del control contiene "Cli".
+        '|       * Limpiamos el texto del label.
+        '| * Limpiamos la variable que contiene el id del cliente para hacer comprobaciones _
+        '|   _ cuando se hacen cambios en el TxtBuscar.
+
         For Each control As Control In PnlDatosCliente.Controls
             If TypeOf (control) Is Label Then
                 If control.Name.Contains("Cli") Then
@@ -454,12 +428,11 @@ Public Class FrmClientesPagos
                 End If
             End If
         Next
-        ' Limpiamos la variable que contiene el id del cliente para hacer
-        ' comprobaciones cuando se hacen cambios en el TxtBuscar.
+
         strIdClient = ""
     End Sub
 
-    Sub FillDataDgvClientes()
+    Sub FunFillDataDgvClientes()
 
         '| * Depúes de confirmar la busqueda llenamos los label con información del cliente que lo obtenemos _
         '|   _ del DgvClientes y lo ocultamos para visualizar el resultado.
@@ -479,7 +452,7 @@ Public Class FrmClientesPagos
             LblFdiCli.Text = .CurrentRow.Cells(11).Value
             LblEstCli.Text = .CurrentRow.Cells(12).Value
             LblGrpFamCli.Text = .CurrentRow.Cells(13).Value
-            .Visible = False
+            '.Visible = False
         End With
     End Sub
 
@@ -580,8 +553,7 @@ Public Class FrmClientesPagos
             End If
 
             'TEXTO PARA EL STATUSSTRIP CON LA CANTIDAD DE CLIENTES REGISTRADOS
-            SlblTitulo.Text = "Buscar Cliente"
-            SlblDescrip.Text = " " & DgvClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
+            LblResult.Text = DgvClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
 
         Catch ex As MySql.Data.MySqlClient.MySqlException
             'ERROR GENERADO POR INGRESAR ESTE CARACTER ' Y OTROS POSIBLES CARACTERES QUE INFLUYAN EN LA CONSULTA A LA BBDD
@@ -603,7 +575,7 @@ Public Class FrmClientesPagos
         End Try
     End Sub
 
-    Sub SearchFamilyGroup(ByVal idGrupoFamiliar As String)
+    Sub FunSearchFamilyGroup(ByVal idGrupoFamiliar As String)
 
         '| Usamos Try-Catch para controlar posibles errores.
         '| Try :
@@ -621,14 +593,57 @@ Public Class FrmClientesPagos
             sqlConsulta = "SELECT * FROM grp_familiar WHERE id_grp = '" & idGrupoFamiliar & "'"
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
+
+
             drDataReader.Read()
             LblGrpFamCli.Text = drDataReader.GetString(1)
+
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
             drDataReader.Close()
             cnxnMySql.Close()
         End Try
+    End Sub
+
+    Sub FunCheckRecords()
+
+        '| * Usamos try-catch para controlar posibles errores.
+        '| * Conectamos y abrimos la base de datos.
+        '| * Hacemos una consulta para comprobar si hay registros en la tabla clientes y lo ejecutamos.
+        '| * IF : Comprobamos si la consulta tiene registros:
+        '|        * Activamos el boton BtnFindClient.
+        '| * ELSE : Si la consulta no ha encontrado registros:
+        '|        * Desactivamos el boton BtnFindClient.
+        '| * Llamamos a la función FunDisableButtons() para desactivar los botones.
+        '| * Si se produce algún error lo capturamos en el Catch y mostramos un mensaje.
+        '| * Cerramos el drDataReader y la base de datos.
+
+        Try
+            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.Open()
+            sqlConsulta = "SELECT id_cli FROM clientes"
+            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+            drDataReader = cmdCommand.ExecuteReader()
+
+            If drDataReader.HasRows Then
+                BtnFindClient.Enabled = True
+
+            Else
+                BtnFindClient.Enabled = False
+
+            End If
+
+            FunDisableButtons()
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            drDataReader.Close()
+            cnxnMySql.Close()
+        End Try
+
     End Sub
 
 End Class

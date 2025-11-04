@@ -64,12 +64,14 @@ Partial Class FrmNuevoEditarCliente
         Me.LblEmail = New System.Windows.Forms.Label()
         Me.GbDatos = New System.Windows.Forms.GroupBox()
         Me.DtpFdn = New System.Windows.Forms.DateTimePicker()
+        Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbOtros.SuspendLayout()
         Me.GbListaGrupoFamiliar.SuspendLayout()
         Me.GbMetodoPago.SuspendLayout()
         Me.GbContacto.SuspendLayout()
         Me.GbDatos.SuspendLayout()
+        CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnAddGrupo
@@ -337,7 +339,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 4)
         Me.BtnGuardar.Size = New System.Drawing.Size(135, 75)
-        Me.BtnGuardar.TabIndex = 1
+        Me.BtnGuardar.TabIndex = 4
         Me.BtnGuardar.Text = "&Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnGuardar.UseVisualStyleBackColor = False
@@ -373,7 +375,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnActualizar.Name = "BtnActualizar"
         Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 4)
         Me.BtnActualizar.Size = New System.Drawing.Size(135, 75)
-        Me.BtnActualizar.TabIndex = 3
+        Me.BtnActualizar.TabIndex = 5
         Me.BtnActualizar.Text = "&Actualizar"
         Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnActualizar.UseVisualStyleBackColor = False
@@ -543,7 +545,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 4)
         Me.BtnCancelar.Size = New System.Drawing.Size(135, 75)
-        Me.BtnCancelar.TabIndex = 2
+        Me.BtnCancelar.TabIndex = 6
         Me.BtnCancelar.Text = "&Cancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnCancelar.UseVisualStyleBackColor = False
@@ -609,6 +611,10 @@ Partial Class FrmNuevoEditarCliente
         Me.DtpFdn.Size = New System.Drawing.Size(270, 26)
         Me.DtpFdn.TabIndex = 2
         '
+        'ErrorProvider
+        '
+        Me.ErrorProvider.ContainerControl = Me
+        '
         'FrmNuevoEditarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -637,6 +643,7 @@ Partial Class FrmNuevoEditarCliente
         Me.GbContacto.PerformLayout()
         Me.GbDatos.ResumeLayout(False)
         Me.GbDatos.PerformLayout()
+        CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -679,4 +686,5 @@ Partial Class FrmNuevoEditarCliente
     Friend WithEvents ColNomGrupo As DataGridViewTextBoxColumn
     Friend WithEvents ColNumIntgrntes As DataGridViewTextBoxColumn
     Friend WithEvents ColIntgrntesReg As DataGridViewTextBoxColumn
+    Friend WithEvents ErrorProvider As ErrorProvider
 End Class

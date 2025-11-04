@@ -1,4 +1,7 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.ComponentModel
+Imports System.Text.RegularExpressions
+Imports MySql.Data.MySqlClient
+
 Public Class FrmNuevoEditarCliente
 
     Dim cnxnMySql As New MySqlConnection
@@ -12,9 +15,10 @@ Public Class FrmNuevoEditarCliente
 
     Private Sub FrmNuevoEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        '| Almacenamos el año actual en la variable currentYear para asignar valores mínimos y _
-        '| _ máximos a los DateTimePicker DtpFdn y DtpFdi.
-        '| Asignamos la fecha mínima y máxima al DtpFdn.
+        '| * Almacenamos el año actual en la variable currentYear para asignar valores mínimos y _
+        '|   _ máximos a los DateTimePicker DtpFdn y DtpFdi.
+        '| * Asignamos la fecha mínima y máxima al DtpFdn.
+        '|
         '| IF : Si el botón BtnGuardar está activado.
         '|      * Limpiamos el DtpFdn y le damos una nueva fecha con 25 años menos.
         '|      * Limpiamos el TxtEdad.
@@ -42,90 +46,200 @@ Public Class FrmNuevoEditarCliente
         End If
 
     End Sub
+    Private Sub FrmNuevoEditarCliente_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
+        'MsgBox("FrmNuevoEditarCliente_Deactivate")
+        Close()
+    End Sub
     '
     '
     '   
     Private Sub TxtNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtNombre.TextChanged
-        'VALIDAR SOLO LETRAS
     End Sub
     Private Sub TxtNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtNombre.GotFocus
-        'CAMBIA EL COLOR AL RECIBIR EL ENFOQUE
+
+        '| -----------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
         TxtNombre.BackColor = Color.Beige
-    End Sub
-    Private Sub TxtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNombre.KeyPress
-        'TxtNombre_KeyPress
+
     End Sub
     Private Sub TxtNombre_LostFocus(sender As Object, e As EventArgs) Handles TxtNombre.LostFocus
-        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
-        TxtLostFocus(TxtNombre)
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL PERDER EL ENFOQUE
+        '| ----------------------------------
+        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Fun_TxtLost_Focus(TxtNombre)
+
+    End Sub
+    Private Sub TxtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNombre.KeyPress
+
+        '| -----------------------------------------------------------------------------------
+        '| VALIDAR EL INGRESO DE LETRAS Y ESPACIO
+        '| ---------------------------------------
+        '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+        '| * Almacenamos en la variable strLockKey los caracteres que queremos EXCLUIR.
+        '| * Llamamos a la función Fun_Only_Letters y le pasamos las variables como parámetro.
+
+        Dim strAllowKey As String = " "
+        Dim strLockKey As String = "ºª"
+        Fun_Only_Letters(strAllowKey, strLockKey, e)
+
     End Sub
     '
     '
     '
     Private Sub TxtApellido_TextChanged(sender As Object, e As EventArgs) Handles TxtApellido.TextChanged
-        'VALIDAR SOLO LETRAS
     End Sub
     Private Sub TxtApellido_GotFocus(sender As Object, e As EventArgs) Handles TxtApellido.GotFocus
-        'CAMBIA EL COLOR AL RECIBIR EL ENFOQUE
+
+        '| -----------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
         TxtApellido.BackColor = Color.Beige
-    End Sub
-    Private Sub TxtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtApellido.KeyPress
-        'TxtApellido_KeyPress
+
     End Sub
     Private Sub TxtApellido_LostFocus(sender As Object, e As EventArgs) Handles TxtApellido.LostFocus
-        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
-        TxtLostFocus(TxtApellido)
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL PERDER EL ENFOQUE
+        '| ----------------------------------
+        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Fun_TxtLost_Focus(TxtApellido)
+
+    End Sub
+    Private Sub TxtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtApellido.KeyPress
+
+        '| -----------------------------------------------------------------------------------
+        '| VALIDAR EL INGRESO DE LETRAS Y ESPACIO
+        '| ---------------------------------------
+        '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+        '| * Almacenamos en la variable strLockKey los caracteres que queremos EXCLUIR.
+        '| * Llamamos a la función Fun_Only_Letters y le pasamos las variables como parámetro.
+
+        Dim strAllowKey As String = " "
+        Dim strLockKey As String = "ºª"
+        Fun_Only_Letters(strAllowKey, strLockKey, e)
+
     End Sub
     '
     '
     '
     Private Sub TxtTelefono_TextChanged(sender As Object, e As EventArgs) Handles TxtTelefono.TextChanged
-        'VALIDAR SOLO LETRAS
     End Sub
     Private Sub TxtTelefono_GotFocus(sender As Object, e As EventArgs) Handles TxtTelefono.GotFocus
-        'CAMBIA EL COLOR AL RECIBIR EL ENFOQUE
+
+        '| -----------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
         TxtTelefono.BackColor = Color.Beige
-    End Sub
-    Private Sub TxtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTelefono.KeyPress
-        'TxtTelefono_KeyPress
+
     End Sub
     Private Sub TxtTelefono_LostFocus(sender As Object, e As EventArgs) Handles TxtTelefono.LostFocus
-        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
-        TxtLostFocus(TxtTelefono)
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL PERDER EL ENFOQUE
+        '| ----------------------------------
+        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Fun_TxtLost_Focus(TxtTelefono)
+
+    End Sub
+    Private Sub TxtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTelefono.KeyPress
+
+        '| -----------------------------------------------------------------------------------
+        '| VALIDAR EL INGRESO DE NÚMEROS, PARÉNTESIS, GUION Y ESPACIO
+        '| ----------------------------------------------------------
+        '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+        '| * Llamamos a la función Fun_Only_Letters y le pasamos la variable como parámetro.
+
+        Dim strAllowKey As String = "(-) "
+        Fun_Only_Numbers(strAllowKey, e)
+
     End Sub
     '
     '
     '
     Private Sub TxtEmail_TextChanged(sender As Object, e As EventArgs) Handles TxtEmail.TextChanged
-        'VALIDAR SOLO LETRAS
     End Sub
     Private Sub TxtEmail_GotFocus(sender As Object, e As EventArgs) Handles TxtEmail.GotFocus
-        'CAMBIA EL COLOR AL RECIBIR EL ENFOQUE
+
+        '| -----------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
         TxtEmail.BackColor = Color.Beige
+
     End Sub
-    Private Sub TxtEmail_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtEmail.KeyPress
-        'TxtEmail_KeyPress
+    Private Sub TxtEmail_KeyUp(sender As Object, e As KeyEventArgs) Handles TxtEmail.KeyUp
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL SOLTAR LA TECLA PRESIONADA
+        '| -------------------------------------------
+        '| IF : Comrpobamos si Fun_IsValid_Email no cumple con el formato del E-Mail.
+        '|      * Mostrar el error si el formato es incorrecto.
+        '|      * Cambiamos el color del fondo.
+        '| ELSE : 
+        '|      * Limpiamos el error.
+        '|      * Cambiamos el color del fondo.
+
+        If Not Fun_IsValid_Email(TxtEmail.Text) Then
+            'ErrorProvider.Clear()
+            ErrorProvider.SetError(TxtEmail, "Ingresa un formato de E-Mail válido (usuario@dominio.com)")
+            TxtEmail.BackColor = Color.MistyRose
+        Else
+            ErrorProvider.Clear()
+            TxtEmail.BackColor = Color.Beige
+        End If
+
     End Sub
     Private Sub TxtEmail_LostFocus(sender As Object, e As EventArgs) Handles TxtEmail.LostFocus
-        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
-        TxtLostFocus(TxtEmail)
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL PERDER EL ENFOQUE
+        '| ----------------------------------
+        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        '| IF : Comrpobamos si el TxtEmail no está vacio Y si Fun_IsValid_Email no cumple con el formato del E-Mail
+        '|      * Mostrar el error si el formato es incorrecto.
+        '|      * Cambiamos el color del fondo.
+
+        Fun_TxtLost_Focus(TxtEmail)
+        If Not String.IsNullOrWhiteSpace(TxtEmail.Text) And Not Fun_IsValid_Email(TxtEmail.Text) Then
+            ErrorProvider.SetError(TxtEmail, "Ingresa un formato de E-Mail válido (usuario@dominio.com)")
+            TxtEmail.BackColor = Color.MistyRose
+        End If
+
     End Sub
     '
     '
     '
     Private Sub TxtDireccion_TextChanged(sender As Object, e As EventArgs) Handles TxtDireccion.TextChanged
-        'VALIDAR SOLO LETRAS
     End Sub
     Private Sub TxtDireccion_GotFocus(sender As Object, e As EventArgs) Handles TxtDireccion.GotFocus
-        'CAMBIA EL COLOR AL RECIBIR EL ENFOQUE
+
+        '| -----------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
         TxtDireccion.BackColor = Color.Beige
     End Sub
     Private Sub TxtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDireccion.KeyPress
-        'TxtDireccion_KeyPress
+
+        '| -----------------------------------------------------------------------------------
+        '| VALIDAR EL INGRESO DE CARACTERES PARA LA DIRECCIÓN
+        '| --------------------------------------------------
+        '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+        '| * Llamamos a la función Fun_Only_Letters y le pasamos las variables como parámetro.
+
+        Dim strAllowKey As String = "(&'.-/) "
+        Fun_Letters_And_Numbers(strAllowKey, e)
+
     End Sub
     Private Sub TxtDireccion_LostFocus(sender As Object, e As EventArgs) Handles TxtDireccion.LostFocus
-        'FUNCION PARA BORRAR ESPACIOS EN BLANCO Y CAMBIO DE COLOR
-        TxtLostFocus(TxtDireccion)
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL PERDER EL ENFOQUE
+        '| ----------------------------------
+        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Fun_TxtLost_Focus(TxtDireccion)
+
     End Sub
     '
     '
@@ -172,7 +286,10 @@ Public Class FrmNuevoEditarCliente
     End Sub
     Private Sub DtpFdn_GotFocus(sender As Object, e As EventArgs) Handles DtpFdn.GotFocus
 
-        TxtEdad.BackColor = Color.Beige 'CAMBIAR COLOR
+        '| -----------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
+        TxtEdad.BackColor = Color.Beige
 
         DtpFdn.CustomFormat = "' ' dd ' de  ' MMMM ' de  ' yyyy" 'LLENAMOS EL DTPFDN CON UNA FECHA PERSONALIZADA
     End Sub
@@ -212,10 +329,12 @@ Public Class FrmNuevoEditarCliente
 
             'ASIGNAR UN VALOR A LA VARIABLE VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES :::'
             strMtdPgs = TxtListaNom.Text
-
-            TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
-            'LblMetodoPago.BackColor = Color.Azure
-
+            ''
+            ''
+            'TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
+            ''LblMetodoPago.BackColor = Color.Azure
+            ''
+            ''
             GbListaGrupoFamiliar.Text = "Lista clases sueltas" 'CAMBIAMOS EL TITULO DEL GROUPBOX
 
             'BtnAddGrupo.Enabled = False 'DESACTIVAMOS EL BUTTON ADDGRUPO
@@ -255,6 +374,12 @@ Public Class FrmNuevoEditarCliente
             'Else
             'GbListaPrecio.Text = "Lista"
         End If
+        '
+    End Sub
+    Private Sub RbDiario_Click(sender As Object, e As EventArgs) Handles RbDiario.Click
+        '
+        TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
+        'LblMetodoPago.BackColor = Color.Azure
         '
     End Sub
     '
@@ -476,40 +601,42 @@ Public Class FrmNuevoEditarCliente
         FunCrudSql(sqlConsulta)
 
         '-----------------------------------------------------------------------------------------------
+        '| BUSCAR EL ÚLTIMO REGISTRO GUARDADO PARA OBTENER EL ID DEL CLIENTE
+        '| -----------------------------------------------------------------
         '| * Llamamos a la función FunReadIdClient() y le pasamos la consulta para obtener el [id_cli] _
         '|   _ del último registro guardado en la tabla [clientes] y lo almacenamos en la variable _
         '|   _ strIdClient que es Public.
+
         sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
         FunReadIdClient(sqlConsulta)
 
-        '
-        '
-        '
-        '
         '-----------------------------------------------------------------------------------------------
-        '::: CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE AL NUEVO CLIENTE
-        '    LA CONSULTA DEPENDE DEL VALOR DE LA VARIABLE strMpago :::'
+        '| CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE AL NUEVO CLIENTE
+        '| ----------------------------------------------------------------
+        '| * Seleccionamos el CASE para la consulta según el valor de la variable [strMtdPgs].
+        '| * Llamamos a la función FunSearchDiscountPrice() y le pasamos por parámetro la consulta _
+        '|   _ almacenada en "sqlConsulta", si en está consulta no hay resultado pasamos la variable _
+        '|   _ blnMarker a True.
+        '|
+        '| IF : Si el valor de la variable blnMarker es True
+        '|      * Hacemos una nueva consulta para buscar la tarifa única MENSUAL que nos devolverá el _
+        '|        _ precio y el descuento registrado en la tabla [trfa_dscto].
+        '|      * Llamamos a la función FunSearchDiscountPrice() y le pasamos la consulta .
+
         Select Case strMtdPgs
             Case "MENSUAL"
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE emin_trfa <= '" & TxtEdad.Text & "' AND emax_trfa >= '" & TxtEdad.Text & "'"
             Case "GRUPAL"
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE nperson_trfa = '" & DgvListaNombre.CurrentRow.Cells(2).Value & "'"
-            Case Else 'DIARIO
+            Case Else 'DIARIO (5,6,7...)
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = '" & strMtdPgs & "'"
         End Select
-
         FunSearchDiscountPrice(sqlConsulta)
 
-        ''-----------------------------------------------------------------------------------------------
-        ''::: USAMOS TRY PARA CONTROLAR POSIBLES ERRORES :::'
         If blnMarker = True Then
             sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = 'MENSUAL'"
             FunSearchDiscountPrice(sqlConsulta)
         End If
-        '
-        '
-        '
-        '
 
         '-----------------------------------------------------------------------------------------------
         '| AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
@@ -523,7 +650,7 @@ Public Class FrmNuevoEditarCliente
                                 '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
         FunCrudSql(sqlConsulta)
 
-        '----------------------------------------------------------------------------------------------------------------
+        '-----------------------------------------------------------------------------------------------
         '| ACTUALIZAR REGISTROS DE LA TABLA GRUPO_FAMILIAR
         '| -------------------------------------------------
         '| * Comprobamos el valor de la variable strAddMembers para hacer la consulta a la BBDD.
@@ -554,11 +681,17 @@ Public Class FrmNuevoEditarCliente
                 FunCrudSql(sqlConsulta)
         End Select
 
-        '------------------------------------------------------------------------------------------------------------
-        '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente, _
-        '| _ cambiar el texto del StsBarra y mostrar el mensaje de confirmación.
+        '-----------------------------------------------------------------------------------------------
+        '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario _
+        '| _ FrmNuevoEditarCliente, ****** y mostrar el mensaje de confirmación.
         FillLabelsMessage()
 
+        'If String.IsNullOrEmpty(LblNomCli.Text) Then
+        '    FunDisableButtons()
+
+        'Esyo es por si se ha guardado
+        FrmClientesPagos.FunActivateButtons()
+        'End If
     End Sub
     '
     '
@@ -631,33 +764,45 @@ Public Class FrmNuevoEditarCliente
     '
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
 
-        '| Al hacer clic en Cancelar comprobamos si el botón BtnGuardar está activado para limpiar los _
-        '| _ textos de SlblTitulo y de SlblDescrip del formulario FrmClientesPagos, si está activado _
-        '| _ el botón BtnActualizar cambiamos los textos avisando que se ha cancelado la actualización.
         '| Cerramos el formulario.
-
-        If BtnGuardar.Visible = True Then
-            FrmClientesPagos.SlblTitulo.Text = ""
-            FrmClientesPagos.SlblDescrip.Text = ""
-        Else
-            FrmClientesPagos.SlblTitulo.Text = "Cliente seleccionado"
-            FrmClientesPagos.SlblDescrip.Text = " Se ha cancelado la actualización de los datos."
-        End If
-
-        Close()
+        If String.IsNullOrEmpty(FrmClientesPagos.LblNomCli.Text) Then FrmClientesPagos.FunDisableButtons()
+        Me.Close()
 
     End Sub
     '
     '::: -------------------------------------------------------- :::'
     '::: ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- :::'
     '::: -------------------------------------------------------- :::'
-    Sub TxtLostFocus(ByVal TxtCadena As TextBox)
-        TxtCadena.Text = Trim(TxtCadena.Text)
-        While TxtCadena.Text.Contains("  ")
-            TxtCadena.Text = TxtCadena.Text.Replace("  ", " ")
-        End While
-        TxtCadena.BackColor = Color.Azure
-        If TxtCadena.Text = "" Then TxtCadena.BackColor = Color.MistyRose
+
+    'Sub TxtLostFocus(ByVal TxtCadena As TextBox)
+    Sub Fun_TxtLost_Focus(txtTextBox As TextBox)
+
+        'TxtCadena.Text = Trim(TxtCadena.Text)
+        'While TxtCadena.Text.Contains("  ")
+        '    TxtCadena.Text = TxtCadena.Text.Replace("  ", " ")
+        'End While
+        'TxtCadena.BackColor = Color.Azure
+
+        'If TxtCadena.Text = "" Then TxtCadena.BackColor = Color.MistyRose
+
+        ' 1. Limpiar errores previos
+        ErrorProvider.Clear()
+
+        If String.IsNullOrWhiteSpace(txtTextBox.Text) Then
+
+            ErrorProvider.SetError(txtTextBox, "El campo no puede estar vacío.")
+            txtTextBox.BackColor = Color.MistyRose
+
+        Else
+
+            txtTextBox.Text = Trim(txtTextBox.Text)
+            While txtTextBox.Text.Contains("  ")
+                txtTextBox.Text = txtTextBox.Text.Replace("  ", " ")
+            End While
+            txtTextBox.BackColor = Color.Azure
+
+        End If
+
     End Sub
     '
     '
@@ -761,8 +906,6 @@ Public Class FrmNuevoEditarCliente
 
         '-------------------------------------------------------------------------------------------------------
         '| * Llenamos los campos del formulario FrmClientesPagos con los datos que se han guardado o actualizado.
-        '| * Cambiamos los textos de SlblTitulo y de SlblDescrip del formulario FrmClientesPagos después _
-        '|   _ de guardar o actualizar un registro en la tabla clientes.
         '| * Damos formato el codigo del cliente para mostrar en el mensaje de confirmación.
         '| * Cerramos el formulario FrmNuevoEditarCliente.
 
@@ -787,9 +930,6 @@ Public Class FrmNuevoEditarCliente
             .LblEstCli.Text = strEstado
         End With
 
-        FrmClientesPagos.SlblTitulo.Text = "Cliente seleccionado"
-        FrmClientesPagos.SlblDescrip.Text = " Puedes modificar sus datos, hacer pagos o eliminar al cliente."
-
         Dim bodyText As String
         If BtnGuardar.Visible = True Then
             bodyText = "GUARDADOS"
@@ -803,7 +943,7 @@ Public Class FrmNuevoEditarCliente
         MsgBox("DATOS DEL CLIENTE" & vbCr & vbCr &
                "   NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & vbCr &
                "   CODIGO   :  " & strIdClient & vbCr &
-               "   ---------------------------------------------" & vbCr &
+               "   -----------------------------------------------" & vbCr &
                "   Datos " & bodyText & " correctamente.", vbInformation, "Registrado")
         Close()
     End Sub
@@ -844,12 +984,25 @@ Public Class FrmNuevoEditarCliente
     Sub FunSearchDiscountPrice(sqlConsulta)
 
         '-----------------------------------------------------------------------------------------------
-        '::: USAMOS TRY PARA CONTROLAR POSIBLES ERRORES :::'
+        '| * Usamos Try-Catch para controlar posibles errores
+        '| TRY :
+        '|      * Conectamos y abrimos la base de datos.
+        '|      * Ejecutamos la consulta recibida por parametro.
+        '|      IF : Si la consulta devuelve resultados
+        '|          * Leemos el drDataReader y el resultado lo almacenamos en las variables -
+        '|            - "precio" y "dscnto".
+        '|          * Pasamos la variable blnMarker a FALSE para no volver a llamar a esta función.
+        '|      ELSE :
+        '|          * Pasamos la variable blnMarker a TRUE, para hacer una nueva consulta y volver a _
+        '|          * llamar a esta función.
+        '| CATCH :
+        '|      * Mostramos un mensaje con el error capturado.
+        '| FINALLY :
+        '|      * Cerramos el datareader y la base de datos.
+
         Try
-            'CONECTAR Y ABRIR LA BBDD
             cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
-
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader
 
@@ -863,13 +1016,13 @@ Public Class FrmNuevoEditarCliente
             End If
 
         Catch ex As Exception
-            'MOSTRAMOS UN MENSAJE CON EL ERROR CAPTURADO
             MsgBox(ex.ToString)
+
         Finally
-            'CERRAMOS EL DATAREADER Y LA BBDD
             drDataReader.Close()
             cnxnMySql.Close()
         End Try
+
     End Sub
     '
     '

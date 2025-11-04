@@ -258,23 +258,6 @@ Module Funciones
         End Try
     End Sub
 
-    Public Sub SoloLetras(ByVal Texto As String, e As KeyPressEventArgs)
-        '
-        If Texto = "Nº de Registros" Then e.Handled = True : Exit Sub
-        If Char.IsControl(e.KeyChar) Then e.Handled = False : Exit Sub
-        If Char.IsSeparator(e.KeyChar) Then e.Handled = False : Exit Sub
-        If Not Char.IsLetter(e.KeyChar) Then e.Handled = True : Exit Sub
-        '
-    End Sub
-
-    Public Sub SoloNumeros(ByVal Numero As String, e As KeyPressEventArgs)
-
-        If (e.KeyChar = ".") Then e.Handled = False : Exit Sub
-        If Char.IsControl(e.KeyChar) Then e.Handled = False : Exit Sub
-        If Not Char.IsNumber(e.KeyChar) Then e.Handled = True : Exit Sub
-        'If Char.IsSeparator(e.KeyChar) Then e.Handled = False : Exit Sub
-    End Sub
-
     Public Function FechaLarga(ByVal fecha As Date) As String
         Dim dia = fecha.Day
         Dim mes = fecha.Month
