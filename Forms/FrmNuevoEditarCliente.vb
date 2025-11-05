@@ -47,8 +47,14 @@ Public Class FrmNuevoEditarCliente
 
     End Sub
     Private Sub FrmNuevoEditarCliente_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
-        'MsgBox("FrmNuevoEditarCliente_Deactivate")
+
+        '| ---------------------------------------------------------------------------------------------
+        '| CERRAMOS LA VENTANA AL DESACTIVAR EL FORMULARIO 
+        '| ------------------------------------------------
+        '| * Si se desactiva el Form o se hace clic fuera del Form cerramos el FrmNuevoEditarCliente _
+        '|   _ para evitar hacer otras acciones con el form ejecutado no visible.
         Close()
+
     End Sub
     '
     '
@@ -125,6 +131,43 @@ Public Class FrmNuevoEditarCliente
     '
     '
     '
+    Private Sub DtpFdn_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdn.ValueChanged
+
+        '| ---------------------------------------------------------------------------------------
+        '| CALCULAR LA EDAD DEL CLIENTE
+        '| ----------------------------
+        '| * Almacenamos en la variable dtDateOfBirth la fecha de nacimiento que se obtiene del DtpFdn
+        '| * Para calcular los años llamamos a la función CalculateAge() y le pasamos la variable _
+        '|   _ dtDateOfBirth, está función nos devuelve un valor entero que lo mostramos en el label TxtEdad.  
+
+        Dim dtDateOfBirth As Date = DtpFdn.Value
+        TxtEdad.Text = CalculateAge(dtDateOfBirth) & " años"
+
+    End Sub
+    Private Sub DtpFdn_GotFocus(sender As Object, e As EventArgs) Handles DtpFdn.GotFocus
+
+        '| -------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR Y DAR FORMATO AL DATETIMEPICKER
+        '| ------------------------------------------------
+        '| * Al recibir el emfoque cambiammos el color del fondo del Textbox y le damos _
+        '|   _ formato al DtpFdn con una fecha personalizada.
+
+        TxtEdad.BackColor = Color.Beige
+        DtpFdn.CustomFormat = "' ' dd ' de  ' MMMM ' de  ' yyyy"
+
+    End Sub
+    Private Sub DtpFdn_LostFocus(sender As Object, e As EventArgs) Handles DtpFdn.LostFocus
+
+        '| -----------------------------------------------------------------------------------
+        '| VALAIDACIONES AL PERDER EL ENFOQUE
+        '| ----------------------------------
+        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como el Label (TxtEdad)
+        Fun_TxtLost_Focus(TxtEdad)
+
+    End Sub
+    '
+    '
+    '
     Private Sub TxtTelefono_TextChanged(sender As Object, e As EventArgs) Handles TxtTelefono.TextChanged
     End Sub
     Private Sub TxtTelefono_GotFocus(sender As Object, e As EventArgs) Handles TxtTelefono.GotFocus
@@ -182,7 +225,6 @@ Public Class FrmNuevoEditarCliente
         '|      * Cambiamos el color del fondo.
 
         If Not Fun_IsValid_Email(TxtEmail.Text) Then
-            'ErrorProvider.Clear()
             ErrorProvider.SetError(TxtEmail, "Ingresa un formato de E-Mail válido (usuario@dominio.com)")
             TxtEmail.BackColor = Color.MistyRose
         Else
@@ -240,69 +282,6 @@ Public Class FrmNuevoEditarCliente
         '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
         Fun_TxtLost_Focus(TxtDireccion)
 
-    End Sub
-    '
-    '
-    '
-    Private Sub TxtListaNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtListaNom.TextChanged
-
-        '-*/
-        If RbGrupoFamiliar.Checked Then
-
-            sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '" & TxtListaNom.Text & "%' ORDER BY nom_grp"
-            LlenarDgvListaNombre(sqlConsulta)
-
-            If String.IsNullOrWhiteSpace(TxtListaNom.Text) Then LblNumIntgrntes.Text = ""
-
-            If DgvListaNombre.RowCount > 0 Then
-                If TxtListaNom.Text = DgvListaNombre.CurrentRow.Cells(1).Value Then
-                    LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
-                End If
-            End If
-        End If
-
-    End Sub
-    Private Sub TxtListaNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtListaNom.GotFocus
-        'TxtListaNombre_GotFocus
-    End Sub
-    Private Sub TxtListaNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtListaNom.KeyPress
-        'TxtListaNombre_KeyPress
-    End Sub
-    Private Sub TxtListaNombre_LostFocus(sender As Object, e As EventArgs) Handles TxtListaNom.LostFocus
-        'TxtListaNombre_LostFocus
-    End Sub
-    '
-    '
-    '
-    Private Sub DtpFdn_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdn.ValueChanged
-
-        'CALCULAR LA EDAD Y ALMACENAR EN LA VARIBLE
-        Dim dtpEdad = Int(DateDiff("m", DtpFdn.Value, Now) / 12)
-
-        TxtEdad.Text = dtpEdad & " años" 'MOSTRAR EDAD
-        'COMPROBAR LA EDAD
-        'If dtpEdad < 1 Then TxtEdad.Text = "0 años"
-        'If dtpEdad > 99 Then TxtEdad.Text = "99 años"
-    End Sub
-    Private Sub DtpFdn_GotFocus(sender As Object, e As EventArgs) Handles DtpFdn.GotFocus
-
-        '| -----------------------------------------------------------------------------------
-        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
-        '| ------------------------------------------------
-        TxtEdad.BackColor = Color.Beige
-
-        DtpFdn.CustomFormat = "' ' dd ' de  ' MMMM ' de  ' yyyy" 'LLENAMOS EL DTPFDN CON UNA FECHA PERSONALIZADA
-    End Sub
-    Private Sub DtpFdn_LostFocus(sender As Object, e As EventArgs) Handles DtpFdn.LostFocus
-        'CAMBIAR COLOR 
-        TxtEdad.BackColor = Color.Azure
-        If TxtEdad.Text = "" Then TxtEdad.BackColor = Color.MistyRose
-    End Sub
-    '
-    '
-    '
-    Private Sub DtpFdi_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdi.ValueChanged
-        'DtpFdi_ValueChanged
     End Sub
     '
     '
@@ -462,6 +441,36 @@ Public Class FrmNuevoEditarCliente
     '
     '
     '
+    Private Sub TxtListaNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtListaNom.TextChanged
+
+        '-*/
+        If RbGrupoFamiliar.Checked Then
+
+            sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '" & TxtListaNom.Text & "%' ORDER BY nom_grp"
+            LlenarDgvListaNombre(sqlConsulta)
+
+            If String.IsNullOrWhiteSpace(TxtListaNom.Text) Then LblNumIntgrntes.Text = ""
+
+            If DgvListaNombre.RowCount > 0 Then
+                If TxtListaNom.Text = DgvListaNombre.CurrentRow.Cells(1).Value Then
+                    LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
+                End If
+            End If
+        End If
+
+    End Sub
+    Private Sub TxtListaNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtListaNom.GotFocus
+        'TxtListaNombre_GotFocus
+    End Sub
+    Private Sub TxtListaNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtListaNom.KeyPress
+        'TxtListaNombre_KeyPress
+    End Sub
+    Private Sub TxtListaNombre_LostFocus(sender As Object, e As EventArgs) Handles TxtListaNom.LostFocus
+        'TxtListaNombre_LostFocus
+    End Sub
+    '
+    '
+    '
     Private Sub DgvListaNombre_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListaNombre.CellContentClick
     End Sub
     Private Sub DgvListaNombre_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListaNombre.CellClick
@@ -557,7 +566,7 @@ Public Class FrmNuevoEditarCliente
     '
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
 
-        '-----------------------------------------------------------------------------------------------
+        '| ---------------------------------------------------------------------------------------------
         '| COMPROBAMOS SI HAY INFORMACION DEL CLIENTE ANTES DE GUARDAR
         '| -----------------------------------------------------------
         '| * Llamamos a la función FunMsgBox() y le pasamos los parámetros, según sea el caso, para _
@@ -570,7 +579,7 @@ Public Class FrmNuevoEditarCliente
         If FunMsgBox(RbDiario.Text, BtnGuardar.Text, TxtListaNom, RbDiario) Then Exit Sub
         If FunMsgBox(RbGrupoFamiliar.Text, BtnGuardar.Text, TxtListaNom, RbGrupoFamiliar) Then Exit Sub
 
-        '-----------------------------------------------------------------------------------------------
+        '| ----------------------------------------------------------------------------------------------
         '| GUARDAR UN NUEVO REGISTRO EN LA TABLA CLIENTES
         '| ----------------------------------------------
         '| * Comprobamos el valor de la variable strmpago para hacer la consulta a la BBDD
@@ -600,7 +609,7 @@ Public Class FrmNuevoEditarCliente
         End If
         FunCrudSql(sqlConsulta)
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| BUSCAR EL ÚLTIMO REGISTRO GUARDADO PARA OBTENER EL ID DEL CLIENTE
         '| -----------------------------------------------------------------
         '| * Llamamos a la función FunReadIdClient() y le pasamos la consulta para obtener el [id_cli] _
@@ -610,7 +619,7 @@ Public Class FrmNuevoEditarCliente
         sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
         FunReadIdClient(sqlConsulta)
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE AL NUEVO CLIENTE
         '| ----------------------------------------------------------------
         '| * Seleccionamos el CASE para la consulta según el valor de la variable [strMtdPgs].
@@ -638,7 +647,7 @@ Public Class FrmNuevoEditarCliente
             FunSearchDiscountPrice(sqlConsulta)
         End If
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
         '| ---------------------------------------------
         '| * Hacemos la consulta y lo almacenamos en la variable sqlConsulta.
@@ -650,7 +659,7 @@ Public Class FrmNuevoEditarCliente
                                 '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
         FunCrudSql(sqlConsulta)
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| ACTUALIZAR REGISTROS DE LA TABLA GRUPO_FAMILIAR
         '| -------------------------------------------------
         '| * Comprobamos el valor de la variable strAddMembers para hacer la consulta a la BBDD.
@@ -681,7 +690,7 @@ Public Class FrmNuevoEditarCliente
                 FunCrudSql(sqlConsulta)
         End Select
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario _
         '| _ FrmNuevoEditarCliente, ****** y mostrar el mensaje de confirmación.
         FillLabelsMessage()
@@ -698,7 +707,7 @@ Public Class FrmNuevoEditarCliente
     '
     Private Sub BtnActualizar_Click(sender As Object, e As EventArgs) Handles BtnActualizar.Click
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| COMPROBAMOS SI HAY INFORMACION DEL CLIENTE ANTES DE ACTUALIZAR
         '| --------------------------------------------------------------
         '| * Llamamos a la función FunMsgBox() y le pasamos los parámetros, según sea el caso, para _
@@ -711,7 +720,7 @@ Public Class FrmNuevoEditarCliente
         If FunMsgBox(RbDiario.Text, BtnActualizar.Text, TxtListaNom, RbDiario) Then Exit Sub
         If FunMsgBox(RbGrupoFamiliar.Text, BtnActualizar.Text, TxtListaNom, RbGrupoFamiliar) Then Exit Sub
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| ACTUALIZAR EL REGISTRO EN LA TABLA CLIENTES
         '| -------------------------------------------
         '| * Comprobamos el valor de la variable strmpago para hacer la consulta a la BBDD
@@ -753,7 +762,7 @@ Public Class FrmNuevoEditarCliente
         End If
         FunCrudSql(sqlConsulta)
 
-        '------------------------------------------------------------------------------------------------------------
+        '| ------------------------------------------------------------------------------------------------------------
         '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente, _
         '| _ cambiar el texto del StsBarra y mostrar el mensaje de confirmación.
         FillLabelsMessage()
@@ -774,7 +783,20 @@ Public Class FrmNuevoEditarCliente
     '::: ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- :::'
     '::: -------------------------------------------------------- :::'
 
-    'Sub TxtLostFocus(ByVal TxtCadena As TextBox)
+    Sub Fun_TxtLost_Focus(lblLabel As Label)
+
+        ' 1. Limpiar errores previos
+        ErrorProvider.Clear()
+
+        If String.IsNullOrWhiteSpace(lblLabel.Text) Then
+            ErrorProvider.SetError(lblLabel, "El campo no puede estar vacío.")
+            lblLabel.BackColor = Color.MistyRose
+        Else
+            lblLabel.BackColor = Color.Azure
+        End If
+
+    End Sub
+
     Sub Fun_TxtLost_Focus(txtTextBox As TextBox)
 
         'TxtCadena.Text = Trim(TxtCadena.Text)
@@ -904,7 +926,7 @@ Public Class FrmNuevoEditarCliente
     '
     Sub FillLabelsMessage()
 
-        '-------------------------------------------------------------------------------------------------------
+        '| -------------------------------------------------------------------------------------------------------
         '| * Llenamos los campos del formulario FrmClientesPagos con los datos que se han guardado o actualizado.
         '| * Damos formato el codigo del cliente para mostrar en el mensaje de confirmación.
         '| * Cerramos el formulario FrmNuevoEditarCliente.
@@ -983,7 +1005,7 @@ Public Class FrmNuevoEditarCliente
     '
     Sub FunSearchDiscountPrice(sqlConsulta)
 
-        '-----------------------------------------------------------------------------------------------
+        '| -----------------------------------------------------------------------------------------------
         '| * Usamos Try-Catch para controlar posibles errores
         '| TRY :
         '|      * Conectamos y abrimos la base de datos.

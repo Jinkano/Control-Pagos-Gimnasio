@@ -258,6 +258,27 @@ Module Funciones
         End Try
     End Sub
 
+    Public Function CalculateAge(ByVal dtDateOfBirth As Date) As Integer
+
+        '| * Obtienemos la fecha actual y almacenamos en la variable dtToday.
+        '| * Restamos el año actual y el año de nacimiento que lo guardamos en la variable intAge
+        '| IF : Comprobamos si la fecha de nacimiento es mayor a la fecha de hoy (A la fecha de _
+        '|      _ hoy le restamos el valor de la variable intAge).
+        '|      * Si se cumple esa condición significa que aún no se ha cumplido años y restamos _
+        '|        _ un año a la variable intAge.
+        '| * Retornamos la variable intAge con la edad.
+
+        Dim dtToday As Date = Date.Today
+        Dim intAge As Integer = dtToday.Year - dtDateOfBirth.Year
+
+        If dtDateOfBirth.Date > dtToday.AddYears(-intAge).Date Then
+            intAge = intAge - 1
+        End If
+
+        Return intAge
+
+    End Function
+
     Public Function FechaLarga(ByVal fecha As Date) As String
         Dim dia = fecha.Day
         Dim mes = fecha.Month

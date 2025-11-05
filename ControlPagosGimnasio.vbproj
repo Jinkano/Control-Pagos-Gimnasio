@@ -131,71 +131,71 @@
     <Compile Include="A_modify_A.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmGrupoFamiliar.Designer.vb">
+    <Compile Include="Forms\FrmGrupoFamiliar.Designer.vb">
       <DependentUpon>FrmGrupoFamiliar.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmGrupoFamiliar.vb">
+    <Compile Include="Forms\FrmGrupoFamiliar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUserPassword.vb">
+    <Compile Include="Forms\FrmUserPassword.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUserPassword.Designer.vb">
+    <Compile Include="Forms\FrmUserPassword.Designer.vb">
       <DependentUpon>FrmUserPassword.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmClientesPagos.Designer.vb">
+    <Compile Include="Forms\FrmClientesPagos.Designer.vb">
       <DependentUpon>FrmClientesPagos.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmClientesPagos.vb">
+    <Compile Include="Forms\FrmClientesPagos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmHistorialPagos.Designer.vb">
+    <Compile Include="Forms\FrmHistorialPagos.Designer.vb">
       <DependentUpon>FrmHistorialPagos.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmHistorialPagos.vb">
+    <Compile Include="Forms\FrmHistorialPagos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmListaClientes.Designer.vb">
+    <Compile Include="Forms\FrmListaClientes.Designer.vb">
       <DependentUpon>FrmListaClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmListaClientes.vb">
+    <Compile Include="Forms\FrmListaClientes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmListaMorosos.Designer.vb">
+    <Compile Include="Forms\FrmListaMorosos.Designer.vb">
       <DependentUpon>FrmListaMorosos.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmListaMorosos.vb">
+    <Compile Include="Forms\FrmListaMorosos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNuevoEditarCliente.Designer.vb">
+    <Compile Include="Forms\FrmNuevoEditarCliente.Designer.vb">
       <DependentUpon>FrmNuevoEditarCliente.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmNuevoEditarCliente.vb">
+    <Compile Include="Forms\FrmNuevoEditarCliente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPagoMensual.Designer.vb">
+    <Compile Include="Forms\FrmPagoMensual.Designer.vb">
       <DependentUpon>FrmPagoMensual.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmPagoMensual.vb">
+    <Compile Include="Forms\FrmPagoMensual.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPresentacion.Designer.vb">
+    <Compile Include="Forms\FrmPresentacion.Designer.vb">
       <DependentUpon>FrmPresentacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmPresentacion.vb">
+    <Compile Include="Forms\FrmPresentacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrincipal.Designer.vb">
+    <Compile Include="Forms\FrmPrincipal.Designer.vb">
       <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmPrincipal.vb">
+    <Compile Include="Forms\FrmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTablaDescuento.Designer.vb">
+    <Compile Include="Forms\FrmTablaDescuento.Designer.vb">
       <DependentUpon>FrmTablaDescuento.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmTablaDescuento.vb">
+    <Compile Include="Forms\FrmTablaDescuento.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\Funciones.vb" />
@@ -221,37 +221,37 @@
     <EmbeddedResource Include="A_modify_A.resx">
       <DependentUpon>A_modify_A.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmGrupoFamiliar.resx">
+    <EmbeddedResource Include="Forms\FrmGrupoFamiliar.resx">
       <DependentUpon>FrmGrupoFamiliar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUserPassword.resx">
+    <EmbeddedResource Include="Forms\FrmUserPassword.resx">
       <DependentUpon>FrmUserPassword.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmClientesPagos.resx">
+    <EmbeddedResource Include="Forms\FrmClientesPagos.resx">
       <DependentUpon>FrmClientesPagos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmHistorialPagos.resx">
+    <EmbeddedResource Include="Forms\FrmHistorialPagos.resx">
       <DependentUpon>FrmHistorialPagos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmListaClientes.resx">
+    <EmbeddedResource Include="Forms\FrmListaClientes.resx">
       <DependentUpon>FrmListaClientes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmListaMorosos.resx">
+    <EmbeddedResource Include="Forms\FrmListaMorosos.resx">
       <DependentUpon>FrmListaMorosos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNuevoEditarCliente.resx">
+    <EmbeddedResource Include="Forms\FrmNuevoEditarCliente.resx">
       <DependentUpon>FrmNuevoEditarCliente.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPagoMensual.resx">
+    <EmbeddedResource Include="Forms\FrmPagoMensual.resx">
       <DependentUpon>FrmPagoMensual.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPresentacion.resx">
+    <EmbeddedResource Include="Forms\FrmPresentacion.resx">
       <DependentUpon>FrmPresentacion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrincipal.resx">
+    <EmbeddedResource Include="Forms\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTablaDescuento.resx">
+    <EmbeddedResource Include="Forms\FrmTablaDescuento.resx">
       <DependentUpon>FrmTablaDescuento.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

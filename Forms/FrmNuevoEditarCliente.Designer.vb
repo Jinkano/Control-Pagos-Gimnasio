@@ -23,8 +23,8 @@ Partial Class FrmNuevoEditarCliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TttNewUpdate = New System.Windows.Forms.ToolTip(Me.components)
         Me.BtnAddGrupo = New System.Windows.Forms.Button()
         Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
@@ -83,7 +83,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnAddGrupo.Margin = New System.Windows.Forms.Padding(8, 0, 0, 0)
         Me.BtnAddGrupo.Name = "BtnAddGrupo"
         Me.BtnAddGrupo.Size = New System.Drawing.Size(90, 40)
-        Me.BtnAddGrupo.TabIndex = 4
+        Me.BtnAddGrupo.TabIndex = 3
         Me.TttNewUpdate.SetToolTip(Me.BtnAddGrupo, "AGREGAR NUEVO GRUPO FAMILIAR")
         Me.BtnAddGrupo.UseVisualStyleBackColor = True
         '
@@ -93,20 +93,20 @@ Partial Class FrmNuevoEditarCliente
         Me.DgvListaNombre.AllowUserToDeleteRows = False
         Me.DgvListaNombre.AllowUserToResizeColumns = False
         Me.DgvListaNombre.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgvListaNombre.ColumnHeadersHeight = 4
         Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle6
         Me.DgvListaNombre.Enabled = False
         Me.DgvListaNombre.Location = New System.Drawing.Point(0, 56)
         Me.DgvListaNombre.Margin = New System.Windows.Forms.Padding(0, 4, 0, 0)
@@ -293,7 +293,7 @@ Partial Class FrmNuevoEditarCliente
         Me.GbListaGrupoFamiliar.Name = "GbListaGrupoFamiliar"
         Me.GbListaGrupoFamiliar.Padding = New System.Windows.Forms.Padding(0)
         Me.GbListaGrupoFamiliar.Size = New System.Drawing.Size(328, 186)
-        Me.GbListaGrupoFamiliar.TabIndex = 3
+        Me.GbListaGrupoFamiliar.TabIndex = 4
         Me.GbListaGrupoFamiliar.TabStop = False
         Me.GbListaGrupoFamiliar.Text = "Lista vacia"
         '
@@ -339,7 +339,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 4)
         Me.BtnGuardar.Size = New System.Drawing.Size(135, 75)
-        Me.BtnGuardar.TabIndex = 4
+        Me.BtnGuardar.TabIndex = 5
         Me.BtnGuardar.Text = "&Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnGuardar.UseVisualStyleBackColor = False
@@ -359,7 +359,7 @@ Partial Class FrmNuevoEditarCliente
         Me.GbMetodoPago.Size = New System.Drawing.Size(376, 341)
         Me.GbMetodoPago.TabIndex = 3
         Me.GbMetodoPago.TabStop = False
-        Me.GbMetodoPago.Text = "Método de pago"
+        Me.GbMetodoPago.Text = "Método de pago :"
         '
         'BtnActualizar
         '
@@ -375,7 +375,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnActualizar.Name = "BtnActualizar"
         Me.BtnActualizar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 4)
         Me.BtnActualizar.Size = New System.Drawing.Size(135, 75)
-        Me.BtnActualizar.TabIndex = 5
+        Me.BtnActualizar.TabIndex = 6
         Me.BtnActualizar.Text = "&Actualizar"
         Me.BtnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnActualizar.UseVisualStyleBackColor = False
@@ -545,7 +545,7 @@ Partial Class FrmNuevoEditarCliente
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 7, 0, 4)
         Me.BtnCancelar.Size = New System.Drawing.Size(135, 75)
-        Me.BtnCancelar.TabIndex = 6
+        Me.BtnCancelar.TabIndex = 7
         Me.BtnCancelar.Text = "&Cancelar"
         Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnCancelar.UseVisualStyleBackColor = False
@@ -625,8 +625,8 @@ Partial Class FrmNuevoEditarCliente
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.GbContacto)
         Me.Controls.Add(Me.GbDatos)
-        Me.Controls.Add(Me.BtnGuardar)
         Me.Controls.Add(Me.BtnActualizar)
+        Me.Controls.Add(Me.BtnGuardar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
