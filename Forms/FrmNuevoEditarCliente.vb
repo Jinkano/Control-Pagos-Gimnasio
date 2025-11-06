@@ -1,17 +1,11 @@
-﻿Imports System.ComponentModel
-Imports System.Text.RegularExpressions
-Imports MySql.Data.MySqlClient
+﻿Public Class FrmNuevoEditarCliente
 
-Public Class FrmNuevoEditarCliente
+    Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo As String
 
-    Dim cnxnMySql As New MySqlConnection
-    Dim drDataReader As MySqlDataReader
-    Dim cmdCommand As MySqlCommand
-    Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo, strAddMembers As String
-    Dim nRow, intAddMember As Int16
-    Dim precio, dscnto As Decimal
-    Dim blnMarker As Boolean
-    Public strIdClient As String
+    Public blnMarker As Boolean
+    Public intAddMember As Int16
+    Public precio, dscnto As Decimal
+    Public strIdClient, strAddMembers As String
 
     Private Sub FrmNuevoEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -74,8 +68,8 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------
         '| VALAIDACIONES AL PERDER EL ENFOQUE
         '| ----------------------------------
-        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
-        Fun_TxtLost_Focus(TxtNombre)
+        '| * Llamamos a la subrutina Sub_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Sub_TxtLost_Focus(TxtNombre)
 
     End Sub
     Private Sub TxtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNombre.KeyPress
@@ -85,11 +79,11 @@ Public Class FrmNuevoEditarCliente
         '| ---------------------------------------
         '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
         '| * Almacenamos en la variable strLockKey los caracteres que queremos EXCLUIR.
-        '| * Llamamos a la función Fun_Only_Letters y le pasamos las variables como parámetro.
+        '| * Llamamos a la subrutina Fun_Only_Letters y le pasamos las variables como parámetro.
 
         Dim strAllowKey As String = " "
         Dim strLockKey As String = "ºª"
-        Fun_Only_Letters(strAllowKey, strLockKey, e)
+        Sub_Only_Letters(strAllowKey, strLockKey, e)
 
     End Sub
     '
@@ -110,8 +104,8 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------
         '| VALAIDACIONES AL PERDER EL ENFOQUE
         '| ----------------------------------
-        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
-        Fun_TxtLost_Focus(TxtApellido)
+        '| * Llamamos a la subrutina Sub_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Sub_TxtLost_Focus(TxtApellido)
 
     End Sub
     Private Sub TxtApellido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtApellido.KeyPress
@@ -121,11 +115,11 @@ Public Class FrmNuevoEditarCliente
         '| ---------------------------------------
         '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
         '| * Almacenamos en la variable strLockKey los caracteres que queremos EXCLUIR.
-        '| * Llamamos a la función Fun_Only_Letters y le pasamos las variables como parámetro.
+        '| * Llamamos a la subrutina Fun_Only_Letters y le pasamos las variables como parámetro.
 
         Dim strAllowKey As String = " "
         Dim strLockKey As String = "ºª"
-        Fun_Only_Letters(strAllowKey, strLockKey, e)
+        Sub_Only_Letters(strAllowKey, strLockKey, e)
 
     End Sub
     '
@@ -137,11 +131,11 @@ Public Class FrmNuevoEditarCliente
         '| CALCULAR LA EDAD DEL CLIENTE
         '| ----------------------------
         '| * Almacenamos en la variable dtDateOfBirth la fecha de nacimiento que se obtiene del DtpFdn
-        '| * Para calcular los años llamamos a la función CalculateAge() y le pasamos la variable _
+        '| * Para calcular los años llamamos a la función Fun_Calculate_Age() y le pasamos la variable _
         '|   _ dtDateOfBirth, está función nos devuelve un valor entero que lo mostramos en el label TxtEdad.  
 
         Dim dtDateOfBirth As Date = DtpFdn.Value
-        TxtEdad.Text = CalculateAge(dtDateOfBirth) & " años"
+        TxtEdad.Text = Fun_Calculate_Age(dtDateOfBirth) & " años"
 
     End Sub
     Private Sub DtpFdn_GotFocus(sender As Object, e As EventArgs) Handles DtpFdn.GotFocus
@@ -161,8 +155,8 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------
         '| VALAIDACIONES AL PERDER EL ENFOQUE
         '| ----------------------------------
-        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como el Label (TxtEdad)
-        Fun_TxtLost_Focus(TxtEdad)
+        '| * Llamamos a la subrutina Sub_TxtLost_Focus() y le pasamos como el Label (TxtEdad)
+        Sub_TxtLost_Focus(TxtEdad)
 
     End Sub
     '
@@ -183,8 +177,8 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------
         '| VALAIDACIONES AL PERDER EL ENFOQUE
         '| ----------------------------------
-        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
-        Fun_TxtLost_Focus(TxtTelefono)
+        '| * Llamamos a la subrutina Sub_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Sub_TxtLost_Focus(TxtTelefono)
 
     End Sub
     Private Sub TxtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTelefono.KeyPress
@@ -193,10 +187,10 @@ Public Class FrmNuevoEditarCliente
         '| VALIDAR EL INGRESO DE NÚMEROS, PARÉNTESIS, GUION Y ESPACIO
         '| ----------------------------------------------------------
         '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
-        '| * Llamamos a la función Fun_Only_Letters y le pasamos la variable como parámetro.
+        '| * Llamamos a la subrutina Sub_Only_Numbers y le pasamos la variable como parámetro.
 
         Dim strAllowKey As String = "(-) "
-        Fun_Only_Numbers(strAllowKey, e)
+        Sub_Only_Numbers(strAllowKey, e)
 
     End Sub
     '
@@ -238,12 +232,12 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------
         '| VALAIDACIONES AL PERDER EL ENFOQUE
         '| ----------------------------------
-        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        '| * Llamamos a la subrutina Sub_TxtLost_Focus() y le pasamos como parámetro el TextBox
         '| IF : Comrpobamos si el TxtEmail no está vacio Y si Fun_IsValid_Email no cumple con el formato del E-Mail
         '|      * Mostrar el error si el formato es incorrecto.
         '|      * Cambiamos el color del fondo.
 
-        Fun_TxtLost_Focus(TxtEmail)
+        Sub_TxtLost_Focus(TxtEmail)
         If Not String.IsNullOrWhiteSpace(TxtEmail.Text) And Not Fun_IsValid_Email(TxtEmail.Text) Then
             ErrorProvider.SetError(TxtEmail, "Ingresa un formato de E-Mail válido (usuario@dominio.com)")
             TxtEmail.BackColor = Color.MistyRose
@@ -268,10 +262,10 @@ Public Class FrmNuevoEditarCliente
         '| VALIDAR EL INGRESO DE CARACTERES PARA LA DIRECCIÓN
         '| --------------------------------------------------
         '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
-        '| * Llamamos a la función Fun_Only_Letters y le pasamos las variables como parámetro.
+        '| * Llamamos a la subrutina Fun_Only_Letters y le pasamos las variables como parámetro.
 
         Dim strAllowKey As String = "(&'.-/) "
-        Fun_Letters_And_Numbers(strAllowKey, e)
+        Sub_Letters_And_Numbers(strAllowKey, e)
 
     End Sub
     Private Sub TxtDireccion_LostFocus(sender As Object, e As EventArgs) Handles TxtDireccion.LostFocus
@@ -279,20 +273,25 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------
         '| VALAIDACIONES AL PERDER EL ENFOQUE
         '| ----------------------------------
-        '| * Llamamos a la función Fun_TxtLost_Focus() y le pasamos como parámetro el TextBox
-        Fun_TxtLost_Focus(TxtDireccion)
+        '| * Llamamos a la subrutina Sub_TxtLost_Focus() y le pasamos como parámetro el TextBox
+        Sub_TxtLost_Focus(TxtDireccion)
 
     End Sub
     '
     '
     '
-    Private Sub RbEstadoActivo_CheckedChanged(sender As Object, e As EventArgs) Handles RbEstadoActivo.CheckedChanged
+    Private Sub RbEstadoActivo_CheckedChanged(sender As Object, e As EventArgs) Handles RbActiveStatus.CheckedChanged
 
-        '| Comprobamos si RbEstadoActivo está activado para llenar la variable strEstado el texto "ACTIVO", _
-        '| _ en caso contrario le pasamos a la variable el texto "INACTIVO".
-        '| La variable strEstado se usa para guardar o actualizar los datos del cliente.
+        '| --------------------------------------------------------------------------------------------------
+        '| LLENAR LA VARIABLE CON EL ESTADO DEL CLIENTE
+        '| --------------------------------------------
+        '| IF : Comprobamos que RadioButton está activado.
+        '|      * Si RbActiveStatus está activado, la variable strEstado es igual a "ACTIVO".
+        '| ELSE :
+        '|      * Si RbInactiveStatus está activado, la variable strEstado es igual a "INACTIVO".
+        '| ** La variable strEstado se usa para guardar o actualizar los datos del cliente.
 
-        If RbEstadoActivo.Checked Then
+        If RbActiveStatus.Checked Then
             strEstado = "ACTIVO"
         Else
             strEstado = "INACTIVO"
@@ -325,33 +324,8 @@ Public Class FrmNuevoEditarCliente
             DgvListaNombre.Enabled = True
 
             'USAMOS TRY PARA CONTROLAR POSIBLES ERRORES
-            Try
-                'CONECTAR Y ABRIR LA BBDD
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-                cnxnMySql.Open()
-                sqlConsulta = "SELECT id_trfa, tipo_trfa FROM trfa_dscto WHERE tipo_trfa LIKE '%DIARIO%'"
-                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-                drDataReader = cmdCommand.ExecuteReader()
-                DgvListaNombre.Rows.Clear()
-                'COMPROBAMOS SI HAY REGISTROS
-                If drDataReader.HasRows Then
-                    While drDataReader.Read()
-                        nRow = DgvListaNombre.Rows.Add()
-                        DgvListaNombre.Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0) '.ToString 'ID
-                        DgvListaNombre.Rows(nRow).Cells(1).Value = drDataReader.GetString(1) 'NOMBRE TIPO TARIFA
-                    End While
-                End If
-                'CERRAMOS EL DATA READER
-                drDataReader.Close()
-            Catch ex As Exception
-                '
-                MsgBox(ex.Message)
-            Finally
-                'CERRAMOS LA BASE DE DATOS
-                cnxnMySql.Close()
-            End Try
-            'Else
-            'GbListaPrecio.Text = "Lista"
+            sqlConsulta = "SELECT id_trfa, tipo_trfa FROM trfa_dscto WHERE tipo_trfa LIKE '%DIARIO%'"
+            Sub_Crud_Sql(sqlConsulta, "SubSearchDailyPrice")
         End If
         '
     End Sub
@@ -417,7 +391,8 @@ Public Class FrmNuevoEditarCliente
 
             'HACEMOS LA CONSULTA Y SE LO PASAMOS A LA FUNCIÓN PARA LLENAR EL DATAGRIDVIEW CON LOS GRUPOS FAMILIARES
             sqlConsulta = "SELECT * FROM grp_familiar ORDER BY id_grp DESC"
-            LlenarDgvListaNombre(sqlConsulta)
+            'LlenarDgvListaNombre(sqlConsulta)
+            Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
 
         Else 'RbGrupoFamiliar.Checked=FALSE
             '
@@ -447,7 +422,8 @@ Public Class FrmNuevoEditarCliente
         If RbGrupoFamiliar.Checked Then
 
             sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '" & TxtListaNom.Text & "%' ORDER BY nom_grp"
-            LlenarDgvListaNombre(sqlConsulta)
+            'LlenarDgvListaNombre(sqlConsulta)
+            Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
 
             If String.IsNullOrWhiteSpace(TxtListaNom.Text) Then LblNumIntgrntes.Text = ""
 
@@ -501,44 +477,8 @@ Public Class FrmNuevoEditarCliente
                     intAddMember = DgvListaNombre.CurrentRow.Cells(2).Value + 1
 
                     '::: COMPROBAMOS SI EXISTE UNA TARIFA CON EL NÚMERO DE INTEGRANTES :::'
-                    'USAMOS TRY PARA CONTROLAR POSIBLES ERRORES
-                    Try
-                        'CONECTAR Y ABRIR LA BBDD
-                        cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-                        cnxnMySql.Open()
-                        'HACEMOS LA CONSULTA
-                        sqlConsulta = "SELECT nperson_trfa FROM trfa_dscto WHERE nperson_trfa = '" & intAddMember & "'"
-                        cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-                        drDataReader = cmdCommand.ExecuteReader()
-                        'COMPROBAMOS SI NO HAY REGISTROS
-                        If Not drDataReader.HasRows Then
-                            'PREGUNTAMOS SI QUIERE AGREGAR UNA TARIFA
-                            If MsgBox("   No hay una tarifa para " & intAddMember & " integrantes." & vbCr &
-                                      "   ______________________________________" & vbCr & vbCr &
-                                      "                ¿Quieres agergar una tarifa?",
-                                        vbYesNo + vbDefaultButton2 + vbQuestion, "Lista de integrantes") = vbYes Then
-                                'PONEMOS LA VARIABLE EN 0 Y MOSTRAMOS EL FORM
-                                intAddMember = 0
-                                FrmTablaDescuento.Show()
-                            End If
-                        Else 'SI HAY REGISTROS (TARIFA PARA LA CANTIDAD DE INTEGRANTES)
-                            'CERRAMOS LA BASE DE DATOS
-                            cnxnMySql.Close()
-                            'LLENAMOS EL TEXTBOX CON EL NOMBRE DEL GRUPO
-                            TxtListaNom.Text = DgvListaNombre.CurrentRow.Cells(1).Value
-                            '
-                            LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
-                            '
-                            'LLENAMOS LA VARIABLE PARA ACTUALIZAR LOS CAMPOS num_intgrntes_grp Y intgrntes_reg_grp AL MOMENTO DE GUARDAR
-                            strAddMembers = "UPDATE_TWO_FIELDS"
-                        End If
-                    Catch ex As Exception
-                        'MOSTRAMOS UN MENSAJE CON EL ERROR CAPTURADO
-                        MsgBox(ex.ToString)
-                    Finally
-                        'CERRAMOS LA BASE DE DATOS
-                        cnxnMySql.Close()
-                    End Try
+                    sqlConsulta = "SELECT nperson_trfa FROM trfa_dscto WHERE nperson_trfa = '" & intAddMember & "'"
+                    Sub_Crud_Sql(sqlConsulta, "SubSearchGroupPrice")
 
                 Else 'SI HACEMOS CLICK EN NO
 
@@ -589,7 +529,7 @@ Public Class FrmNuevoEditarCliente
         '| ELSE :
         '|      * Si la variable strMtdPgs es "MENSUAL" o "DIARIO" hacemos la consulta sin _
         '|        _ el [id_grp] del grupo familiar.
-        '| * Llamamos a la función FunCrudSql() y le pasamos la consulta [sqlConsulta].
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
 
         If strMtdPgs = "GRUPAL" Then
             sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli, fdn_cli, tlf_cli, eml_cli, dir_cli, mpg_cli, fdi_cli, std_cli, id_grp)
@@ -607,30 +547,31 @@ Public Class FrmNuevoEditarCliente
                                 '" & strMtdPgs & "', '" & DtpFdi.Value.ToString("yyyy-MM-dd") & "',
                                 '" & strEstado & "')"
         End If
-        FunCrudSql(sqlConsulta)
+        Sub_Crud_Sql(sqlConsulta)
 
         '| -----------------------------------------------------------------------------------------------
         '| BUSCAR EL ÚLTIMO REGISTRO GUARDADO PARA OBTENER EL ID DEL CLIENTE
         '| -----------------------------------------------------------------
-        '| * Llamamos a la función FunReadIdClient() y le pasamos la consulta para obtener el [id_cli] _
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta para obtener el [id_cli] _
         '|   _ del último registro guardado en la tabla [clientes] y lo almacenamos en la variable _
         '|   _ strIdClient que es Public.
 
         sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
-        FunReadIdClient(sqlConsulta)
+        'FunReadIdClient(sqlConsulta)
+        Sub_Crud_Sql(sqlConsulta, "SubReadIdClient")
 
         '| -----------------------------------------------------------------------------------------------
         '| CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE AL NUEVO CLIENTE
         '| ----------------------------------------------------------------
         '| * Seleccionamos el CASE para la consulta según el valor de la variable [strMtdPgs].
-        '| * Llamamos a la función FunSearchDiscountPrice() y le pasamos por parámetro la consulta _
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos por parámetro la consulta _
         '|   _ almacenada en "sqlConsulta", si en está consulta no hay resultado pasamos la variable _
         '|   _ blnMarker a True.
         '|
         '| IF : Si el valor de la variable blnMarker es True
         '|      * Hacemos una nueva consulta para buscar la tarifa única MENSUAL que nos devolverá el _
         '|        _ precio y el descuento registrado en la tabla [trfa_dscto].
-        '|      * Llamamos a la función FunSearchDiscountPrice() y le pasamos la consulta .
+        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta .
 
         Select Case strMtdPgs
             Case "MENSUAL"
@@ -640,24 +581,24 @@ Public Class FrmNuevoEditarCliente
             Case Else 'DIARIO (5,6,7...)
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = '" & strMtdPgs & "'"
         End Select
-        FunSearchDiscountPrice(sqlConsulta)
+        Sub_Crud_Sql(sqlConsulta, "SubSearchDiscountPrice")
 
         If blnMarker = True Then
             sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = 'MENSUAL'"
-            FunSearchDiscountPrice(sqlConsulta)
+            Sub_Crud_Sql(sqlConsulta, "SubSearchDiscountPrice")
         End If
 
         '| -----------------------------------------------------------------------------------------------
         '| AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
         '| ---------------------------------------------
         '| * Hacemos la consulta y lo almacenamos en la variable sqlConsulta.
-        '| * Llamamos al la función FunCrudSql() y le pasamos la consulta.
+        '| * Llamamos al la subrutina Sub_Crud_Sql() y le pasamos la consulta.
 
         sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
                            VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "',
                                 '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "',
                                 '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
-        FunCrudSql(sqlConsulta)
+        Sub_Crud_Sql(sqlConsulta)
 
         '| -----------------------------------------------------------------------------------------------
         '| ACTUALIZAR REGISTROS DE LA TABLA GRUPO_FAMILIAR
@@ -666,12 +607,12 @@ Public Class FrmNuevoEditarCliente
         '|
         '| CASE "UPDATE_A_FIELD" :
         '|      * En este caso solo vamos a actualizar el campo [intgrntes_reg_grp] de la tabla [grp_familiar]
-        '|      * Llamamos a la función FunCrudSql() y le pasamos la consulta [sqlConsulta].
+        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
         '|
         '| CASE "UPDATE_TWO_FIELDS" :
         '|      * En este caso actualizamos los campos [num_intgrntes_grp y intgrntes_reg_grp] de la tabla [grp_familiar]
-        '|      * Llamamos a la función FunCrudSql() y le pasamos la consulta [sqlConsulta].
-        '| ** El motivo por el cual estamos llamando dos veces a la función FunCrudSql() es para evitar guardar dos _
+        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
+        '| ** El motivo por el cual estamos llamando dos veces a la subrutina Sub_Crud_Sql() es para evitar guardar dos _
         '|    _ registros en la tabla "pagos" al momento de registrar un nuevo cliente. No se porqué se queda la _
         '|    _ consulta después de cerra el DataReader y la BBDD.
 
@@ -680,14 +621,14 @@ Public Class FrmNuevoEditarCliente
                 sqlConsulta = "UPDATE grp_familiar SET
                                     intgrntes_reg_grp = '" & intAddMember & "'
                                     WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
-                FunCrudSql(sqlConsulta)
+                Sub_Crud_Sql(sqlConsulta)
 
             Case "UPDATE_TWO_FIELDS"
                 sqlConsulta = "UPDATE grp_familiar SET
                                     num_intgrntes_grp = '" & intAddMember & "',
                                     intgrntes_reg_grp = '" & intAddMember & "'
                                     WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
-                FunCrudSql(sqlConsulta)
+                Sub_Crud_Sql(sqlConsulta)
         End Select
 
         '| -----------------------------------------------------------------------------------------------
@@ -699,7 +640,7 @@ Public Class FrmNuevoEditarCliente
         '    FunDisableButtons()
 
         'Esyo es por si se ha guardado
-        FrmClientesPagos.FunActivateButtons()
+        FrmClientesPagos.Sub_Activate_Buttons()
         'End If
     End Sub
     '
@@ -730,7 +671,7 @@ Public Class FrmNuevoEditarCliente
         '| ELSE :
         '|      * Si la variable strMtdPgs es "MENSUAL" o "DIARIO" hacemos la consulta sin _
         '|        _ el [id_grp] del grupo familiar.
-        '| * Llamamos a la función FunCrudSql() y le pasamos la consulta [sqlConsulta].
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
 
         If strMtdPgs = "GRUPAL" Then
 
@@ -760,7 +701,7 @@ Public Class FrmNuevoEditarCliente
                         std_cli='" & strEstado & "'
                         WHERE id_cli='" & strIdClient & "'"
         End If
-        FunCrudSql(sqlConsulta)
+        Sub_Crud_Sql(sqlConsulta)
 
         '| ------------------------------------------------------------------------------------------------------------
         '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente, _
@@ -774,16 +715,16 @@ Public Class FrmNuevoEditarCliente
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
 
         '| Cerramos el formulario.
-        If String.IsNullOrEmpty(FrmClientesPagos.LblNomCli.Text) Then FrmClientesPagos.FunDisableButtons()
+        If String.IsNullOrEmpty(FrmClientesPagos.LblNomCli.Text) Then FrmClientesPagos.Sub_Disable_Buttons()
         Me.Close()
 
     End Sub
-    '
-    '::: -------------------------------------------------------- :::'
-    '::: ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- :::'
-    '::: -------------------------------------------------------- :::'
 
-    Sub Fun_TxtLost_Focus(lblLabel As Label)
+    '| -------------------------------------------------------- |'
+    '| ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- |'
+    '| -------------------------------------------------------- |'
+
+    Sub Sub_TxtLost_Focus(lblLabel As Label)
 
         ' 1. Limpiar errores previos
         ErrorProvider.Clear()
@@ -797,7 +738,7 @@ Public Class FrmNuevoEditarCliente
 
     End Sub
 
-    Sub Fun_TxtLost_Focus(txtTextBox As TextBox)
+    Sub Sub_TxtLost_Focus(txtTextBox As TextBox)
 
         'TxtCadena.Text = Trim(TxtCadena.Text)
         'While TxtCadena.Text.Contains("  ")
@@ -936,7 +877,7 @@ Public Class FrmNuevoEditarCliente
             .LblNomCli.Text = TxtNombre.Text
             .LblApeCli.Text = TxtApellido.Text
             .FnacimientoCorto.Text = DtpFdn.Value
-            .LblFdnCli.Text = FechaLarga(DtpFdn.Value)
+            .LblFdnCli.Text = Fun_Long_Date(DtpFdn.Value)
             .LblEdadCli.Text = TxtEdad.Text
             .LblTlfCli.Text = TxtTelefono.Text
             .LblEmlCli.Text = TxtEmail.Text
@@ -948,7 +889,7 @@ Public Class FrmNuevoEditarCliente
                 .LblGrpFamCli.Text = TxtListaNom.Text
             End If
             .FregistroCorto.Text = DtpFdi.Value
-            .LblFdiCli.Text = FechaLarga(DtpFdi.Value)
+            .LblFdiCli.Text = Fun_Long_Date(DtpFdi.Value)
             .LblEstCli.Text = strEstado
         End With
 
@@ -968,121 +909,6 @@ Public Class FrmNuevoEditarCliente
                "   -----------------------------------------------" & vbCr &
                "   Datos " & bodyText & " correctamente.", vbInformation, "Registrado")
         Close()
-    End Sub
-    '
-    '
-    '
-    Sub FunReadIdClient(sqlConsulta As String)
-
-        '| * Usamos Try-Catch para controlar posibles errores
-        '| TRY :
-        '|      * Conectamos y abrimos la base de datos.
-        '|      * Ejecutamos la consulta recibida por parametro.
-        '|      * Leemos el drDataReader y el resultado lo almacenamos en la variable strIdClient.
-        '| CATCH :
-        '|      * Mostramos un mensaje con el error capturado.
-        '| FINALLY :
-        '|      * Cerramos el datareader y la base de datos.
-
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-            drDataReader.Read()
-            strIdClient = drDataReader.GetInt16(0).ToString
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-
-        Finally
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
-    End Sub
-    '
-    '
-    '
-    Sub FunSearchDiscountPrice(sqlConsulta)
-
-        '| -----------------------------------------------------------------------------------------------
-        '| * Usamos Try-Catch para controlar posibles errores
-        '| TRY :
-        '|      * Conectamos y abrimos la base de datos.
-        '|      * Ejecutamos la consulta recibida por parametro.
-        '|      IF : Si la consulta devuelve resultados
-        '|          * Leemos el drDataReader y el resultado lo almacenamos en las variables -
-        '|            - "precio" y "dscnto".
-        '|          * Pasamos la variable blnMarker a FALSE para no volver a llamar a esta función.
-        '|      ELSE :
-        '|          * Pasamos la variable blnMarker a TRUE, para hacer una nueva consulta y volver a _
-        '|          * llamar a esta función.
-        '| CATCH :
-        '|      * Mostramos un mensaje con el error capturado.
-        '| FINALLY :
-        '|      * Cerramos el datareader y la base de datos.
-
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader
-
-            If drDataReader.HasRows Then
-                drDataReader.Read()
-                precio = drDataReader.GetDecimal(0)
-                dscnto = drDataReader.GetDecimal(1)
-                blnMarker = False
-            Else
-                blnMarker = True
-            End If
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-
-        Finally
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
-
-    End Sub
-    '
-    '
-    '
-    Private Sub LlenarDgvListaNombre(sqlConsulta As String)
-
-        'USAMOS TRY PARA CONTROLAR POSIBLES ERRORES
-        Try
-            'CONECTAR Y ABRIR LA BBDD
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-
-            'EJECUTAMOS LA CONSULTA RECIBIDA POR PARAMETRO PARA LLENAR EL DATAGRIDVIEW
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-            DgvListaNombre.Rows.Clear()
-
-            'COMPROBAMOS SI HAY REGISTROS
-            If drDataReader.HasRows Then
-                'MIENTRS LEE EL DATAREADER LLENAMOS EL DATAGRIDVIEW
-                While drDataReader.Read()
-                    nRow = DgvListaNombre.Rows.Add()
-                    DgvListaNombre.Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0) 'ID
-                    DgvListaNombre.Rows(nRow).Cells(1).Value = drDataReader.GetString(1) 'NOMBRE TIPO TARIFA
-                    DgvListaNombre.Rows(nRow).Cells(2).Value = drDataReader.GetInt16(2) 'NUMERO DE INTEGRANTES
-                    DgvListaNombre.Rows(nRow).Cells(3).Value = drDataReader.GetInt16(3) 'INTEGRANTES REGISTRADOS
-                End While
-            End If
-
-        Catch ex As Exception
-            'MOSTRAMOS UN MENSAJE CON EL ERROR CAPTURADO
-            MsgBox(ex.ToString)
-        Finally
-            'CERRAMOS EL DATAREADER Y LA BASE DE DATOS
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
-
     End Sub
 
 End Class

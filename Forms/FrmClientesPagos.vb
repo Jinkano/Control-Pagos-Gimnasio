@@ -1,13 +1,7 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports MySql.Data.MySqlClient
+﻿Public Class FrmClientesPagos
 
-Public Class FrmClientesPagos
-
-    Dim cnxnMySql As New MySqlConnection
-    Dim drDataReader As MySqlDataReader
-    Dim cmdCommand As MySqlCommand
-    Dim nRow As Int16
     Dim sqlConsulta, strState, strFilter, strFlags As String
+
     Public strIdClient As String
     '
     '
@@ -20,9 +14,14 @@ Public Class FrmClientesPagos
         '| * Llamamos a la función FunCheckRecords() para comprobar si hay registros.
         '| ** El motivo porqué llamamos a la función en Activated y no Load, es para comprobar
         '| 
-        FunCheckRecords()
+
+        sqlConsulta = "SELECT id_cli FROM clientes"
+        Sub_Crud_Sql(sqlConsulta, "SubCheckRecords")
+        '| * Llamamos a la subrutina Sub_Disable_Buttons() para desactivar los botones.
+
+        Sub_Disable_Buttons()
         '| * Llamamos a la función CleanLabel() para limpiar los label's.
-        FunCleanLabel()
+        Sub_Clean_Label()
 
     End Sub
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
@@ -53,7 +52,7 @@ Public Class FrmClientesPagos
 
             Case 3
                 strFilter = "PHONE"
-                If DgvClientes.RowCount > 0 Then DgvClientes.CurrentCell = DgvClientes.Item(5, 0)
+                If DgvClientes.RowCount > 0 Then DgvClientes.CurrentCell = DgvClientes.Item(6, 0)
 
             Case Else
                 strFilter = ""
@@ -93,7 +92,52 @@ Public Class FrmClientesPagos
                 CmbFiltrar.Focus()
         End Select
 
-        LlenarListaClientes(sqlConsulta, strFilter, DgvClientes)
+        Sub_Crud_Sql(sqlConsulta, "SubFillClientList", strFilter)
+    End Sub
+    Private Sub TxtBuscar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBuscar.KeyPress
+        Select Case strFilter
+            Case "NAME"
+
+                '| -----------------------------------------------------------------------------------
+                '| VALIDAR EL INGRESO DE LETRAS Y ESPACIO
+                '| ---------------------------------------
+                '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+                '| * Almacenamos en la variable strLockKey los caracteres que queremos EXCLUIR.
+                '| * Llamamos a la subrutina Fun_Only_Letters y le pasamos las variables como parámetro.
+
+                Dim strAllowKey As String = " "
+                Dim strLockKey As String = "ºª"
+                Sub_Only_Letters(strAllowKey, strLockKey, e)
+
+            Case "LASTNAME"
+
+                '| -----------------------------------------------------------------------------------
+                '| VALIDAR EL INGRESO DE LETRAS Y ESPACIO
+                '| ---------------------------------------
+                '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+                '| * Almacenamos en la variable strLockKey los caracteres que queremos EXCLUIR.
+                '| * Llamamos a la subrutina Fun_Only_Letters y le pasamos las variables como parámetro.
+
+                Dim strAllowKey As String = " "
+                Dim strLockKey As String = "ºª"
+                Sub_Only_Letters(strAllowKey, strLockKey, e)
+
+            Case "PHONE"
+
+                '| -----------------------------------------------------------------------------------
+                '| VALIDAR EL INGRESO DE NÚMEROS, PARÉNTESIS, GUION Y ESPACIO
+                '| ----------------------------------------------------------
+                '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+                '| * Llamamos a la subrutina Sub_Only_Numbers y le pasamos la variable como parámetro.
+
+                Dim strAllowKey As String = "(-) "
+                Sub_Only_Numbers(strAllowKey, e)
+
+                'Case ""
+                '    sqlConsulta = "SELECT * FROM clientes WHERE std_cli = '" & strState & "' ORDER BY nom_cli"
+                '    MsgBox("Selecciona un FILTRO para busqueda.", vbCritical, "Error en la busqueda")
+                '    CmbFiltrar.Focus()
+        End Select
     End Sub
     '
     '
@@ -104,18 +148,24 @@ Public Class FrmClientesPagos
         '|        _ salir de la función usando Exit Sub y evitar que se ejecuten las demás líneas de código.
         '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
         '| * Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
-        '|   _ la función FillDataDgvClientes().
+        '|   _ la subrutina Sub_Fill_Data_DgvClientes().
         '| * IF : Comprobamos si el LblGrpFamCli tiene información para buscar un grupo familiar si se cumple la condición _
-        '|        _ llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
-        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, desactivar y ocultar controles.
+        '|        _ hacemos la consulta a la BBDD y le pasamos como parámetro a la subrutina principal Sub_Crud_Sql().
+        '| * Llamamos a las subrutina Sub_Select_Record_Cancel_Search() y Sub_Activate_Buttons() para activar, desactivar y ocultar controles.
         '| * Limpiamos la variable strFlags para futuras comprobaciones.
 
         If CmbFiltrar.Text = "" Or TxtBuscar.Text = "" Or DgvClientes.RowCount = 0 Then Exit Sub
+
         strFlags = "SKIP_SEARCH"
-        FunFillDataDgvClientes()
-        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then FunSearchFamilyGroup(LblGrpFamCli.Text)
-        FunSelectRecordCancelSearch()
-        FunActivateButtons()
+        Sub_Fill_Data_DgvClientes()
+
+        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then
+            sqlConsulta = "SELECT * FROM grp_familiar WHERE id_grp = '" & LblGrpFamCli.Text & "'"
+            Sub_Crud_Sql(sqlConsulta)
+        End If
+
+        Sub_Select_Record_Cancel_Search()
+        Sub_Activate_Buttons()
         strFlags = ""
 
     End Sub
@@ -124,9 +174,9 @@ Public Class FrmClientesPagos
     '
     Private Sub BtnFindClient_Click(sender As Object, e As EventArgs) Handles BtnFindClient.Click
 
-        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, desactivar y ocultar controles.
-        FunSearchRecord()
-        FunDisableButtons()
+        '| * Llamamos a las subrutinas Sub_Select_Record_Cancel_Search() y Sub_Activate_Buttons() para activar, desactivar y ocultar controles.
+        Sub_Search_Record()
+        Sub_Disable_Buttons()
 
     End Sub
     '
@@ -136,13 +186,13 @@ Public Class FrmClientesPagos
 
         '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para _
         '|   - hacer comprobaciones.
-        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, _
+        '| * Llamamos a las subrutina Sub_Select_Record_Cancel_Search() y Sub_Activate_Buttons() para activar, _
         '|   _ desactivar y ocultar controles.
         '| * Limpiamos la variable strFlags para otras comprobaciones.
 
         strFlags = "SKIP_SEARCH"
-        FunSelectRecordCancelSearch()
-        FunActivateButtons()
+        Sub_Select_Record_Cancel_Search()
+        Sub_Activate_Buttons()
         strFlags = ""
 
     End Sub
@@ -181,18 +231,24 @@ Public Class FrmClientesPagos
         '|        _ evitar que se ejecuten las demás líneas de código.
         '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para hacer comprobaciones.
         '| * Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a _
-        '|   _ la función FillOutDgvClientes().
+        '|   _ la subrutina FunFillOutDgvClientes().
         '| * IF : Comprobamos si el LblGrpFamCli tiene información para buscar un grupo familiar si se cumple la condición _
-        '|        _ llamamos a la función SearchFamilyGroup y le pasamos como parámetro el texto del LblGrpFamCli.
-        '| * Llamamos a las funciones FunSelectRecordCancelSearch() y FunActivateButtons() para activar, desactivar y ocultar controles.
+        '|        _ hacemos la consulta a la BBDD y le pasamos como parámetro a la subrutina principal Sub_Crud_Sql().
+        '| * Llamamos a las subrutina Sub_Select_Record_Cancel_Search() y Sub_Activate_Buttons() para activar, desactivar y ocultar controles.
         '| * Limpiamos la variable strFlags para futuras comprobaciones.
 
         If DgvClientes.RowCount = 0 Then Exit Sub
+
         strFlags = "SKIP_SEARCH"
-        FunFillDataDgvClientes()
-        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then FunSearchFamilyGroup(LblGrpFamCli.Text)
-        FunSelectRecordCancelSearch()
-        FunActivateButtons()
+        Sub_Fill_Data_DgvClientes()
+
+        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then
+            sqlConsulta = "SELECT * FROM grp_familiar WHERE id_grp = '" & LblGrpFamCli.Text & "'"
+            Sub_Crud_Sql(sqlConsulta)
+        End If
+
+        Sub_Select_Record_Cancel_Search()
+        Sub_Activate_Buttons()
         strFlags = ""
 
     End Sub
@@ -204,14 +260,14 @@ Public Class FrmClientesPagos
         '| -------------------------------------------------------------------------------------
         '| REGISTRAR UN NUEVO CLIENTE EN LA BASE DE DATOS
         '| ----------------------------------------------
-        '| * Limpiamos todos los labels del contenedor PnlDatosCliente llamando a la función CleanLabel().
-        '| * Desactivamos los botones llamando a la función FunDisableButtons().
+        '| * Limpiamos todos los labels del contenedor PnlDatosCliente llamando a la subrutina Sub_Clean_Label().
+        '| * Desactivamos los botones llamando a la subrutina Sub_Disable_Buttons().
         '| * Ocultamos el boton BtnActualizar para mostrar el boton de guardar.
         '| * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
         '| * Mostramos el formulario FrmNuevoEditarCliente
 
-        FunCleanLabel()
-        FunDisableButtons()
+        Sub_Clean_Label()
+        Sub_Disable_Buttons()
         FrmNuevoEditarCliente.MdiParent = FrmPrincipal
         FrmNuevoEditarCliente.BtnActualizar.Visible = False
         FrmNuevoEditarCliente.Show()
@@ -249,9 +305,9 @@ Public Class FrmClientesPagos
                 .DtpFdi.Value = FregistroCorto.Text
 
                 If LblEstCli.Text = "ACTIVO" Then
-                    .RbEstadoActivo.Checked = True
+                    .RbActiveStatus.Checked = True
                 Else
-                    .RbEstadoInactivo.Checked = True
+                    .RbInactiveState.Checked = True
                 End If
 
                 Select Case LblMtdPgoCli.Text
@@ -302,12 +358,18 @@ Public Class FrmClientesPagos
                   , vbExclamation + vbYesNo + vbDefaultButton2, "Eliminar registro del cliente") = vbYes Then
 
             sqlConsulta = "DELETE FROM clientes WHERE id_cli = '" & strIdClient & "'"
-            FunCrudSql(sqlConsulta)
+            Sub_Crud_Sql(sqlConsulta)
 
-            FunCleanLabel()
+            Sub_Clean_Label()
 
             '----------------------------------
-            FunCheckRecords()
+
+            sqlConsulta = "SELECT id_cli FROM clientes"
+
+            Sub_Crud_Sql(sqlConsulta, "SubCheckRecords")
+            '| * Llamamos a la subrutina Sub_Disable_Buttons() para desactivar los botones.
+
+            Sub_Disable_Buttons()
 
             '----------------------------------
         End If
@@ -344,7 +406,7 @@ Public Class FrmClientesPagos
     '::: ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- :::'
     '::: -------------------------------------------------------- :::'
     '
-    Sub FunActivateButtons()
+    Sub Sub_Activate_Buttons()
 
         '| -----------------------------
         '| * DESACTIVAMOS LOS BOTONES
@@ -358,7 +420,7 @@ Public Class FrmClientesPagos
 
     End Sub
 
-    Sub FunDisableButtons()
+    Sub Sub_Disable_Buttons()
 
         '| -----------------------------
         '| * DESACTIVAMOS LOS BOTONES
@@ -372,7 +434,7 @@ Public Class FrmClientesPagos
 
     End Sub
 
-    Sub FunSelectRecordCancelSearch()
+    Sub Sub_Select_Record_Cancel_Search()
 
         '| * Mostramos el botón BtnCancelSearch y ocultamos el botón BtnFindClient.
         '| * Desactivamos el contenedor PnlBuscar.
@@ -392,7 +454,7 @@ Public Class FrmClientesPagos
 
     End Sub
 
-    Sub FunSearchRecord()
+    Sub Sub_Search_Record()
 
         '| * Ocultamos el botón BtnFindClient y mostramos el botón BtnCancelSearch.
         '| * Activamos los dos contenedores PnlBuscar y GbEstado.
@@ -412,7 +474,7 @@ Public Class FrmClientesPagos
 
     End Sub
 
-    Sub FunCleanLabel()
+    Sub Sub_Clean_Label()
 
         '| * Recorremos todos los controles que están dentro del contenedor PnlDatosCliente.
         '|    * Comprobamos si los controles son de tipo Label.
@@ -432,7 +494,7 @@ Public Class FrmClientesPagos
         strIdClient = ""
     End Sub
 
-    Sub FunFillDataDgvClientes()
+    Sub Sub_Fill_Data_DgvClientes()
 
         '| * Depúes de confirmar la busqueda llenamos los label con información del cliente que lo obtenemos _
         '|   _ del DgvClientes y lo ocultamos para visualizar el resultado.
@@ -478,171 +540,6 @@ Public Class FrmClientesPagos
                 End If
             Next
         End If
-
-    End Sub
-
-    Sub LlenarListaClientes(ByVal SqlConsulta As String, strFiltrar As String, ByVal DgvClientes As DataGridView)
-
-        'USAMOS TRY-CATCH PARA CONTROLAR POSIBLES ERRORES
-        Try
-            'CONECTAMOS Y ABRIMOS LA BASE DE DATOS
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-
-            'EJECUTAMOS LA CONSULTA RECIBIDA POR PARÁMETRO
-            cmdCommand = New MySqlCommand(SqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-
-            'LIMPIAMOS EL DATAGRIDVIEW
-            DgvClientes.Rows.Clear()
-
-            'COMPROBAMOS SI HAY REGISTROS
-            If drDataReader.HasRows Then
-
-                'MIENTRAS RECORRE EL DATAREADER LLENAMOS EL DATAGRIDVIEW
-                While drDataReader.Read()
-                    'AGREGAMOS UNA NUEVA FILA
-                    nRow = DgvClientes.Rows.Add()
-                    'LLENAMOS LOS DATOS
-                    'ID DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0).ToString
-                    'NOMBRE DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(1).Value = drDataReader.GetString(1)
-                    'APELLIDO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(2).Value = drDataReader.GetString(2)
-                    'FECHA DE NACIMIENTO Y EDAD DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(3).Value = drDataReader.GetDateTime(3).ToShortDateString.ToString
-                    DgvClientes.Rows(nRow).Cells(4).Value = FechaLarga(drDataReader.GetDateTime(3).ToShortDateString)
-                    DgvClientes.Rows(nRow).Cells(5).Value = Int(DateDiff("m", drDataReader.GetDateTime(3).ToString("yyyy-MM-dd"), Now) / 12) & " años"
-                    'TELEFONO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(6).Value = drDataReader.GetString(4)
-                    'E-MAIL DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(7).Value = drDataReader.GetString(5)
-                    'DIRECCIÓN DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(8).Value = drDataReader.GetString(6)
-                    'MÉTODO DE PAGO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(9).Value = drDataReader.GetString(7)
-                    'FECHA DE INSCRIPCIÓN
-                    DgvClientes.Rows(nRow).Cells(10).Value = drDataReader.GetDateTime(8).ToShortDateString.ToString
-                    DgvClientes.Rows(nRow).Cells(11).Value = FechaLarga(drDataReader.GetDateTime(8).ToShortDateString)
-                    'ESTADO DEL CLIENTE
-                    DgvClientes.Rows(nRow).Cells(12).Value = drDataReader.GetString(9)
-                    'ID DEL GRUPO FAMILIAR
-                    If Not (drDataReader("id_grp") Is DBNull.Value) Then
-                        DgvClientes.Rows(nRow).Cells(13).Value = drDataReader.GetInt16(10).ToString
-                    End If
-                End While
-
-                'SELECCIONAMOS EL TIPO DE TEXTO PARA MARCAR LA CABECERA DEL CAMPO DONDE SE ESTÁ HACIENDO LA BUSQUEDA
-                Select Case strFiltrar
-
-                    Case "NAME"
-                        DgvClientes.CurrentCell = DgvClientes.Item(1, 0)
-
-                    Case "LASTNAME"
-                        DgvClientes.CurrentCell = DgvClientes.Item(2, 0)
-
-                    Case "PHONE"
-                        DgvClientes.CurrentCell = DgvClientes.Item(5, 0)
-
-                End Select
-
-                TxtBuscar.BackColor = Color.Snow
-            Else
-                TxtBuscar.BackColor = Color.MistyRose
-            End If
-
-            'TEXTO PARA EL STATUSSTRIP CON LA CANTIDAD DE CLIENTES REGISTRADOS
-            LblResult.Text = DgvClientes.RowCount & " - Registro(s) que coincide(n) con su búsqueda."
-
-        Catch ex As MySql.Data.MySqlClient.MySqlException
-            'ERROR GENERADO POR INGRESAR ESTE CARACTER ' Y OTROS POSIBLES CARACTERES QUE INFLUYAN EN LA CONSULTA A LA BBDD
-            'mas comentario
-            TxtBuscar.BackColor = Color.MistyRose
-            MsgBox("El caractér ingresado es incorrecto [ ' ]", vbCritical, "Error")
-            TxtBuscar.SelectionStart = TxtBuscar.Text.Length - 1
-            TxtBuscar.SelectionLength = TxtBuscar.Text.Length
-            Exit Try
-
-        Catch ex As Exception
-            'MENSAJE CON EL ERROR CAPTURADO
-            MsgBox(ex.ToString)
-
-        Finally
-            'CERRAMOS EL DATAREADER Y LA BBDD
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
-    End Sub
-
-    Sub FunSearchFamilyGroup(ByVal idGrupoFamiliar As String)
-
-        '| Usamos Try-Catch para controlar posibles errores.
-        '| Try :
-        '|      * Conectamos la base de datos y lo abrimos.
-        '|      * Hacemos la consulta a la tabla Grupo Familiar y lo ejecutamos.
-        '|      * Llenamos el label LblGrpFamCli con el nombre del grupo familiar.
-        '| Catch :
-        '|      * Si hay un error lo capturamo y mostramos un mensaje.
-        '| Finally :
-        '|      * Cerramos el drDataReader y la base de datos.
-
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            sqlConsulta = "SELECT * FROM grp_familiar WHERE id_grp = '" & idGrupoFamiliar & "'"
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-
-
-            drDataReader.Read()
-            LblGrpFamCli.Text = drDataReader.GetString(1)
-
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
-    End Sub
-
-    Sub FunCheckRecords()
-
-        '| * Usamos try-catch para controlar posibles errores.
-        '| * Conectamos y abrimos la base de datos.
-        '| * Hacemos una consulta para comprobar si hay registros en la tabla clientes y lo ejecutamos.
-        '| * IF : Comprobamos si la consulta tiene registros:
-        '|        * Activamos el boton BtnFindClient.
-        '| * ELSE : Si la consulta no ha encontrado registros:
-        '|        * Desactivamos el boton BtnFindClient.
-        '| * Llamamos a la función FunDisableButtons() para desactivar los botones.
-        '| * Si se produce algún error lo capturamos en el Catch y mostramos un mensaje.
-        '| * Cerramos el drDataReader y la base de datos.
-
-        Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
-            cnxnMySql.Open()
-            sqlConsulta = "SELECT id_cli FROM clientes"
-            cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
-            drDataReader = cmdCommand.ExecuteReader()
-
-            If drDataReader.HasRows Then
-                BtnFindClient.Enabled = True
-
-            Else
-                BtnFindClient.Enabled = False
-
-            End If
-
-            FunDisableButtons()
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        Finally
-            drDataReader.Close()
-            cnxnMySql.Close()
-        End Try
 
     End Sub
 

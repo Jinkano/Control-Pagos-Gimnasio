@@ -23,8 +23,8 @@ Partial Class FrmNuevoEditarCliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TttNewUpdate = New System.Windows.Forms.ToolTip(Me.components)
         Me.BtnAddGrupo = New System.Windows.Forms.Button()
         Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
@@ -32,8 +32,8 @@ Partial Class FrmNuevoEditarCliente
         Me.ColNomGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColNumIntgrntes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColIntgrntesReg = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RbEstadoInactivo = New System.Windows.Forms.RadioButton()
-        Me.RbEstadoActivo = New System.Windows.Forms.RadioButton()
+        Me.RbInactiveState = New System.Windows.Forms.RadioButton()
+        Me.RbActiveStatus = New System.Windows.Forms.RadioButton()
         Me.LblEstadoCli = New System.Windows.Forms.Label()
         Me.DtpFdi = New System.Windows.Forms.DateTimePicker()
         Me.RbDiario = New System.Windows.Forms.RadioButton()
@@ -93,20 +93,20 @@ Partial Class FrmNuevoEditarCliente
         Me.DgvListaNombre.AllowUserToDeleteRows = False
         Me.DgvListaNombre.AllowUserToResizeColumns = False
         Me.DgvListaNombre.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.DgvListaNombre.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgvListaNombre.ColumnHeadersHeight = 4
         Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvListaNombre.DefaultCellStyle = DataGridViewCellStyle2
         Me.DgvListaNombre.Enabled = False
         Me.DgvListaNombre.Location = New System.Drawing.Point(0, 56)
         Me.DgvListaNombre.Margin = New System.Windows.Forms.Padding(0, 4, 0, 0)
@@ -152,37 +152,37 @@ Partial Class FrmNuevoEditarCliente
         Me.ColIntgrntesReg.ReadOnly = True
         Me.ColIntgrntesReg.Visible = False
         '
-        'RbEstadoInactivo
+        'RbInactiveState
         '
-        Me.RbEstadoInactivo.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RbEstadoInactivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RbEstadoInactivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.RbEstadoInactivo.Location = New System.Drawing.Point(192, 113)
-        Me.RbEstadoInactivo.Margin = New System.Windows.Forms.Padding(0)
-        Me.RbEstadoInactivo.Name = "RbEstadoInactivo"
-        Me.RbEstadoInactivo.Padding = New System.Windows.Forms.Padding(30, 0, 30, 0)
-        Me.RbEstadoInactivo.Size = New System.Drawing.Size(160, 26)
-        Me.RbEstadoInactivo.TabIndex = 2
-        Me.RbEstadoInactivo.Text = "Inactivo"
-        Me.RbEstadoInactivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.RbEstadoInactivo.UseVisualStyleBackColor = True
+        Me.RbInactiveState.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RbInactiveState.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RbInactiveState.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.RbInactiveState.Location = New System.Drawing.Point(192, 113)
+        Me.RbInactiveState.Margin = New System.Windows.Forms.Padding(0)
+        Me.RbInactiveState.Name = "RbInactiveState"
+        Me.RbInactiveState.Padding = New System.Windows.Forms.Padding(30, 0, 30, 0)
+        Me.RbInactiveState.Size = New System.Drawing.Size(160, 26)
+        Me.RbInactiveState.TabIndex = 2
+        Me.RbInactiveState.Text = "Inactivo"
+        Me.RbInactiveState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RbInactiveState.UseVisualStyleBackColor = True
         '
-        'RbEstadoActivo
+        'RbActiveStatus
         '
-        Me.RbEstadoActivo.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RbEstadoActivo.Checked = True
-        Me.RbEstadoActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RbEstadoActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.RbEstadoActivo.Location = New System.Drawing.Point(24, 113)
-        Me.RbEstadoActivo.Margin = New System.Windows.Forms.Padding(0, 8, 0, 24)
-        Me.RbEstadoActivo.Name = "RbEstadoActivo"
-        Me.RbEstadoActivo.Padding = New System.Windows.Forms.Padding(30, 0, 30, 0)
-        Me.RbEstadoActivo.Size = New System.Drawing.Size(160, 26)
-        Me.RbEstadoActivo.TabIndex = 1
-        Me.RbEstadoActivo.TabStop = True
-        Me.RbEstadoActivo.Text = "Activo"
-        Me.RbEstadoActivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.RbEstadoActivo.UseVisualStyleBackColor = True
+        Me.RbActiveStatus.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RbActiveStatus.Checked = True
+        Me.RbActiveStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RbActiveStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.RbActiveStatus.Location = New System.Drawing.Point(24, 113)
+        Me.RbActiveStatus.Margin = New System.Windows.Forms.Padding(0, 8, 0, 24)
+        Me.RbActiveStatus.Name = "RbActiveStatus"
+        Me.RbActiveStatus.Padding = New System.Windows.Forms.Padding(30, 0, 30, 0)
+        Me.RbActiveStatus.Size = New System.Drawing.Size(160, 26)
+        Me.RbActiveStatus.TabIndex = 1
+        Me.RbActiveStatus.TabStop = True
+        Me.RbActiveStatus.Text = "Activo"
+        Me.RbActiveStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RbActiveStatus.UseVisualStyleBackColor = True
         '
         'LblEstadoCli
         '
@@ -256,8 +256,8 @@ Partial Class FrmNuevoEditarCliente
         '
         'GbOtros
         '
-        Me.GbOtros.Controls.Add(Me.RbEstadoInactivo)
-        Me.GbOtros.Controls.Add(Me.RbEstadoActivo)
+        Me.GbOtros.Controls.Add(Me.RbInactiveState)
+        Me.GbOtros.Controls.Add(Me.RbActiveStatus)
         Me.GbOtros.Controls.Add(Me.LblEstadoCli)
         Me.GbOtros.Controls.Add(Me.DtpFdi)
         Me.GbOtros.Controls.Add(Me.LblFinscripcion)
@@ -648,8 +648,8 @@ Partial Class FrmNuevoEditarCliente
 
     End Sub
     Friend WithEvents TttNewUpdate As ToolTip
-    Friend WithEvents RbEstadoInactivo As RadioButton
-    Friend WithEvents RbEstadoActivo As RadioButton
+    Friend WithEvents RbInactiveState As RadioButton
+    Friend WithEvents RbActiveStatus As RadioButton
     Friend WithEvents LblEstadoCli As Label
     Friend WithEvents DtpFdi As DateTimePicker
     Friend WithEvents RbDiario As RadioButton

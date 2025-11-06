@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\forms\\frmnuevoeditarcliente.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:forms\\frmnuevoeditarcliente.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\modules\\sqlfunctions.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:modules\\sqlfunctions.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmNuevoEditarCliente.vb [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmNuevoEditarCliente.vb",
-              "RelativeDocumentMoniker": "Forms\\FrmNuevoEditarCliente.vb",
-              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmNuevoEditarCliente.vb [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\FrmNuevoEditarCliente.vb [Dise\u00F1o]",
+              "Title": "SQLfunctions.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Modules\\SQLfunctions.vb",
+              "RelativeDocumentMoniker": "Modules\\SQLfunctions.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Modules\\SQLfunctions.vb",
+              "RelativeToolTip": "Modules\\SQLfunctions.vb",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAgwBEAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-11-04T23:12:23.994Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-11-06T22:50:15.979Z",
+              "EditorCaption": ""
             }
           ]
         }
