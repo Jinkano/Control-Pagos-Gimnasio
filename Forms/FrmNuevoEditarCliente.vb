@@ -255,6 +255,7 @@
         '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
         '| ------------------------------------------------
         TxtDireccion.BackColor = Color.Beige
+
     End Sub
     Private Sub TxtDireccion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDireccion.KeyPress
 
@@ -302,64 +303,59 @@
     '
     '
     Private Sub RbDiario_CheckedChanged(sender As Object, e As EventArgs) Handles RbDiario.CheckedChanged
-        '
+
+        '| ----------------------------------------------------------------------------------------------
+        '| HACER LA CONSULTA Y MOSTRAR DATOS EN LA LISTA
+        '| ---------------------------------------------
+        '| IF : Comprobamos si el RadioButton RbDiario
+        '|      * Guardar en la variable strMtdPgs el valor que se encuentra en TxtListaNom, valor que se _
+        '|        _ usará para guardar o actualizar el método de pago en la tabla clientes.
+        '|      * Cambiamos el titulo del groupbox "Lista clases sueltas".
+        '|      * Activamos el DataGridView DgvListaNombre.
+        '|      * Hacemos la consulta para mostrar los pagos diarios el la lista DgvListaNombre y lo _
+        '|        _ guardamos en la variable sqlConsulta.
+        '|      * Llamamos a la subrutina Sub_Crud_Sql y le pasamos la variable sqlConsulta y el texto _
+        '|        _ "SubSearchDailyPrice" que se usa para el select case del módulo SQLqueries.
+
         If RbDiario.Checked Then
-
-            'ASIGNAR UN VALOR A LA VARIABLE VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES :::'
             strMtdPgs = TxtListaNom.Text
-            ''
-            ''
-            'TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
-            ''LblMetodoPago.BackColor = Color.Azure
-            ''
-            ''
-            GbListaGrupoFamiliar.Text = "Lista clases sueltas" 'CAMBIAMOS EL TITULO DEL GROUPBOX
-
-            'BtnAddGrupo.Enabled = False 'DESACTIVAMOS EL BUTTON ADDGRUPO
-
-            'TxtListaNombre.Enabled = False 'DESACTIVAMOS EL TEXTBOX
-
-            'LblNumIntgrntes.Text = "" 'LIMPIAMOS EL LABEL
-
+            GbListaGrupoFamiliar.Text = "Lista clases sueltas"
             DgvListaNombre.Enabled = True
-
-            'USAMOS TRY PARA CONTROLAR POSIBLES ERRORES
             sqlConsulta = "SELECT id_trfa, tipo_trfa FROM trfa_dscto WHERE tipo_trfa LIKE '%DIARIO%'"
             Sub_Crud_Sql(sqlConsulta, "SubSearchDailyPrice")
         End If
-        '
+
     End Sub
     Private Sub RbDiario_Click(sender As Object, e As EventArgs) Handles RbDiario.Click
-        '
-        TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
-        'LblMetodoPago.BackColor = Color.Azure
-        '
+
+        '| -----------------------------------------------------------------------------
+        '| LIMPIAR CUADRO DE TEXTO
+        '| -----------------------
+        '| * Al hacer click en el RadioButton RbDiario limpiamos el TxtListaNom
+        TxtListaNom.Text = ""
+
     End Sub
     '
     '
     '
     Private Sub RbMensual_CheckedChanged(sender As Object, e As EventArgs) Handles RbMensual.CheckedChanged
-        '
+
+        '| -------------------------------------------------------------------------------------------------
+        '| LLENAR VARIABLE Y LIMPIAR LISTA
+        '| -------------------------------
+        '| IF : Comprobamos si el RadioButton RbMensual
+        '|      * Guardar en la variable strMtdPgs el valor "MENSUAL", valor que se usará para guardar o _
+        '|        _ actualizar el método de pago en la tabla clientes.
+        '|      * limpiamos el TxtListaNom.
+        '|      * Cambiamos el titulo del groupbox "Lista vacia".
+        '|      * Desactivamos el DataGridView DgvListaNombre y lo limpiamos.
+
         If RbMensual.Checked Then
-            'ASIGNAR UN VALOR A LA VARIABLE, VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES
             strMtdPgs = "MENSUAL"
-
-            'LLENAMOS EL LABEL CON EL NOMBRE DEL METODO DEL PAGO PARA GUARDAR EN LA TABLA
-            TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
-            'LblMetodoPago.Text = "MENSUAL"
-            'LblMetodoPago.BackColor = Color.Azure
-
-            'BtnAddGrupo.Enabled = False 'DESACTIVAMOS EL BUTTON ADDGRUPO
-
-            GbListaGrupoFamiliar.Text = "Lista vacia" 'CAMBIAMOS EL NOMBRE DEL GROUPBOX
-
-            'TxtListaNombre.Enabled = False 'DESACTIVAMOS EL TEXTBOX
-
-            'LblNumIntgrntes.Text = ""
-
-            DgvListaNombre.Rows.Clear()
+            TxtListaNom.Text = ""
+            GbListaGrupoFamiliar.Text = "Lista vacia"
             DgvListaNombre.Enabled = False
-
+            DgvListaNombre.Rows.Clear()
         End If
         '
     End Sub
@@ -367,62 +363,78 @@
     '
     '
     Private Sub RbGrupoFamiliar_CheckedChanged(sender As Object, e As EventArgs) Handles RbGrupoFamiliar.CheckedChanged
-        ''ASIGNAR UN VALOR A LA VARIABLE, VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES
-        'If RbGrupoFamiliar.Checked Then strMtdPgs = "GRUPAL"
 
-        'Nombre del grupo
+        '| ------------------------------------------------------------------------------------------------------------
+        '| HACER LA CONSULTA Y MOSTRAR LOS DATOS EN LA LISTA
+        '| ---------------------------------------------
+        '| IF : Comprobamos si el RadioButton 'RbGrupoFamiliar' está seleccionado, si se cumple la condición:
+        '|      * Asigna el valor "GRUPAL" a la variable strMtdPgs (Método de Pago).
+        '|      * Limpia el contenido del TextBox 'TxtListaNom'.
+        '|      * Limpia el texto de la Label que muestra el número de integrantes.
+        '|      * Establece un nuevo título para el GroupBox 'Lista de grupos familiares'.
+        '|      * Habilitamos los controles BtnAddGrupo, TxtListaNom y DgvListaNombre para la gestión de grupos familiares.
+        '|      * Enviamos el enfoque al Textbox TxtListaNom.
+        '|      * Hacemos la consulta SQL para obtener todos los datos de la tabla 'grp_familiar' y lo guardammos en la _
+        '|        _ variable sqlConsulta.
+        '|      * Llamamos a la subrutina Sub_Crud_Sql para ejecutar la consulta SQL y le pasamos como parametro la _
+        '|        _ variable 'sqlConsulta' y el texto 'SubFillFamilyGroupData' que se usa en el Select Case del módulo SQLqueries.
+        '| ELSE : Si el RadioButton 'RbGrupoFamiliar' NO está seleccionado:
+        '|      * Limpia la Label del número de integrantes.
+        '|      * Deshabilitamos los controles BtnAddGrupo y TxtListaNom.
+
         If RbGrupoFamiliar.Checked Then
 
-            'ASIGNAR UN VALOR A LA VARIABLE, VALOR QUE SE USARÁ PARA GUARDAR EL METODO DE PAGO EN LA TABLA CLIENTES
             strMtdPgs = "GRUPAL"
-
-            TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX
-            'LblMetodoPago.BackColor = Color.Azure
-
-            GbListaGrupoFamiliar.Text = "Lista de grupos familiares" 'CAMBIAMOS EL TITULO DEL GROUPBOX
-
-            BtnAddGrupo.Enabled = True 'ACTIVAMOS EL BUTTON ADDGRUPO
-
-            TxtListaNom.Enabled = True 'ACTIVAMOS EL TEXTBOX
-
-            LblNumIntgrntes.Text = "" 'LIMPIAMOS EL LABEL
-
+            TxtListaNom.Text = ""
+            LblNumIntgrntes.Text = ""
+            GbListaGrupoFamiliar.Text = "Lista de grupos familiares"
+            BtnAddGrupo.Enabled = True
+            TxtListaNom.Enabled = True
             DgvListaNombre.Enabled = True
-
-            'HACEMOS LA CONSULTA Y SE LO PASAMOS A LA FUNCIÓN PARA LLENAR EL DATAGRIDVIEW CON LOS GRUPOS FAMILIARES
+            TxtListaNom.Focus()
             sqlConsulta = "SELECT * FROM grp_familiar ORDER BY id_grp DESC"
-            'LlenarDgvListaNombre(sqlConsulta)
             Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
-
-        Else 'RbGrupoFamiliar.Checked=FALSE
-            '
-            BtnAddGrupo.Enabled = False  'DESACTIVAMOS EL BUTTON ADDGRUPO
-
-            TxtListaNom.Enabled = False  'DESACTIVAMOS EL TEXTBOX
-
-            LblNumIntgrntes.Text = "" 'LIMPIAMOS EL LABEL
-
-            'DgvListaNombre.Enabled = False
+        Else
+            LblNumIntgrntes.Text = ""
+            BtnAddGrupo.Enabled = False
+            TxtListaNom.Enabled = False
         End If
     End Sub
     '
     '
     '
     Private Sub BtnAddGrupo_Click(sender As Object, e As EventArgs) Handles BtnAddGrupo.Click
-        '::: 987 :::'
-        RbGrupoFamiliar.Checked = False
+
+        '| ----------------------------------------------------------------------------------
+        '| MOSTRAR EL FORMULARIO GRUPO FAMILIAR
+        '| ------------------------------------
         FrmGrupoFamiliar.Show()
+
     End Sub
     '
     '
     '
     Private Sub TxtListaNombre_TextChanged(sender As Object, e As EventArgs) Handles TxtListaNom.TextChanged
 
-        '-*/
+        '| -------------------------------------------------------------------------------------------------
+        '| HACER LA CONSULTA Y EVALUAR EL VALOR INTRODUCIDO EN EL TEXTBOX
+        '| --------------------------------------------------------------
+        '| IF : Comprobamos si el RadioButton 'RbGrupoFamiliar' está seleccionado.
+        '|      * Hacemos la consulta con el texto ingresado en el TextBox 'TxtListaNom' para buscar un _
+        '|        _ grupo familiar y lo guardamos en la variable 'sqlConsulta'.
+        '|      * Llamamos a una subrutina genérica Sub_Crud_Sql y le pasamos como parámetro 'sqlConsulta' _
+        '|        _ y el texto 'SubFillFamilyGroupData' que se usa en el Select Case del módulo SQLqueries.
+        '|        _ que se usa para llenar el DataGridView DgvListaNombre.
+        '|      IF : Si el TextBox de búsqueda está vacío o contiene solo espacios en blanco, limpiamos el _
+        '|           _ Label que muestra el número de integrantes
+        '|      IF : Comprobamos si la DataGridView (DgvListaNombre) contiene al menos una fila o registro.
+        '|          IF : Comparamos si el texto actual en el TextBox 'TxtListaNom' coincide con el valor de _
+        '|               _ la celda de la fila seleccionada o enfocada en la DataGridView.
+        '|              * Si hay coincidencia, llenamos el Label 'LblNumIntgrntes' con el número integrantes.
+
         If RbGrupoFamiliar.Checked Then
 
             sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '" & TxtListaNom.Text & "%' ORDER BY nom_grp"
-            'LlenarDgvListaNombre(sqlConsulta)
             Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
 
             If String.IsNullOrWhiteSpace(TxtListaNom.Text) Then LblNumIntgrntes.Text = ""
@@ -436,13 +448,32 @@
 
     End Sub
     Private Sub TxtListaNombre_GotFocus(sender As Object, e As EventArgs) Handles TxtListaNom.GotFocus
-        'TxtListaNombre_GotFocus
+
+        '| -------------------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL RECIBIR EL ENFOQUE
+        '| ------------------------------------------------
+        TxtDireccion.BackColor = Color.Beige
+
     End Sub
     Private Sub TxtListaNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtListaNom.KeyPress
-        'TxtListaNombre_KeyPress
+
+        '| ---------------------------------------------------------------------------------------------------
+        '| VALIDAR EL INGRESO DE CARACTERES PARA LA DIRECCIÓN
+        '| --------------------------------------------------
+        '| * Almacenamos en la variable strAllowKey los caracteres que queremos PERMITIR.
+        '| * Llamamos a la subrutina Fun_Only_Letters y le pasamos las variables como parámetro.
+
+        Dim strAllowKey As String = "(-) "
+        Sub_Letters_And_Numbers(strAllowKey, e)
+
     End Sub
     Private Sub TxtListaNombre_LostFocus(sender As Object, e As EventArgs) Handles TxtListaNom.LostFocus
-        'TxtListaNombre_LostFocus
+
+        '| ---------------------------------------------------------------------------------------------
+        '| CAMBIAR EL COLOR DEL FONDO AL PERDER EL ENFOQUE
+        '| ------------------------------------------------
+        TxtDireccion.BackColor = Color.Azure
+
     End Sub
     '
     '
@@ -450,56 +481,69 @@
     Private Sub DgvListaNombre_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListaNombre.CellContentClick
     End Sub
     Private Sub DgvListaNombre_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvListaNombre.CellClick
-        If RbDiario.Checked Then
-            'LLENAMOS EL TEXTBOX CON EL NOMBRE DE LA CLASE SUELTA PARA GUARDAR EN LA TABLA
-            strMtdPgs = DgvListaNombre.CurrentRow.Cells(1).Value
 
+        '| ----------------------------------------------------------------------------------------------------------------
+        '| CLIC EN UNA CELDA DE LA FILA DEL DATAGRIDVIEW
+        '| ----------------------------------------------
+        '| * Llenamos la variable 'strMtdPgs' con el nombre de la clase suelta para guardar o actualizar en la tabla.
+        '| * Mostramos en el Textbox 'TxtListaNom' en valor de la variable 'strMtdPgs'.
+
+        If RbDiario.Checked Then
+            strMtdPgs = DgvListaNombre.CurrentRow.Cells(1).Value
             TxtListaNom.Text = strMtdPgs
         End If
+
     End Sub
     Private Sub DgvListaNombre_DoubleClick(sender As Object, e As EventArgs) Handles DgvListaNombre.DoubleClick
 
-        'COMPROBAR SI EL RADIOBUTTON ESTÁ ACTIVADO
+        '| ----------------------------------------------------------------------------------------------------
+        '| DOBLE CLIC EN UNA CELDA DE LA FILA DEL DATAGRIDVIEW
+        '| ---------------------------------------------------
+        '| IF : Comprobamos si el Radiobutton 'RbGrupoFamiliar' está activado:
+        '|      IF : Comprobar si la cantidad de integrantes es igual a los integrantes registrados:
+        '|          IF : Mostramos un mensaje de confirmación avisando que el grupo esta lleno, preguntamos si _
+        '|                _ se quiere agregar un nuevo integrantes al grupo familiar.
+        '|              * Si la respuesta es SI aumentamos el valor de la variable 'intAddMember' en uno para _
+        '|                _ comprobar si hay una tarifa y actualizar los datos del grupo.
+        '|              * Hacemos la consulta para comprobamos si existe una tarifa con el número de _
+        '|                _ integrantes y lo guardamos en la variable 'sqlConsulta'.
+        '|              * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos como parámetro 'sqlConsulta' y _
+        '|                _ el texto 'SubSearchGroupPrice' que se usa en el Select Case del módulo SQLqueries.
+        '|          ELSE : Si hacemos clic en NO:
+        '|              * Limpiamos el Textbox 'TxtListaNom' para no poder guardar ni actualizar sin seleccionar _
+        '|                _ un grupo familiar.
+        '|      ELSE : Si la cantidad de integrantes es diferente que los integrantes registrados:
+        '|          * Llenamos el Textbox 'TxtListaNom' con el nombre del grupo familiar.
+        '|          * El el Label 'LblNumIntgrntes' mostramos la cantidad de integrantes registrados en el grupo.
+        '|          * Aumentamos en uno el valor de la variable 'intAddMember' del registro seleccionado.
+        '|          * Asignamos a la variable 'strAddMembers' el valor 'UPDATE_A_FIELD' para saber que hacer al _
+        '|            _ momento de guardar o actualizar un registro.
+
         If RbGrupoFamiliar.Checked Then
 
-            'SI LA CANTIDAD DE INTEGRANTES ES = A LOS INTEGRANTES REGISTRADOS
             If DgvListaNombre.CurrentRow.Cells(2).Value = DgvListaNombre.CurrentRow.Cells(3).Value Then
 
-                'ADVERTENCIA QUE EL GRUPO ESTA LLENO, PREGUNTA SI QUIEREN AGREGAR UN NUEVO INTEGRANTES
                 If MsgBox("    Nombre del grupo  : " & DgvListaNombre.CurrentRow.Cells(1).Value & vbCr &
                           "    Nº de Integrante     : " & DgvListaNombre.CurrentRow.Cells(2).Value & vbCr & vbCr &
                           "    El grupo seleccionado ya tiene los integrantes completos." & vbCr &
                           "    ___________________________________________________________" & vbCr & vbCr &
                           "                        ¿Seguro que quieres añadir otro integrante?",
                           vbExclamation + vbYesNo + vbDefaultButton2, "Comprobar datos") = vbYes Then
-
-                    'AUMENTAMOS EN UNO EL NÚMERO DE INTEGRANTES PARA COMPROBAR SI HAY UNA TARIFA Y ACTUALIZAR LOS DATOS DEL GRUPO
                     intAddMember = DgvListaNombre.CurrentRow.Cells(2).Value + 1
-
-                    '::: COMPROBAMOS SI EXISTE UNA TARIFA CON EL NÚMERO DE INTEGRANTES :::'
                     sqlConsulta = "SELECT nperson_trfa FROM trfa_dscto WHERE nperson_trfa = '" & intAddMember & "'"
                     Sub_Crud_Sql(sqlConsulta, "SubSearchGroupPrice")
-
-                Else 'SI HACEMOS CLICK EN NO
-
-                    TxtListaNom.Text = "" 'LIMPIAMOS EL TEXTBOX PARA NO PODER GUARDAR SIN SELECCIONASR UN GRUPO
+                Else
+                    TxtListaNom.Text = ""
                 End If
 
-            Else 'SI LA CANTIDAD DE INTEGRANTES ES DIFERENTE QUE LOS INTEGRANTES REGISTRADOS
-
-                '::: LLENAMOS EL TEXTBOX CON EL NOMBRE DEL GRUPO
-                '    PASAMOS LA VARIABLE A FALSE PARA ACTUALIZAR EL CAMPO intgrntes_reg_grp
-                '    CON EL VALOR DE LA VARIABLE intAddMember DEL REGISTRO SELECCIONADO,
-                '    AL MOMENTO DE GUARDAR LOS DATOS DEL CLIENTE :::'
+            Else
                 TxtListaNom.Text = DgvListaNombre.CurrentRow.Cells(1).Value
-                '
                 LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
-                '
                 intAddMember = DgvListaNombre.CurrentRow.Cells(3).Value + 1
                 strAddMembers = "UPDATE_A_FIELD"
-
             End If
         End If
+
     End Sub
     '
     '
@@ -720,9 +764,9 @@
 
     End Sub
 
-    '| -------------------------------------------------------- |'
-    '| ---------->>>>>>>>>> PROCEDIMIENTOS <<<<<<<<<<---------- |'
-    '| -------------------------------------------------------- |'
+    '| ---------------------------------------------------------------- |'
+    '| ---------->>>>>>>>>> SUBRUTINAS Y FUNCIONES <<<<<<<<<<---------- |'
+    '| ---------------------------------------------------------------- |'
 
     Sub Sub_TxtLost_Focus(lblLabel As Label)
 

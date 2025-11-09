@@ -1,7 +1,7 @@
 ﻿Imports System.Configuration
 Imports MySql.Data.MySqlClient
 
-Module SQLfunctions
+Module SQLqueries
 
     Dim cnxnMySql As New MySqlConnection
     Dim cmdCommand As MySqlCommand
