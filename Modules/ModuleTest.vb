@@ -78,12 +78,15 @@ Module ModuleTest
                 '
                 While drDataReader.Read()
                     '
-                    Dim fechaIni As DateTime = drDataReader.GetDateTime(10).ToString
+                    Dim fechaIni As DateTime = drDataReader.GetDateTime(12).ToString
                     Dim dia = fechaIni.Day
                     Dim mes = fechaIni.Month
                     Dim ano = fechaIni.Year
+
                     Dim nDias = DateTime.DaysInMonth(fechaIni.Year, fechaIni.Month)
-                    Dim total = drDataReader.GetDecimal(13).ToString - drDataReader.GetDecimal(14).ToString
+                    Dim precio = drDataReader.GetDecimal(16).ToString
+                    Dim dscnto = drDataReader.GetDecimal(17).ToString
+                    Dim total = precio - dscnto
                     Dim prcDia = total / nDias
                     nDias = nDias - dia + 1
                     Dim aPagar = prcDia * nDias
@@ -92,13 +95,13 @@ Module ModuleTest
                         '
                         DgvMorosos.Rows.Add()
                         DgvMorosos.Rows(nRow).Cells(3).Value = arrayMeses(mes - 1) & " " & ano 'MES-AÑO
-                        DgvMorosos.Rows(nRow).Cells(4).Value = FormatCurrency(drDataReader.GetDecimal(13).ToString) 'PRECIO
-                        DgvMorosos.Rows(nRow).Cells(5).Value = FormatCurrency(drDataReader.GetDecimal(14).ToString) 'DESCUENTO
+                        DgvMorosos.Rows(nRow).Cells(4).Value = FormatCurrency(precio) 'drDataReader.GetDecimal(16).ToString) 'PRECIO
+                        DgvMorosos.Rows(nRow).Cells(5).Value = FormatCurrency(dscnto) 'drDataReader.GetDecimal(17).ToString) 'DESCUENTO
                         DgvMorosos.Rows(nRow).Cells(6).Value = FormatCurrency(total) 'TOTAL
                         DgvMorosos.Rows(nRow).Cells(7).Value = nDias 'NUMERO DE DIAS
                         DgvMorosos.Rows(nRow).Cells(8).Value = FormatCurrency(aPagar) 'A PAGAR
-                        DgvMorosos.Rows(nRow).Cells(10).Value = drDataReader.GetInt16(9).ToString 'ID PAGO
-                        DgvMorosos.Rows(nRow).Cells(11).Value = drDataReader.GetDateTime(10).ToString 'FECHA INICIO DE MES
+                        DgvMorosos.Rows(nRow).Cells(10).Value = drDataReader.GetInt16(11).ToString 'ID PAGO
+                        DgvMorosos.Rows(nRow).Cells(11).Value = drDataReader.GetDateTime(12).ToString 'FECHA INICIO DE MES
                         DgvMorosos.Rows(nRow).Cells(12).Value = drDataReader.GetString(1).ToString & " " & drDataReader.GetString(2).ToString & " - " & Int(DateDiff("m", drDataReader.GetDateTime(3).ToString, Now) / 12) & " años" 'NOMBRE, APELLIDO y EDAD
                         cMes += 1
                         cReg += 1
@@ -109,29 +112,34 @@ Module ModuleTest
                         If DgvMorosos.RowCount <> 0 Then
                             '
                             DgvMorosos.Rows.Add()
+                            DgvMorosos.Rows(nRow).Height = 32 ' Nuevo alto en píxeles
                             DgvMorosos.Rows(nRow).DefaultCellStyle.BackColor = Color.LightSalmon
                             DgvMorosos.Rows(nRow).DefaultCellStyle.ForeColor = Color.Red
                             DgvMorosos.Rows(nRow).DefaultCellStyle.Font = New Drawing.Font("Arial", 10, FontStyle.Bold)
                             DgvMorosos.Rows(nRow).Cells(6).Value = "DEBE : "
                             DgvMorosos.Rows(nRow).Cells(7).Value = cMes & " MESES"
                             DgvMorosos.Rows(nRow).Cells(8).Value = FormatCurrency(sTotal, 2) 'SUMATORIA
-                            DgvMorosos.Rows.Add()
+                            '
                             nRow += 1
                             '
                         End If
                         '
                         nRow = DgvMorosos.Rows.Add()
+                        DgvMorosos.Rows(nRow).Height = 12 ' Nuevo alto en píxeles
+                        '
+                        nRow += 1
+                        DgvMorosos.Rows.Add()
                         DgvMorosos.Rows(nRow).Cells(0).Value = drDataReader.GetString(1).ToString 'NOMBRE
                         DgvMorosos.Rows(nRow).Cells(1).Value = drDataReader.GetString(2).ToString 'APELLIDO
                         DgvMorosos.Rows(nRow).Cells(2).Value = Int(DateDiff("m", drDataReader.GetDateTime(3).ToString, Now) / 12) & " años" 'EDAD
                         DgvMorosos.Rows(nRow).Cells(3).Value = arrayMeses(mes - 1) & " " & ano 'MES-AÑO
-                        DgvMorosos.Rows(nRow).Cells(4).Value = FormatCurrency(drDataReader.GetDecimal(13).ToString) 'PRECIO
-                        DgvMorosos.Rows(nRow).Cells(5).Value = FormatCurrency(drDataReader.GetDecimal(14).ToString) 'DESCUENTO
+                        DgvMorosos.Rows(nRow).Cells(4).Value = FormatCurrency(drDataReader.GetDecimal(16).ToString) 'PRECIO
+                        DgvMorosos.Rows(nRow).Cells(5).Value = FormatCurrency(drDataReader.GetDecimal(17).ToString) 'DESCUENTO
                         DgvMorosos.Rows(nRow).Cells(6).Value = FormatCurrency(total) 'TOTAL
                         DgvMorosos.Rows(nRow).Cells(7).Value = nDias 'NUMERO DE DIAS
                         DgvMorosos.Rows(nRow).Cells(8).Value = FormatCurrency(aPagar) 'A PAGAR
-                        DgvMorosos.Rows(nRow).Cells(10).Value = drDataReader.GetInt16(9).ToString 'ID PAGO
-                        DgvMorosos.Rows(nRow).Cells(11).Value = drDataReader.GetDateTime(10).ToString 'FECHA INICIO DE MES
+                        DgvMorosos.Rows(nRow).Cells(10).Value = drDataReader.GetInt16(11).ToString 'ID PAGO
+                        DgvMorosos.Rows(nRow).Cells(11).Value = drDataReader.GetDateTime(12).ToString 'FECHA INICIO DE MES
                         DgvMorosos.Rows(nRow).Cells(12).Value = drDataReader.GetString(1).ToString & " " & drDataReader.GetString(2).ToString & " - " & Int(DateDiff("m", drDataReader.GetDateTime(3).ToString, Now) / 12) & " años" 'NOMBRE, APELLIDO y EDAD
                         cMes = 1
                         cReg += 1
@@ -147,6 +155,7 @@ Module ModuleTest
                 idCli = 0
                 '
                 DgvMorosos.Rows.Add()
+                DgvMorosos.Rows(nRow).Height = 32 ' Nuevo alto en píxeles
                 DgvMorosos.Rows(nRow).DefaultCellStyle.BackColor = Color.LightSalmon
                 DgvMorosos.Rows(nRow).DefaultCellStyle.ForeColor = Color.Red
                 DgvMorosos.Rows(nRow).DefaultCellStyle.Font = New Drawing.Font("Arial", 10, FontStyle.Bold)

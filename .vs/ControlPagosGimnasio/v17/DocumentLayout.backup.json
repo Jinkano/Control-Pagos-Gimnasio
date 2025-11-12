@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\forms\\frmnuevoeditarcliente.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:forms\\frmnuevoeditarcliente.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\forms\\frmlistamorosos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:forms\\frmlistamorosos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|c:\\users\\jinkis\\desktop\\projects visual basic\\controlpagosgimnasio\\modules\\moduletest.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:modules\\moduletest.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\forms\\frmlistamorosos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:forms\\frmlistamorosos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\forms\\frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:forms\\frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\forms\\frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:forms\\frmclientespagos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\a_modify_a.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:a_modify_a.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\a_modify_a.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{CD9000FF-0E6F-4CAA-9E3D-8EF69A68598D}|ControlPagosGimnasio.vbproj|solutionrelative:a_modify_a.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +46,87 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmNuevoEditarCliente.vb [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmNuevoEditarCliente.vb",
-              "RelativeDocumentMoniker": "Forms\\FrmNuevoEditarCliente.vb",
-              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmNuevoEditarCliente.vb [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\FrmNuevoEditarCliente.vb [Dise\u00F1o]",
+              "DocumentIndex": 1,
+              "Title": "ModuleTest.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Modules\\ModuleTest.vb",
+              "RelativeDocumentMoniker": "Modules\\ModuleTest.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Modules\\ModuleTest.vb",
+              "RelativeToolTip": "Modules\\ModuleTest.vb",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAUwKQAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-11-09T11:35:24.85Z",
+              "WhenOpened": "2025-11-12T22:16:40.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmListaMorosos.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmListaMorosos.vb",
+              "RelativeDocumentMoniker": "Forms\\FrmListaMorosos.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmListaMorosos.vb",
+              "RelativeToolTip": "Forms\\FrmListaMorosos.vb",
+              "ViewState": "AgIAAE8AAAAAAAAAAADgv2gAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-12T19:45:53.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmListaMorosos.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmListaMorosos.vb",
+              "RelativeDocumentMoniker": "Forms\\FrmListaMorosos.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmListaMorosos.vb [Dise\u00F1o]",
+              "RelativeToolTip": "Forms\\FrmListaMorosos.vb [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-12T19:44:23.832Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "A_modify_A.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\A_modify_A.vb",
+              "RelativeDocumentMoniker": "A_modify_A.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\A_modify_A.vb",
+              "RelativeToolTip": "A_modify_A.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-12T17:52:12.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "A_modify_A.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\A_modify_A.vb",
+              "RelativeDocumentMoniker": "A_modify_A.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\A_modify_A.vb [Dise\u00F1o]",
+              "RelativeToolTip": "A_modify_A.vb [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-12T17:52:06.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmClientesPagos.vb",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmClientesPagos.vb",
+              "RelativeDocumentMoniker": "Forms\\FrmClientesPagos.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmClientesPagos.vb",
+              "RelativeToolTip": "Forms\\FrmClientesPagos.vb",
+              "ViewState": "AgIAADcCAAAAAAAAAAAcwFwCAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-12T17:51:38.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmClientesPagos.vb [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmClientesPagos.vb",
+              "RelativeDocumentMoniker": "Forms\\FrmClientesPagos.vb",
+              "ToolTip": "C:\\Users\\Jinkis\\Desktop\\Projects Visual Basic\\ControlPagosGimnasio\\Forms\\FrmClientesPagos.vb [Dise\u00F1o]",
+              "RelativeToolTip": "Forms\\FrmClientesPagos.vb [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-12T17:51:35.15Z"
             }
           ]
         }

@@ -9,19 +9,33 @@ Public Class FrmPagoMensual
     Dim precio, dscto, total, prcDia As Decimal
     Public Shared psIdCli, psIdPgs As String
     Dim arrayMes() As String = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"}
-
+    '
+    '
+    '
     Private Sub FrmPagoMensual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'COMPROBAMOS EL TÍTULO DE LA VENTANA PARA DESACTIVAR EL DtpFdi
-        If Me.Text = "Pago de mensualidad" Then DtpFdi.Enabled = False
+        If Me.Text = "Pago de mensualidad" Then DtpFdiPgs.Enabled = False
 
         'SELECCIONA LA PRIMA OPCIÓN DEL COMBOBOX
-        CmbFdp.SelectedIndex = 0
+        CmbFrmPgs.SelectedIndex = 0
 
         'VARIBLE PARA SABER EL USUARIO
         nomUser = FrmPrincipal.nomUser
     End Sub
+    Private Sub FrmPagoMensual_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
 
+        '| ---------------------------------------------------------------------------------------
+        '| CERRAMOS LA VENTANA AL DESACTIVAR EL FORMULARIO 
+        '| ------------------------------------------------
+        '| * Si se desactiva el Form o se hace clic fuera del Form cerramos el FrmPagoMensual para
+        '|   evitar hacer otras acciones con el form ejecutado (no visible).
+        Close()
+
+    End Sub
+    '
+    '
+    '
     Private Sub BtnPagar_Click(sender As Object, e As EventArgs) Handles BtnPagar.Click
         Try
             'CONECTAMOS Y ABRIMOS LA BBDD 
@@ -29,7 +43,7 @@ Public Class FrmPagoMensual
             cnxnMySql.Open()
 
             'DECLARAMOS VARIABLES PARA ALMACENAR EL MES Y EL AÑO DEL DtpFdi
-            Dim fechaPago As DateTime = DtpFdi.Value
+            Dim fechaPago As DateTime = DtpFdiPgs.Value
             Dim dia = fechaPago.Day
             Dim mes = fechaPago.Month
             Dim ano = fechaPago.Year
@@ -49,7 +63,7 @@ Public Class FrmPagoMensual
                            "     FECHA : " & dia & " de " & arrayMes(mes - 1) & " de " & ano & Chr(13) & Chr(13) &
                            "Cambia la FECHA para realizar el pago.", vbCritical, "Verificar pagos")
                     'ENVIAMOS EL ENFOQUE AL DtpFdi
-                    DtpFdi.Focus()
+                    DtpFdiPgs.Focus()
                     'CERRAMOS EL DATAREADER y LA CONEXIÓN A LA BBDD
                     drDataReader.Close()
                     cnxnMySql.Close()
@@ -59,8 +73,8 @@ Public Class FrmPagoMensual
                     drDataReader.Close()
                     'HACEMOS LA CONSULTA PARA INSERTA UN NUEVO REGISTRO A LA TABLA PAGOS
                     sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
-                              VALUES ('" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdp.Value.ToString("yyyy-MM-dd") & "',
-                              '" & CmbFdp.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "',
+                              VALUES ('" & DtpFdiPgs.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdpPgs.Value.ToString("yyyy-MM-dd") & "',
+                              '" & CmbFrmPgs.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "',
                               '" & psIdCli & "', '" & nomUser & "')"
                     cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                     drDataReader = cmdCommand.ExecuteReader
@@ -70,8 +84,8 @@ Public Class FrmPagoMensual
                 End If
             Else
                 'HACEMOS LA CONSULTA PARA ACTUALIZAR EL REGISTRO DEL MES
-                sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdi.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdp.Value.ToString("yyyy-MM-dd") & "', 
-                              frm_pgs='" & CmbFdp.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "',
+                sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdiPgs.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdpPgs.Value.ToString("yyyy-MM-dd") & "', 
+                              frm_pgs='" & CmbFrmPgs.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "',
                               usuario ='" & nomUser & "' WHERE id_pgs='" & psIdPgs & "'"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader
@@ -100,118 +114,148 @@ Public Class FrmPagoMensual
         Close() 'CERRAR FORM
     End Sub
 
-    Private Sub DtpFdi_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdi.ValueChanged
+    Private Sub DtpFdi_ValueChanged(sender As Object, e As EventArgs) Handles DtpFdiPgs.ValueChanged
 
         CalcPrecio() 'LLAMAR FUNCIÓN PARA CALCULAR EL PRECIO
     End Sub
 
-    Private Sub TxtPrecio_GotFocus(sender As Object, e As EventArgs) Handles TxtPrecio.GotFocus
+    Private Sub TxtPrecio_GotFocus(sender As Object, e As EventArgs) Handles TxtPrcPgs.GotFocus
 
-        TxtPrecio.SelectAll() 'SELECCIONA TODO EL TEXTO
+        TxtPrcPgs.SelectAll() 'SELECCIONA TODO EL TEXTO
     End Sub
 
-    Private Sub TxtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPrecio.KeyPress
+    Private Sub TxtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPrcPgs.KeyPress
         '
         If Char.IsDigit(e.KeyChar) Then e.Handled = False : Exit Sub
         If Char.IsControl(e.KeyChar) Then e.Handled = False : Exit Sub
-        If e.KeyChar = "." AndAlso Not TxtPrecio.Text.Contains(",") Then e.Handled = False : Exit Sub
+        If e.KeyChar = "." AndAlso Not TxtPrcPgs.Text.Contains(",") Then e.Handled = False : Exit Sub
         e.Handled = True
     End Sub
 
-    Private Sub TxtPrecio_TextChanged(sender As Object, e As EventArgs) Handles TxtPrecio.TextChanged
+    Private Sub TxtPrecio_TextChanged(sender As Object, e As EventArgs) Handles TxtPrcPgs.TextChanged
         '
-        If TxtPrecio.Text = "" Then FuenteError() : Exit Sub
+        If TxtPrcPgs.Text = "" Then FuenteError() : Exit Sub
         '
-        TxtPrecio.Text = Replace(TxtPrecio.Text, ".", ",")
-        If Len(TxtPrecio.Text) = 1 Then TxtPrecio.Text = TxtPrecio.Text & " €" : TxtPrecio.SelectionStart = 1
-        If Len(TxtPrecio.Text) = 2 Then TxtPrecio.Clear() : FuenteError()
-        If Len(TxtPrecio.Text) >= 3 Then
-            Dim largo = TxtPrecio.Text.Substring(0, Len(TxtPrecio.Text) - 2)
-            TxtPrecio.Text = largo & " €"
-            TxtPrecio.SelectionStart = Len(largo)
+        TxtPrcPgs.Text = Replace(TxtPrcPgs.Text, ".", ",")
+        If Len(TxtPrcPgs.Text) = 1 Then TxtPrcPgs.Text = TxtPrcPgs.Text & " €" : TxtPrcPgs.SelectionStart = 1
+        If Len(TxtPrcPgs.Text) = 2 Then TxtPrcPgs.Clear() : FuenteError()
+        If Len(TxtPrcPgs.Text) >= 3 Then
+            Dim largo = TxtPrcPgs.Text.Substring(0, Len(TxtPrcPgs.Text) - 2)
+            TxtPrcPgs.Text = largo & " €"
+            TxtPrcPgs.SelectionStart = Len(largo)
             If Len(largo) >= 1 Then precio = largo
         End If
         '
-        If TxtDscto.Text = "" Then TxtDscto.Text = "0 €" : TxtDscto.ForeColor = Color.DarkOrange
+        If TxtDscPgs.Text = "" Then TxtDscPgs.Text = "0 €" : TxtDscPgs.ForeColor = Color.DarkOrange
         '
-        If TxtPrecio.Text.Contains(",") Then
-            Dim intDec() As String = TxtPrecio.Text.Split(",")
+        If TxtPrcPgs.Text.Contains(",") Then
+            Dim intDec() As String = TxtPrcPgs.Text.Split(",")
             If (intDec(0).Length = 0) OrElse (intDec(1).Length = 2 Or intDec(1).Length > 4) Or (precio < 30 Or precio > 90) Then
-                TxtPrecio.ForeColor = Color.Red
-                TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, FontStyle.Bold)
+                TxtPrcPgs.ForeColor = Color.Red
+                'LblPrcPgs.Font = New System.Drawing.Font(LblPrcPgs.Font, FontStyle.Bold)
                 FuenteError()
             Else
-                TxtPrecio.ForeColor = Color.Green
-                TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, TxtPrecio.Font.Style And Not FontStyle.Bold)
+                TxtPrcPgs.ForeColor = Color.Green
+                'LblPrcPgs.Font = New System.Drawing.Font(LblPrcPgs.Font, LblPrcPgs.Font.Style And Not FontStyle.Bold)
                 FuenteOk()
                 CalcPrecio()
             End If
             '
         ElseIf (precio < 30 Or precio > 90) Then
-            TxtPrecio.ForeColor = Color.Red
-            TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, FontStyle.Bold)
+            TxtPrcPgs.ForeColor = Color.Red
+            'LblPrcPgs.Font = New System.Drawing.Font(LblPrcPgs.Font, FontStyle.Bold)
             FuenteError()
         Else
-            TxtPrecio.ForeColor = Color.Green
-            TxtPrecio.Font = New System.Drawing.Font(TxtPrecio.Font, TxtPrecio.Font.Style And Not FontStyle.Bold)
+            TxtPrcPgs.ForeColor = Color.Green
+            'LblPrcPgs.Font = New System.Drawing.Font(LblPrcPgs.Font, LblPrcPgs.Font.Style And Not FontStyle.Bold)
             FuenteOk()
             CalcPrecio()
         End If
     End Sub
 
-    Private Sub TxtDscto_GotFocus(sender As Object, e As EventArgs) Handles TxtDscto.GotFocus
+    Private Sub TxtDscto_GotFocus(sender As Object, e As EventArgs) Handles TxtDscPgs.GotFocus
 
-        TxtDscto.SelectAll() 'SELECCIONA TODO EL TEXTO
+        TxtDscPgs.SelectAll() 'SELECCIONA TODO EL TEXTO
     End Sub
 
-    Private Sub TxtDscto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDscto.KeyPress
+    Private Sub Panel_Paint(sender As Object, e As PaintEventArgs) Handles Panel.Paint
+
+    End Sub
+
+    Private Sub CmbMtdPgs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbMtdPgs.SelectedIndexChanged
+
+        '|
+        '|
+
+        Dim strDetail As String
+
+        Select Case CmbMtdPgs.SelectedIndex
+            Case 0 'BONO
+                strDetail = "Cuota mensual +" & vbCrLf & "guantes +" & vbCrLf & "vendas"
+
+            Case 1 'DIARIO
+                strDetail = "Pago diario, " & TxtPrcPgs.Text & " por cada clase suelta."
+
+            Case 2 'MENSAL
+                strDetail = "Con descuento de " & TxtDscPgs.Text & " por edad."
+
+            Case Else 'GRUPO FAMILIAR
+                strDetail = "Jinkis" & vbCrLf & "Sarita" & vbCrLf & "Marjorie"
+
+        End Select
+
+        TxtDtlleMtdo.Text = strDetail
+
+    End Sub
+
+    Private Sub TxtDscto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDscPgs.KeyPress
         '
         If Char.IsDigit(e.KeyChar) Then e.Handled = False : Exit Sub
         If Char.IsControl(e.KeyChar) Then e.Handled = False : Exit Sub
-        If e.KeyChar = "." AndAlso Not TxtDscto.Text.Contains(",") Then e.Handled = False : Exit Sub
+        If e.KeyChar = "." AndAlso Not TxtDscPgs.Text.Contains(",") Then e.Handled = False : Exit Sub
         e.Handled = True
     End Sub
 
-    Private Sub TxtDscto_TextChanged(sender As Object, e As EventArgs) Handles TxtDscto.TextChanged
+    Private Sub TxtDscto_TextChanged(sender As Object, e As EventArgs) Handles TxtDscPgs.TextChanged
         '
-        TxtDscto.Text = Replace(TxtDscto.Text, ".", ",")
-        If Len(TxtDscto.Text) = 1 Then TxtDscto.Text = TxtDscto.Text & " €" : TxtDscto.SelectionStart = 1
-        If Len(TxtDscto.Text) = 2 Then TxtDscto.Clear() : FuenteError()
-        If Len(TxtDscto.Text) >= 3 Then
-            Dim largo = TxtDscto.Text.Substring(0, Len(TxtDscto.Text) - 2)
-            TxtDscto.Text = largo & " €"
-            TxtDscto.SelectionStart = Len(largo)
+        TxtDscPgs.Text = Replace(TxtDscPgs.Text, ".", ",")
+        If Len(TxtDscPgs.Text) = 1 Then TxtDscPgs.Text = TxtDscPgs.Text & " €" : TxtDscPgs.SelectionStart = 1
+        If Len(TxtDscPgs.Text) = 2 Then TxtDscPgs.Clear() : FuenteError()
+        If Len(TxtDscPgs.Text) >= 3 Then
+            Dim largo = TxtDscPgs.Text.Substring(0, Len(TxtDscPgs.Text) - 2)
+            TxtDscPgs.Text = largo & " €"
+            TxtDscPgs.SelectionStart = Len(largo)
             If Len(largo) >= 1 Then dscto = largo
         End If
         '
-        If TxtPrecio.Text = "" Then TxtPrecio.Text = "0 €"
-        If TxtDscto.Text = "" Then FuenteError() : Exit Sub
+        If TxtPrcPgs.Text = "" Then TxtPrcPgs.Text = "0 €"
+        If TxtDscPgs.Text = "" Then FuenteError() : Exit Sub
         '
-        If TxtDscto.Text.Contains(",") Then
-            Dim intDec() As String = TxtDscto.Text.Split(",")
+        If TxtDscPgs.Text.Contains(",") Then
+            Dim intDec() As String = TxtDscPgs.Text.Split(",")
             If (intDec(0).Length = 0) OrElse (intDec(1).Length = 2 Or intDec(1).Length > 4) Or (dscto > 25) Then
-                TxtDscto.ForeColor = Color.Red
-                TxtDscto.Font = New System.Drawing.Font(TxtDscto.Font, FontStyle.Bold)
+                TxtDscPgs.ForeColor = Color.Red
+                'LblDscPgs.Font = New System.Drawing.Font(LblDscPgs.Font, FontStyle.Bold)
                 FuenteError()
             Else
-                TxtDscto.ForeColor = Color.Green
-                TxtDscto.Font = New System.Drawing.Font(TxtDscto.Font, TxtDscto.Font.Style And Not FontStyle.Bold)
-                If dscto = 0 Then TxtDscto.ForeColor = Color.DarkOrange
-                If TxtPrecio.Text = "0 €" Then FuenteError() : Exit Sub
+                TxtDscPgs.ForeColor = Color.Green
+                'LblDscPgs.Font = New System.Drawing.Font(LblDscPgs.Font, LblDscPgs.Font.Style And Not FontStyle.Bold)
+                If dscto = 0 Then TxtDscPgs.ForeColor = Color.DarkOrange
+                If TxtPrcPgs.Text = "0 €" Then FuenteError() : Exit Sub
                 FuenteOk()
                 CalcPrecio()
             End If
             '
         Else
             If (dscto > 20) Then
-                TxtDscto.ForeColor = Color.Red
-                TxtDscto.Font = New System.Drawing.Font(TxtDscto.Font, FontStyle.Bold)
+                TxtDscPgs.ForeColor = Color.Red
+                'LblDscPgs.Font = New System.Drawing.Font(LblDscPgs.Font, FontStyle.Bold)
                 FuenteError()
             Else
-                TxtDscto.ForeColor = Color.Green
-                TxtDscto.Font = New System.Drawing.Font(TxtDscto.Font, TxtDscto.Font.Style And Not FontStyle.Bold)
-                If dscto = 0 Then TxtDscto.ForeColor = Color.DarkOrange
-                If TxtPrecio.Text = "0 €" Then FuenteError() : Exit Sub
+                TxtDscPgs.ForeColor = Color.Green
+                'LblDscPgs.Font = New System.Drawing.Font(LblDscPgs.Font, LblDscPgs.Font.Style And Not FontStyle.Bold)
+                If dscto = 0 Then TxtDscPgs.ForeColor = Color.DarkOrange
+                If TxtPrcPgs.Text = "0 €" Then FuenteError() : Exit Sub
                 FuenteOk()
                 CalcPrecio()
             End If
@@ -220,43 +264,43 @@ Public Class FrmPagoMensual
 
     Sub FuenteError()
         '
-        TxtTotal.Text = "ERROR"
-        TxtTotal.ForeColor = Color.Red
-        TxtTotal.Font = New System.Drawing.Font(TxtTotal.Font, FontStyle.Bold)
-        TxtPrcDia.Text = "ERROR"
-        TxtPrcDia.ForeColor = Color.Red
-        TxtPrcDia.Font = New System.Drawing.Font(TxtPrcDia.Font, FontStyle.Bold)
-        TxtApagar.Text = "ERROR"
-        TxtApagar.ForeColor = Color.Red
-        TxtApagar.Font = New System.Drawing.Font(TxtApagar.Font, FontStyle.Bold)
+        LblTtlPgs.Text = "ERROR"
+        LblTtlPgs.ForeColor = Color.Red
+        LblPrcDisPgs.Text = "ERROR"
+        LblPrcDisPgs.ForeColor = Color.Red
+        LblPagarPgs.Text = "ERROR"
+        LblPagarPgs.ForeColor = Color.Red
+        'LblTtlPgs.Font = New System.Drawing.Font(LblTtlPgs.Font, FontStyle.Bold)
+        'LblPrcDisPgs.Font = New System.Drawing.Font(LblPrcDisPgs.Font, FontStyle.Bold)
+        'LblPagarPgs.Font = New System.Drawing.Font(LblPagarPgs.Font, FontStyle.Bold)
     End Sub
 
     Sub FuenteOk()
         '
-        TxtTotal.ForeColor = Color.Green
-        TxtTotal.Font = New System.Drawing.Font(TxtPrecio.Font, TxtTotal.Font.Style And Not FontStyle.Bold)
-        TxtPrcDia.ForeColor = Color.Green
-        TxtPrcDia.Font = New System.Drawing.Font(TxtPrcDia.Font, TxtPrecio.Font.Style And Not FontStyle.Bold)
-        TxtApagar.ForeColor = Color.Green
-        TxtApagar.Font = New System.Drawing.Font(TxtApagar.Font, TxtPrecio.Font.Style And Not FontStyle.Bold)
+        LblTtlPgs.ForeColor = Color.Green
+        LblPrcDisPgs.ForeColor = Color.Green
+        LblPagarPgs.ForeColor = Color.Black
+        'LblTtlPgs.Font = New System.Drawing.Font(LblPrcPgs.Font, LblTtlPgs.Font.Style And Not FontStyle.Bold)
+        'LblPrcDisPgs.Font = New System.Drawing.Font(LblPrcDisPgs.Font, LblPrcPgs.Font.Style And Not FontStyle.Bold)
+        'LblPagarPgs.Font = New System.Drawing.Font(LblPagarPgs.Font, LblPrcPgs.Font.Style And Not FontStyle.Bold)
     End Sub
 
     Sub CalcPrecio()
         '
-        precio = TxtPrecio.Text.Substring(0, Len(TxtPrecio.Text) - 2)
-        dscto = TxtDscto.Text.Substring(0, Len(TxtDscto.Text) - 2)
+        precio = TxtPrcPgs.Text.Substring(0, Len(TxtPrcPgs.Text) - 2)
+        dscto = TxtDscPgs.Text.Substring(0, Len(TxtDscPgs.Text) - 2)
         total = precio - dscto
-        TxtTotal.Text = FormatCurrency(total)
-        Dim fecha As DateTime = DtpFdi.Value
+        LblTtlPgs.Text = FormatCurrency(total)
+        Dim fecha As DateTime = DtpFdiPgs.Value
         Dim dia = fecha.Day
         Dim mes = fecha.Month
         Dim ano = fecha.Year
         Dim nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
         prcDia = total / nDias
         nDias = nDias - dia + 1
-        TxtDias.Text = nDias
-        TxtPrcDia.Text = FormatCurrency(prcDia)
-        TxtApagar.Text = FormatCurrency(prcDia * nDias)
+        LblDiasPgs.Text = nDias
+        LblPrcDisPgs.Text = FormatCurrency(prcDia)
+        LblPagarPgs.Text = FormatCurrency(prcDia * nDias)
     End Sub
-    '
+
 End Class

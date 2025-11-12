@@ -44,9 +44,9 @@ Public Class FrmHistorialPagos
             FrmPagoMensual.MdiParent = FrmPrincipal
             FrmPagoMensual.psIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
             FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
-            FrmPagoMensual.DtpFdi.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
-            FrmPagoMensual.TxtPrecio.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
-            FrmPagoMensual.TxtDscto.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
+            FrmPagoMensual.DtpFdiPgs.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
+            FrmPagoMensual.TxtPrcPgs.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
+            FrmPagoMensual.TxtDscPgs.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
             FrmPagoMensual.Show() 'MOSTRAR EL FORM
         Else
             MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
@@ -98,9 +98,9 @@ Public Class FrmHistorialPagos
         FrmPagoMensual.Text = "Nuevo pago mensual"
         FrmPagoMensual.psIdCli = psIdCli 'ID CLIENTE
         FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
-        FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
-        FrmPagoMensual.TxtPrecio.Text = precio & " €"
-        FrmPagoMensual.TxtDscto.Text = descto & " €"
+        FrmPagoMensual.DtpFdiPgs.Value = DateTime.Now 'FECHA DE INICIO DE MES
+        FrmPagoMensual.TxtPrcPgs.Text = precio & " €"
+        FrmPagoMensual.TxtDscPgs.Text = descto & " €"
         FrmPagoMensual.Show() 'MOSTRAR EL FORM
     End Sub
 

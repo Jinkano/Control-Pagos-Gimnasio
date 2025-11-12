@@ -57,6 +57,9 @@ Module SQLqueries
                 Case "SubFillClientList"
                     SubFillClientList(strFiltrar)
 
+                Case "SubFillPayments"
+                    SubFillPayments(strFiltrar)
+
             End Select
 
         Catch ex As Exception
@@ -272,52 +275,69 @@ Module SQLqueries
             FrmClientesPagos.LblResult.Text = .RowCount & " - Registro(s) que coincide(n) con su búsqueda."
         End With
     End Sub
-    ''
-    ''
 
-    Sub SubFillPayments()
+    Sub SubFillPayments(strDaily As String)
 
+        '| WITH :
         '|
-        With FrmClientesPagos.DgvListaPagos
+        '|
+        '|
+        '|
+        '|
 
+        Dim nDias As Int16
+        Dim prcDia As Decimal
+
+        With FrmClientesPagos.DgvPaymentList
             .Rows.Clear()
 
             If drDataReader.HasRows Then
 
                 While drDataReader.Read()
                     Dim nRow = .Rows.Add()
-                    '
+
                     Dim fecha As DateTime = drDataReader.GetDateTime(1).ToShortDateString
                     Dim dia = fecha.Day
-                    'Dim mes = fecha.Month
-                    'Dim ano = fecha.Year
-                    '
-                    Dim precio = drDataReader.GetDecimal(4).ToString
-                    Dim dscto = drDataReader.GetDecimal(5).ToString
+
+                    Dim precio = drDataReader.GetDecimal(5).ToString
+                    Dim dscto = drDataReader.GetDecimal(6).ToString
                     Dim total = precio - dscto
-                    Dim nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
-                    Dim prcDia = total / nDias
-                    nDias = nDias - dia + 1
+
+                    If strDaily = "strDaily" Then
+                        nDias = 1
+                        prcDia = total / nDias
+                        'nDias = nDias - dia + 1
+
+                    Else
+                        nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
+                        prcDia = total / nDias
+                        nDias = nDias - dia + 1
+
+                    End If
+
 
                     .Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0).ToString 'ID PAGO
-                    .Rows(nRow).Cells(1).Value = Fun_Long_Date(drDataReader.GetDateTime(1).ToShortDateString) 'dia & " de " & arrayMeses(mes - 1) & " de " & ano 'FECHA DE INICIO
-                    .Rows(nRow).Cells(2).Value = FormatCurrency(precio) 'PRECIO
-                    .Rows(nRow).Cells(3).Value = FormatCurrency(dscto) 'DESCUENTO
-                    .Rows(nRow).Cells(4).Value = FormatCurrency(total) 'TOTAL
-                    .Rows(nRow).Cells(5).Value = nDias 'NUMERO DE DIAS
-                    .Rows(nRow).Cells(6).Value = FormatCurrency(prcDia * nDias) 'A PAGAR
-                    If drDataReader.GetDateTime(2).ToShortDateString = "00/00/0000" Then
-                        .Rows(nRow).Cells(7).Value = "--/--/----" 'FECHA DE PAGO
-                        .Rows(nRow).Cells(8).Value = "DEBE" 'FORMA DE PAGO
+                    .Rows(nRow).Cells(1).Value = Fun_Long_Date(drDataReader.GetDateTime(1).ToShortDateString) 'FECHA DE INICIO
+
+                    If drDataReader.GetDateTime(2).ToShortDateString = "01/01/0001" Then
+                        .Rows(nRow).Cells(2).Value = "SIN FECHA" 'FECHA DE PAGO
+                        .Rows(nRow).Cells(3).Value = "IMPAGO" 'FORMA DE PAGO
                         '.Rows(nRow).DefaultCellStyle.BackColor = Color.LightSalmon
                         .Rows(nRow).DefaultCellStyle.ForeColor = Color.Red
-                        .Rows(nRow).DefaultCellStyle.Font = New Drawing.Font("Arial", 10, FontStyle.Bold)
-                        '
+                        .Rows(nRow).DefaultCellStyle.Font = New Drawing.Font("Arial", 9, FontStyle.Bold)
+                        .Rows(nRow).Cells(10).Value = "N/A"
                     Else
-                        .Rows(nRow).Cells(7).Value = Fun_Long_Date(drDataReader.GetDateTime(2).ToShortDateString) 'FECHA DE PAGO
-                        .Rows(nRow).Cells(8).Value = drDataReader.GetString(3).ToString 'FORMA DE PAGO
-                        .Rows(nRow).Cells(9).Value = drDataReader.GetString(7).ToString 'USUARIO
+                        .Rows(nRow).Cells(2).Value = Fun_Long_Date(drDataReader.GetDateTime(2).ToShortDateString) 'FECHA DE PAGO
+                        .Rows(nRow).Cells(3).Value = drDataReader.GetString(3).ToString 'FORMA DE PAGO
+                        .Rows(nRow).Cells(10).Value = drDataReader.GetInt16(8).ToString 'USUARIO
                     End If
+
+                    .Rows(nRow).Cells(5).Value = FormatCurrency(precio) 'PRECIO
+                    .Rows(nRow).Cells(6).Value = FormatCurrency(dscto) 'DESCUENTO
+                    .Rows(nRow).Cells(7).Value = FormatCurrency(total) 'TOTAL
+                    .Rows(nRow).Cells(8).Value = nDias 'NUMERO DE DIAS
+                    .Rows(nRow).Cells(9).Value = FormatCurrency(prcDia * nDias) 'A PAGAR
+
                 End While
             End If
 

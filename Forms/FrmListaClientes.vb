@@ -262,9 +262,9 @@ Public Class FrmListaClientes
         FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
         FrmPagoMensual.LblCliente.Text = nombre & " " & apellido & " - " & edad 'NOMBRE, APELLIDO y EDAD
-        FrmPagoMensual.DtpFdi.Value = DateTime.Now 'FECHA DE INICIO DE MES
-        FrmPagoMensual.TxtPrecio.Text = precio & " €"
-        FrmPagoMensual.TxtDscto.Text = descto & " €"
+        FrmPagoMensual.DtpFdiPgs.Value = DateTime.Now 'FECHA DE INICIO DE MES
+        FrmPagoMensual.TxtPrcPgs.Text = precio & " €"
+        FrmPagoMensual.TxtDscPgs.Text = descto & " €"
 
         FrmPagoMensual.Show() 'MOSTRAR EL FORM
     End Sub

@@ -1,6 +1,6 @@
 ﻿Public Class FrmNuevoEditarCliente
 
-    Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo As String
+    Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo, strToolTipText As String
 
     Public blnMarker As Boolean
     Public intAddMember As Int16
@@ -45,8 +45,8 @@
         '| ---------------------------------------------------------------------------------------------
         '| CERRAMOS LA VENTANA AL DESACTIVAR EL FORMULARIO 
         '| ------------------------------------------------
-        '| * Si se desactiva el Form o se hace clic fuera del Form cerramos el FrmNuevoEditarCliente _
-        '|   _ para evitar hacer otras acciones con el form ejecutado no visible.
+        '| * Si se desactiva el Form o se hace clic fuera del Form cerramos el FrmNuevoEditarCliente
+        '|   para evitar hacer otras acciones con el form ejecutado (no visible).
         Close()
 
     End Sub
@@ -316,6 +316,8 @@
         '|        _ guardamos en la variable sqlConsulta.
         '|      * Llamamos a la subrutina Sub_Crud_Sql y le pasamos la variable sqlConsulta y el texto _
         '|        _ "SubSearchDailyPrice" que se usa para el select case del módulo SQLqueries.
+        '|      * Llenamos la raviable 'strToolTipText' con el texto que se mostrará al pasar el cursor _
+        '|        _ por el Datagridview.
 
         If RbDiario.Checked Then
             strMtdPgs = TxtListaNom.Text
@@ -323,6 +325,7 @@
             DgvListaNombre.Enabled = True
             sqlConsulta = "SELECT id_trfa, tipo_trfa FROM trfa_dscto WHERE tipo_trfa LIKE '%DIARIO%'"
             Sub_Crud_Sql(sqlConsulta, "SubSearchDailyPrice")
+            strToolTipText = "CLIC PARA SELECCIONAR UN PAGO DIARIO"
         End If
 
     End Sub
@@ -376,8 +379,9 @@
         '|      * Enviamos el enfoque al Textbox TxtListaNom.
         '|      * Hacemos la consulta SQL para obtener todos los datos de la tabla 'grp_familiar' y lo guardammos en la _
         '|        _ variable sqlConsulta.
-        '|      * Llamamos a la subrutina Sub_Crud_Sql para ejecutar la consulta SQL y le pasamos como parametro la _
-        '|        _ variable 'sqlConsulta' y el texto 'SubFillFamilyGroupData' que se usa en el Select Case del módulo SQLqueries.
+        '|      * Llamamos a la subrutina Sub_Crud_Sql para ejecutar la consulta SQL y le pasamos como parametro la variable _
+        '|        _ 'sqlConsulta' y el texto 'SubFillFamilyGroupData' que se usa en el Select Case del módulo SQLqueries.
+        '|      * Llenamos la raviable 'strToolTipText' con el texto que se mostrará al pasar el cursor por el Datagridview.
         '| ELSE : Si el RadioButton 'RbGrupoFamiliar' NO está seleccionado:
         '|      * Limpia la Label del número de integrantes.
         '|      * Deshabilitamos los controles BtnAddGrupo y TxtListaNom.
@@ -394,10 +398,11 @@
             TxtListaNom.Focus()
             sqlConsulta = "SELECT * FROM grp_familiar ORDER BY id_grp DESC"
             Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
+            strToolTipText = "DOBLE CLIC PARA SELECCIONAR UN GRUPO"
         Else
-            LblNumIntgrntes.Text = ""
             BtnAddGrupo.Enabled = False
             TxtListaNom.Enabled = False
+            LblNumIntgrntes.Text = ""
         End If
     End Sub
     '
@@ -545,6 +550,18 @@
         End If
 
     End Sub
+    Private Sub DgvListaNombre_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DgvListaNombre.CellFormatting
+
+        '| ------------------------------------------------------------------------------------------------------------------------------------
+        '| MOSTRAR TOOLTIPTEXT EN EL DATAGRIDVIEW
+        '| --------------------------------------
+        '| IF : Comprobamos si la celda está en la Columna 1 y no es la fila de encabezado asignamos el ToolTipText directamente a la celda.
+
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex = 1 Then
+            DgvListaNombre.Rows(e.RowIndex).Cells(e.ColumnIndex).ToolTipText = strToolTipText
+        End If
+
+    End Sub
     '
     '
     '
@@ -601,7 +618,6 @@
         '|   _ strIdClient que es Public.
 
         sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
-        'FunReadIdClient(sqlConsulta)
         Sub_Crud_Sql(sqlConsulta, "SubReadIdClient")
 
         '| -----------------------------------------------------------------------------------------------
@@ -675,17 +691,18 @@
                 Sub_Crud_Sql(sqlConsulta)
         End Select
 
-        '| -----------------------------------------------------------------------------------------------
-        '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario _
-        '| _ FrmNuevoEditarCliente, ****** y mostrar el mensaje de confirmación.
+        '| -------------------------------------------------------------------------------------------------------------
+        '| * Llenamos la variable strFlag con el valor 'UPDATE_PAYMENT_LIST' para indicar al formulario FrmClientesPagos
+        '|   que actualice la lista de pagos al momento de activarse
+        '| * Activamos los botones del formulario FrmClientesPagos llamando a la subrutina Sub_Activate_Buttons() de
+        '|   dicho formulario.
+        '| * Llamamos a la subrutina FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente y
+        '|   mostrar el mensaje de confirmación.
+
+        FrmClientesPagos.strFlags = "UPDATE_PAYMENT_LIST"
+        FrmClientesPagos.Sub_Activate_Buttons()
         FillLabelsMessage()
 
-        'If String.IsNullOrEmpty(LblNomCli.Text) Then
-        '    FunDisableButtons()
-
-        'Esyo es por si se ha guardado
-        FrmClientesPagos.Sub_Activate_Buttons()
-        'End If
     End Sub
     '
     '
@@ -748,8 +765,8 @@
         Sub_Crud_Sql(sqlConsulta)
 
         '| ------------------------------------------------------------------------------------------------------------
-        '| Llamamos a la función FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente, _
-        '| _ cambiar el texto del StsBarra y mostrar el mensaje de confirmación.
+        '| Llamamos a la subrutina FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente, _
+        '| _ y mostrar el mensaje de confirmación.
         FillLabelsMessage()
 
     End Sub
@@ -758,8 +775,9 @@
     '
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
 
-        '| Cerramos el formulario.
-        If String.IsNullOrEmpty(FrmClientesPagos.LblNomCli.Text) Then FrmClientesPagos.Sub_Disable_Buttons()
+        '| ----------------------------------------------------------------------------------
+        '| CERRAMOS EL FORMULARIO
+        '| ----------------------
         Me.Close()
 
     End Sub
@@ -784,6 +802,7 @@
 
     Sub Sub_TxtLost_Focus(txtTextBox As TextBox)
 
+        '| ----------------------------------------------------------------
         'TxtCadena.Text = Trim(TxtCadena.Text)
         'While TxtCadena.Text.Contains("  ")
         '    TxtCadena.Text = TxtCadena.Text.Replace("  ", " ")
@@ -816,13 +835,14 @@
     '
     Overloads Function FunMsgBox(clientData As String, titleMsgbox As String, textBox As TextBox) As Boolean
 
+        '| -------------------------------------------------------------------------------------------------
         '| IF : Comprobamos si el TextBox está vacío.
         '|      * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas _
         '|        _ respectivamente usando UCase() y LCase(), también se puede usar ToUpper() y ToLower().
-        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() _
-        '|        _ y lo convertimos en minúsculas usando LCase, para mostrarlo en el título de mensaje.
-        '|      * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al textbox _
-        '|        _ que corresponda.
+        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar, utilizando Substring() y lo _
+        '|        _ convertimos en minúsculas usando LCase, para mostrarlo en el título de mensaje.
+        '|      * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al _
+        '|        _ textbox que corresponda.
         '|      * Return True para salir de la función y no ejecutar el resto del código.
         '| ELSE : Si el TextBox tiene datos
         '|      * Return False para seguir ejecutando el resto del código.
@@ -840,13 +860,13 @@
     End Function
     Overloads Function FunMsgBox(clientData As String, titleMsgbox As String, label As Label, dateTimePicker As DateTimePicker) As Boolean
 
+        '| -------------------------------------------------------------------------------------------------------------------------------
         '| IF : Comprobamos si el Label está vacío.
-        '|      * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas _
-        '|        _ respectivamente usando UCase() y LCase(), también se puede usar ToUpper() y ToLower().
-        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() _
-        '|        _ y lo convertimos en minúsculas usando LCase, para mostrarlo en el título de mensaje.
-        '|      * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al dateTimePicker _
-        '|        _ que corresponda.
+        '|      * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas respectivamente usando UCase() _
+        '|        _ y LCase(), también se puede usar ToUpper() y ToLower().
+        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() y lo convertimos en _
+        '|        _ minúsculas usando LCase, para mostrarlo en el título de mensaje.
+        '|      * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al dateTimePicker que corresponda.
         '|      * Return True para salir de la función y no ejecutar el resto del código.
         '| ELSE : Si el TextBox tiene datos
         '|      * Return False para seguir ejecutando el resto del código.
@@ -864,9 +884,10 @@
     End Function
     Overloads Function FunMsGbox(titleMsgbox As String, rb1 As RadioButton, rb2 As RadioButton, rb3 As RadioButton) As Boolean
 
+        '| -------------------------------------------------------------------------------------------------------------------
         '| IF : Comprobamos si los RadioButton no están seleccionados.
-        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() _
-        '|        _ y lo convertimos en minúsculas usando LCase, para mostrarlo en el título de mensaje.
+        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() y lo _
+        '|        _ convertimos en minúsculas usando LCase, para mostrarlo en el título de mensaje.
         '|      * Mostramos el mensaje con los datos recibidos por parámetro.
         '|      * Return True para salir de la función y no ejecutar el resto del código.
         '| ELSE : Si uno de los RadioButton está seleccionado.
@@ -882,14 +903,14 @@
     End Function
     Overloads Function FunMsgBox(clientData As String, titleMsgbox As String, textBox As TextBox, radioButton As RadioButton) As Boolean
 
+        '| -----------------------------------------------------------------------------------------------------------------------------
         '| IF : Comprobamos si está activado el RadioButton y el TextBox está vacío.
-        '|      * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas _
-        '|        _ respectivamente usando UCase() y LCase(), también se puede usar ToUpper() y ToLower()
+        '|      * Convertimos el texto de la variable clientData y titleMsgbox en mayúsculsa y minúsculas respectivamente usando UCase() _
+        '|        _ y LCase(), también se puede usar ToUpper() y ToLower()
         '|      * Comprobamos si la variable clientData = "DIARIO" para agragar el texto "pago ".
-        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() _
-        '|        _ y lo convertimos en minúsculas usando LCase, para mostrarlo en el título de mensaje.
-        '|      * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al textbox _
-        '|        _ que corresponda.
+        '|      * Extraemos el nombre del botón BtnGuardar o BtnActualizar según sea el caso, utilizando Substring() y lo convertimos en _
+        '|        _ minúsculas usando LCase, para mostrarlo en el título de mensaje.
+        '|      * Mostramos el mensaje con los datos recibidos por parámetro, enviamos el enfoque al textbox que corresponda.
         '|      * Return True para salir de la función y no ejecutar el resto del código.
         '| ELSE : Si el TextBox tiene datos
         '|      * Return False para seguir ejecutando el resto del código.
