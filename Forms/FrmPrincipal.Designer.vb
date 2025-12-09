@@ -28,7 +28,7 @@ Partial Class FrmPrincipal
         Me.BtnClientesPagos = New System.Windows.Forms.Button()
         Me.BtnPrecioDsctos = New System.Windows.Forms.Button()
         Me.BtnPagoPendiente = New System.Windows.Forms.Button()
-        Me.BtnListaClientes = New System.Windows.Forms.Button()
+        Me.BtnFamilyGroup = New System.Windows.Forms.Button()
         Me.PnlBotonera.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -40,7 +40,7 @@ Partial Class FrmPrincipal
         Me.PnlBotonera.Controls.Add(Me.BtnClientesPagos)
         Me.PnlBotonera.Controls.Add(Me.BtnPrecioDsctos)
         Me.PnlBotonera.Controls.Add(Me.BtnPagoPendiente)
-        Me.PnlBotonera.Controls.Add(Me.BtnListaClientes)
+        Me.PnlBotonera.Controls.Add(Me.BtnFamilyGroup)
         Me.PnlBotonera.Dock = System.Windows.Forms.DockStyle.Left
         Me.PnlBotonera.Location = New System.Drawing.Point(0, 0)
         Me.PnlBotonera.Margin = New System.Windows.Forms.Padding(0)
@@ -98,7 +98,7 @@ Partial Class FrmPrincipal
         Me.BtnPrecioDsctos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPrecioDsctos.Image = Global.ControlPagosGimnasio.My.Resources.Resources.precio_dscnto_45x33
         Me.BtnPrecioDsctos.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPrecioDsctos.Location = New System.Drawing.Point(4, 189)
+        Me.BtnPrecioDsctos.Location = New System.Drawing.Point(4, 275)
         Me.BtnPrecioDsctos.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
         Me.BtnPrecioDsctos.Name = "BtnPrecioDsctos"
         Me.BtnPrecioDsctos.Padding = New System.Windows.Forms.Padding(0, 6, 0, 5)
@@ -113,7 +113,7 @@ Partial Class FrmPrincipal
         Me.BtnPagoPendiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPagoPendiente.Image = Global.ControlPagosGimnasio.My.Resources.Resources.morosos_35x35
         Me.BtnPagoPendiente.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPagoPendiente.Location = New System.Drawing.Point(4, 103)
+        Me.BtnPagoPendiente.Location = New System.Drawing.Point(4, 189)
         Me.BtnPagoPendiente.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
         Me.BtnPagoPendiente.Name = "BtnPagoPendiente"
         Me.BtnPagoPendiente.Padding = New System.Windows.Forms.Padding(0, 6, 0, 5)
@@ -123,19 +123,20 @@ Partial Class FrmPrincipal
         Me.BtnPagoPendiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtnPagoPendiente.UseVisualStyleBackColor = True
         '
-        'BtnListaClientes
+        'BtnFamilyGroup
         '
-        Me.BtnListaClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnListaClientes.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cliente_37x35
-        Me.BtnListaClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnListaClientes.Location = New System.Drawing.Point(4, 281)
-        Me.BtnListaClientes.Margin = New System.Windows.Forms.Padding(0)
-        Me.BtnListaClientes.Name = "BtnListaClientes"
-        Me.BtnListaClientes.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
-        Me.BtnListaClientes.Size = New System.Drawing.Size(180, 74)
-        Me.BtnListaClientes.TabIndex = 0
-        Me.BtnListaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnListaClientes.UseVisualStyleBackColor = True
+        Me.BtnFamilyGroup.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnFamilyGroup.Image = Global.ControlPagosGimnasio.My.Resources.Resources.grupfamily
+        Me.BtnFamilyGroup.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnFamilyGroup.Location = New System.Drawing.Point(4, 103)
+        Me.BtnFamilyGroup.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
+        Me.BtnFamilyGroup.Name = "BtnFamilyGroup"
+        Me.BtnFamilyGroup.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
+        Me.BtnFamilyGroup.Size = New System.Drawing.Size(180, 74)
+        Me.BtnFamilyGroup.TabIndex = 0
+        Me.BtnFamilyGroup.Text = "Grupo Familiar"
+        Me.BtnFamilyGroup.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnFamilyGroup.UseVisualStyleBackColor = True
         '
         'FrmPrincipal
         '
@@ -158,7 +159,7 @@ Partial Class FrmPrincipal
     Friend WithEvents PnlBotonera As Panel
     Friend WithEvents BtnPrecioDsctos As Button
     Friend WithEvents BtnPagoPendiente As Button
-    Friend WithEvents BtnListaClientes As Button
+    Friend WithEvents BtnFamilyGroup As Button
     Friend WithEvents BtnClientesPagos As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents BtnSalir As Button

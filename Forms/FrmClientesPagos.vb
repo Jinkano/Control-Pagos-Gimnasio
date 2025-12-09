@@ -2,7 +2,7 @@
 
     Dim sqlConsulta, strState, strFilter As String
 
-    Public strIdClient, strFlags As String
+    Public strIdClient, strIdGrpFamily, strFlags As String
     '
     '
     '
@@ -12,24 +12,32 @@
         '| COMPROBAMOS SI HAY REGISTROS EN LA TABLA CLIENTES
         '| -------------------------------------------------
         '| * Llamamos a la subrutina Sub_Disable_Buttons() para desactivar los botones.
+        '|
         '| * Hacemos la consulta y lo guardamos en la variable 'sqlConsulta' para comprobar
         '|   si hay registros en la tabla clientes, llamamos a la subrutina Sub_Crud_Sql()
         '|   y le pasamos como parametro la variable 'sqlConsulta' y el String 'SubCheckRecords'
         '|   que se usa en el Select Case del módulo SQLqueries.
-        '| * Llamamos a la subrutina CleanLabel() para limpiar los Label's.
+        '|
+        '| * Llamamos a la subrutina Sub_Clean_Controls() para limpiar los controles.
 
         Sub_Disable_Buttons()
+
         sqlConsulta = "SELECT id_cli FROM clientes"
         Sub_Crud_Sql(sqlConsulta, "SubCheckRecords")
+
         Sub_Clean_Controls()
 
     End Sub
     Private Sub FrmClientesPagos_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
         '----------------------------------------------------------------------------------------
-        '| COMPROBAMOS SI ************************* EN LA TABLA CLIENTES
-        '| -------------------------------------------------
-        'CONSULTANOS A LA BBDD EL HISTORIAL DE PAGOS DEL CLIENTE SELECCIONADO
+        '| COMPROBAMOS SI HAY CAMBIOS PARA ACTUALIZAR EL DATAGRIDVIEW
+        '| ----------------------------------------------------------
+        '| IF : Comprobamos el valor de la variable 'strFlags' para actualizar el DataGridView, si
+        '|      es igual a 'UPDATE_PAYMENT_LIST' llamamos a la subrutina Sub_View_Payment_List()
+        '|      para actualizar la lista de pagos.
+        '|
+        '| * Limpiamos la variable 'strFlags' para las próximas comprobaciones.
 
         If strFlags = "UPDATE_PAYMENT_LIST" Then Sub_View_Payment_List()
 
@@ -47,6 +55,7 @@
         '| SELECT CASE :
         '|      * Llenamos la variable 'strFilter' que servirá de filtro para hacer la consulta a la BBDD al momento de
         '|        ingresar datos en el TextBox 'TxtBuscar'.
+        '|
         '| * Limpiamos TextBox 'TxtBuscar' y le enviamos el enfoque.
 
         Select Case CmbFiltrar.SelectedIndex
@@ -79,10 +88,12 @@
         '|   Exit Sub, ese valor se recibe de 'BtnSeleccionar', 'DgvClientes' y 'BtnCancelSearch' y
         '|   sirve para no volver a hacer la consulta al momento de limpiar el TextBox ya que se
         '|   dispara el TextChanged.
-        '| SELECT CASE : Seleccionamos un caso según el valor de la variable strFilter:
-        '|      * Hacemos la consulta y lo almacenamos en la variable sqlConsulta.
+        '|
+        '| SELECT CASE : Seleccionamos un caso según el valor de la variable 'strFilter':
+        '|      * Hacemos la consulta y lo almacenamos en la variable 'sqlConsulta'.
         '|      * Si la variable strFilter es nulo o vacio mostramos un mensaje de error y mandamos el
         '|        enfoque al 'CmbFiltrar' para seleccionar un filtro de busqueda.
+        '|
         '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos tres parámetros. El segundo parámetro
         '|   'SubFillClientList' se usa en el SelectCase del módulo 'SQLqueries', el tercer parámetro es
         '|   para pasarselo a la subrutina 'SubFillClientList' que se encarga de marca la columna que
@@ -105,6 +116,7 @@
                 MsgBox("Selecciona un FILTRO para busqueda.", vbCritical, "Error en la busqueda")
                 CmbFiltrar.Focus()
         End Select
+
         Sub_Crud_Sql(sqlConsulta, "SubFillClientList", strFilter)
 
     End Sub
@@ -146,12 +158,14 @@
         '| ---------------------------------------------------------------------
         '| IF : Comprobamos si el CmbFiltrar o TxtBuscar están vacios, para salir de la función usando
         '|      Exit Sub y evitar que se ejecuten el resto del código.
+        '|
         '| * Llamamos a la subrutina Sub_Upload_Data_And_Payments() que se encarga de llenar los datos
-        '|   del cliente, comprobar si el cliente pertenece a un grupo familiar, ocultar y mostrar los
+        '|   del cliente, comprobar si el cliente pertenece a un grupo familiar, ocultar, mostrar los
         '|   controles y llamar a la subrutina Sub_View_Payment_List() que carga el historial de pagos
         '|   del cliente seleccionado.
 
         If CmbFiltrar.Text = "" Or TxtBuscar.Text = "" Then Exit Sub
+
         Sub_Upload_Data_And_Payments()
 
     End Sub
@@ -160,7 +174,7 @@
     '
     Private Sub BtnFindClient_Click(sender As Object, e As EventArgs) Handles BtnFindClient.Click
 
-        '| --------------------------------------------------------------------------------------------
+        '| ---------------------------------------------------------------------------------------
         '| PREPARAMOS LOS CONTROLES PARA LA BUSQUEDA
         '| -----------------------------------------
         '| * Llamamos a las subrutinas Sub_Search_Record(), Sub_Disable_Buttons() y Sub_Clean_Controls()
@@ -169,6 +183,7 @@
         Sub_Search_Record()
         Sub_Disable_Buttons()
         Sub_Clean_Controls()
+
     End Sub
     '
     '
@@ -180,12 +195,16 @@
         '| --------------------
         '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para
         '|   hacer comprobaciones y evitar hacer consultas innecesarias.
+        '|
         '| * Llamamos a las subrutina Sub_Select_Record_Cancel_Search() para activar, desactivar y
         '|   ocultar controles.
+        '|
         '| * Limpiamos la variable strFlags para otras comprobaciones.
 
         strFlags = "SKIP_SEARCH"
+
         Sub_Select_Record_Cancel_Search()
+
         strFlags = ""
 
     End Sub
@@ -197,12 +216,13 @@
         '| ----------------------------------------------------------------------------------------------
         '| COMPROBAR QUE RADIOBUTTON ESTÁ ACTIVADO
         '| ---------------------------------------
-        '| IF : Comprobamos si el RbActivo está activado para llenar la variable strState con la cadena "ACTIVO".
-        '| ELSE : Caso contrario llenamos la variable strState con la cadena "INACTIVO".
+        '| * Comprobamos si el RbActivo está activado para llenar la variable 'strState' con la cadena
+        '|   "ACTIVO" en caso contrario llenamos la variable con la cadena "INACTIVO".
         '| ** La variable strState se usa para hacer las consultas a la tabla Clientes.**
-        '| * Llenamos el TxtBuscar con "JWIR" y luego borramos el texto, de esa manera activamos el TextChanged
-        '|   del TextBox para hacer la consulta, mostramos el resultado en el DgvClientes.
-        '| * Limpiamos el textbox 'TxtBuscar' y enviamos el enfoque.
+        '|
+        '| * Llenamos el TxtBuscar con "JWIR" y luego borramos el texto, de esa manera activamos el
+        '|   TextChanged del TextBox para hacer la consulta, asi mostramos el resultado en el DgvClientes.
+        '| * Limpiamos el textbox 'TxtBuscar' y enviamos le enfoque.
 
         If RbActivo.Checked Then
             strState = "ACTIVO"
@@ -233,6 +253,21 @@
         Sub_Upload_Data_And_Payments()
 
     End Sub
+    Private Sub DgvClientes_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DgvClientes.CellFormatting
+
+        '| ------------------------------------------------------------------------------------------------------------------------------
+        '| MOSTRAR TOOLTIPTEXT EN EL DATAGRIDVIEW
+        '| --------------------------------------
+        '| IF : Comprobamos si el cursor del mouse está en una de las Columnas y no es la fila deL encabezado.
+        '|      * Asignamos el ToolTipText directamente a la celda.
+
+        Dim strToolTipText = "DOBLE CLIC PARA SELECCIONAR UN CLIENTE"
+
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 1 Then
+            DgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex).ToolTipText = strToolTipText
+        End If
+
+    End Sub
     '
     '
     '
@@ -241,15 +276,19 @@
         '| -------------------------------------------------------------------------------------
         '| REGISTRAR UN NUEVO CLIENTE EN LA BASE DE DATOS
         '| ----------------------------------------------
-        '| * Limpiamos todos los labels del contenedor PnlDatosCliente llamando a la subrutina
-        '|   Sub_Clean_Label().
+        '| * Limpiamos los controles y todos los labels del contenedor PnlDatosCliente llamando
+        '|   a la subrutina Sub_Clean_Controls().
+        '|
         '| * Desactivamos los botones llamando a la subrutina Sub_Disable_Buttons().
+        '|
         '| * Ocultamos el boton BtnActualizar para mostrar el boton de BtnGuardar.
         '| * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
         '| * Mostramos el formulario FrmNuevoEditarCliente
 
         Sub_Clean_Controls()
+
         Sub_Disable_Buttons()
+
         FrmNuevoEditarCliente.BtnActualizar.Visible = False
         FrmNuevoEditarCliente.MdiParent = FrmPrincipal
         FrmNuevoEditarCliente.Show()
@@ -263,54 +302,53 @@
         '| --------------------------------------------------------------------------------------
         '| MODIFICAR LOS DATOS DEL CLIENTE EN LA BASE DE DATOS
         '| ---------------------------------------------------
-        '| IF : Si la variable está vacia:
-        '|      * Salimos de la función usando Exit Sub para no ejecutar el resto del código.
-        '| ELSE : Si se ha seleccionado un registro:
-        '|      With : Enviamos al formulario FrmNuevoEditarCliente los datos del cliente.
-        '|      * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
-        '|      * Ocultamos el botón BtnGuardar para mostrar el botón Actualizar.
-        '|      * Mostramos el formulario FrmNuevoEditarCliente con los datos del cliente.
+        '| * Si hay un registro seleccionado enviamos al formulario FrmNuevoEditarCliente los
+        '|   datos del cliente para modificar su información.
+        '|
+        '| IF : Comprobamos el texto del 'LblEstCli' para activar el RadioButton que corresponda
+        '|      al estado del cliente.
+        '|
+        '| SELECT CASE :
+        '| * Elejimos unos de los casos según el texto de 'LblMtdPgoCli' para activar el RadioButton
+        '|   que corresponda al método de pago del cliente.
+        '|
+        '| * Hacemos al formulario FrmNuevoEditarCliente como hijo del formulario principal.
+        '| * Ocultamos el botón BtnGuardar para mostrar el botón Actualizar.
+        '| * Mostramos el formulario FrmNuevoEditarCliente con los datos del cliente.
 
+        With FrmNuevoEditarCliente
+            .strIdClient = strIdClient
+            .TxtNombre.Text = LblNomCli.Text
+            .TxtApellido.Text = LblApeCli.Text
+            .DtpFdn.Value = FnacimientoCorto.Text
+            .TxtTelefono.Text = LblTlfCli.Text
+            .TxtEmail.Text = LblEmlCli.Text
+            .TxtDireccion.Text = LblDirCli.Text
+            .DtpFdi.Value = FregistroCorto.Text
 
-        If LblNomCli.Text = "" Then
-            Exit Sub
-        Else
+            If LblEstCli.Text = "ACTIVO" Then
+                .RbActiveStatus.Checked = True
+            Else
+                .RbInactiveState.Checked = True
+            End If
 
-            With FrmNuevoEditarCliente
-                .strIdClient = strIdClient
-                .TxtNombre.Text = LblNomCli.Text
-                .TxtApellido.Text = LblApeCli.Text
-                .DtpFdn.Value = FnacimientoCorto.Text
-                .TxtTelefono.Text = LblTlfCli.Text
-                .TxtEmail.Text = LblEmlCli.Text
-                .TxtDireccion.Text = LblDirCli.Text
-                .DtpFdi.Value = FregistroCorto.Text
+            Select Case LblMtdPgoCli.Text
+                Case "MENSUAL"
+                    .RbMensual.Checked = True
 
-                If LblEstCli.Text = "ACTIVO" Then
-                    .RbActiveStatus.Checked = True
-                Else
-                    .RbInactiveState.Checked = True
-                End If
+                Case "GRUPAL"
+                    .RbGrupoFamiliar.Checked = True
+                    .TxtListaNom.Text = LblGrpFamCli.Text
 
-                Select Case LblMtdPgoCli.Text
-                    Case "MENSUAL"
-                        .RbMensual.Checked = True
+                Case Else '"DIARIO"
+                    .TxtListaNom.Text = LblMtdPgoCli.Text
+                    .RbDiario.Checked = True
+            End Select
+        End With
 
-                    Case "GRUPAL"
-                        .RbGrupoFamiliar.Checked = True
-                        .TxtListaNom.Text = LblGrpFamCli.Text
-
-                    Case Else '"DIARIO"
-                        .TxtListaNom.Text = LblMtdPgoCli.Text
-                        .RbDiario.Checked = True
-                End Select
-            End With
-
-            FrmNuevoEditarCliente.MdiParent = FrmPrincipal
-            FrmNuevoEditarCliente.BtnGuardar.Visible = False
-            FrmNuevoEditarCliente.Show()
-
-        End If
+        FrmNuevoEditarCliente.MdiParent = FrmPrincipal
+        FrmNuevoEditarCliente.BtnGuardar.Visible = False
+        FrmNuevoEditarCliente.Show()
 
     End Sub
     '
@@ -321,15 +359,21 @@
         '| ------------------------------------------------------------------------------------------
         '| ELIMINAR UN REGISTRO DE LA TABLA CLIENTE
         '| -----------------------------------------
-        '| IF : Comprobamos si la variable strIdClient está vacio, si se cumple la condición:
-        '|      * Mostramos un mensaje de error informando que se 
+        '| * Antes de eliminar mostramos un mensaje de advertencia y con una sentencia IF comprobamos
+        '|   la respuesta del usuario.
         '|
+        '| * Si la respuesta es 'SI' hacemos una consulta y lo almacenamos en la variable 'sqlConsulta'
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamoa como parametro la variable 'sqlConsulta'
         '|
-
-        If strIdClient = "" Then MsgBox("  Para ELIMINAR selecciona un cliente :" & vbCr & vbCr &
-                                        "    1.- Haz clic en Buscar cliente." & vbCr &
-                                        "    2.- Selecciona un registro de la lista." _
-                                        , vbCritical, "Error al eliminar") : Exit Sub
+        '| * La subrutina Sub_Clean_Controls() se encarga de limpiar los Label's, el datagridview y la
+        '|   variable 'strIdClient'.
+        '|
+        '| * Despues de eliminar comprobamos si hay registros en la tabla clientes haciendo una consulta
+        '|   y llamando a la subrutina Sub_Crud_Sql(sqlConsulta, "SubCheckRecords"), el primer parametro
+        '|   es la consulta y el segundo parámetro es para llamar a la subrutina que se encarga de activar
+        '|   o desactivar el botón para hacer la busqueda de clientes.
+        '|
+        '| * Llamamos a la subrutina Sub_Disable_Buttons() para desactivar los botones.
 
         If MsgBox("      NOMBRE  :  " & LblNomCli.Text & " " & LblApeCli.Text & vbCr &
                   "      CODIGO   :  " & strIdClient & vbCr & vbCr &
@@ -344,54 +388,78 @@
 
             Sub_Clean_Controls()
 
-            '----------------------------------
-
             sqlConsulta = "SELECT id_cli FROM clientes"
-
             Sub_Crud_Sql(sqlConsulta, "SubCheckRecords")
-            '| * Llamamos a la subrutina Sub_Disable_Buttons() para desactivar los botones.
 
             Sub_Disable_Buttons()
 
-            '----------------------------------
         End If
+
     End Sub
     '
     '
     '
     Private Sub DgvListaPagos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPaymentList.CellContentClick
-        'DgvListaPagos_CellContentClick
+    End Sub
+    Private Sub DgvPaymentList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvPaymentList.CellClick
+
+        '| ----------------------------------------------------------------------------------------------------------------
+        '| ACTIVAR O DESACTIVAR EL BOTON PARA PAGAR
+        '| ----------------------------------------
+        '| * Comprobamos si el registro seleccionado está pagado o no para activar o desactivar el botón 'BtnPayMonth'
+
+        If DgvPaymentList.CurrentRow.Cells(2).Value = "SIN FECHA" Then
+            BtnPayMonth.Enabled = True
+        Else
+            BtnPayMonth.Enabled = False
+        End If
+
     End Sub
     '
     '
     '
     Private Sub BtnPayMonth_Click(sender As Object, e As EventArgs) Handles BtnPayMonth.Click
 
-        'BtnPagarMes_Click 'SelectedRows
-        If DgvPaymentList.SelectedCells.Count = 0 Then
-            MsgBox("SELECCIONA")
-            'Exit Sub
-        Else
+        '| ----------------------------------------------------------------------------------
+        '| PAGAR UNA MENSUALIDAD
+        '| ---------------------
+        '| * Llenamos la variable 'strFlags' para actualizar el datagridview 'DgvPaymentList'
+        '|   al momento de activar el formulario.
 
-            If DgvPaymentList.CurrentRow.Cells(2).Value = "SIN FECHA" Then
+        strFlags = "UPDATE_PAYMENT_LIST"
 
-                FrmPagoMensual.MdiParent = FrmPrincipal
-                FrmPagoMensual.Show()
+        '| * ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
 
-            Else
-
-                MsgBox("FECHA    : " & DgvPaymentList.CurrentRow.Cells(1).Value & vbCr & vbCr &
-                   "ESTADO  : PAGADO" & vbCr & vbCr &
-                   "Selecciona otro registro para realizar el pago.", vbInformation, "Pago mensual")
-            End If
-
-        End If
+        With FrmPagoMensual
+            .strIdPgs = DgvPaymentList.CurrentRow.Cells(0).Value 'ID_PAGO -ToString
+            .LblCliente.Text = LblNomCli.Text & " " & LblApeCli.Text & " - " & LblEdadCli.Text 'NOMBRE, APELLIDO y EDAD
+            .DtpFdiPgs.Value = DgvPaymentList.CurrentRow.Cells(1).Value 'FECHA DE INICIO DE MES -.ToString
+            .TxtPrcPgs.Text = DgvPaymentList.CurrentRow.Cells(5).Value 'PRECIO
+            .TxtDscPgs.Text = DgvPaymentList.CurrentRow.Cells(6).Value 'DESCUENTO
+            '
+            Select Case LblMtdPgoCli.Text
+                Case "MENSUAL"
+                    .CmbMtdPgs.SelectedIndex = 2
+                Case "GRUPAL"
+                    .CmbMtdPgs.SelectedIndex = 3
+                Case Else 'DIARIO (5,6,7...)
+                    .CmbMtdPgs.SelectedIndex = 1
+            End Select
+            '
+            .MdiParent = FrmPrincipal
+            .Show()
+        End With
 
     End Sub
     '
     '
     '
     Private Sub BtnNewPayment_Click(sender As Object, e As EventArgs) Handles BtnNewPayment.Click
+
+        '| ------------------------------------------------------------------------------------------
+        '| 
+        '| -----------------------------------------
+        '|
         'BtnNuevoPago_Click
         'If DgvListaPagos.RowCount = 0 Then Exit Sub
         FrmPagoMensual.MdiParent = FrmPrincipal
@@ -401,8 +469,12 @@
     '
     '
     Private Sub BtnCloseWindow_Click(sender As Object, e As EventArgs) Handles BtnCloseWindow.Click
-        'CERRAMOS LA VENTANA
+
+        '| ----------------------------------------------------------------------------------------
+        '| CERRAMOS EL FORMULARIO
+        '| ----------------------
         Close()
+
     End Sub
 
     '| ---------------------------------------------------- '
@@ -418,7 +490,7 @@
         BtnFindClient.Enabled = True
         BtnModifyData.Enabled = True
         BtnDeleteClient.Enabled = True
-        BtnPayMonth.Enabled = True
+        'BtnPayMonth.Enabled = True
         BtnNewPayment.Enabled = True
         DgvPaymentList.Enabled = True
 
@@ -506,8 +578,8 @@
 
     Sub Sub_Fill_Data_DgvClientes()
 
-        '| * Depúes de confirmar la busqueda llenamos los label con información del cliente que lo obtenemos _
-        '|   _ del DgvClientes y lo ocultamos para visualizar el resultado.
+        '| * Depúes de confirmar la busqueda llenamos los label con información del cliente que
+        '|   obtenemos del DgvClientes y lo ocultamos para visualizar el resultado.
 
         With DgvClientes
             strIdClient = .CurrentRow.Cells(0).Value
@@ -523,8 +595,7 @@
             FregistroCorto.Text = .CurrentRow.Cells(10).Value
             LblFdiCli.Text = .CurrentRow.Cells(11).Value
             LblEstCli.Text = .CurrentRow.Cells(12).Value
-            LblGrpFamCli.Text = .CurrentRow.Cells(13).Value
-            '.Visible = False
+            strIdGrpFamily = .CurrentRow.Cells(13).Value
         End With
     End Sub
 
@@ -553,61 +624,68 @@
 
     End Sub
 
-    Sub Sub_View_Payment_List()
-
-        '| * Hacemos la consulta para seleccionar los pagos del cliente seleccionado y lo almacenamos en
-        '|   la variable 'sqlConsulta'
-        '| IF : Comprobammos si el método de pago contiene 'DIARIO', si se cumple la condición llamamos a
-        '|      la subrutina principal y le pasamos como tercer parámetro 'strDaily' en caso contario pasamos
-        '|      un valor vacio, el segundo parámetro es para llamar a la subrutina que se encarga de llenar
-        '|      el DataGridView 'DgvListaPagos'.
-        '| * Limpiamos la variable strFlags para futuras comprobaciones.
-
-        sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & strIdClient & "' ORDER BY fdi_pgs DESC"
-        If LblMtdPgoCli.Text.Contains("DIARIO") Then
-            Sub_Crud_Sql(sqlConsulta, "SubFillPayments", "strDaily")
-        Else
-            Sub_Crud_Sql(sqlConsulta, "SubFillPayments", "")
-        End If
-    End Sub
-
     Sub Sub_Upload_Data_And_Payments()
 
-        '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en 'TxtBuscar' para
+        '| * Llenamos la variable 'strFlags' con la cadena "SKIP_SEARCH" que se usará en 'TxtBuscar' para
         '|   hacer comprobaciones y evitar hacer consultas inecesarias.
         '| * Pasamos la información del cliente seleccionado, del DgvClientes a los Labels, llamando a
         '|   la subrutina Sub_Fill_Data_DgvClientes().
-        '| IF : Comprobamos si el 'LblGrpFamCli' tiene información para buscar un grupo familiar, si se
-        '|      cumple la condición hacemos la consulta a la BBDD y le pasamos como parámetro la variable
-        '|      'sqlConsulta' a la subrutina principal Sub_Crud_Sql().
+        '|
+        '| IF : Comprobamos si el 'LblGrpFamCli' tiene información para buscar un grupo familiar, si se cumple
+        '|      la condición hacemos la consulta a la BBDD y lo almacenamos en la variable 'sqlConsulta'.
+        '|      * Llamamos a la subrutina principal Sub_Crud_Sql() que va a recibir dos parametros, el primero
+        '|        es la consulta y el segundo es la cadena 'SubFillGroupName' que servirá para el Select Case de
+        '|        la subrutina principal que a su vez llama a la subrutina SubFillGroupName que se encarga de
+        '|        recoger el nombre del grupo familiar.
+        '|
         '| * Llamamos a las subrutina 'Sub_Select_Record_Cancel_Search()' y 'Sub_Activate_Buttons()' para
         '|   activar, desactivar y ocultar controles.
+        '|
         '| * Llamamos a la subrutina Sub_View_Payment_List() para consultar los pagos del cliente.
+        '|
         '| * Limpiamos la variable strFlags para futuras comprobaciones.
 
         strFlags = "SKIP_SEARCH"
         Sub_Fill_Data_DgvClientes()
 
-        If Not String.IsNullOrEmpty(LblGrpFamCli.Text) Then
-            sqlConsulta = "SELECT * FROM grp_familiar WHERE id_grp = '" & LblGrpFamCli.Text & "'"
-            Sub_Crud_Sql(sqlConsulta)
+        If Not String.IsNullOrWhiteSpace(strIdGrpFamily) Then 'LblGrpFamCli.Text
+            sqlConsulta = "SELECT nom_grp FROM grp_familiar WHERE id_grp = '" & strIdGrpFamily & "'"
+            Sub_Crud_Sql(sqlConsulta, "SubFillGroupName")
         End If
 
         Sub_Select_Record_Cancel_Search()
         Sub_Activate_Buttons()
+
         Sub_View_Payment_List()
 
-        ' 2. Desactivar la selección del encabezado/fila actual (Importante)
-        'DgvPaymentList.ClearSelection()
-
-        ' 3. Eliminar el foco del cursor de la primera celda. 
-        '    Si solo usas ClearSelection, la primera celda sigue teniendo el foco y puede parecer seleccionada.
-        DgvPaymentList.CurrentCell = Nothing
-
-        ' Opcional: Si quieres evitar que se pueda seleccionar la celda 0,0 al hacer clic en ella
-        ' DgvPaymentList.Rows(0).Cells(0).Selected = False
-
         strFlags = ""
+
+    End Sub
+
+    Sub Sub_View_Payment_List()
+
+        '| * Hacemos la consulta para seleccionar los pagos del cliente seleccionado y lo almacenamos en
+        '|   la variable 'sqlConsulta'º
+        '|
+        '| IF : Comprobammos si el método de pago contiene 'DIARIO', si se cumple la condición llamamos a
+        '|      la subrutina principal y le pasamos como tercer parámetro 'strDaily' en caso contario pasamos
+        '|      un valor vacio, el segundo parámetro es para llamar a la subrutina que se encarga de llenar
+        '|      el DataGridView 'DgvListaPagos'.
+        '| * CurrentCell = Nothing eliminar el foco del cursor de la primera celda. 
+
+        If String.IsNullOrWhiteSpace(strIdGrpFamily) Then
+            sqlConsulta = "SELECT * FROM pagos WHERE id_cli = '" & strIdClient & "' ORDER BY fdi_pgs DESC"
+        Else
+            sqlConsulta = "SELECT * FROM pagos WHERE id_grp = '" & strIdGrpFamily & "' ORDER BY fdi_pgs DESC"
+        End If
+
+        If LblMtdPgoCli.Text.Contains("DIARIO") Then
+            Sub_Crud_Sql(sqlConsulta, "SubFillPayments", "strDaily")
+        Else
+            Sub_Crud_Sql(sqlConsulta, "SubFillPayments", "")
+        End If
+
+        DgvPaymentList.CurrentCell = Nothing
 
     End Sub
 

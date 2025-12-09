@@ -50,9 +50,9 @@ Public Class FrmUserPassword
                     FrmPrincipal.cargoUser = drDataReader.GetString(3).ToString
                     drDataReader.Close()
 
-                sqlConsulta = "INSERT INTO sesion_user (fh_entrada, id_user) VALUES
+                    sqlConsulta = "INSERT INTO sesion_user (fh_entrada, id_user) VALUES
                                 ('" & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "', '" & idUser & "')"
-                cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
+                    cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                     drDataReader = cmdCommand.ExecuteReader()
                     idUser = ""
 
@@ -67,7 +67,7 @@ Public Class FrmUserPassword
             cnxnMySql.Close()
 
         Catch ex As Exception
-        MsgBox(e.ToString)
+            MsgBox(e.ToString)
         End Try
     End Sub
 

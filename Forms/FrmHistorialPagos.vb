@@ -42,7 +42,7 @@ Public Class FrmHistorialPagos
 
             'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
             FrmPagoMensual.MdiParent = FrmPrincipal
-            FrmPagoMensual.psIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
+            FrmPagoMensual.strIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
             FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
             FrmPagoMensual.DtpFdiPgs.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
             FrmPagoMensual.TxtPrcPgs.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
@@ -96,7 +96,7 @@ Public Class FrmHistorialPagos
         'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
         FrmPagoMensual.MdiParent = FrmPrincipal
         FrmPagoMensual.Text = "Nuevo pago mensual"
-        FrmPagoMensual.psIdCli = psIdCli 'ID CLIENTE
+        FrmPagoMensual.strIdCli = psIdCli 'ID CLIENTE
         FrmPagoMensual.LblCliente.Text = TxtCliente.Text 'NOMBRE, APELLIDO y EDAD
         FrmPagoMensual.DtpFdiPgs.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrcPgs.Text = precio & " €"

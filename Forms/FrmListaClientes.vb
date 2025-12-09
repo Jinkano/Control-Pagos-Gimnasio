@@ -260,7 +260,7 @@ Public Class FrmListaClientes
         'ENVIAMOS LOS DATOS AL FORM FrmPagoMensual PARA EL NUEVO PAGO
         FrmPagoMensual.Text = "Nuevo pago mensual"
         FrmPagoMensual.MdiParent = FrmPrincipal
-        FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
+        FrmPagoMensual.strIdCli = DgvListaClientes.CurrentRow.Cells(8).Value.ToString
         FrmPagoMensual.LblCliente.Text = nombre & " " & apellido & " - " & edad 'NOMBRE, APELLIDO y EDAD
         FrmPagoMensual.DtpFdiPgs.Value = DateTime.Now 'FECHA DE INICIO DE MES
         FrmPagoMensual.TxtPrcPgs.Text = precio & " €"

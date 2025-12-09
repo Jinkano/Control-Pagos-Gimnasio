@@ -136,7 +136,7 @@ Public Class FrmPrincipal
                 drDataReader.Close()
 
                 'DESHABILITAR BOTONES
-                BtnListaClientes.Enabled = False
+                BtnFamilyGroup.Enabled = False
                 BtnClientesPagos.Enabled = False
                 BtnPagoPendiente.Enabled = False
 
@@ -160,9 +160,9 @@ Public Class FrmPrincipal
         Me.Text = Me.Text & nomUser & " - " & cargoUser
     End Sub
 
-    Private Sub BtnListaClientes_Click(sender As Object, e As EventArgs) Handles BtnListaClientes.Click
-        FrmListaClientes.MdiParent = Me
-        FrmListaClientes.Show()
+    Private Sub BtnFamilyGroup_Click(sender As Object, e As EventArgs) Handles BtnFamilyGroup.Click
+        FrmGrupoFamiliar.MdiParent = Me
+        FrmGrupoFamiliar.Show()
     End Sub
 
     Private Sub BtnClientesPagos_Click(sender As Object, e As EventArgs) Handles BtnClientesPagos.Click

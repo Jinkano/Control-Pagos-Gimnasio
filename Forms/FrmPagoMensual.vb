@@ -5,9 +5,12 @@ Public Class FrmPagoMensual
     Dim cnxnMySql As New MySqlConnection
     Dim drDataReader As MySqlDataReader
     Dim cmdCommand As MySqlCommand
+
     Dim sqlConsulta, nomUser As String
     Dim precio, dscto, total, prcDia As Decimal
-    Public Shared psIdCli, psIdPgs As String
+
+    Public strIdCli, strIdPgs As String
+
     Dim arrayMes() As String = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"}
     '
     '
@@ -52,7 +55,7 @@ Public Class FrmPagoMensual
             If Me.Text = "Nuevo pago mensual" Then
 
                 'HACEMOS LA CONSULTA PARA VER SI HAY ALGÚN REGISTRO CON LA MISMA FECHA
-                sqlConsulta = "SELECT * FROM pagos WHERE MONTH(fdi_pgs) = '" & mes & "' AND YEAR(fdi_pgs) = ' " & ano & " ' AND id_cli = '" & psIdCli & "'"
+                sqlConsulta = "SELECT * FROM pagos WHERE MONTH(fdi_pgs) = '" & mes & "' AND YEAR(fdi_pgs) = ' " & ano & " ' AND id_cli = '" & strIdCli & "'"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader
 
@@ -75,7 +78,7 @@ Public Class FrmPagoMensual
                     sqlConsulta = "INSERT INTO pagos (fdi_pgs, fdp_pgs, frm_pgs, prc_pgs, dsc_pgs, id_cli, usuario)
                               VALUES ('" & DtpFdiPgs.Value.ToString("yyyy-MM-dd") & "', '" & DtpFdpPgs.Value.ToString("yyyy-MM-dd") & "',
                               '" & CmbFrmPgs.Text & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscto, ",", ".") & "',
-                              '" & psIdCli & "', '" & nomUser & "')"
+                              '" & strIdCli & "', '" & nomUser & "')"
                     cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                     drDataReader = cmdCommand.ExecuteReader
                     'MENSAJE PARA AVISAR QUE SE HA PAGADO
@@ -86,7 +89,7 @@ Public Class FrmPagoMensual
                 'HACEMOS LA CONSULTA PARA ACTUALIZAR EL REGISTRO DEL MES
                 sqlConsulta = "UPDATE pagos SET fdi_pgs='" & DtpFdiPgs.Value.ToString("yyyy-MM-dd") & "', fdp_pgs='" & DtpFdpPgs.Value.ToString("yyyy-MM-dd") & "', 
                               frm_pgs='" & CmbFrmPgs.Text & "', prc_pgs='" & Replace(precio, ",", ".") & "', dsc_pgs='" & Replace(dscto, ",", ".") & "',
-                              usuario ='" & nomUser & "' WHERE id_pgs='" & psIdPgs & "'"
+                              usuario ='" & nomUser & "' WHERE id_pgs='" & strIdPgs & "'"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
                 drDataReader = cmdCommand.ExecuteReader
                 'MENSAJE PARA AVISAR QUE SE HA PAGADO

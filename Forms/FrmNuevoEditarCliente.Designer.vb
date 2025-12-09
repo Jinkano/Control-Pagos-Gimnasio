@@ -624,8 +624,8 @@ Partial Class FrmNuevoEditarCliente
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.GbContacto)
         Me.Controls.Add(Me.GbDatos)
-        Me.Controls.Add(Me.BtnGuardar)
         Me.Controls.Add(Me.BtnActualizar)
+        Me.Controls.Add(Me.BtnGuardar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False

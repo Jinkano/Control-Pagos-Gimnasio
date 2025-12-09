@@ -15,18 +15,6 @@ Public Class A_modify_A
         'COMPROBAMOS SI EL MES SELECCIONADO YA ESTÁ PAGADO
         If DgvListaPagos.CurrentRow.Cells(7).Value = "--/--/----" Then
 
-            txtFlags = "UPDATE_PAY" 'VARIABLE BANDERA PARA ACTUALIZAR LA GRILLA DgvListaPagos
-
-            'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
-            FrmPagoMensual.psIdPgs = DgvListaPagos.CurrentRow.Cells(0).Value.ToString 'ID_PAGO
-            'FrmPagoMensual.LblCliente.Text = TxtNomCli.Text & " " & TxtApeCli.Text & " - " & TxtEdaCli.Text 'NOMBRE, APELLIDO y EDAD
-            FrmPagoMensual.DtpFdiPgs.Value = DgvListaPagos.CurrentRow.Cells(1).Value.ToString 'FECHA DE INICIO DE MES
-            FrmPagoMensual.TxtPrcPgs.Text = DgvListaPagos.CurrentRow.Cells(2).Value.ToString 'PRECIO
-            FrmPagoMensual.TxtDscPgs.Text = DgvListaPagos.CurrentRow.Cells(3).Value.ToString 'DESCUENTO
-            'FrmPagoMensual.nomUser = FrmPrincipal.nomUser 'USUARIO
-
-            FrmPagoMensual.MdiParent = FrmPrincipal
-            FrmPagoMensual.Show()
         Else
             MsgBox("FECHA    : " & DgvListaPagos.CurrentRow.Cells(1).Value.ToString & Chr(13) & Chr(13&) &
                    "ESTADO  : PAGADO" & Chr(13&) & Chr(13&) &

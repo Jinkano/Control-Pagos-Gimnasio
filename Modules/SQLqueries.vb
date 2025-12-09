@@ -39,11 +39,14 @@ Module SQLqueries
                 Case "SubReadIdClient"
                     SubReadIdClient()
 
-                Case "SubSearchFamilyGroup"
-                    SubSearchFamilyGroup()
+                Case "SubFillGroupName"
+                    SubFillGroupName()
 
                 Case "SubSearchDiscountPrice"
                     SubSearchDiscountPrice()
+
+                Case "CheckPaymentRegistered"
+                    CheckPaymentRegistered()
 
                 Case "SubFillFamilyGroupData"
                     SubFillFamilyGroupData()
@@ -99,13 +102,13 @@ Module SQLqueries
     End Sub
 
 
-    Sub SubSearchFamilyGroup()
+    Sub SubFillGroupName()
 
         '| * Leemos el drDataReader.
         '| * Llenamos el label LblGrpFamCli del Form FrmClientesPagos con el nombre del grupo familiar.
 
         drDataReader.Read()
-        FrmClientesPagos.LblGrpFamCli.Text = drDataReader.GetString(1)
+        FrmClientesPagos.LblGrpFamCli.Text = drDataReader.GetString(0)
     End Sub
 
 
@@ -138,9 +141,9 @@ Module SQLqueries
         '|      IF : Si la consulta devuelve resultados
         '|          * Leemos el drDataReader y el resultado lo almacenamos en las variables -
         '|            - "precio" y "dscnto".
-        '|          * Pasamos la variable blnMarker a FALSE para no volver a llamar a esta función.
+        '|          * Pasamos la variable blnMarker a TRUE para no volver a llamar a esta función.
         '|      ELSE :
-        '|          * Pasamos la variable blnMarker a TRUE, para hacer una nueva consulta y volver _
+        '|          * Pasamos la variable blnMarker a FALSE, para hacer una nueva consulta y volver _
         '|            _ a llamar a esta función.
 
         With FrmNuevoEditarCliente
@@ -148,9 +151,26 @@ Module SQLqueries
                 drDataReader.Read()
                 .precio = drDataReader.GetDecimal(0)
                 .dscnto = drDataReader.GetDecimal(1)
-                .blnMarker = False
-            Else
                 .blnMarker = True
+            Else
+                .blnMarker = False
+            End If
+        End With
+    End Sub
+
+    Sub CheckPaymentRegistered()
+
+        '| WITH :
+        '|      IF : Si la consulta devuelve resultados
+        '|          * Pasamos la variable blnMarker a TRUE 
+        '|      ELSE :
+        '|          * Pasamos la variable blnMarker a FALSE
+
+        With FrmNuevoEditarCliente
+            If drDataReader.HasRows Then
+                .blnMarker = True
+            Else
+                .blnMarker = False
             End If
         End With
     End Sub
@@ -306,12 +326,11 @@ Module SQLqueries
                     If strDaily = "strDaily" Then
                         nDias = 1
                         prcDia = total / nDias
-                        'nDias = nDias - dia + 1
 
                     Else
                         nDias = DateTime.DaysInMonth(fecha.Year, fecha.Month)
                         prcDia = total / nDias
-                        nDias = nDias - dia + 1
+                        nDias = nDias - dia
 
                     End If
 

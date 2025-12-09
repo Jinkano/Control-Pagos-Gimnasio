@@ -142,7 +142,6 @@ Public Class FrmGrupoFamiliar
 
         'PASAMOS EL NOMBRE DEL GRUPO AL FORMULARIO FrmNuevoEditarCliente
         FrmNuevoEditarCliente.TxtListaNom.Text = TxtListNomGrupo.Text
-
     End Sub
 
     Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click

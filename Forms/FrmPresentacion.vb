@@ -42,8 +42,8 @@ Public Class FrmPresentacion
 
         'ElseIf BarraProgreso.Value = 1 Then
         Timer.Stop() 'DETENER TIMER
-            FrmUserPassword.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
-            Me.Hide() 'CERRA EL FORMULARIO -- Close()
+        FrmUserPassword.Show() 'MOSTRAMOS EL FORMULARIO LOGIN
+        Me.Hide() 'CERRA EL FORMULARIO -- Close()
         'End If
 
     End Sub
