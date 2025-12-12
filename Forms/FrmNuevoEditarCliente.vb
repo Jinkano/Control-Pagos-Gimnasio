@@ -1,5 +1,4 @@
-﻿Imports Org.BouncyCastle.Crypto.Engines
-
+﻿
 Public Class FrmNuevoEditarCliente
 
     Dim currentMonth, currentYear As Int16
@@ -44,8 +43,8 @@ Public Class FrmNuevoEditarCliente
 
             TxtEdad.Text = ""
 
-            DtpFdi.MinDate = "01/01/" & currentYear - 1
-            DtpFdi.MaxDate = "31/12/" & currentYear + 1
+            DtpFdi.MinDate = "01/01/" & currentYear - 2
+            DtpFdi.MaxDate = "31/12/" & currentYear + 2
         Else
             DtpFdn.CustomFormat = "' ' dd ' de  ' MMMM ' de  ' yyyy"
         End If
@@ -718,6 +717,7 @@ Public Class FrmNuevoEditarCliente
         '|          * Calculammos el precio grupal multiplicando el precio mensual por el número de integrantes.
         '|          * Hacemos la consulta con el código del grupo y lo almacenamos en la variable sqlConsulta.
         '|          * Llamamos al la subrutina Sub_Crud_Sql(), le pasamos como parámetro la consulta.
+        '|      * Llenamos la variable 'strIdGrpFamily' del formulario 'FrmClientesPagos' con el ID del grupo.
         '|      
         '| ELSE : Si el pago no es grupal.
         '|      * Hacemos la consulta con el código del cliente y lo almacenamos en la variable sqlConsulta.
@@ -731,18 +731,13 @@ Public Class FrmNuevoEditarCliente
 
             If blnMarker = False Then
                 precio = precio * DgvListaNombre.CurrentRow.Cells(2).Value
-                sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user)
-                                VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "',
-                                '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "',
-                                '" & DgvListaNombre.CurrentRow.Cells(0).Value & "', '" & FrmPrincipal.idUser & "')"
+                sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user) VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "', '" & DgvListaNombre.CurrentRow.Cells(0).Value & "', '" & FrmPrincipal.idUser & "')"
                 Sub_Crud_Sql(sqlConsulta)
             End If
+            FrmClientesPagos.strIdGrpFamily = DgvListaNombre.CurrentRow.Cells(0).Value
 
         Else
-            sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
-                           VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "',
-                                '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "',
-                                '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
+            sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user) VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "', '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
             Sub_Crud_Sql(sqlConsulta)
         End If
 
@@ -787,7 +782,6 @@ Public Class FrmNuevoEditarCliente
         '|   mostrar el mensaje de confirmación.
 
         FrmClientesPagos.strFlags = "UPDATE_PAYMENT_LIST"
-        FrmClientesPagos.strIdGrpFamily = DgvListaNombre.CurrentRow.Cells(0).Value
         FrmClientesPagos.Sub_Activate_Buttons()
         FillLabelsMessage()
 
