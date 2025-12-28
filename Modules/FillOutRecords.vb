@@ -48,7 +48,7 @@ Module FillOutRecords
                                 .Rows(nRow).Cells(0).Value = drDataReader.GetString(0) 'INTEGRANTES
                                 .Rows(nRow).Cells(10).Value = drDataReader.GetInt16(6) 'ID DEL GRUPO
                                 .Rows(nRow).Cells(11).Value = drDataReader.GetInt16(7) 'NUM DE INTEGRANTES
-                                .Rows(nRow).Cells(12).Value = drDataReader.GetString(1) & " - " & drDataReader.GetInt16(6)   'NOMBRE GRUPO MAS INTEGRANTES
+                                .Rows(nRow).Cells(12).Value = drDataReader.GetString(1) & " - " & drDataReader.GetInt16(6) 'NOMBRE GRUPO MAS INTEGRANTES
 
                                 nRow += 1
                                 nMembers += 1

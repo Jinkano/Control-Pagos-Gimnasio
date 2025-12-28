@@ -1,4 +1,5 @@
-﻿Imports System.Data
+﻿Imports System.Configuration
+Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports Org.BouncyCastle.Asn1.Crmf
 
@@ -18,7 +19,8 @@ Module ModuleTest
     Public Sub ListaClientes(ByVal SqlConsulta As String, CmbBuscar As String, ByVal DgvListaClientes As DataGridView)
 
         Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
             cmdCommand = New MySqlCommand(SqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader()
@@ -67,7 +69,8 @@ Module ModuleTest
         '
         Try
             '
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
             '
             cmdCommand = New MySqlCommand(SqlConsulta, cnxnMySql)
@@ -462,7 +465,8 @@ Module ModuleTest
 
     Sub DgvLlenarPagos(ByVal sqlConsulta As String, ByVal DgvListaPagos As DataGridView)
         Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
             cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
             drDataReader = cmdCommand.ExecuteReader

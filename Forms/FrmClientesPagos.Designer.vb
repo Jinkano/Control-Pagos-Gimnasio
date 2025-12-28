@@ -23,23 +23,23 @@ Partial Class FrmClientesPagos
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientesPagos))
         Me.PnlBotonera = New System.Windows.Forms.Panel()
         Me.BtnCloseWindow = New System.Windows.Forms.Button()
@@ -83,33 +83,33 @@ Partial Class FrmClientesPagos
         Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.GbDatosCliente = New System.Windows.Forms.GroupBox()
         Me.PnlDatosCliente = New System.Windows.Forms.Panel()
-        Me.LblResult = New System.Windows.Forms.Label()
         Me.FregistroCorto = New System.Windows.Forms.Label()
         Me.FnacimientoCorto = New System.Windows.Forms.Label()
+        Me.LblResult = New System.Windows.Forms.Label()
+        Me.LblDirCli = New System.Windows.Forms.Label()
+        Me.LblNomCli = New System.Windows.Forms.Label()
+        Me.LblEstCli = New System.Windows.Forms.Label()
+        Me.LblFdiCli = New System.Windows.Forms.Label()
+        Me.LblGrpFamCli = New System.Windows.Forms.Label()
+        Me.LblEmlCli = New System.Windows.Forms.Label()
+        Me.LblNombre = New System.Windows.Forms.Label()
+        Me.LblMtdPgoCli = New System.Windows.Forms.Label()
+        Me.LblFdnCli = New System.Windows.Forms.Label()
+        Me.LblTlfCli = New System.Windows.Forms.Label()
+        Me.LblEdadCli = New System.Windows.Forms.Label()
         Me.gb2 = New System.Windows.Forms.GroupBox()
         Me.gb1 = New System.Windows.Forms.GroupBox()
-        Me.LblTlfCli = New System.Windows.Forms.Label()
+        Me.LblApeCli = New System.Windows.Forms.Label()
         Me.LblTelefono = New System.Windows.Forms.Label()
         Me.LblEmail = New System.Windows.Forms.Label()
         Me.LblDireccion = New System.Windows.Forms.Label()
-        Me.LblEmlCli = New System.Windows.Forms.Label()
-        Me.LblDirCli = New System.Windows.Forms.Label()
         Me.LblEdad = New System.Windows.Forms.Label()
-        Me.LblEdadCli = New System.Windows.Forms.Label()
         Me.LblGrupoFamiliar = New System.Windows.Forms.Label()
-        Me.LblMtdPgoCli = New System.Windows.Forms.Label()
         Me.LblEstado = New System.Windows.Forms.Label()
         Me.LblFechaInscripcion = New System.Windows.Forms.Label()
         Me.LblMetodoPago = New System.Windows.Forms.Label()
-        Me.LblFdiCli = New System.Windows.Forms.Label()
-        Me.LblGrpFamCli = New System.Windows.Forms.Label()
-        Me.LblEstCli = New System.Windows.Forms.Label()
-        Me.LblApeCli = New System.Windows.Forms.Label()
-        Me.LblFdnCli = New System.Windows.Forms.Label()
-        Me.LblNomCli = New System.Windows.Forms.Label()
         Me.LblFechaNacimiento = New System.Windows.Forms.Label()
         Me.LblApellido = New System.Windows.Forms.Label()
-        Me.LblNombre = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PnlBuscar = New System.Windows.Forms.Panel()
         Me.CmbFiltrar = New System.Windows.Forms.ComboBox()
@@ -171,6 +171,7 @@ Partial Class FrmClientesPagos
         '
         'BtnDeleteClient
         '
+        Me.BtnDeleteClient.BackColor = System.Drawing.SystemColors.ControlLight
         Me.BtnDeleteClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnDeleteClient.Image = Global.ControlPagosGimnasio.My.Resources.Resources.eliminar_28x32
         Me.BtnDeleteClient.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -182,10 +183,11 @@ Partial Class FrmClientesPagos
         Me.BtnDeleteClient.TabIndex = 3
         Me.BtnDeleteClient.Text = "&Eliminar cliente"
         Me.BtnDeleteClient.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnDeleteClient.UseVisualStyleBackColor = True
+        Me.BtnDeleteClient.UseVisualStyleBackColor = False
         '
         'BtnPayMonth
         '
+        Me.BtnPayMonth.BackColor = System.Drawing.SystemColors.ControlLight
         Me.BtnPayMonth.FlatAppearance.BorderColor = System.Drawing.Color.Green
         Me.BtnPayMonth.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPayMonth.ForeColor = System.Drawing.Color.DarkGreen
@@ -199,10 +201,11 @@ Partial Class FrmClientesPagos
         Me.BtnPayMonth.TabIndex = 4
         Me.BtnPayMonth.Text = "&Pagar mes"
         Me.BtnPayMonth.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnPayMonth.UseVisualStyleBackColor = True
+        Me.BtnPayMonth.UseVisualStyleBackColor = False
         '
         'BtnNewPayment
         '
+        Me.BtnNewPayment.BackColor = System.Drawing.SystemColors.ControlLight
         Me.BtnNewPayment.FlatAppearance.BorderColor = System.Drawing.Color.Green
         Me.BtnNewPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnNewPayment.ForeColor = System.Drawing.Color.DarkGreen
@@ -216,10 +219,11 @@ Partial Class FrmClientesPagos
         Me.BtnNewPayment.TabIndex = 5
         Me.BtnNewPayment.Text = "N&uevo pago"
         Me.BtnNewPayment.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnNewPayment.UseVisualStyleBackColor = True
+        Me.BtnNewPayment.UseVisualStyleBackColor = False
         '
         'BtnModifyData
         '
+        Me.BtnModifyData.BackColor = System.Drawing.SystemColors.ControlLight
         Me.BtnModifyData.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnModifyData.Image = Global.ControlPagosGimnasio.My.Resources.Resources.editar_28x32
         Me.BtnModifyData.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -231,10 +235,11 @@ Partial Class FrmClientesPagos
         Me.BtnModifyData.TabIndex = 2
         Me.BtnModifyData.Text = "&Modificar datos"
         Me.BtnModifyData.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnModifyData.UseVisualStyleBackColor = True
+        Me.BtnModifyData.UseVisualStyleBackColor = False
         '
         'BtnNewClient
         '
+        Me.BtnNewClient.BackColor = System.Drawing.SystemColors.ControlLight
         Me.BtnNewClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnNewClient.Image = Global.ControlPagosGimnasio.My.Resources.Resources.nuevo_24x32
         Me.BtnNewClient.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -246,7 +251,7 @@ Partial Class FrmClientesPagos
         Me.BtnNewClient.TabIndex = 1
         Me.BtnNewClient.Text = "&Nuevo cliente"
         Me.BtnNewClient.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtnNewClient.UseVisualStyleBackColor = True
+        Me.BtnNewClient.UseVisualStyleBackColor = False
         '
         'BtnCancelSearch
         '
@@ -312,16 +317,16 @@ Partial Class FrmClientesPagos
         Me.DgvClientes.AllowUserToDeleteRows = False
         Me.DgvClientes.AllowUserToResizeColumns = False
         Me.DgvClientes.AllowUserToResizeRows = False
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        Me.DgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle35.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle35.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle36.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        Me.DgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle36
         Me.DgvClientes.ColumnHeadersHeight = 32
         Me.DgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Colidcli, Me.Colnomcli, Me.Colapecli, Me.Colnacimientocorto, Me.Colnacimientolargo, Me.Coledadcliente, Me.Coltlfcli, Me.Colmailcli, Me.Coldircli, Me.Colmetodopago, Me.Colinscripcioncorto, Me.Colinscripcionlargo, Me.Colestadocliente, Me.Colidgrupo})
@@ -332,9 +337,9 @@ Partial Class FrmClientesPagos
         Me.DgvClientes.ReadOnly = True
         Me.DgvClientes.RowHeadersWidth = 4
         Me.DgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvClientes.RowsDefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle37.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle37.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvClientes.RowsDefaultCellStyle = DataGridViewCellStyle37
         Me.DgvClientes.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         Me.DgvClientes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvClientes.RowTemplate.Height = 27
@@ -460,48 +465,48 @@ Partial Class FrmClientesPagos
         Me.DgvPaymentList.AllowUserToDeleteRows = False
         Me.DgvPaymentList.AllowUserToResizeColumns = False
         Me.DgvPaymentList.AllowUserToResizeRows = False
-        DataGridViewCellStyle21.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgvPaymentList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("Linux Libertine Display G", 9.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvPaymentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle38.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle38.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvPaymentList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle39.Font = New System.Drawing.Font("Linux Libertine Display G", 9.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvPaymentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle39
         Me.DgvPaymentList.ColumnHeadersHeight = 32
         Me.DgvPaymentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DgvPaymentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_pgs, Me.fdi_pgs, Me.fdp_pgs, Me.frm_pgs, Me.mtd_pgs, Me.prc_pgs, Me.dsc_pgs, Me.ttl_pgs, Me.ndd_pgs, Me.tap_pgs, Me.id_user})
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DgvPaymentList.DefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle49.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DgvPaymentList.DefaultCellStyle = DataGridViewCellStyle49
         Me.DgvPaymentList.Location = New System.Drawing.Point(36, 493)
         Me.DgvPaymentList.MultiSelect = False
         Me.DgvPaymentList.Name = "DgvPaymentList"
         Me.DgvPaymentList.ReadOnly = True
-        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvPaymentList.RowHeadersDefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle50.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvPaymentList.RowHeadersDefaultCellStyle = DataGridViewCellStyle50
         Me.DgvPaymentList.RowHeadersWidth = 4
         Me.DgvPaymentList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle34.BackColor = System.Drawing.Color.PaleTurquoise
-        DataGridViewCellStyle34.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.White
-        Me.DgvPaymentList.RowsDefaultCellStyle = DataGridViewCellStyle34
+        DataGridViewCellStyle51.BackColor = System.Drawing.Color.PaleTurquoise
+        DataGridViewCellStyle51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.White
+        Me.DgvPaymentList.RowsDefaultCellStyle = DataGridViewCellStyle51
         Me.DgvPaymentList.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgvPaymentList.RowTemplate.DividerHeight = 1
         Me.DgvPaymentList.RowTemplate.Height = 30
@@ -519,8 +524,8 @@ Partial Class FrmClientesPagos
         'fdi_pgs
         '
         Me.fdi_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.fdi_pgs.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.fdi_pgs.DefaultCellStyle = DataGridViewCellStyle40
         Me.fdi_pgs.HeaderText = "FECHA DE INICIO"
         Me.fdi_pgs.Name = "fdi_pgs"
         Me.fdi_pgs.ReadOnly = True
@@ -531,8 +536,8 @@ Partial Class FrmClientesPagos
         'fdp_pgs
         '
         Me.fdp_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.fdp_pgs.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.fdp_pgs.DefaultCellStyle = DataGridViewCellStyle41
         Me.fdp_pgs.HeaderText = "FECHA DE PAGO"
         Me.fdp_pgs.Name = "fdp_pgs"
         Me.fdp_pgs.ReadOnly = True
@@ -543,8 +548,8 @@ Partial Class FrmClientesPagos
         'frm_pgs
         '
         Me.frm_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.frm_pgs.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.frm_pgs.DefaultCellStyle = DataGridViewCellStyle42
         Me.frm_pgs.HeaderText = "FORMA DE PAGO"
         Me.frm_pgs.Name = "frm_pgs"
         Me.frm_pgs.ReadOnly = True
@@ -562,8 +567,8 @@ Partial Class FrmClientesPagos
         'prc_pgs
         '
         Me.prc_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.prc_pgs.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.prc_pgs.DefaultCellStyle = DataGridViewCellStyle43
         Me.prc_pgs.HeaderText = "PRECIO"
         Me.prc_pgs.Name = "prc_pgs"
         Me.prc_pgs.ReadOnly = True
@@ -574,8 +579,8 @@ Partial Class FrmClientesPagos
         'dsc_pgs
         '
         Me.dsc_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dsc_pgs.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dsc_pgs.DefaultCellStyle = DataGridViewCellStyle44
         Me.dsc_pgs.HeaderText = "DESCT"
         Me.dsc_pgs.Name = "dsc_pgs"
         Me.dsc_pgs.ReadOnly = True
@@ -586,8 +591,8 @@ Partial Class FrmClientesPagos
         'ttl_pgs
         '
         Me.ttl_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ttl_pgs.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ttl_pgs.DefaultCellStyle = DataGridViewCellStyle45
         Me.ttl_pgs.HeaderText = "TOTAL"
         Me.ttl_pgs.Name = "ttl_pgs"
         Me.ttl_pgs.ReadOnly = True
@@ -598,8 +603,8 @@ Partial Class FrmClientesPagos
         'ndd_pgs
         '
         Me.ndd_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ndd_pgs.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ndd_pgs.DefaultCellStyle = DataGridViewCellStyle46
         Me.ndd_pgs.HeaderText = "Nº DE DIAS"
         Me.ndd_pgs.Name = "ndd_pgs"
         Me.ndd_pgs.ReadOnly = True
@@ -610,8 +615,8 @@ Partial Class FrmClientesPagos
         'tap_pgs
         '
         Me.tap_pgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.tap_pgs.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.tap_pgs.DefaultCellStyle = DataGridViewCellStyle47
         Me.tap_pgs.HeaderText = "A PAGAR"
         Me.tap_pgs.Name = "tap_pgs"
         Me.tap_pgs.ReadOnly = True
@@ -622,8 +627,8 @@ Partial Class FrmClientesPagos
         'id_user
         '
         Me.id_user.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.id_user.DefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.id_user.DefaultCellStyle = DataGridViewCellStyle48
         Me.id_user.HeaderText = "USUARIO"
         Me.id_user.Name = "id_user"
         Me.id_user.ReadOnly = True
@@ -660,6 +665,8 @@ Partial Class FrmClientesPagos
         'PnlDatosCliente
         '
         Me.PnlDatosCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PnlDatosCliente.Controls.Add(Me.FregistroCorto)
+        Me.PnlDatosCliente.Controls.Add(Me.FnacimientoCorto)
         Me.PnlDatosCliente.Controls.Add(Me.LblResult)
         Me.PnlDatosCliente.Controls.Add(Me.LblDirCli)
         Me.PnlDatosCliente.Controls.Add(Me.LblNomCli)
@@ -668,11 +675,9 @@ Partial Class FrmClientesPagos
         Me.PnlDatosCliente.Controls.Add(Me.LblGrpFamCli)
         Me.PnlDatosCliente.Controls.Add(Me.LblEmlCli)
         Me.PnlDatosCliente.Controls.Add(Me.LblNombre)
-        Me.PnlDatosCliente.Controls.Add(Me.FregistroCorto)
         Me.PnlDatosCliente.Controls.Add(Me.LblMtdPgoCli)
         Me.PnlDatosCliente.Controls.Add(Me.LblFdnCli)
         Me.PnlDatosCliente.Controls.Add(Me.LblTlfCli)
-        Me.PnlDatosCliente.Controls.Add(Me.FnacimientoCorto)
         Me.PnlDatosCliente.Controls.Add(Me.LblEdadCli)
         Me.PnlDatosCliente.Controls.Add(Me.gb2)
         Me.PnlDatosCliente.Controls.Add(Me.gb1)
@@ -694,6 +699,34 @@ Partial Class FrmClientesPagos
         Me.PnlDatosCliente.Size = New System.Drawing.Size(893, 286)
         Me.PnlDatosCliente.TabIndex = 86
         '
+        'FregistroCorto
+        '
+        Me.FregistroCorto.AutoSize = True
+        Me.FregistroCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.FregistroCorto.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.FregistroCorto.Location = New System.Drawing.Point(652, 212)
+        Me.FregistroCorto.Margin = New System.Windows.Forms.Padding(0)
+        Me.FregistroCorto.Name = "FregistroCorto"
+        Me.FregistroCorto.Size = New System.Drawing.Size(72, 13)
+        Me.FregistroCorto.TabIndex = 13
+        Me.FregistroCorto.Text = "FregistroCorto"
+        Me.FregistroCorto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.FregistroCorto.Visible = False
+        '
+        'FnacimientoCorto
+        '
+        Me.FnacimientoCorto.AutoSize = True
+        Me.FnacimientoCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.FnacimientoCorto.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.FnacimientoCorto.Location = New System.Drawing.Point(652, 24)
+        Me.FnacimientoCorto.Margin = New System.Windows.Forms.Padding(0)
+        Me.FnacimientoCorto.Name = "FnacimientoCorto"
+        Me.FnacimientoCorto.Size = New System.Drawing.Size(89, 13)
+        Me.FnacimientoCorto.TabIndex = 11
+        Me.FnacimientoCorto.Text = "FnacimientoCorto"
+        Me.FnacimientoCorto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.FnacimientoCorto.Visible = False
+        '
         'LblResult
         '
         Me.LblResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -709,124 +742,6 @@ Partial Class FrmClientesPagos
         Me.LblResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.LblResult.Visible = False
         '
-        'FregistroCorto
-        '
-        Me.FregistroCorto.AutoSize = True
-        Me.FregistroCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.FregistroCorto.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.FregistroCorto.Location = New System.Drawing.Point(793, 213)
-        Me.FregistroCorto.Margin = New System.Windows.Forms.Padding(0)
-        Me.FregistroCorto.Name = "FregistroCorto"
-        Me.FregistroCorto.Size = New System.Drawing.Size(72, 13)
-        Me.FregistroCorto.TabIndex = 13
-        Me.FregistroCorto.Text = "FregistroCorto"
-        Me.FregistroCorto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.FregistroCorto.Visible = False
-        '
-        'FnacimientoCorto
-        '
-        Me.FnacimientoCorto.AutoSize = True
-        Me.FnacimientoCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.FnacimientoCorto.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.FnacimientoCorto.Location = New System.Drawing.Point(776, 25)
-        Me.FnacimientoCorto.Margin = New System.Windows.Forms.Padding(0)
-        Me.FnacimientoCorto.Name = "FnacimientoCorto"
-        Me.FnacimientoCorto.Size = New System.Drawing.Size(89, 13)
-        Me.FnacimientoCorto.TabIndex = 11
-        Me.FnacimientoCorto.Text = "FnacimientoCorto"
-        Me.FnacimientoCorto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.FnacimientoCorto.Visible = False
-        '
-        'gb2
-        '
-        Me.gb2.Location = New System.Drawing.Point(8, 186)
-        Me.gb2.Margin = New System.Windows.Forms.Padding(0)
-        Me.gb2.Name = "gb2"
-        Me.gb2.Padding = New System.Windows.Forms.Padding(0)
-        Me.gb2.Size = New System.Drawing.Size(874, 2)
-        Me.gb2.TabIndex = 55
-        Me.gb2.TabStop = False
-        '
-        'gb1
-        '
-        Me.gb1.Location = New System.Drawing.Point(8, 92)
-        Me.gb1.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
-        Me.gb1.Name = "gb1"
-        Me.gb1.Padding = New System.Windows.Forms.Padding(0)
-        Me.gb1.Size = New System.Drawing.Size(874, 2)
-        Me.gb1.TabIndex = 54
-        Me.gb1.TabStop = False
-        '
-        'LblTlfCli
-        '
-        Me.LblTlfCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblTlfCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblTlfCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblTlfCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblTlfCli.Location = New System.Drawing.Point(147, 111)
-        Me.LblTlfCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblTlfCli.Name = "LblTlfCli"
-        Me.LblTlfCli.Size = New System.Drawing.Size(284, 26)
-        Me.LblTlfCli.TabIndex = 4
-        Me.LblTlfCli.Text = "LblTlfCli"
-        Me.LblTlfCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LblTelefono
-        '
-        Me.LblTelefono.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTelefono.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblTelefono.Location = New System.Drawing.Point(24, 110)
-        Me.LblTelefono.Margin = New System.Windows.Forms.Padding(24, 16, 0, 0)
-        Me.LblTelefono.Name = "LblTelefono"
-        Me.LblTelefono.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblTelefono.Size = New System.Drawing.Size(408, 28)
-        Me.LblTelefono.TabIndex = 19
-        Me.LblTelefono.Text = "Teléfono"
-        '
-        'LblEmail
-        '
-        Me.LblEmail.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEmail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblEmail.Location = New System.Drawing.Point(24, 146)
-        Me.LblEmail.Margin = New System.Windows.Forms.Padding(24, 8, 8, 0)
-        Me.LblEmail.Name = "LblEmail"
-        Me.LblEmail.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblEmail.Size = New System.Drawing.Size(408, 28)
-        Me.LblEmail.TabIndex = 20
-        Me.LblEmail.Text = "E-Mail"
-        '
-        'LblDireccion
-        '
-        Me.LblDireccion.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDireccion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblDireccion.Location = New System.Drawing.Point(457, 110)
-        Me.LblDireccion.Margin = New System.Windows.Forms.Padding(0, 16, 24, 0)
-        Me.LblDireccion.Name = "LblDireccion"
-        Me.LblDireccion.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblDireccion.Size = New System.Drawing.Size(408, 64)
-        Me.LblDireccion.TabIndex = 21
-        Me.LblDireccion.Text = "Dirección"
-        '
-        'LblEmlCli
-        '
-        Me.LblEmlCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblEmlCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblEmlCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblEmlCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblEmlCli.Location = New System.Drawing.Point(147, 147)
-        Me.LblEmlCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblEmlCli.Name = "LblEmlCli"
-        Me.LblEmlCli.Size = New System.Drawing.Size(284, 26)
-        Me.LblEmlCli.TabIndex = 5
-        Me.LblEmlCli.Text = "LblEmlCli"
-        Me.LblEmlCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'LblDirCli
         '
         Me.LblDirCli.BackColor = System.Drawing.Color.Gainsboro
@@ -841,103 +756,33 @@ Partial Class FrmClientesPagos
         Me.LblDirCli.TabIndex = 6
         Me.LblDirCli.Text = "LblDirCli"
         '
-        'LblEdad
+        'LblNomCli
         '
-        Me.LblEdad.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblEdad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblEdad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEdad.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblEdad.Location = New System.Drawing.Point(457, 52)
-        Me.LblEdad.Margin = New System.Windows.Forms.Padding(0, 8, 24, 0)
-        Me.LblEdad.Name = "LblEdad"
-        Me.LblEdad.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblEdad.Size = New System.Drawing.Size(267, 28)
-        Me.LblEdad.TabIndex = 18
-        Me.LblEdad.Text = "Edad"
+        Me.LblNomCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblNomCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblNomCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblNomCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblNomCli.Location = New System.Drawing.Point(147, 17)
+        Me.LblNomCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblNomCli.Name = "LblNomCli"
+        Me.LblNomCli.Size = New System.Drawing.Size(284, 26)
+        Me.LblNomCli.TabIndex = 0
+        Me.LblNomCli.Text = "LblNomCli"
+        Me.LblNomCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LblEdadCli
+        'LblEstCli
         '
-        Me.LblEdadCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblEdadCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblEdadCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblEdadCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblEdadCli.Location = New System.Drawing.Point(581, 53)
-        Me.LblEdadCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblEdadCli.Name = "LblEdadCli"
-        Me.LblEdadCli.Size = New System.Drawing.Size(142, 26)
-        Me.LblEdadCli.TabIndex = 3
-        Me.LblEdadCli.Text = "LblEdadCli"
-        Me.LblEdadCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LblGrupoFamiliar
-        '
-        Me.LblGrupoFamiliar.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblGrupoFamiliar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblGrupoFamiliar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblGrupoFamiliar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblGrupoFamiliar.Location = New System.Drawing.Point(24, 240)
-        Me.LblGrupoFamiliar.Margin = New System.Windows.Forms.Padding(24, 8, 0, 0)
-        Me.LblGrupoFamiliar.Name = "LblGrupoFamiliar"
-        Me.LblGrupoFamiliar.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblGrupoFamiliar.Size = New System.Drawing.Size(408, 28)
-        Me.LblGrupoFamiliar.TabIndex = 24
-        Me.LblGrupoFamiliar.Text = "Grupo familiar"
-        '
-        'LblMtdPgoCli
-        '
-        Me.LblMtdPgoCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblMtdPgoCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblMtdPgoCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblMtdPgoCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblMtdPgoCli.Location = New System.Drawing.Point(147, 205)
-        Me.LblMtdPgoCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblMtdPgoCli.Name = "LblMtdPgoCli"
-        Me.LblMtdPgoCli.Size = New System.Drawing.Size(284, 26)
-        Me.LblMtdPgoCli.TabIndex = 7
-        Me.LblMtdPgoCli.Text = "LblMtdPgoCli"
-        Me.LblMtdPgoCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LblEstado
-        '
-        Me.LblEstado.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEstado.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblEstado.Location = New System.Drawing.Point(457, 240)
-        Me.LblEstado.Margin = New System.Windows.Forms.Padding(0, 8, 24, 0)
-        Me.LblEstado.Name = "LblEstado"
-        Me.LblEstado.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblEstado.Size = New System.Drawing.Size(267, 28)
-        Me.LblEstado.TabIndex = 25
-        Me.LblEstado.Text = "Estado"
-        '
-        'LblFechaInscripcion
-        '
-        Me.LblFechaInscripcion.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblFechaInscripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblFechaInscripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFechaInscripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblFechaInscripcion.Location = New System.Drawing.Point(457, 204)
-        Me.LblFechaInscripcion.Margin = New System.Windows.Forms.Padding(0, 16, 24, 0)
-        Me.LblFechaInscripcion.Name = "LblFechaInscripcion"
-        Me.LblFechaInscripcion.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblFechaInscripcion.Size = New System.Drawing.Size(408, 28)
-        Me.LblFechaInscripcion.TabIndex = 23
-        Me.LblFechaInscripcion.Text = "F. de Inscripción"
-        '
-        'LblMetodoPago
-        '
-        Me.LblMetodoPago.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblMetodoPago.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblMetodoPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblMetodoPago.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblMetodoPago.Location = New System.Drawing.Point(24, 204)
-        Me.LblMetodoPago.Margin = New System.Windows.Forms.Padding(24, 16, 0, 0)
-        Me.LblMetodoPago.Name = "LblMetodoPago"
-        Me.LblMetodoPago.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblMetodoPago.Size = New System.Drawing.Size(408, 28)
-        Me.LblMetodoPago.TabIndex = 22
-        Me.LblMetodoPago.Text = "Método de pago"
+        Me.LblEstCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblEstCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblEstCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblEstCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblEstCli.Location = New System.Drawing.Point(581, 241)
+        Me.LblEstCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblEstCli.Name = "LblEstCli"
+        Me.LblEstCli.Size = New System.Drawing.Size(142, 26)
+        Me.LblEstCli.TabIndex = 10
+        Me.LblEstCli.Text = "LblEstCli"
+        Me.LblEstCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblFdiCli
         '
@@ -967,33 +812,47 @@ Partial Class FrmClientesPagos
         Me.LblGrpFamCli.Text = "LblGrpFamCli"
         Me.LblGrpFamCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LblEstCli
+        'LblEmlCli
         '
-        Me.LblEstCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblEstCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblEstCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblEstCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblEstCli.Location = New System.Drawing.Point(581, 241)
-        Me.LblEstCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblEstCli.Name = "LblEstCli"
-        Me.LblEstCli.Size = New System.Drawing.Size(142, 26)
-        Me.LblEstCli.TabIndex = 10
-        Me.LblEstCli.Text = "LblEstCli"
-        Me.LblEstCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LblEmlCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblEmlCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblEmlCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblEmlCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblEmlCli.Location = New System.Drawing.Point(147, 147)
+        Me.LblEmlCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblEmlCli.Name = "LblEmlCli"
+        Me.LblEmlCli.Size = New System.Drawing.Size(284, 26)
+        Me.LblEmlCli.TabIndex = 5
+        Me.LblEmlCli.Text = "LblEmlCli"
+        Me.LblEmlCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LblApeCli
+        'LblNombre
         '
-        Me.LblApeCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblApeCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblApeCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblApeCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblApeCli.Location = New System.Drawing.Point(147, 53)
-        Me.LblApeCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblApeCli.Name = "LblApeCli"
-        Me.LblApeCli.Size = New System.Drawing.Size(284, 26)
-        Me.LblApeCli.TabIndex = 1
-        Me.LblApeCli.Text = "LblApeCli"
-        Me.LblApeCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LblNombre.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblNombre.Location = New System.Drawing.Point(24, 16)
+        Me.LblNombre.Margin = New System.Windows.Forms.Padding(24, 16, 0, 0)
+        Me.LblNombre.Name = "LblNombre"
+        Me.LblNombre.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblNombre.Size = New System.Drawing.Size(408, 28)
+        Me.LblNombre.TabIndex = 15
+        Me.LblNombre.Text = "Nombre"
+        '
+        'LblMtdPgoCli
+        '
+        Me.LblMtdPgoCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblMtdPgoCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblMtdPgoCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblMtdPgoCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblMtdPgoCli.Location = New System.Drawing.Point(147, 205)
+        Me.LblMtdPgoCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblMtdPgoCli.Name = "LblMtdPgoCli"
+        Me.LblMtdPgoCli.Size = New System.Drawing.Size(284, 26)
+        Me.LblMtdPgoCli.TabIndex = 7
+        Me.LblMtdPgoCli.Text = "LblMtdPgoCli"
+        Me.LblMtdPgoCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LblFdnCli
         '
@@ -1009,23 +868,183 @@ Partial Class FrmClientesPagos
         Me.LblFdnCli.Text = "LblFdnCli"
         Me.LblFdnCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LblNomCli
+        'LblTlfCli
         '
-        Me.LblNomCli.BackColor = System.Drawing.Color.Gainsboro
-        Me.LblNomCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblNomCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.LblNomCli.ForeColor = System.Drawing.Color.MediumBlue
-        Me.LblNomCli.Location = New System.Drawing.Point(147, 17)
-        Me.LblNomCli.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblNomCli.Name = "LblNomCli"
-        Me.LblNomCli.Size = New System.Drawing.Size(284, 26)
-        Me.LblNomCli.TabIndex = 0
-        Me.LblNomCli.Text = "LblNomCli"
-        Me.LblNomCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LblTlfCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblTlfCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblTlfCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblTlfCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblTlfCli.Location = New System.Drawing.Point(147, 111)
+        Me.LblTlfCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblTlfCli.Name = "LblTlfCli"
+        Me.LblTlfCli.Size = New System.Drawing.Size(284, 26)
+        Me.LblTlfCli.TabIndex = 4
+        Me.LblTlfCli.Text = "LblTlfCli"
+        Me.LblTlfCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LblEdadCli
+        '
+        Me.LblEdadCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblEdadCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblEdadCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblEdadCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblEdadCli.Location = New System.Drawing.Point(581, 53)
+        Me.LblEdadCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblEdadCli.Name = "LblEdadCli"
+        Me.LblEdadCli.Size = New System.Drawing.Size(142, 26)
+        Me.LblEdadCli.TabIndex = 3
+        Me.LblEdadCli.Text = "LblEdadCli"
+        Me.LblEdadCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'gb2
+        '
+        Me.gb2.Location = New System.Drawing.Point(8, 186)
+        Me.gb2.Margin = New System.Windows.Forms.Padding(0)
+        Me.gb2.Name = "gb2"
+        Me.gb2.Padding = New System.Windows.Forms.Padding(0)
+        Me.gb2.Size = New System.Drawing.Size(874, 2)
+        Me.gb2.TabIndex = 55
+        Me.gb2.TabStop = False
+        '
+        'gb1
+        '
+        Me.gb1.Location = New System.Drawing.Point(8, 92)
+        Me.gb1.Margin = New System.Windows.Forms.Padding(0, 12, 0, 0)
+        Me.gb1.Name = "gb1"
+        Me.gb1.Padding = New System.Windows.Forms.Padding(0)
+        Me.gb1.Size = New System.Drawing.Size(874, 2)
+        Me.gb1.TabIndex = 54
+        Me.gb1.TabStop = False
+        '
+        'LblApeCli
+        '
+        Me.LblApeCli.BackColor = System.Drawing.Color.Gainsboro
+        Me.LblApeCli.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.LblApeCli.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.LblApeCli.ForeColor = System.Drawing.Color.MediumBlue
+        Me.LblApeCli.Location = New System.Drawing.Point(147, 53)
+        Me.LblApeCli.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblApeCli.Name = "LblApeCli"
+        Me.LblApeCli.Size = New System.Drawing.Size(284, 26)
+        Me.LblApeCli.TabIndex = 1
+        Me.LblApeCli.Text = "LblApeCli"
+        Me.LblApeCli.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LblTelefono
+        '
+        Me.LblTelefono.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTelefono.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblTelefono.Location = New System.Drawing.Point(24, 110)
+        Me.LblTelefono.Margin = New System.Windows.Forms.Padding(24, 16, 0, 0)
+        Me.LblTelefono.Name = "LblTelefono"
+        Me.LblTelefono.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblTelefono.Size = New System.Drawing.Size(408, 28)
+        Me.LblTelefono.TabIndex = 19
+        Me.LblTelefono.Text = "Teléfono"
+        '
+        'LblEmail
+        '
+        Me.LblEmail.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEmail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblEmail.Location = New System.Drawing.Point(24, 146)
+        Me.LblEmail.Margin = New System.Windows.Forms.Padding(24, 8, 8, 0)
+        Me.LblEmail.Name = "LblEmail"
+        Me.LblEmail.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblEmail.Size = New System.Drawing.Size(408, 28)
+        Me.LblEmail.TabIndex = 20
+        Me.LblEmail.Text = "E-Mail"
+        '
+        'LblDireccion
+        '
+        Me.LblDireccion.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDireccion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblDireccion.Location = New System.Drawing.Point(457, 110)
+        Me.LblDireccion.Margin = New System.Windows.Forms.Padding(0, 16, 24, 0)
+        Me.LblDireccion.Name = "LblDireccion"
+        Me.LblDireccion.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblDireccion.Size = New System.Drawing.Size(408, 64)
+        Me.LblDireccion.TabIndex = 21
+        Me.LblDireccion.Text = "Dirección"
+        '
+        'LblEdad
+        '
+        Me.LblEdad.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblEdad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblEdad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEdad.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblEdad.Location = New System.Drawing.Point(457, 52)
+        Me.LblEdad.Margin = New System.Windows.Forms.Padding(0, 8, 24, 0)
+        Me.LblEdad.Name = "LblEdad"
+        Me.LblEdad.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblEdad.Size = New System.Drawing.Size(267, 28)
+        Me.LblEdad.TabIndex = 18
+        Me.LblEdad.Text = "Edad"
+        '
+        'LblGrupoFamiliar
+        '
+        Me.LblGrupoFamiliar.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblGrupoFamiliar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblGrupoFamiliar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblGrupoFamiliar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblGrupoFamiliar.Location = New System.Drawing.Point(24, 240)
+        Me.LblGrupoFamiliar.Margin = New System.Windows.Forms.Padding(24, 8, 0, 0)
+        Me.LblGrupoFamiliar.Name = "LblGrupoFamiliar"
+        Me.LblGrupoFamiliar.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblGrupoFamiliar.Size = New System.Drawing.Size(408, 28)
+        Me.LblGrupoFamiliar.TabIndex = 24
+        Me.LblGrupoFamiliar.Text = "Grupo familiar"
+        '
+        'LblEstado
+        '
+        Me.LblEstado.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEstado.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblEstado.Location = New System.Drawing.Point(457, 240)
+        Me.LblEstado.Margin = New System.Windows.Forms.Padding(0, 8, 24, 0)
+        Me.LblEstado.Name = "LblEstado"
+        Me.LblEstado.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblEstado.Size = New System.Drawing.Size(267, 28)
+        Me.LblEstado.TabIndex = 25
+        Me.LblEstado.Text = "Estado"
+        '
+        'LblFechaInscripcion
+        '
+        Me.LblFechaInscripcion.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblFechaInscripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblFechaInscripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblFechaInscripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblFechaInscripcion.Location = New System.Drawing.Point(457, 204)
+        Me.LblFechaInscripcion.Margin = New System.Windows.Forms.Padding(0, 16, 24, 0)
+        Me.LblFechaInscripcion.Name = "LblFechaInscripcion"
+        Me.LblFechaInscripcion.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblFechaInscripcion.Size = New System.Drawing.Size(408, 28)
+        Me.LblFechaInscripcion.TabIndex = 23
+        Me.LblFechaInscripcion.Text = "F. de Inscripción"
+        '
+        'LblMetodoPago
+        '
+        Me.LblMetodoPago.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.LblMetodoPago.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblMetodoPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMetodoPago.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LblMetodoPago.Location = New System.Drawing.Point(24, 204)
+        Me.LblMetodoPago.Margin = New System.Windows.Forms.Padding(24, 16, 0, 0)
+        Me.LblMetodoPago.Name = "LblMetodoPago"
+        Me.LblMetodoPago.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.LblMetodoPago.Size = New System.Drawing.Size(408, 28)
+        Me.LblMetodoPago.TabIndex = 22
+        Me.LblMetodoPago.Text = "Método de pago"
         '
         'LblFechaNacimiento
         '
-        Me.LblFechaNacimiento.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LblFechaNacimiento.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.LblFechaNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LblFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblFechaNacimiento.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -1039,7 +1058,7 @@ Partial Class FrmClientesPagos
         '
         'LblApellido
         '
-        Me.LblApellido.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LblApellido.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.LblApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LblApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblApellido.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -1050,20 +1069,6 @@ Partial Class FrmClientesPagos
         Me.LblApellido.Size = New System.Drawing.Size(408, 28)
         Me.LblApellido.TabIndex = 16
         Me.LblApellido.Text = "Apellido"
-        '
-        'LblNombre
-        '
-        Me.LblNombre.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LblNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LblNombre.Location = New System.Drawing.Point(24, 16)
-        Me.LblNombre.Margin = New System.Windows.Forms.Padding(24, 16, 0, 0)
-        Me.LblNombre.Name = "LblNombre"
-        Me.LblNombre.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.LblNombre.Size = New System.Drawing.Size(408, 28)
-        Me.LblNombre.TabIndex = 15
-        Me.LblNombre.Text = "Nombre"
         '
         'Panel2
         '
@@ -1089,6 +1094,7 @@ Partial Class FrmClientesPagos
         '
         'CmbFiltrar
         '
+        Me.CmbFiltrar.BackColor = System.Drawing.SystemColors.Window
         Me.CmbFiltrar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbFiltrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmbFiltrar.ForeColor = System.Drawing.Color.MediumBlue
@@ -1117,7 +1123,7 @@ Partial Class FrmClientesPagos
         '
         'LblFiltrar
         '
-        Me.LblFiltrar.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LblFiltrar.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.LblFiltrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LblFiltrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblFiltrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -1147,6 +1153,8 @@ Partial Class FrmClientesPagos
         'RbActivo
         '
         Me.RbActivo.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RbActivo.BackColor = System.Drawing.SystemColors.Control
+        Me.RbActivo.FlatAppearance.BorderSize = 4
         Me.RbActivo.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RbActivo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.activo_50x50
         Me.RbActivo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -1158,11 +1166,13 @@ Partial Class FrmClientesPagos
         Me.RbActivo.TabIndex = 0
         Me.RbActivo.Text = "Clientes en actividad"
         Me.RbActivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.RbActivo.UseVisualStyleBackColor = True
+        Me.RbActivo.UseVisualStyleBackColor = False
         '
         'RbInactivo
         '
         Me.RbInactivo.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RbInactivo.BackColor = System.Drawing.SystemColors.Control
+        Me.RbInactivo.FlatAppearance.BorderSize = 4
         Me.RbInactivo.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
         Me.RbInactivo.Image = Global.ControlPagosGimnasio.My.Resources.Resources.inactivo_50x50
         Me.RbInactivo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
@@ -1174,10 +1184,11 @@ Partial Class FrmClientesPagos
         Me.RbInactivo.TabIndex = 1
         Me.RbInactivo.Text = "Clientes inactivos"
         Me.RbInactivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.RbInactivo.UseVisualStyleBackColor = True
+        Me.RbInactivo.UseVisualStyleBackColor = False
         '
         'BtnFindClient
         '
+        Me.BtnFindClient.BackColor = System.Drawing.SystemColors.ControlLight
         Me.BtnFindClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFindClient.Image = Global.ControlPagosGimnasio.My.Resources.Resources.buscar_28x32
         Me.BtnFindClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1189,7 +1200,7 @@ Partial Class FrmClientesPagos
         Me.BtnFindClient.TabIndex = 0
         Me.BtnFindClient.Text = "&Buscar cliente"
         Me.BtnFindClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BtnFindClient.UseVisualStyleBackColor = True
+        Me.BtnFindClient.UseVisualStyleBackColor = False
         '
         'FrmClientesPagos
         '

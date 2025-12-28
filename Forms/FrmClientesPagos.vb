@@ -41,7 +41,9 @@
 
         If strFlags = "UPDATE_PAYMENT_LIST" Then Sub_View_Payment_List()
 
-        strFlags = ""
+        'strFlags = ""
+        'DgvPaymentList.CurrentCell = Nothing
+        'BtnPayMonth.Enabled = False
 
     End Sub
     '
@@ -196,14 +198,14 @@
         '| * Llenamos la variable strFlags con la cadena "SKIP_SEARCH" que se usará en TxtBuscar para
         '|   hacer comprobaciones y evitar hacer consultas innecesarias.
         '|
-        '| * Llamamos a las subrutina Sub_Select_Record_Cancel_Search() para activar, desactivar y
+        '| * Llamamos a las subrutina Sub_SelectRecord_CancelSearch() para activar, desactivar y
         '|   ocultar controles.
         '|
         '| * Limpiamos la variable strFlags para otras comprobaciones.
 
         strFlags = "SKIP_SEARCH"
 
-        Sub_Select_Record_Cancel_Search()
+        Sub_SelectRecord_CancelSearch()
 
         strFlags = ""
 
@@ -363,7 +365,7 @@
         '|   la respuesta del usuario.
         '|
         '| * Si la respuesta es 'SI' hacemos una consulta y lo almacenamos en la variable 'sqlConsulta'
-        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamoa como parametro la variable 'sqlConsulta'
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos como parametro la 'sqlConsulta.
         '|
         '| * La subrutina Sub_Clean_Controls() se encarga de limpiar los Label's, el datagridview y la
         '|   variable 'strIdClient'.
@@ -450,6 +452,10 @@
             .Show()
         End With
 
+        '
+        BtnPayMonth.Enabled = False
+        DgvPaymentList.CurrentCell = Nothing
+
     End Sub
     '
     '
@@ -511,7 +517,7 @@
 
     End Sub
 
-    Sub Sub_Select_Record_Cancel_Search()
+    Sub Sub_SelectRecord_CancelSearch()
 
         '| * Activamos el botón BtnNewClient.
         '| * Mostramos el botón BtnCancelSearch y ocultamos el botón BtnFindClient.
@@ -638,7 +644,7 @@
         '|        la subrutina principal que a su vez llama a la subrutina SubFillGroupName que se encarga de
         '|        recoger el nombre del grupo familiar.
         '|
-        '| * Llamamos a las subrutina 'Sub_Select_Record_Cancel_Search()' y 'Sub_Activate_Buttons()' para
+        '| * Llamamos a las subrutina 'Sub_SelectRecord_CancelSearch()' y 'Sub_Activate_Buttons()' para
         '|   activar, desactivar y ocultar controles.
         '|
         '| * Llamamos a la subrutina Sub_View_Payment_List() para consultar los pagos del cliente.
@@ -653,7 +659,7 @@
             Sub_Crud_Sql(sqlConsulta, "SubFillGroupName")
         End If
 
-        Sub_Select_Record_Cancel_Search()
+        Sub_SelectRecord_CancelSearch()
         Sub_Activate_Buttons()
 
         Sub_View_Payment_List()
@@ -684,6 +690,8 @@
         Else
             Sub_Crud_Sql(sqlConsulta, "SubFillPayments", "")
         End If
+
+        strFlags = ""
 
         DgvPaymentList.CurrentCell = Nothing
 

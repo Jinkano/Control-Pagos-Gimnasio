@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Configuration
+Imports MySql.Data.MySqlClient
 
 Public Class FrmUserPassword
 
@@ -10,7 +11,8 @@ Public Class FrmUserPassword
     Private Sub BtnIniciar_Click(sender As Object, e As EventArgs) Handles BtnIniciar.Click
 
         Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
 
             If TxtContrasena.Text = "" Then
@@ -79,7 +81,8 @@ Public Class FrmUserPassword
 
         If TxtContrasena1.Text = TxtContrasena2.Text Then
             Try
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+                cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+                'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
                 cnxnMySql.Open()
                 sqlConsulta = "UPDATE usuarios SET pwd_user ='" & TxtContrasena1.Text & "' WHERE id_user ='" & idUser & "'"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
@@ -99,6 +102,10 @@ Public Class FrmUserPassword
             MsgBox("Las contraseñas no coinciden.", vbCritical, "Guardar contraseña")
             TxtContrasena1.Focus()
         End If
+    End Sub
+
+    Private Sub FrmUserPassword_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click

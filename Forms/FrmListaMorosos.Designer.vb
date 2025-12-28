@@ -537,7 +537,7 @@ Partial Class FrmListaMorosos
         DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DgvFamilyGroup.DefaultCellStyle = DataGridViewCellStyle18
-        Me.DgvFamilyGroup.Location = New System.Drawing.Point(25, 291)
+        Me.DgvFamilyGroup.Location = New System.Drawing.Point(25, 409)
         Me.DgvFamilyGroup.Margin = New System.Windows.Forms.Padding(16, 0, 0, 16)
         Me.DgvFamilyGroup.MultiSelect = False
         Me.DgvFamilyGroup.Name = "DgvFamilyGroup"
@@ -554,7 +554,7 @@ Partial Class FrmListaMorosos
         Me.DgvFamilyGroup.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DgvFamilyGroup.RowTemplate.Height = 24
         Me.DgvFamilyGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvFamilyGroup.Size = New System.Drawing.Size(1460, 397)
+        Me.DgvFamilyGroup.Size = New System.Drawing.Size(1460, 279)
         Me.DgvFamilyGroup.TabIndex = 91
         '
         'nom_cli_gf

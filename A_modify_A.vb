@@ -63,7 +63,7 @@ Public Class A_modify_A
         txtFlags = "UPDATE_PAY" 'VARIABLE BANDERA PARA ACTUALIZAR LA GRILLA DgvListaPagos
 
         'ENVIAMOS LOS DATOS DEL MES AL FORMULARIO PAGOS
-        FrmPagoMensual.Text = "Nuevo pago mensual"
+        FrmPagoMensual.Text = "PAGO ANTICIPADO - CUOTA MENSUAL"
         FrmPagoMensual.MdiParent = FrmPrincipal
         'FrmPagoMensual.psIdCli = DgvListaClientes.CurrentRow.Cells(0).Value.ToString 'ID CLIENTE
         'FrmPagoMensual.LblCliente.Text = TxtNomCli.Text & " " & TxtApeCli.Text & " - " & TxtEdaCli.Text 'NOMBRE, APELLIDO y EDAD

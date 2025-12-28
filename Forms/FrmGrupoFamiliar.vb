@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Configuration
+Imports MySql.Data.MySqlClient
 
 Public Class FrmGrupoFamiliar
 
@@ -63,7 +64,8 @@ Public Class FrmGrupoFamiliar
         'PARA CAPTURAR POSIBLES ERRORES
         Try
             'CONECTAMOS CON LA BBDD Y LO ABRIMOS
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
             'COMPROBAMOS SI EXISTE UNA TARIFA CON EL NÚMERO DE INTEGRANTES
@@ -184,7 +186,8 @@ Public Class FrmGrupoFamiliar
         'PARA CAPTURAR POSIBLES ERRORES
         Try
             'CONECTAMOS CON LA BBDD Y LO ABRIMOS
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
             'ACTALIZAR LOS DATOS DEL GRUPO
@@ -310,7 +313,8 @@ Public Class FrmGrupoFamiliar
             'USAMOS TRY PARA CAPTURAR POSIBLES ERRORES
             Try
                 'CONECTAMOS CON LA BBDD Y LO ABRIMOS
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+                cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+                'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
                 cnxnMySql.Open()
 
                 'CONSULTA PARA ACTUALIZAR LOS CLIENTES CON EL ID DEL NUEVO GRUPO
@@ -378,7 +382,8 @@ Public Class FrmGrupoFamiliar
                 'USAMOS TRY PARA CAPTURAR POSIBLES ERRORES
                 Try
                     'CONECTAMOS CON LA BBDD Y LO ABRIMOS
-                    cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+                    cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+                    'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
                     cnxnMySql.Open()
 
                     'ACTALIZAR DATOS DEL CLIENTE
@@ -778,7 +783,8 @@ Public Class FrmGrupoFamiliar
             'USAMOS TRY PARA CAPTURAR POSIBLES ERRORES
             Try
                 'CONECTAMOS CON LA BBDD Y LO ABRIMOS
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+                cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+                'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
                 cnxnMySql.Open()
 
                 'HACEMOS LA CONSULTA PARA LLENAR EL DATAGRIDVIEW
@@ -953,7 +959,8 @@ Public Class FrmGrupoFamiliar
         'CAPTURAR POSIBLES ERRORES
         Try
             'CONECTAMOS Y ABRIMOS LA BBDD
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
             'EJECUTAMOS LA CONSULTA CON EL PARAMETRO RECIBIDO
@@ -1009,7 +1016,8 @@ Public Class FrmGrupoFamiliar
         'CAPTURAR POSIBLES ERRORES
         Try
             'CONECTAMOS Y ABRIMOS LA BBDD
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
             cnxnMySql.Open()
 
             'HACEMOS LA CONSULTA PARA LLENAR EL DATAGRIDVIEW

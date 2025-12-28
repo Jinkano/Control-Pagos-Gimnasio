@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Configuration
+Imports MySql.Data.MySqlClient
 
 Public Class FrmPresentacion
     Private Sub FrmPresentacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -52,7 +53,8 @@ Public Class FrmPresentacion
 
         Dim cnxnMySql As New MySqlConnection
         Try
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
             cnxnMySql.Close()
             Return True

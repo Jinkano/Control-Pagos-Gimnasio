@@ -26,28 +26,28 @@ Partial Class FrmPagoMensual
         Me.BtnPagar = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.GroupBox = New System.Windows.Forms.GroupBox()
-        Me.TxtPrcPgs = New System.Windows.Forms.TextBox()
-        Me.LblPagarPgs = New System.Windows.Forms.Label()
-        Me.LblDiasPgs = New System.Windows.Forms.Label()
-        Me.TxtDscPgs = New System.Windows.Forms.TextBox()
-        Me.LblPrcDisPgs = New System.Windows.Forms.Label()
-        Me.LblDscto = New System.Windows.Forms.Label()
-        Me.LblApagar = New System.Windows.Forms.Label()
-        Me.LblPrecio = New System.Windows.Forms.Label()
-        Me.LblTtlPgs = New System.Windows.Forms.Label()
-        Me.LblTotal = New System.Windows.Forms.Label()
-        Me.DtpFdiPgs = New System.Windows.Forms.DateTimePicker()
-        Me.LblPrcDia = New System.Windows.Forms.Label()
-        Me.LblDias = New System.Windows.Forms.Label()
         Me.LblFechaDi = New System.Windows.Forms.Label()
+        Me.LblDias = New System.Windows.Forms.Label()
+        Me.LblPrcDia = New System.Windows.Forms.Label()
+        Me.DtpFdiPgs = New System.Windows.Forms.DateTimePicker()
+        Me.LblTotal = New System.Windows.Forms.Label()
+        Me.LblTtlPgs = New System.Windows.Forms.Label()
+        Me.LblPrecio = New System.Windows.Forms.Label()
+        Me.LblApagar = New System.Windows.Forms.Label()
+        Me.LblDscto = New System.Windows.Forms.Label()
+        Me.LblPrcDisPgs = New System.Windows.Forms.Label()
+        Me.TxtDscPgs = New System.Windows.Forms.TextBox()
+        Me.LblDiasPgs = New System.Windows.Forms.Label()
+        Me.LblPagarPgs = New System.Windows.Forms.Label()
+        Me.TxtPrcPgs = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CmbMtdPgs = New System.Windows.Forms.ComboBox()
-        Me.CmbFrmPgs = New System.Windows.Forms.ComboBox()
-        Me.DtpFdpPgs = New System.Windows.Forms.DateTimePicker()
-        Me.LblMetodoDp = New System.Windows.Forms.Label()
-        Me.LblFormaDp = New System.Windows.Forms.Label()
-        Me.LblFechaDp = New System.Windows.Forms.Label()
         Me.TxtDtlleMtdo = New System.Windows.Forms.TextBox()
+        Me.LblFechaDp = New System.Windows.Forms.Label()
+        Me.LblFormaDp = New System.Windows.Forms.Label()
+        Me.LblMetodoDp = New System.Windows.Forms.Label()
+        Me.DtpFdpPgs = New System.Windows.Forms.DateTimePicker()
+        Me.CmbFrmPgs = New System.Windows.Forms.ComboBox()
+        Me.CmbMtdPgs = New System.Windows.Forms.ComboBox()
         Me.Panel = New System.Windows.Forms.Panel()
         Me.GroupBox.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -60,9 +60,9 @@ Partial Class FrmPagoMensual
         Me.LblCliente.Location = New System.Drawing.Point(25, 25)
         Me.LblCliente.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
         Me.LblCliente.Name = "LblCliente"
-        Me.LblCliente.Size = New System.Drawing.Size(704, 18)
+        Me.LblCliente.Size = New System.Drawing.Size(716, 18)
         Me.LblCliente.TabIndex = 1
-        Me.LblCliente.Text = "NOMBRE COMPLETO DEL CLIENTE Y SU EDAD"
+        Me.LblCliente.Text = "NOMBRE DEL GRUPO E INTEGRANTES O DEL CLIENTE Y SU EDAD"
         Me.LblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BtnPagar
@@ -75,7 +75,7 @@ Partial Class FrmPagoMensual
         Me.BtnPagar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnPagar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.pagar_mes_28x32
         Me.BtnPagar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnPagar.Location = New System.Drawing.Point(544, 29)
+        Me.BtnPagar.Location = New System.Drawing.Point(560, 29)
         Me.BtnPagar.Margin = New System.Windows.Forms.Padding(16, 0, 16, 0)
         Me.BtnPagar.Name = "BtnPagar"
         Me.BtnPagar.Padding = New System.Windows.Forms.Padding(0, 2, 0, 0)
@@ -96,7 +96,7 @@ Partial Class FrmPagoMensual
         Me.BtnCancelar.ForeColor = System.Drawing.Color.Brown
         Me.BtnCancelar.Image = Global.ControlPagosGimnasio.My.Resources.Resources.cancel_pago_34x28
         Me.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnCancelar.Location = New System.Drawing.Point(544, 207)
+        Me.BtnCancelar.Location = New System.Drawing.Point(560, 213)
         Me.BtnCancelar.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Padding = New System.Windows.Forms.Padding(0, 4, 0, 1)
@@ -122,37 +122,144 @@ Partial Class FrmPagoMensual
         Me.GroupBox.Controls.Add(Me.LblDiasPgs)
         Me.GroupBox.Controls.Add(Me.LblPagarPgs)
         Me.GroupBox.Controls.Add(Me.TxtPrcPgs)
-        Me.GroupBox.Location = New System.Drawing.Point(16, 8)
-        Me.GroupBox.Margin = New System.Windows.Forms.Padding(16, 8, 0, 16)
+        Me.GroupBox.Location = New System.Drawing.Point(24, 8)
+        Me.GroupBox.Margin = New System.Windows.Forms.Padding(24, 8, 0, 16)
         Me.GroupBox.Name = "GroupBox"
         Me.GroupBox.Padding = New System.Windows.Forms.Padding(0)
         Me.GroupBox.Size = New System.Drawing.Size(248, 285)
         Me.GroupBox.TabIndex = 0
         Me.GroupBox.TabStop = False
         '
-        'TxtPrcPgs
+        'LblFechaDi
         '
-        Me.TxtPrcPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPrcPgs.Location = New System.Drawing.Point(16, 111)
-        Me.TxtPrcPgs.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.TxtPrcPgs.MaxLength = 10
-        Me.TxtPrcPgs.Name = "TxtPrcPgs"
-        Me.TxtPrcPgs.Size = New System.Drawing.Size(100, 26)
-        Me.TxtPrcPgs.TabIndex = 1
-        Me.TxtPrcPgs.Text = "0"
-        Me.TxtPrcPgs.WordWrap = False
+        Me.LblFechaDi.AutoSize = True
+        Me.LblFechaDi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblFechaDi.Location = New System.Drawing.Point(18, 21)
+        Me.LblFechaDi.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
+        Me.LblFechaDi.Name = "LblFechaDi"
+        Me.LblFechaDi.Size = New System.Drawing.Size(130, 16)
+        Me.LblFechaDi.TabIndex = 7
+        Me.LblFechaDi.Text = "Fecha inicio  de mes"
+        Me.LblFechaDi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'LblPagarPgs
+        'LblDias
         '
-        Me.LblPagarPgs.BackColor = System.Drawing.SystemColors.Window
-        Me.LblPagarPgs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblPagarPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPagarPgs.Location = New System.Drawing.Point(132, 243)
-        Me.LblPagarPgs.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblPagarPgs.Name = "LblPagarPgs"
-        Me.LblPagarPgs.Size = New System.Drawing.Size(100, 26)
-        Me.LblPagarPgs.TabIndex = 17
-        Me.LblPagarPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LblDias.AutoSize = True
+        Me.LblDias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDias.Location = New System.Drawing.Point(18, 219)
+        Me.LblDias.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
+        Me.LblDias.Name = "LblDias"
+        Me.LblDias.Size = New System.Drawing.Size(82, 16)
+        Me.LblDias.TabIndex = 14
+        Me.LblDias.Text = "Cant de días"
+        Me.LblDias.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblPrcDia
+        '
+        Me.LblPrcDia.AutoSize = True
+        Me.LblPrcDia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPrcDia.Location = New System.Drawing.Point(134, 153)
+        Me.LblPrcDia.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblPrcDia.Name = "LblPrcDia"
+        Me.LblPrcDia.Size = New System.Drawing.Size(91, 16)
+        Me.LblPrcDia.TabIndex = 12
+        Me.LblPrcDia.Text = "Precio por día"
+        Me.LblPrcDia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'DtpFdiPgs
+        '
+        Me.DtpFdiPgs.CustomFormat = "dd 'de' MMMM 'de' yyyy"
+        Me.DtpFdiPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.DtpFdiPgs.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DtpFdiPgs.Location = New System.Drawing.Point(16, 45)
+        Me.DtpFdiPgs.Margin = New System.Windows.Forms.Padding(16, 8, 16, 0)
+        Me.DtpFdiPgs.Name = "DtpFdiPgs"
+        Me.DtpFdiPgs.Size = New System.Drawing.Size(216, 26)
+        Me.DtpFdiPgs.TabIndex = 0
+        '
+        'LblTotal
+        '
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotal.Location = New System.Drawing.Point(18, 153)
+        Me.LblTotal.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(38, 16)
+        Me.LblTotal.TabIndex = 10
+        Me.LblTotal.Text = "Total"
+        Me.LblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblTtlPgs
+        '
+        Me.LblTtlPgs.BackColor = System.Drawing.SystemColors.Window
+        Me.LblTtlPgs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblTtlPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTtlPgs.Location = New System.Drawing.Point(16, 177)
+        Me.LblTtlPgs.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
+        Me.LblTtlPgs.Name = "LblTtlPgs"
+        Me.LblTtlPgs.Size = New System.Drawing.Size(100, 26)
+        Me.LblTtlPgs.TabIndex = 11
+        Me.LblTtlPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LblPrecio
+        '
+        Me.LblPrecio.AutoSize = True
+        Me.LblPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPrecio.Location = New System.Drawing.Point(18, 87)
+        Me.LblPrecio.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
+        Me.LblPrecio.Name = "LblPrecio"
+        Me.LblPrecio.Size = New System.Drawing.Size(46, 16)
+        Me.LblPrecio.TabIndex = 8
+        Me.LblPrecio.Text = "Precio"
+        Me.LblPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblApagar
+        '
+        Me.LblApagar.AutoSize = True
+        Me.LblApagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblApagar.Location = New System.Drawing.Point(134, 219)
+        Me.LblApagar.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblApagar.Name = "LblApagar"
+        Me.LblApagar.Size = New System.Drawing.Size(88, 16)
+        Me.LblApagar.TabIndex = 16
+        Me.LblApagar.Text = "Total a pagar"
+        Me.LblApagar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblDscto
+        '
+        Me.LblDscto.AutoSize = True
+        Me.LblDscto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDscto.Location = New System.Drawing.Point(134, 87)
+        Me.LblDscto.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblDscto.Name = "LblDscto"
+        Me.LblDscto.Size = New System.Drawing.Size(72, 16)
+        Me.LblDscto.TabIndex = 9
+        Me.LblDscto.Text = "Descuento"
+        Me.LblDscto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblPrcDisPgs
+        '
+        Me.LblPrcDisPgs.BackColor = System.Drawing.SystemColors.Window
+        Me.LblPrcDisPgs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblPrcDisPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPrcDisPgs.Location = New System.Drawing.Point(132, 177)
+        Me.LblPrcDisPgs.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblPrcDisPgs.Name = "LblPrcDisPgs"
+        Me.LblPrcDisPgs.Size = New System.Drawing.Size(100, 26)
+        Me.LblPrcDisPgs.TabIndex = 13
+        Me.LblPrcDisPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtDscPgs
+        '
+        Me.TxtDscPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDscPgs.Location = New System.Drawing.Point(132, 111)
+        Me.TxtDscPgs.Margin = New System.Windows.Forms.Padding(16, 0, 0, 0)
+        Me.TxtDscPgs.MaxLength = 10
+        Me.TxtDscPgs.Name = "TxtDscPgs"
+        Me.TxtDscPgs.Size = New System.Drawing.Size(100, 26)
+        Me.TxtDscPgs.TabIndex = 2
+        Me.TxtDscPgs.Text = "0"
+        Me.TxtDscPgs.WordWrap = False
         '
         'LblDiasPgs
         '
@@ -167,136 +274,29 @@ Partial Class FrmPagoMensual
         Me.LblDiasPgs.TabIndex = 15
         Me.LblDiasPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'TxtDscPgs
+        'LblPagarPgs
         '
-        Me.TxtDscPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDscPgs.Location = New System.Drawing.Point(132, 111)
-        Me.TxtDscPgs.Margin = New System.Windows.Forms.Padding(16, 0, 0, 0)
-        Me.TxtDscPgs.MaxLength = 10
-        Me.TxtDscPgs.Name = "TxtDscPgs"
-        Me.TxtDscPgs.Size = New System.Drawing.Size(100, 26)
-        Me.TxtDscPgs.TabIndex = 2
-        Me.TxtDscPgs.Text = "0"
-        Me.TxtDscPgs.WordWrap = False
+        Me.LblPagarPgs.BackColor = System.Drawing.SystemColors.Window
+        Me.LblPagarPgs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LblPagarPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPagarPgs.Location = New System.Drawing.Point(132, 243)
+        Me.LblPagarPgs.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblPagarPgs.Name = "LblPagarPgs"
+        Me.LblPagarPgs.Size = New System.Drawing.Size(100, 26)
+        Me.LblPagarPgs.TabIndex = 17
+        Me.LblPagarPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LblPrcDisPgs
+        'TxtPrcPgs
         '
-        Me.LblPrcDisPgs.BackColor = System.Drawing.SystemColors.Window
-        Me.LblPrcDisPgs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblPrcDisPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPrcDisPgs.Location = New System.Drawing.Point(132, 177)
-        Me.LblPrcDisPgs.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblPrcDisPgs.Name = "LblPrcDisPgs"
-        Me.LblPrcDisPgs.Size = New System.Drawing.Size(100, 26)
-        Me.LblPrcDisPgs.TabIndex = 13
-        Me.LblPrcDisPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LblDscto
-        '
-        Me.LblDscto.AutoSize = True
-        Me.LblDscto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDscto.Location = New System.Drawing.Point(134, 87)
-        Me.LblDscto.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblDscto.Name = "LblDscto"
-        Me.LblDscto.Size = New System.Drawing.Size(72, 16)
-        Me.LblDscto.TabIndex = 9
-        Me.LblDscto.Text = "Descuento"
-        Me.LblDscto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblApagar
-        '
-        Me.LblApagar.AutoSize = True
-        Me.LblApagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblApagar.Location = New System.Drawing.Point(134, 219)
-        Me.LblApagar.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblApagar.Name = "LblApagar"
-        Me.LblApagar.Size = New System.Drawing.Size(88, 16)
-        Me.LblApagar.TabIndex = 16
-        Me.LblApagar.Text = "Total a pagar"
-        Me.LblApagar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblPrecio
-        '
-        Me.LblPrecio.AutoSize = True
-        Me.LblPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPrecio.Location = New System.Drawing.Point(18, 87)
-        Me.LblPrecio.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
-        Me.LblPrecio.Name = "LblPrecio"
-        Me.LblPrecio.Size = New System.Drawing.Size(46, 16)
-        Me.LblPrecio.TabIndex = 8
-        Me.LblPrecio.Text = "Precio"
-        Me.LblPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblTtlPgs
-        '
-        Me.LblTtlPgs.BackColor = System.Drawing.SystemColors.Window
-        Me.LblTtlPgs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LblTtlPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTtlPgs.Location = New System.Drawing.Point(16, 177)
-        Me.LblTtlPgs.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.LblTtlPgs.Name = "LblTtlPgs"
-        Me.LblTtlPgs.Size = New System.Drawing.Size(100, 26)
-        Me.LblTtlPgs.TabIndex = 11
-        Me.LblTtlPgs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LblTotal
-        '
-        Me.LblTotal.AutoSize = True
-        Me.LblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTotal.Location = New System.Drawing.Point(18, 153)
-        Me.LblTotal.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
-        Me.LblTotal.Name = "LblTotal"
-        Me.LblTotal.Size = New System.Drawing.Size(38, 16)
-        Me.LblTotal.TabIndex = 10
-        Me.LblTotal.Text = "Total"
-        Me.LblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'DtpFdiPgs
-        '
-        Me.DtpFdiPgs.CustomFormat = "dd 'de' MMMM 'de' yyyy"
-        Me.DtpFdiPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.DtpFdiPgs.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DtpFdiPgs.Location = New System.Drawing.Point(16, 45)
-        Me.DtpFdiPgs.Margin = New System.Windows.Forms.Padding(16, 8, 16, 0)
-        Me.DtpFdiPgs.Name = "DtpFdiPgs"
-        Me.DtpFdiPgs.Size = New System.Drawing.Size(216, 26)
-        Me.DtpFdiPgs.TabIndex = 0
-        '
-        'LblPrcDia
-        '
-        Me.LblPrcDia.AutoSize = True
-        Me.LblPrcDia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPrcDia.Location = New System.Drawing.Point(134, 153)
-        Me.LblPrcDia.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblPrcDia.Name = "LblPrcDia"
-        Me.LblPrcDia.Size = New System.Drawing.Size(91, 16)
-        Me.LblPrcDia.TabIndex = 12
-        Me.LblPrcDia.Text = "Precio por día"
-        Me.LblPrcDia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblDias
-        '
-        Me.LblDias.AutoSize = True
-        Me.LblDias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDias.Location = New System.Drawing.Point(18, 219)
-        Me.LblDias.Margin = New System.Windows.Forms.Padding(0, 16, 0, 0)
-        Me.LblDias.Name = "LblDias"
-        Me.LblDias.Size = New System.Drawing.Size(82, 16)
-        Me.LblDias.TabIndex = 14
-        Me.LblDias.Text = "Cant de días"
-        Me.LblDias.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblFechaDi
-        '
-        Me.LblFechaDi.AutoSize = True
-        Me.LblFechaDi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFechaDi.Location = New System.Drawing.Point(18, 21)
-        Me.LblFechaDi.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.LblFechaDi.Name = "LblFechaDi"
-        Me.LblFechaDi.Size = New System.Drawing.Size(130, 16)
-        Me.LblFechaDi.TabIndex = 7
-        Me.LblFechaDi.Text = "Fecha inicio  de mes"
-        Me.LblFechaDi.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.TxtPrcPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPrcPgs.Location = New System.Drawing.Point(16, 111)
+        Me.TxtPrcPgs.Margin = New System.Windows.Forms.Padding(0, 8, 0, 0)
+        Me.TxtPrcPgs.MaxLength = 10
+        Me.TxtPrcPgs.Name = "TxtPrcPgs"
+        Me.TxtPrcPgs.Size = New System.Drawing.Size(100, 26)
+        Me.TxtPrcPgs.TabIndex = 1
+        Me.TxtPrcPgs.Text = "0"
+        Me.TxtPrcPgs.WordWrap = False
         '
         'GroupBox1
         '
@@ -307,27 +307,72 @@ Partial Class FrmPagoMensual
         Me.GroupBox1.Controls.Add(Me.DtpFdpPgs)
         Me.GroupBox1.Controls.Add(Me.CmbFrmPgs)
         Me.GroupBox1.Controls.Add(Me.CmbMtdPgs)
-        Me.GroupBox1.Location = New System.Drawing.Point(272, 8)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(288, 8)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(16, 0, 8, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0)
         Me.GroupBox1.Size = New System.Drawing.Size(248, 285)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         '
-        'CmbMtdPgs
+        'TxtDtlleMtdo
         '
-        Me.CmbMtdPgs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbMtdPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.CmbMtdPgs.ForeColor = System.Drawing.Color.MediumBlue
-        Me.CmbMtdPgs.FormattingEnabled = True
-        Me.CmbMtdPgs.IntegralHeight = False
-        Me.CmbMtdPgs.Items.AddRange(New Object() {"BONO", "DIARIO", "MENSUAL", "GRUPO FAMILIAR"})
-        Me.CmbMtdPgs.Location = New System.Drawing.Point(16, 177)
-        Me.CmbMtdPgs.Margin = New System.Windows.Forms.Padding(0)
-        Me.CmbMtdPgs.Name = "CmbMtdPgs"
-        Me.CmbMtdPgs.Size = New System.Drawing.Size(216, 26)
-        Me.CmbMtdPgs.TabIndex = 8
+        Me.TxtDtlleMtdo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDtlleMtdo.Location = New System.Drawing.Point(16, 205)
+        Me.TxtDtlleMtdo.Margin = New System.Windows.Forms.Padding(0)
+        Me.TxtDtlleMtdo.Multiline = True
+        Me.TxtDtlleMtdo.Name = "TxtDtlleMtdo"
+        Me.TxtDtlleMtdo.ReadOnly = True
+        Me.TxtDtlleMtdo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TxtDtlleMtdo.Size = New System.Drawing.Size(216, 64)
+        Me.TxtDtlleMtdo.TabIndex = 9
+        '
+        'LblFechaDp
+        '
+        Me.LblFechaDp.AutoSize = True
+        Me.LblFechaDp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblFechaDp.Location = New System.Drawing.Point(18, 21)
+        Me.LblFechaDp.Margin = New System.Windows.Forms.Padding(16, 8, 0, 0)
+        Me.LblFechaDp.Name = "LblFechaDp"
+        Me.LblFechaDp.Size = New System.Drawing.Size(99, 16)
+        Me.LblFechaDp.TabIndex = 19
+        Me.LblFechaDp.Text = "Fecha de pago"
+        Me.LblFechaDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblFormaDp
+        '
+        Me.LblFormaDp.AutoSize = True
+        Me.LblFormaDp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblFormaDp.Location = New System.Drawing.Point(18, 87)
+        Me.LblFormaDp.Margin = New System.Windows.Forms.Padding(0)
+        Me.LblFormaDp.Name = "LblFormaDp"
+        Me.LblFormaDp.Size = New System.Drawing.Size(100, 16)
+        Me.LblFormaDp.TabIndex = 18
+        Me.LblFormaDp.Text = "Forma de pago"
+        Me.LblFormaDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LblMetodoDp
+        '
+        Me.LblMetodoDp.AutoSize = True
+        Me.LblMetodoDp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMetodoDp.Location = New System.Drawing.Point(18, 153)
+        Me.LblMetodoDp.Margin = New System.Windows.Forms.Padding(16, 0, 0, 0)
+        Me.LblMetodoDp.Name = "LblMetodoDp"
+        Me.LblMetodoDp.Size = New System.Drawing.Size(107, 16)
+        Me.LblMetodoDp.TabIndex = 20
+        Me.LblMetodoDp.Text = "Método de pago"
+        Me.LblMetodoDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'DtpFdpPgs
+        '
+        Me.DtpFdpPgs.CustomFormat = "dd 'de' MMMM 'de' yyyy"
+        Me.DtpFdpPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.DtpFdpPgs.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DtpFdpPgs.Location = New System.Drawing.Point(16, 45)
+        Me.DtpFdpPgs.Margin = New System.Windows.Forms.Padding(0)
+        Me.DtpFdpPgs.Name = "DtpFdpPgs"
+        Me.DtpFdpPgs.Size = New System.Drawing.Size(216, 26)
+        Me.DtpFdpPgs.TabIndex = 4
         '
         'CmbFrmPgs
         '
@@ -343,64 +388,19 @@ Partial Class FrmPagoMensual
         Me.CmbFrmPgs.Size = New System.Drawing.Size(216, 26)
         Me.CmbFrmPgs.TabIndex = 3
         '
-        'DtpFdpPgs
+        'CmbMtdPgs
         '
-        Me.DtpFdpPgs.CustomFormat = "dd 'de' MMMM 'de' yyyy"
-        Me.DtpFdpPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
-        Me.DtpFdpPgs.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DtpFdpPgs.Location = New System.Drawing.Point(16, 45)
-        Me.DtpFdpPgs.Margin = New System.Windows.Forms.Padding(0)
-        Me.DtpFdpPgs.Name = "DtpFdpPgs"
-        Me.DtpFdpPgs.Size = New System.Drawing.Size(216, 26)
-        Me.DtpFdpPgs.TabIndex = 4
-        '
-        'LblMetodoDp
-        '
-        Me.LblMetodoDp.AutoSize = True
-        Me.LblMetodoDp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblMetodoDp.Location = New System.Drawing.Point(18, 153)
-        Me.LblMetodoDp.Margin = New System.Windows.Forms.Padding(16, 0, 0, 0)
-        Me.LblMetodoDp.Name = "LblMetodoDp"
-        Me.LblMetodoDp.Size = New System.Drawing.Size(107, 16)
-        Me.LblMetodoDp.TabIndex = 20
-        Me.LblMetodoDp.Text = "Método de pago"
-        Me.LblMetodoDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblFormaDp
-        '
-        Me.LblFormaDp.AutoSize = True
-        Me.LblFormaDp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFormaDp.Location = New System.Drawing.Point(18, 87)
-        Me.LblFormaDp.Margin = New System.Windows.Forms.Padding(0)
-        Me.LblFormaDp.Name = "LblFormaDp"
-        Me.LblFormaDp.Size = New System.Drawing.Size(100, 16)
-        Me.LblFormaDp.TabIndex = 18
-        Me.LblFormaDp.Text = "Forma de pago"
-        Me.LblFormaDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LblFechaDp
-        '
-        Me.LblFechaDp.AutoSize = True
-        Me.LblFechaDp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFechaDp.Location = New System.Drawing.Point(18, 21)
-        Me.LblFechaDp.Margin = New System.Windows.Forms.Padding(16, 8, 0, 0)
-        Me.LblFechaDp.Name = "LblFechaDp"
-        Me.LblFechaDp.Size = New System.Drawing.Size(99, 16)
-        Me.LblFechaDp.TabIndex = 19
-        Me.LblFechaDp.Text = "Fecha de pago"
-        Me.LblFechaDp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'TxtDtlleMtdo
-        '
-        Me.TxtDtlleMtdo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDtlleMtdo.Location = New System.Drawing.Point(16, 205)
-        Me.TxtDtlleMtdo.Margin = New System.Windows.Forms.Padding(0)
-        Me.TxtDtlleMtdo.Multiline = True
-        Me.TxtDtlleMtdo.Name = "TxtDtlleMtdo"
-        Me.TxtDtlleMtdo.ReadOnly = True
-        Me.TxtDtlleMtdo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TxtDtlleMtdo.Size = New System.Drawing.Size(216, 64)
-        Me.TxtDtlleMtdo.TabIndex = 9
+        Me.CmbMtdPgs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbMtdPgs.Font = New System.Drawing.Font("Linux Libertine Display G", 12.0!)
+        Me.CmbMtdPgs.ForeColor = System.Drawing.Color.MediumBlue
+        Me.CmbMtdPgs.FormattingEnabled = True
+        Me.CmbMtdPgs.IntegralHeight = False
+        Me.CmbMtdPgs.Items.AddRange(New Object() {"BONO", "DIARIO", "MENSUAL", "GRUPO FAMILIAR"})
+        Me.CmbMtdPgs.Location = New System.Drawing.Point(16, 177)
+        Me.CmbMtdPgs.Margin = New System.Windows.Forms.Padding(0)
+        Me.CmbMtdPgs.Name = "CmbMtdPgs"
+        Me.CmbMtdPgs.Size = New System.Drawing.Size(216, 26)
+        Me.CmbMtdPgs.TabIndex = 8
         '
         'Panel
         '
@@ -412,21 +412,21 @@ Partial Class FrmPagoMensual
         Me.Panel.Location = New System.Drawing.Point(25, 59)
         Me.Panel.Margin = New System.Windows.Forms.Padding(16, 16, 16, 24)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(700, 313)
+        Me.Panel.Size = New System.Drawing.Size(716, 313)
         Me.Panel.TabIndex = 7
         '
         'FrmPagoMensual
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(750, 405)
+        Me.ClientSize = New System.Drawing.Size(766, 405)
         Me.Controls.Add(Me.Panel)
         Me.Controls.Add(Me.LblCliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "FrmPagoMensual"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PAGO CUOTA MENSUAL"
+        Me.Text = "PAGO - CUOTA MENSUAL"
         Me.GroupBox.ResumeLayout(False)
         Me.GroupBox.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)

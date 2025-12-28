@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Configuration
+Imports MySql.Data.MySqlClient
 
 Public Class FrmPrincipal
 
@@ -16,7 +17,8 @@ Public Class FrmPrincipal
             If MsgBox("¿Está seguro que desea CERRAR la aplicación?", vbQuestion + vbYesNo, "Segundos Fuera") = vbNo Then
                 e.Cancel = True
             Else
-                cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+                cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+                'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
                 cnxnMySql.Open()
                 sqlConsulta = "UPDATE sesion_user SET fh_salida ='" & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "' ORDER BY id_reg DESC LIMIT 1"
                 cmdCommand = New MySqlCommand(sqlConsulta, cnxnMySql)
@@ -36,7 +38,8 @@ Public Class FrmPrincipal
 
         Try
             'CONECTA Y ABRE LA BASE DE DATOS
-            cnxnMySql.ConnectionString = "server=localhost; user=root; password=MS-x51179m; database=control_pagos"
+            cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
+            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
 
             'HACER CONSULTA PARA COMPROBAR SI HAY PRECIO Y DESCUENTO

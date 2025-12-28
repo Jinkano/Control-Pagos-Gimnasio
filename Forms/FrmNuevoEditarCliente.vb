@@ -1,4 +1,5 @@
-﻿
+﻿Imports MySql.Data.MySqlClient
+
 Public Class FrmNuevoEditarCliente
 
     Dim currentMonth, currentYear As Int16
@@ -679,13 +680,12 @@ Public Class FrmNuevoEditarCliente
         '| CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE DEL NUEVO CLIENTE O DEL GRUPO
         '| -----------------------------------------------------------------------------
         '| * Seleccionamos el CASE para la consulta según el valor de la variable [strMtdPgs].
-        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos por parámetro la consulta _
-        '|   _ almacenada en "sqlConsulta", si en está consulta no hay resultado pasamos la variable _
-        '|   _ blnMarker a False.
+        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos por parámetro la consulta almacenada en
+        '|   "sqlConsulta", si en está consulta no hay resultado pasamos la variable blnMarker a False.
         '|
         '| IF : Si el valor de la variable blnMarker es False
-        '|      * Hacemos una nueva consulta para buscar la tarifa única MENSUAL que nos devolverá el _
-        '|        _ precio y el descuento registrado en la tabla [trfa_dscto].
+        '|      * Hacemos una nueva consulta para buscar la tarifa única MENSUAL que nos devolverá el precio
+        '|        y el descuento registrado en la tabla [trfa_dscto].
         '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta.
 
         Select Case strMtdPgs
@@ -693,7 +693,7 @@ Public Class FrmNuevoEditarCliente
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE emin_trfa <= '" & TxtEdad.Text & "' AND emax_trfa >= '" & TxtEdad.Text & "'"
             Case "GRUPAL"
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE nperson_trfa = '" & DgvListaNombre.CurrentRow.Cells(2).Value & "'"
-            Case Else 'DIARIO (5,6,7...)
+            Case Else 'DIARIO
                 sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = '" & strMtdPgs & "'"
         End Select
         Sub_Crud_Sql(sqlConsulta, "SubSearchDiscountPrice")
@@ -706,12 +706,12 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------------------------------------------
         '| AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
         '| ---------------------------------------------
-        '| IF : Comprobammos si se va a guardar un pago grupal.
+        '| IF : Comprobammos si se va a guardar un pago grupal
         '|      * Hacemos la consulta para comprobar si hay un pago pendiente del grupo familiar, en el caso
         '|        que exista un registro ponemos la variable 'blnmarker' en TRUE para no duplicar ese pago al
-        '|        momento de registrar un nuevo cliente.
-        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos como parametro la consulta y el valor_
-        '|        "CheckPaymentRegistered" para llamar a la subrutina que se encarga de la variable 'blnmarker'.
+        '|        momento de registrar un nuevo cliente o miembro de grupo.
+        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos como parametro la consulta y el valor
+        '|        'CheckPaymentRegistered' para llamar a la subrutina que se encarga de la variable 'blnmarker'.
         '|
         '|      IF : Si el valor de la variable 'blnmarker' es FALSE
         '|          * Calculammos el precio grupal multiplicando el precio mensual por el número de integrantes.
@@ -723,24 +723,101 @@ Public Class FrmNuevoEditarCliente
         '|      * Hacemos la consulta con el código del cliente y lo almacenamos en la variable sqlConsulta.
         '|      * Llamamos al la subrutina Sub_Crud_Sql() y le pasamos la consulta.
 
+        'If strMtdPgs = "GRUPAL" Then
+
+        '    sqlConsulta = "SELECT * FROM pagos WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'
+        '                    And (MONTH(fdi_pgs) = '" & currentMonth & "' And YEAR(fdi_pgs) = '" & currentYear & "')"
+        '    Sub_Crud_Sql(sqlConsulta, "CheckPaymentRegistered")
+
+        '    If blnMarker = False Then
+        '        Dim groupPrice = precio * DgvListaNombre.CurrentRow.Cells(2).Value
+        '        sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user)
+        '                        VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "',
+        '                                '" & strMtdPgs & "',
+        '                                '" & Replace(groupPrice, ",", ".") & "',
+        '                                '" & Replace(dscnto, ",", ".") & "',
+        '                                '" & DgvListaNombre.CurrentRow.Cells(0).Value & "',
+        '                                '" & FrmPrincipal.idUser & "')"
+        '        Sub_Crud_Sql(sqlConsulta)
+        '    End If
+        '    FrmClientesPagos.strIdGrpFamily = DgvListaNombre.CurrentRow.Cells(0).Value
+
+        'Else
+        '    sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
+        '                    VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "',
+        '                            '" & strMtdPgs & "',
+        '                            '" & Replace(precio, ",", ".") & "',
+        '                            '" & Replace(dscnto, ",", ".") & "',
+        '                            '" & strIdClient & "',
+        '                            '" & FrmPrincipal.idUser & "')"
+        '    Sub_Crud_Sql(sqlConsulta)
+        'End If
+        '
+        '
         If strMtdPgs = "GRUPAL" Then
 
-            sqlConsulta = "SELECT * FROM pagos WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'
-                            And (MONTH(fdi_pgs) = '" & currentMonth & "' And YEAR(fdi_pgs) = '" & currentYear & "')"
-            Sub_Crud_Sql(sqlConsulta, "CheckPaymentRegistered")
+            Dim idGroup As Integer = CInt(DgvListaNombre.CurrentRow.Cells(0).Value)
 
-            If blnMarker = False Then
-                precio = precio * DgvListaNombre.CurrentRow.Cells(2).Value
-                sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user) VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "', '" & DgvListaNombre.CurrentRow.Cells(0).Value & "', '" & FrmPrincipal.idUser & "')"
-                Sub_Crud_Sql(sqlConsulta)
+            ' Comprobar si hay pago grupal este mes
+            Dim sqlCheckPayment As String = "SELECT COUNT(*) FROM pagos " &
+                                            "WHERE id_grp = @idGrupo " &
+                                            "AND MONTH(fdi_pgs) = @mes " &
+                                            "AND YEAR(fdi_pgs) = @anio"
+
+            Dim parametersSqlCheckPayment As New List(Of MySqlParameter) From
+                {
+                New MySqlParameter("@idGrupo", idGroup),
+                New MySqlParameter("@mes", currentMonth),
+                New MySqlParameter("@anio", currentYear)
+                }
+
+            Dim isPaymentRegistered As Boolean = SqlRepository.ExecuteScalar(Of Integer)(sqlCheckPayment, parametersSqlCheckPayment) > 0
+
+            If Not isPaymentRegistered Then
+
+                Dim groupPrice As Decimal = precio * CDec(DgvListaNombre.CurrentRow.Cells(2).Value)
+
+                Dim sqlInsertPayment As String = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user) " &
+                                            "VALUES (@fecha, @metodo, @precio, @descuento, @idGrupo, @idUser)"
+
+                Dim parametersSqlInsertPayment As New List(Of MySqlParameter) From
+                    {
+                    New MySqlParameter("@fecha", DateTime.Now.ToString("yyyy-MM-dd")),
+                    New MySqlParameter("@metodo", strMtdPgs),
+                    New MySqlParameter("@precio", groupPrice),
+                    New MySqlParameter("@descuento", dscnto),
+                    New MySqlParameter("@idGrupo", idGroup),
+                    New MySqlParameter("@idUser", FrmPrincipal.idUser)
+                    }
+
+                SqlRepository.ExecuteNonQuery(sqlInsertPayment, parametersSqlInsertPayment)
+
             End If
-            FrmClientesPagos.strIdGrpFamily = DgvListaNombre.CurrentRow.Cells(0).Value
+
+            FrmClientesPagos.strIdGrpFamily = idGroup
 
         Else
-            sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user) VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "', '" & strMtdPgs & "', '" & Replace(precio, ",", ".") & "', '" & Replace(dscnto, ",", ".") & "', '" & strIdClient & "', '" & FrmPrincipal.idUser & "')"
-            Sub_Crud_Sql(sqlConsulta)
+
+            ' Pago individual
+            Dim sqlInsertPayment As String = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user) " &
+                                        "VALUES (@fecha, @metodo, @precio, @descuento, @idCliente, @idUser)"
+
+            Dim parametersSqlInsertPayment As New List(Of MySqlParameter) From
+                {
+                New MySqlParameter("@fecha", DateTime.Now.ToString("yyyy-MM-dd")),
+                New MySqlParameter("@metodo", strMtdPgs),
+                New MySqlParameter("@precio", precio),
+                New MySqlParameter("@descuento", dscnto),
+                New MySqlParameter("@idCliente", strIdClient),
+                New MySqlParameter("@idUser", FrmPrincipal.idUser)
+                }
+
+            SqlRepository.ExecuteNonQuery(sqlInsertPayment, parametersSqlInsertPayment)
+
         End If
 
+        '
+        '
         '| -----------------------------------------------------------------------------------------------
         '| ACTUALIZAR REGISTROS DE LA TABLA GRUPO_FAMILIAR
         '| -----------------------------------------------
