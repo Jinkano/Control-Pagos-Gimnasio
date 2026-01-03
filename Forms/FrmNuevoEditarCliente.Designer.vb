@@ -28,10 +28,6 @@ Partial Class FrmNuevoEditarCliente
         Me.TttNewUpdate = New System.Windows.Forms.ToolTip(Me.components)
         Me.BtnAddGrupo = New System.Windows.Forms.Button()
         Me.DgvListaNombre = New System.Windows.Forms.DataGridView()
-        Me.ColIdGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColNomGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColNumIntgrntes = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColIntgrntesReg = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RbInactiveState = New System.Windows.Forms.RadioButton()
         Me.RbActiveStatus = New System.Windows.Forms.RadioButton()
         Me.LblEstadoCli = New System.Windows.Forms.Label()
@@ -65,6 +61,10 @@ Partial Class FrmNuevoEditarCliente
         Me.GbDatos = New System.Windows.Forms.GroupBox()
         Me.DtpFdn = New System.Windows.Forms.DateTimePicker()
         Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.colIdDailyGroup = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNameDailyGroup = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNumMembers = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colMembersReg = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvListaNombre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbOtros.SuspendLayout()
         Me.GbListaGrupoFamiliar.SuspendLayout()
@@ -98,7 +98,7 @@ Partial Class FrmNuevoEditarCliente
         Me.DgvListaNombre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgvListaNombre.ColumnHeadersHeight = 4
         Me.DgvListaNombre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColIdGrupo, Me.ColNomGrupo, Me.ColNumIntgrntes, Me.ColIntgrntesReg})
+        Me.DgvListaNombre.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colIdDailyGroup, Me.colNameDailyGroup, Me.colNumMembers, Me.colMembersReg})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleTurquoise
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -120,36 +120,6 @@ Partial Class FrmNuevoEditarCliente
         Me.DgvListaNombre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DgvListaNombre.Size = New System.Drawing.Size(328, 130)
         Me.DgvListaNombre.TabIndex = 1
-        '
-        'ColIdGrupo
-        '
-        Me.ColIdGrupo.HeaderText = "ColIdGrupo"
-        Me.ColIdGrupo.Name = "ColIdGrupo"
-        Me.ColIdGrupo.ReadOnly = True
-        Me.ColIdGrupo.Visible = False
-        '
-        'ColNomGrupo
-        '
-        Me.ColNomGrupo.HeaderText = ""
-        Me.ColNomGrupo.Name = "ColNomGrupo"
-        Me.ColNomGrupo.ReadOnly = True
-        Me.ColNomGrupo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColNomGrupo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ColNomGrupo.Width = 303
-        '
-        'ColNumIntgrntes
-        '
-        Me.ColNumIntgrntes.HeaderText = "ColNumIntgrntes"
-        Me.ColNumIntgrntes.Name = "ColNumIntgrntes"
-        Me.ColNumIntgrntes.ReadOnly = True
-        Me.ColNumIntgrntes.Visible = False
-        '
-        'ColIntgrntesReg
-        '
-        Me.ColIntgrntesReg.HeaderText = "ColIntgrntesReg"
-        Me.ColIntgrntesReg.Name = "ColIntgrntesReg"
-        Me.ColIntgrntesReg.ReadOnly = True
-        Me.ColIntgrntesReg.Visible = False
         '
         'RbInactiveState
         '
@@ -614,6 +584,36 @@ Partial Class FrmNuevoEditarCliente
         '
         Me.ErrorProvider.ContainerControl = Me
         '
+        'colIdDailyGroup
+        '
+        Me.colIdDailyGroup.HeaderText = "colIdDailyGroup"
+        Me.colIdDailyGroup.Name = "colIdDailyGroup"
+        Me.colIdDailyGroup.ReadOnly = True
+        Me.colIdDailyGroup.Visible = False
+        '
+        'colNameDailyGroup
+        '
+        Me.colNameDailyGroup.HeaderText = "colNameDailyGroup"
+        Me.colNameDailyGroup.Name = "colNameDailyGroup"
+        Me.colNameDailyGroup.ReadOnly = True
+        Me.colNameDailyGroup.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colNameDailyGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colNameDailyGroup.Width = 303
+        '
+        'colNumMembers
+        '
+        Me.colNumMembers.HeaderText = "colNumMembers"
+        Me.colNumMembers.Name = "colNumMembers"
+        Me.colNumMembers.ReadOnly = True
+        Me.colNumMembers.Visible = False
+        '
+        'colMembersReg
+        '
+        Me.colMembersReg.HeaderText = "colMembersReg"
+        Me.colMembersReg.Name = "colMembersReg"
+        Me.colMembersReg.ReadOnly = True
+        Me.colMembersReg.Visible = False
+        '
         'FrmNuevoEditarCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -624,8 +624,8 @@ Partial Class FrmNuevoEditarCliente
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.GbContacto)
         Me.Controls.Add(Me.GbDatos)
-        Me.Controls.Add(Me.BtnActualizar)
         Me.Controls.Add(Me.BtnGuardar)
+        Me.Controls.Add(Me.BtnActualizar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -681,9 +681,9 @@ Partial Class FrmNuevoEditarCliente
     Friend WithEvents LblEmail As Label
     Friend WithEvents GbDatos As GroupBox
     Friend WithEvents DtpFdn As DateTimePicker
-    Friend WithEvents ColIdGrupo As DataGridViewTextBoxColumn
-    Friend WithEvents ColNomGrupo As DataGridViewTextBoxColumn
-    Friend WithEvents ColNumIntgrntes As DataGridViewTextBoxColumn
-    Friend WithEvents ColIntgrntesReg As DataGridViewTextBoxColumn
     Friend WithEvents ErrorProvider As ErrorProvider
+    Friend WithEvents colIdDailyGroup As DataGridViewTextBoxColumn
+    Friend WithEvents colNameDailyGroup As DataGridViewTextBoxColumn
+    Friend WithEvents colNumMembers As DataGridViewTextBoxColumn
+    Friend WithEvents colMembersReg As DataGridViewTextBoxColumn
 End Class

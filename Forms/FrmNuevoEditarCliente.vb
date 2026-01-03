@@ -1,6 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
-
-Public Class FrmNuevoEditarCliente
+﻿Public Class FrmNuevoEditarCliente
 
     Dim currentMonth, currentYear As Int16
     Dim sqlConsulta, strEstado, strMtdPgs, strIdGrupo, strToolTipText As String
@@ -9,6 +7,8 @@ Public Class FrmNuevoEditarCliente
     Public intAddMember As Int16
     Public precio, dscnto As Decimal
     Public strIdClient, strAddMembers As String
+
+    'Private _clientService As New ClientService()
 
     Private Sub FrmNuevoEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -323,6 +323,7 @@ Public Class FrmNuevoEditarCliente
         '|        _ usará para guardar o actualizar el método de pago en la tabla clientes.
         '|      * Cambiamos el titulo del groupbox "Lista clases sueltas".
         '|      * Activamos el DataGridView DgvListaNombre.
+
         '|      * Hacemos la consulta para mostrar los pagos diarios el la lista DgvListaNombre y lo _
         '|        _ guardamos en la variable sqlConsulta.
         '|      * Llamamos a la subrutina Sub_Crud_Sql y le pasamos la variable sqlConsulta y el texto _
@@ -334,9 +335,10 @@ Public Class FrmNuevoEditarCliente
             strMtdPgs = TxtListaNom.Text
             GbListaGrupoFamiliar.Text = "Lista clases sueltas"
             DgvListaNombre.Enabled = True
-            sqlConsulta = "SELECT id_trfa, tipo_trfa FROM trfa_dscto WHERE tipo_trfa LIKE '%DIARIO%'"
-            Sub_Crud_Sql(sqlConsulta, "SubSearchDailyPrice")
             strToolTipText = "CLIC PARA SELECCIONAR UN PAGO DIARIO"
+
+            ConfigureGridColumns("DIARIO")
+            DgvListaNombre.DataSource = ClientService.GetDailyPrice
         End If
 
     End Sub
@@ -376,7 +378,7 @@ Public Class FrmNuevoEditarCliente
             TxtListaNom.Text = ""
             GbListaGrupoFamiliar.Text = "Lista vacia"
             DgvListaNombre.Enabled = False
-            DgvListaNombre.Rows.Clear()
+            DgvListaNombre.DataSource = Nothing
         End If
         '
     End Sub
@@ -430,11 +432,11 @@ Public Class FrmNuevoEditarCliente
             TxtListaNom.Enabled = True
             DgvListaNombre.Enabled = True
             TxtListaNom.Focus()
-            sqlConsulta = "SELECT * FROM grp_familiar ORDER BY id_grp DESC"
-            Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
             If blnMarker = True Then TxtListaNom.Text = strToolTipText
             strToolTipText = "DOBLE CLIC PARA SELECCIONAR UN GRUPO"
 
+            ConfigureGridColumns("GRUPAL")
+            DgvListaNombre.DataSource = ClientService.GetNameGroupFamily
         Else
 
             If BtnActualizar.Visible = True Then
@@ -484,20 +486,40 @@ Public Class FrmNuevoEditarCliente
         '|              * Si hay coincidencia, llenamos el Label 'LblNumIntgrntes' con el número integrantes,
         '|                aumentamos en uno [intAddMember] y llenamos strAddMembers = "UPDATE_A_FIELD".
 
-        If RbGrupoFamiliar.Checked Then
+        ''PARA QUE NO HAGA BUSQUEDAS CADA PULSACION DE TECLADO
+        'If TxtListaNom.Text.Length > 0 AndAlso TxtListaNom.Text.Length < 3 Then Exit Sub
+        ' Solo actuamos si es modo Grupal
+        If Not RbGrupoFamiliar.Checked Then Exit Sub
 
-            sqlConsulta = "SELECT * FROM grp_familiar WHERE nom_grp LIKE '" & TxtListaNom.Text & "%' ORDER BY nom_grp"
-            Sub_Crud_Sql(sqlConsulta, "SubFillFamilyGroupData")
+        ' 1. Realizar la búsqueda y llenar el Grid
+        ' Configuramos columnas primero (nuestra función camaleón)
+        ConfigureGridColumns("GRUPAL")
 
-            If String.IsNullOrWhiteSpace(TxtListaNom.Text) Then LblNumIntgrntes.Text = ""
+        ' Llamamos al servicio
+        DgvListaNombre.DataSource = ClientService.SearchFamilyGroup(TxtListaNom.Text)
 
-            If DgvListaNombre.RowCount > 0 Then
-                If TxtListaNom.Text = DgvListaNombre.CurrentRow.Cells(1).Value Then
-                    LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
-                    intAddMember = DgvListaNombre.CurrentRow.Cells(3).Value + 1
-                    strAddMembers = "UPDATE_A_FIELD"
-                End If
+        ' 2. Limpieza si el texto está vacío
+        If String.IsNullOrWhiteSpace(TxtListaNom.Text) Then
+            LblNumIntgrntes.Text = ""
+            Exit Sub
+        End If
+
+        ' 3. Lógica de coincidencia exacta con la fila seleccionada
+        If DgvListaNombre.RowCount > 0 Then
+            Dim row As DataGridViewRow = DgvListaNombre.CurrentRow
+
+            ' Comparamos el texto escrito con el valor de la columna "colNomGrp"
+            If TxtListaNom.Text = row.Cells("colNameDailyGroup").Value.ToString() Then
+
+                Dim numMembers As Integer = CInt(row.Cells("colNumMembers").Value)
+                Dim membersReg As Integer = CInt(row.Cells("colMembersReg").Value)
+
+                LblNumIntgrntes.Text = $"{membersReg} de {numMembers}"
+                intAddMember = membersReg + 1
+                strAddMembers = "UPDATE_A_FIELD"
+
             End If
+
         End If
 
     End Sub
@@ -539,11 +561,14 @@ Public Class FrmNuevoEditarCliente
         '| ----------------------------------------------------------------------------------------------------------------
         '| CLIC EN UNA CELDA DE LA FILA DEL DATAGRIDVIEW
         '| ----------------------------------------------
+        '| * Validar que el clic sea en una fila válida y no en el encabezado [e.RowIndex < 0].
         '| * Llenamos la variable 'strMtdPgs' con el nombre de la clase suelta para guardar o actualizar en la tabla.
         '| * Mostramos en el Textbox 'TxtListaNom' en valor de la variable 'strMtdPgs'.
 
+        If e.RowIndex < 0 Then Exit Sub
+
         If RbDiario.Checked Then
-            strMtdPgs = DgvListaNombre.CurrentRow.Cells(1).Value
+            strMtdPgs = DgvListaNombre.CurrentRow.Cells("colNameDailyGroup").Value.ToString()
             TxtListaNom.Text = strMtdPgs
         End If
 
@@ -553,6 +578,7 @@ Public Class FrmNuevoEditarCliente
         '| ----------------------------------------------------------------------------------------------------
         '| DOBLE CLIC EN UNA CELDA DE LA FILA DEL DATAGRIDVIEW
         '| ---------------------------------------------------
+        '| * Validar fila seleccionada.
         '| IF : Comprobamos si el Radiobutton 'RbGrupoFamiliar' está activado:
         '|
         '|      IF : Comprobar si la cantidad de integrantes es igual a los integrantes registrados:
@@ -579,28 +605,40 @@ Public Class FrmNuevoEditarCliente
         '|          * Asignamos a la variable 'strAddMembers' el valor 'UPDATE_A_FIELD' para saber que hacer al
         '|            momento de guardar o actualizar un registro.
 
+        If DgvListaNombre.CurrentRow Is Nothing Then Exit Sub
+
         If RbGrupoFamiliar.Checked Then
 
-            If DgvListaNombre.CurrentRow.Cells(2).Value = DgvListaNombre.CurrentRow.Cells(3).Value Then
+            ''''
+            Dim row As DataGridViewRow = DgvListaNombre.CurrentRow
+            Dim nameGroup As String = row.Cells("colNameDailyGroup").Value.ToString()
+            Dim numMembers As Integer = CInt(row.Cells("colNumMembers").Value)
+            Dim membersReg As Integer = CInt(row.Cells("colMembersReg").Value)
 
-                If MsgBox("    Nombre del grupo  : " & DgvListaNombre.CurrentRow.Cells(1).Value & vbCr &
-                          "    Nº de Integrante     : " & DgvListaNombre.CurrentRow.Cells(2).Value & vbCr & vbCr &
-                          "    El grupo seleccionado ya tiene los integrantes completos." & vbCr &
-                          "    ___________________________________________________________" & vbCr & vbCr &
-                          "                        ¿Seguro que quieres añadir otro integrante?",
-                          vbExclamation + vbYesNo + vbDefaultButton2, "Comprobar datos") = vbYes Then
-                    intAddMember = DgvListaNombre.CurrentRow.Cells(2).Value + 1
+            If numMembers = membersReg Then
+                ' Preparamos el mensaje usando interpolación de strings (más moderno)
+                Dim strMsgBox As String =
+                    $"    Nombre del grupo  : {nameGroup}{vbCr}" &
+                    $"    Nº de Integrantes   : {numMembers}{vbCr}{vbCr}" &
+                    "    El grupo seleccionado ya tiene los integrantes completos." & vbCr &
+                    "    ___________________________________________________________" & vbCr & vbCr &
+                    "                        ¿Seguro que quieres añadir otro integrante?"
+
+                If MsgBox(strMsgBox, vbExclamation + vbYesNo + vbDefaultButton2, "Comprobar datos") = vbYes Then
+
+                    intAddMember = numMembers + 1
                     sqlConsulta = "SELECT nperson_trfa FROM trfa_dscto WHERE nperson_trfa = '" & intAddMember & "'"
                     Sub_Crud_Sql(sqlConsulta, "SubSearchGroupPrice")
                     strAddMembers = "UPDATE_TWO_FIELDS"
+
                 Else
                     TxtListaNom.Text = ""
                 End If
 
             Else
-                TxtListaNom.Text = DgvListaNombre.CurrentRow.Cells(1).Value
-                LblNumIntgrntes.Text = DgvListaNombre.CurrentRow.Cells(3).Value & " de " & DgvListaNombre.CurrentRow.Cells(2).Value
-                intAddMember = DgvListaNombre.CurrentRow.Cells(3).Value + 1
+                TxtListaNom.Text = nameGroup
+                LblNumIntgrntes.Text = membersReg & " de " & numMembers
+                intAddMember = membersReg + 1
                 strAddMembers = "UPDATE_A_FIELD"
             End If
         End If
@@ -628,7 +666,7 @@ Public Class FrmNuevoEditarCliente
         '| -----------------------------------------------------------
         '| * Llamamos a la función FunMsgBox() y le pasamos los parámetros, según sea el caso, para _
         '|   _ verificar que toda la información del cliente sea correcta antes de guardar el registro.
-
+        ' --- 1. VALIDACIONES DE INTERFAZ (Fuera del Try) ---
         If FunMsgBox(LblNombre.Text, BtnGuardar.Text, TxtNombre) Then Exit Sub
         If FunMsgBox(LblApellido.Text, BtnGuardar.Text, TxtApellido) Then Exit Sub
         If FunMsgBox(LblFnacimiento.Text, BtnGuardar.Text, TxtEdad, DtpFdn) Then Exit Sub
@@ -637,230 +675,26 @@ Public Class FrmNuevoEditarCliente
         If FunMsgBox(RbGrupoFamiliar.Text, BtnGuardar.Text, TxtListaNom, RbGrupoFamiliar) Then Exit Sub
 
         '| ----------------------------------------------------------------------------------------------
-        '| GUARDAR UN NUEVO REGISTRO EN LA TABLA CLIENTES
+        '| GUARDAR UN NUEVO REGISTRO EN LA TABLA CLIENTES BUSCAR EL ÚLTIMO REGISTRO GUARDADO PARA OBTENER EL ID DEL CLIENTE
         '| ----------------------------------------------
-        '| * Comprobamos el valor de la variable strmpago para hacer la consulta a la BBDD
-        '| IF :
-        '|      * Si la variable strMtdPgs es igual a "GRUPAL" hacemos una consulta con el _
-        '|        _ campo [id_grp] de la tabla Gruppo Familiar.
-        '| ELSE :
-        '|      * Si la variable strMtdPgs es "MENSUAL" o "DIARIO" hacemos la consulta sin _
-        '|        _ el [id_grp] del grupo familiar.
-        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
+        Try
+            ' 2️⃣ Crear DTO (CLAVE)
+            Dim data As ClientPaymentDTO = CreateClientPaymentDTO()
 
-        If strMtdPgs = "GRUPAL" Then
-            sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli, fdn_cli, tlf_cli, eml_cli, dir_cli, mpg_cli, fdi_cli, std_cli, id_grp)
-                                VALUES ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "',
-                                '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "',
-                                '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "',
-                                '" & strMtdPgs & "', '" & DtpFdi.Value.ToString("yyyy-MM-dd") & "',
-                                '" & strEstado & "', '" & DgvListaNombre.CurrentRow.Cells(0).Value & "')"
+            ' 3️⃣ Ejecutar proceso completo
+            ClientService.RegisterClientPayment(data)
 
-        Else
-            sqlConsulta = "INSERT INTO clientes (nom_cli, ape_cli, fdn_cli, tlf_cli, eml_cli, dir_cli, mpg_cli, fdi_cli, std_cli)
-                                VALUES ('" & TxtNombre.Text & "', '" & TxtApellido.Text & "',
-                                '" & DtpFdn.Value.ToString("yyyy-MM-dd") & "', '" & TxtTelefono.Text & "',
-                                '" & TxtEmail.Text & "', '" & TxtDireccion.Text & "',
-                                '" & strMtdPgs & "', '" & DtpFdi.Value.ToString("yyyy-MM-dd") & "',
-                                '" & strEstado & "')"
-        End If
-        Sub_Crud_Sql(sqlConsulta)
+            ' 4️⃣ UI / mensajes
+            FrmClientesPagos.strFlags = "UPDATE_PAYMENT_LIST"
+            FrmClientesPagos.Sub_Activate_Buttons()
+            FillLabelsMessage(data.IdClienteCreado)
 
-        '| -----------------------------------------------------------------------------------------------
-        '| BUSCAR EL ÚLTIMO REGISTRO GUARDADO PARA OBTENER EL ID DEL CLIENTE
-        '| -----------------------------------------------------------------
-        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta para obtener el [id_cli] _
-        '|   _ del último registro guardado en la tabla [clientes] y lo almacenamos en la variable _
-        '|   _ strIdClient que es Public.
+        Catch ex As Exception
 
-        sqlConsulta = "SELECT id_cli FROM clientes ORDER BY id_cli DESC LIMIT 1"
-        Sub_Crud_Sql(sqlConsulta, "SubReadIdClient")
+            MessageBox.Show("Error al registrar el cliente:" & vbCrLf & ex.Message, "Error",
+            MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-        '| -----------------------------------------------------------------------------------------------
-        '| CONSULTAMOS A LA BBDD LA TARIFA CORRESPONDIENTE DEL NUEVO CLIENTE O DEL GRUPO
-        '| -----------------------------------------------------------------------------
-        '| * Seleccionamos el CASE para la consulta según el valor de la variable [strMtdPgs].
-        '| * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos por parámetro la consulta almacenada en
-        '|   "sqlConsulta", si en está consulta no hay resultado pasamos la variable blnMarker a False.
-        '|
-        '| IF : Si el valor de la variable blnMarker es False
-        '|      * Hacemos una nueva consulta para buscar la tarifa única MENSUAL que nos devolverá el precio
-        '|        y el descuento registrado en la tabla [trfa_dscto].
-        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta.
-
-        Select Case strMtdPgs
-            Case "MENSUAL"
-                sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE emin_trfa <= '" & TxtEdad.Text & "' AND emax_trfa >= '" & TxtEdad.Text & "'"
-            Case "GRUPAL"
-                sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE nperson_trfa = '" & DgvListaNombre.CurrentRow.Cells(2).Value & "'"
-            Case Else 'DIARIO
-                sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = '" & strMtdPgs & "'"
-        End Select
-        Sub_Crud_Sql(sqlConsulta, "SubSearchDiscountPrice")
-
-        If blnMarker = False Then
-            sqlConsulta = "SELECT prcio_trfa, dscto_trfa FROM trfa_dscto WHERE tipo_trfa = 'MENSUAL'"
-            Sub_Crud_Sql(sqlConsulta, "SubSearchDiscountPrice")
-        End If
-
-        '| -----------------------------------------------------------------------------------------------
-        '| AGREGAMOS UN NUEVO REGISTRO EN LA TABLA PAGOS
-        '| ---------------------------------------------
-        '| IF : Comprobammos si se va a guardar un pago grupal
-        '|      * Hacemos la consulta para comprobar si hay un pago pendiente del grupo familiar, en el caso
-        '|        que exista un registro ponemos la variable 'blnmarker' en TRUE para no duplicar ese pago al
-        '|        momento de registrar un nuevo cliente o miembro de grupo.
-        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos como parametro la consulta y el valor
-        '|        'CheckPaymentRegistered' para llamar a la subrutina que se encarga de la variable 'blnmarker'.
-        '|
-        '|      IF : Si el valor de la variable 'blnmarker' es FALSE
-        '|          * Calculammos el precio grupal multiplicando el precio mensual por el número de integrantes.
-        '|          * Hacemos la consulta con el código del grupo y lo almacenamos en la variable sqlConsulta.
-        '|          * Llamamos al la subrutina Sub_Crud_Sql(), le pasamos como parámetro la consulta.
-        '|      * Llenamos la variable 'strIdGrpFamily' del formulario 'FrmClientesPagos' con el ID del grupo.
-        '|      
-        '| ELSE : Si el pago no es grupal.
-        '|      * Hacemos la consulta con el código del cliente y lo almacenamos en la variable sqlConsulta.
-        '|      * Llamamos al la subrutina Sub_Crud_Sql() y le pasamos la consulta.
-
-        'If strMtdPgs = "GRUPAL" Then
-
-        '    sqlConsulta = "SELECT * FROM pagos WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'
-        '                    And (MONTH(fdi_pgs) = '" & currentMonth & "' And YEAR(fdi_pgs) = '" & currentYear & "')"
-        '    Sub_Crud_Sql(sqlConsulta, "CheckPaymentRegistered")
-
-        '    If blnMarker = False Then
-        '        Dim groupPrice = precio * DgvListaNombre.CurrentRow.Cells(2).Value
-        '        sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user)
-        '                        VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "',
-        '                                '" & strMtdPgs & "',
-        '                                '" & Replace(groupPrice, ",", ".") & "',
-        '                                '" & Replace(dscnto, ",", ".") & "',
-        '                                '" & DgvListaNombre.CurrentRow.Cells(0).Value & "',
-        '                                '" & FrmPrincipal.idUser & "')"
-        '        Sub_Crud_Sql(sqlConsulta)
-        '    End If
-        '    FrmClientesPagos.strIdGrpFamily = DgvListaNombre.CurrentRow.Cells(0).Value
-
-        'Else
-        '    sqlConsulta = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user)
-        '                    VALUES ('" & DateTime.Now.ToString("yyyy-MM-dd") & "',
-        '                            '" & strMtdPgs & "',
-        '                            '" & Replace(precio, ",", ".") & "',
-        '                            '" & Replace(dscnto, ",", ".") & "',
-        '                            '" & strIdClient & "',
-        '                            '" & FrmPrincipal.idUser & "')"
-        '    Sub_Crud_Sql(sqlConsulta)
-        'End If
-        '
-        '
-        If strMtdPgs = "GRUPAL" Then
-
-            Dim idGroup As Integer = CInt(DgvListaNombre.CurrentRow.Cells(0).Value)
-
-            ' Comprobar si hay pago grupal este mes
-            Dim sqlCheckPayment As String = "SELECT COUNT(*) FROM pagos " &
-                                            "WHERE id_grp = @idGrupo " &
-                                            "AND MONTH(fdi_pgs) = @mes " &
-                                            "AND YEAR(fdi_pgs) = @anio"
-
-            Dim parametersSqlCheckPayment As New List(Of MySqlParameter) From
-                {
-                New MySqlParameter("@idGrupo", idGroup),
-                New MySqlParameter("@mes", currentMonth),
-                New MySqlParameter("@anio", currentYear)
-                }
-
-            Dim isPaymentRegistered As Boolean = SqlRepository.ExecuteScalar(Of Integer)(sqlCheckPayment, parametersSqlCheckPayment) > 0
-
-            If Not isPaymentRegistered Then
-
-                Dim groupPrice As Decimal = precio * CDec(DgvListaNombre.CurrentRow.Cells(2).Value)
-
-                Dim sqlInsertPayment As String = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_grp, id_user) " &
-                                            "VALUES (@fecha, @metodo, @precio, @descuento, @idGrupo, @idUser)"
-
-                Dim parametersSqlInsertPayment As New List(Of MySqlParameter) From
-                    {
-                    New MySqlParameter("@fecha", DateTime.Now.ToString("yyyy-MM-dd")),
-                    New MySqlParameter("@metodo", strMtdPgs),
-                    New MySqlParameter("@precio", groupPrice),
-                    New MySqlParameter("@descuento", dscnto),
-                    New MySqlParameter("@idGrupo", idGroup),
-                    New MySqlParameter("@idUser", FrmPrincipal.idUser)
-                    }
-
-                SqlRepository.ExecuteNonQuery(sqlInsertPayment, parametersSqlInsertPayment)
-
-            End If
-
-            FrmClientesPagos.strIdGrpFamily = idGroup
-
-        Else
-
-            ' Pago individual
-            Dim sqlInsertPayment As String = "INSERT INTO pagos (fdi_pgs, mtd_pgs, prc_pgs, dsc_pgs, id_cli, id_user) " &
-                                        "VALUES (@fecha, @metodo, @precio, @descuento, @idCliente, @idUser)"
-
-            Dim parametersSqlInsertPayment As New List(Of MySqlParameter) From
-                {
-                New MySqlParameter("@fecha", DateTime.Now.ToString("yyyy-MM-dd")),
-                New MySqlParameter("@metodo", strMtdPgs),
-                New MySqlParameter("@precio", precio),
-                New MySqlParameter("@descuento", dscnto),
-                New MySqlParameter("@idCliente", strIdClient),
-                New MySqlParameter("@idUser", FrmPrincipal.idUser)
-                }
-
-            SqlRepository.ExecuteNonQuery(sqlInsertPayment, parametersSqlInsertPayment)
-
-        End If
-
-        '
-        '
-        '| -----------------------------------------------------------------------------------------------
-        '| ACTUALIZAR REGISTROS DE LA TABLA GRUPO_FAMILIAR
-        '| -----------------------------------------------
-        '| * Comprobamos el valor de la variable strAddMembers para hacer la consulta a la BBDD.
-        '|
-        '| CASE "UPDATE_A_FIELD" :
-        '|      * En este caso solo vamos a actualizar el campo [intgrntes_reg_grp] de la tabla [grp_familiar]
-        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
-        '|
-        '| CASE "UPDATE_TWO_FIELDS" :
-        '|      * En este caso actualizamos los campos [num_intgrntes_grp y intgrntes_reg_grp] de la tabla [grp_familiar]
-        '|      * Llamamos a la subrutina Sub_Crud_Sql() y le pasamos la consulta [sqlConsulta].
-        '|
-        '| ** El motivo por el cual estamos llamando dos veces a la subrutina Sub_Crud_Sql() es para evitar guardar dos _
-        '|    _ registros en la tabla "pagos" al momento de registrar un nuevo cliente. No se porqué se queda la _
-        '|    _ consulta después de cerra el DataReader y la BBDD.
-
-        Select Case strAddMembers
-            Case "UPDATE_A_FIELD"
-                sqlConsulta = "UPDATE grp_familiar SET
-                                    intgrntes_reg_grp = '" & intAddMember & "'
-                                    WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
-                Sub_Crud_Sql(sqlConsulta)
-
-            Case "UPDATE_TWO_FIELDS"
-                sqlConsulta = "UPDATE grp_familiar SET
-                                    num_intgrntes_grp = '" & intAddMember & "',
-                                    intgrntes_reg_grp = '" & intAddMember & "'
-                                    WHERE id_grp = '" & DgvListaNombre.CurrentRow.Cells(0).Value & "'"
-                Sub_Crud_Sql(sqlConsulta)
-        End Select
-
-        '| -------------------------------------------------------------------------------------------------------------
-        '| * Llenamos la variable strFlag con el valor 'UPDATE_PAYMENT_LIST' para indicar al formulario FrmClientesPagos
-        '|   que actualice la lista de pagos al momento de activarse
-        '| * Activamos los botones del formulario FrmClientesPagos llamando a la subrutina Sub_Activate_Buttons() de
-        '|   dicho formulario.
-        '| * Llamamos a la subrutina FillLabelsMessage() para mostrar los datos en el formulario FrmNuevoEditarCliente y
-        '|   mostrar el mensaje de confirmación.
-
-        FrmClientesPagos.strFlags = "UPDATE_PAYMENT_LIST"
-        FrmClientesPagos.Sub_Activate_Buttons()
-        FillLabelsMessage()
+        End Try
 
     End Sub
     '
@@ -930,7 +764,8 @@ Public Class FrmNuevoEditarCliente
 
         Sub_Crud_Sql(sqlConsulta)
 
-        FillLabelsMessage()
+        'OJO CON ESTA VARIABLE QUE HEMOS QUITADO PARA HACER OTRAS COSAS
+        'FillLabelsMessage()
 
     End Sub
     '
@@ -1113,15 +948,16 @@ Public Class FrmNuevoEditarCliente
     '
     '
     '
-    Sub FillLabelsMessage()
+    Sub FillLabelsMessage(idClient As Integer)
 
-        '| -------------------------------------------------------------------------------------------------------
+        '| ------------------------------------------------------------------------------------------------------
         '| * Llenamos los campos del formulario FrmClientesPagos con los datos que se han guardado o actualizado.
-        '| * Damos formato el codigo del cliente para mostrar en el mensaje de confirmación.
+        '| * Creamos una variable de tipo string 'idClientMsgBox' para dar formato al codigo del cliente y
+        '|   mostrarlo en el mensaje de confirmación.
         '| * Cerramos el formulario FrmNuevoEditarCliente.
 
         With FrmClientesPagos
-            .strIdClient = strIdClient
+            .strIdClient = idClient
             .LblNomCli.Text = TxtNombre.Text
             .LblApeCli.Text = TxtApellido.Text
             .FnacimientoCorto.Text = DtpFdn.Value
@@ -1148,15 +984,67 @@ Public Class FrmNuevoEditarCliente
             bodyText = "ACTUALIZADOS"
         End If
 
-        If strIdClient.Length = 1 Then strIdClient = "CLI - 00" & strIdClient
-        If strIdClient.Length = 2 Then strIdClient = "CLI - 0" & strIdClient
-        If strIdClient.Length = 3 Then strIdClient = "CLI - " & strIdClient
+        Dim idClientMsgBox As String = $"CLI - {idClient:000}"
+
         MsgBox("DATOS DEL CLIENTE" & vbCr & vbCr &
                "   NOMBRE   :  " & TxtNombre.Text & " " & TxtApellido.Text & vbCr &
-               "   CODIGO   :  " & strIdClient & vbCr &
+               "   CODIGO   :  " & idClientMsgBox & vbCr &
                "   -----------------------------------------------" & vbCr &
                "   Datos " & bodyText & " correctamente.", vbInformation, "Registrado")
         Close()
     End Sub
+    '
+    '
+    '
+    Private Sub ConfigureGridColumns(methodPay As String)
+
+        DgvListaNombre.AutoGenerateColumns = False
+
+        If methodPay = "DIARIO" Then
+            ' Tabla: trfa_dscto
+            DgvListaNombre.Columns(0).DataPropertyName = "id_trfa"
+            DgvListaNombre.Columns(1).DataPropertyName = "tipo_trfa"
+
+        ElseIf methodPay = "GRUPAL" Then
+            ' Tabla: grp_familiar
+            DgvListaNombre.Columns(0).DataPropertyName = "id_grp"
+            DgvListaNombre.Columns(1).DataPropertyName = "nom_grp"
+            DgvListaNombre.Columns(2).DataPropertyName = "num_intgrntes_grp"
+            DgvListaNombre.Columns(3).DataPropertyName = "intgrntes_reg_grp"
+
+        End If
+    End Sub
+    '
+    '
+    '
+    Private Function CreateClientPaymentDTO() As ClientPaymentDTO
+
+        Dim dto As New ClientPaymentDTO With
+            {
+                .Nombre = TxtNombre.Text.Trim(),
+                .Apellido = TxtApellido.Text.Trim(),
+                .FechaNacimiento = DtpFdn.Value,
+                .Edad = Validations.Fun_Calculate_Age(DtpFdn.Value),
+                .Telefono = TxtTelefono.Text.Trim(),
+                .Email = TxtEmail.Text.Trim(),
+                .Direccion = TxtDireccion.Text.Trim(),
+                .MetodoPago = strMtdPgs,
+                .FechaInscripcion = DtpFdi.Value,
+                .Estado = strEstado,
+                .IdUsuario = FrmPrincipal.idUser 'UsuarioActual.IdUsuario
+            }
+
+        If strMtdPgs = "GRUPAL" Then
+            dto.IsGroup = True
+            dto.IdGrupo = CInt(DgvListaNombre.CurrentRow.Cells(0).Value)
+            dto.IntegrantesGrupo = CInt(DgvListaNombre.CurrentRow.Cells(2).Value)
+            dto.TipoActualizacionGrupo = strAddMembers
+        Else
+            dto.IsGroup = False
+        End If
+
+        Return dto
+
+    End Function
 
 End Class

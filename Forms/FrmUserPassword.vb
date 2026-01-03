@@ -12,7 +12,6 @@ Public Class FrmUserPassword
 
         Try
             cnxnMySql.ConnectionString = ConfigurationManager.ConnectionStrings("MyConnectionMySQL").ConnectionString
-            'cnxnMySql.ConnectionString = "server=localhost; user=root; password=MySQL€051179.jwir; database=control_pagos"
             cnxnMySql.Open()
 
             If TxtContrasena.Text = "" Then

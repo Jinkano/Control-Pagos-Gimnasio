@@ -697,4 +697,21 @@
 
     End Sub
 
+    '|
+    '|
+    '|
+    Public Sub GetIdAndShowPayments(idGroup As Integer?, idClient As Integer)
+
+        ' Guardamos los IDs en nuestras variables locales
+        If idGroup.HasValue Then
+            Me.strIdGrpFamily = idGroup.Value.ToString()
+        Else
+            Me.strIdClient = idClient.ToString()
+            Me.strIdGrpFamily = "" ' Limpiamos por si acaso
+        End If
+
+        ' Ahora que los IDs están listos, llamamos a la consulta
+        Sub_View_Payment_List()
+    End Sub
+
 End Class

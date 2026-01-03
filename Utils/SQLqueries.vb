@@ -36,8 +36,8 @@ Module SQLqueries
                 Case "SubCheckRecords"
                     SubCheckRecords()
 
-                Case "SubReadIdClient"
-                    SubReadIdClient()
+                'Case "SubReadIdClient"
+                '    SubReadIdClient()
 
                 Case "SubFillGroupName"
                     SubFillGroupName()
@@ -45,17 +45,17 @@ Module SQLqueries
                 Case "SubSearchDiscountPrice"
                     SubSearchDiscountPrice()
 
-                Case "CheckPaymentRegistered"
-                    CheckPaymentRegistered()
+                'Case "CheckPaymentRegistered"
+                '    CheckPaymentRegistered()
 
-                Case "SubFillFamilyGroupData"
-                    SubFillFamilyGroupData()
+                'Case "SubFillFamilyGroupData"
+                '    SubFillFamilyGroupData()
 
                 Case "SubSearchGroupPrice"
                     SubSearchGroupPrice()
 
-                Case "SubSearchDailyPrice"
-                    SubSearchDailyPrice()
+                'Case "SubSearchDailyPrice"
+                '    SubSearchDailyPrice()
 
                 Case "SubFillClientList"
                     SubFillClientList(strFiltrar)
@@ -93,17 +93,17 @@ Module SQLqueries
     End Sub
 
 
-    Public Sub SubReadIdClient()
+    'Public Sub SubReadIdClient()
 
-        '| ----------------------------------------------------------------------------------------------
-        '| LEER EL ID DEL CLIENTE
-        '| ----------------------
-        '| * Leemos el drDataReader.
-        '| * El resultado lo almacenamos en la variable strIdClient del formulario FrmNuevoEditarCliente.
+    '    '| ----------------------------------------------------------------------------------------------
+    '    '| LEER EL ID DEL CLIENTE
+    '    '| ----------------------
+    '    '| * Leemos el drDataReader.
+    '    '| * El resultado lo almacenamos en la variable strIdClient del formulario FrmNuevoEditarCliente.
 
-        drDataReader.Read()
-        FrmNuevoEditarCliente.strIdClient = drDataReader.GetInt16(0).ToString
-    End Sub
+    '    drDataReader.Read()
+    '    FrmNuevoEditarCliente.strIdClient = drDataReader.GetInt16(0).ToString
+    'End Sub
 
 
     Public Sub SubFillGroupName()
@@ -119,33 +119,33 @@ Module SQLqueries
     End Sub
 
 
-    Public Sub SubFillFamilyGroupData()
+    'Public Sub SubFillFamilyGroupData()
 
-        '| ---------------------------------------------------------------------------------------------------
-        '| LLENAR LOS DATOS DEL GRUPO FAMILIAR
-        '| -----------------------------------
-        '| WITH : Hace referencia al datagridview 'DgvListaNombre' del formulario 'FrmNuevoEditarCliente'
-        '|      * Limpiamos el DataGridView DgvListaNombre
-        '|
-        '|      IF : Comprobammos si hay registros:
-        '|
-        '|          WHILE : Mientras leemos el DataReader
-        '|              * Agregamos una nueva fila y lo almacenamos en la variable nRow para llenar los campos
-        '|                del DataGridView DgvListaNombre con los datos del Grupo Familiar.
+    '    '| ---------------------------------------------------------------------------------------------------
+    '    '| LLENAR LOS DATOS DEL GRUPO FAMILIAR
+    '    '| -----------------------------------
+    '    '| WITH : Hace referencia al datagridview 'DgvListaNombre' del formulario 'FrmNuevoEditarCliente'
+    '    '|      * Limpiamos el DataGridView DgvListaNombre
+    '    '|
+    '    '|      IF : Comprobammos si hay registros:
+    '    '|
+    '    '|          WHILE : Mientras leemos el DataReader
+    '    '|              * Agregamos una nueva fila y lo almacenamos en la variable nRow para llenar los campos
+    '    '|                del DataGridView DgvListaNombre con los datos del Grupo Familiar.
 
-        With FrmNuevoEditarCliente.DgvListaNombre
-            .Rows.Clear()
-            If drDataReader.HasRows Then
-                While drDataReader.Read()
-                    nRow = .Rows.Add()
-                    .Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0) 'ID
-                    .Rows(nRow).Cells(1).Value = drDataReader.GetString(1) 'NOMBRE TIPO TARIFA
-                    .Rows(nRow).Cells(2).Value = drDataReader.GetInt16(2) 'NUMERO DE INTEGRANTES
-                    .Rows(nRow).Cells(3).Value = drDataReader.GetInt16(3) 'INTEGRANTES REGISTRADOS
-                End While
-            End If
-        End With
-    End Sub
+    '    With FrmNuevoEditarCliente.DgvListaNombre
+    '        .Rows.Clear()
+    '        If drDataReader.HasRows Then
+    '            While drDataReader.Read()
+    '                nRow = .Rows.Add()
+    '                .Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0) 'ID
+    '                .Rows(nRow).Cells(1).Value = drDataReader.GetString(1) 'NOMBRE TIPO TARIFA
+    '                .Rows(nRow).Cells(2).Value = drDataReader.GetInt16(2) 'NUMERO DE INTEGRANTES
+    '                .Rows(nRow).Cells(3).Value = drDataReader.GetInt16(3) 'INTEGRANTES REGISTRADOS
+    '            End While
+    '        End If
+    '    End With
+    'End Sub
 
     Public Sub SubSearchDiscountPrice()
 
@@ -174,53 +174,53 @@ Module SQLqueries
         End With
     End Sub
 
-    Public Sub CheckPaymentRegistered()
+    'Public Sub CheckPaymentRegistered()
 
-        '| ------------------------------------------------------------
-        '| COMPROBAMOS SI HAY UN PAGO GRUPAL REGISTRADO
-        '| --------------------------------------------
-        '| WITH : Hace referencia al formulario 'FrmNuevoEditarCliente'
-        '|
-        '|      IF : Si la consulta devuelve resultados
-        '|          * Pasamos la variable blnMarker a TRUE 
-        '|
-        '|      ELSE :
-        '|          * Pasamos la variable blnMarker a FALSE
+    '    '| ------------------------------------------------------------
+    '    '| COMPROBAMOS SI HAY UN PAGO GRUPAL REGISTRADO
+    '    '| --------------------------------------------
+    '    '| WITH : Hace referencia al formulario 'FrmNuevoEditarCliente'
+    '    '|
+    '    '|      IF : Si la consulta devuelve resultados
+    '    '|          * Pasamos la variable blnMarker a TRUE 
+    '    '|
+    '    '|      ELSE :
+    '    '|          * Pasamos la variable blnMarker a FALSE
 
-        With FrmNuevoEditarCliente
-            If drDataReader.HasRows Then
-                .blnMarker = True
-            Else
-                .blnMarker = False
-            End If
-        End With
-    End Sub
+    '    With FrmNuevoEditarCliente
+    '        If drDataReader.HasRows Then
+    '            .blnMarker = True
+    '        Else
+    '            .blnMarker = False
+    '        End If
+    '    End With
+    'End Sub
 
-    Public Sub SubSearchDailyPrice()
+    'Public Sub SubSearchDailyPrice()
 
-        '| -----------------------------------------------------------------------------------------------------
-        '| BUSCAR LA TARIFA DE LAS CLASES SUELTAS (PRECIO DIARIO)
-        '| ------------------------------------------------------
-        '| WITH : Hace referencia al datagridview 'DgvListaNombre' del formulario 'FrmNuevoEditarCliente'
-        '|      * Limpiamos el DataGridView DgvListaNombre
-        '|
-        '|      IF : Comprobammos si hay registros:
-        '|
-        '|          WHILE : Mientras leemos el DataReader
-        '|              * Agregamos una nueva fila y lo almacenamos en la variable 'nRow' para llenar los campos
-        '|                del DataGridView DgvListaNombre con los datos del Precio Diario.
+    '    '| -----------------------------------------------------------------------------------------------------
+    '    '| BUSCAR LA TARIFA DE LAS CLASES SUELTAS (PRECIO DIARIO)
+    '    '| ------------------------------------------------------
+    '    '| WITH : Hace referencia al datagridview 'DgvListaNombre' del formulario 'FrmNuevoEditarCliente'
+    '    '|      * Limpiamos el DataGridView DgvListaNombre
+    '    '|
+    '    '|      IF : Comprobammos si hay registros:
+    '    '|
+    '    '|          WHILE : Mientras leemos el DataReader
+    '    '|              * Agregamos una nueva fila y lo almacenamos en la variable 'nRow' para llenar los campos
+    '    '|                del DataGridView DgvListaNombre con los datos del Precio Diario.
 
-        With FrmNuevoEditarCliente.DgvListaNombre
-            .Rows.Clear()
-            If drDataReader.HasRows Then
-                While drDataReader.Read()
-                    nRow = .Rows.Add()
-                    .Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0) 'ID
-                    .Rows(nRow).Cells(1).Value = drDataReader.GetString(1) 'NOMBRE TIPO TARIFA
-                End While
-            End If
-        End With
-    End Sub
+    '    With FrmNuevoEditarCliente.DgvListaNombre
+    '        .Rows.Clear()
+    '        If drDataReader.HasRows Then
+    '            While drDataReader.Read()
+    '                nRow = .Rows.Add()
+    '                .Rows(nRow).Cells(0).Value = drDataReader.GetInt16(0) 'ID
+    '                .Rows(nRow).Cells(1).Value = drDataReader.GetString(1) 'NOMBRE TIPO TARIFA
+    '            End While
+    '        End If
+    '    End With
+    'End Sub
 
     Public Sub SubSearchGroupPrice()
 
